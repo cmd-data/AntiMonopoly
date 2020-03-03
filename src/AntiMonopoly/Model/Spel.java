@@ -10,7 +10,7 @@ public class Spel {
 	private LocalDateTime startTijd = null;
 	private LocalDateTime eindTijd;
 	private Speler startSpeler;
-	private List<Speler> spelers = new ArrayList<>();
+	private static List<Speler> spelers = new ArrayList<>();
 	List<Integer> rolWaarde = new ArrayList<>();
 
 
@@ -51,7 +51,8 @@ public class Spel {
 
 	/**
 	 * vereenvoudiging van getStartSpeler:
-	 * setRoll methode nog uitwerken + comparator
+	 * setRoll methode nog uitwerken + comparator (setRoll methode is eenvoudig maar niet ideaal want je creëert een variabele 'roll' bij spelers
+	 * en eigenlijk hebben we die variabele alleen bij het begin van het spel nodig)
 	 * @return
 	 */
     public List<Speler> getSortedSpelers() {
@@ -66,7 +67,11 @@ public class Spel {
 		});
 	}
 
-    public List<Speler> getSpelers(){
+	/**
+	 * statische methode zodat ik deze in FaillietWinnaar en andere klassen kan oproepen
+	 * @return
+	 */
+    public static List<Speler> getSpelers(){
 		return spelers;
 	}
 }

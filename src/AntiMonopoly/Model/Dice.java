@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Dice {
 	/**
-	 * Opm. Tasha ==> Klasse abstract gemaakt zodat er geen instanties van 'Dice' kunnen gemaakt worden.
 	 * We kunnen de methode rollDice zo oproepen (doordat die statisch is) zodat we niet telkens een 'Dice' object moeten aanmaken.
 	 */
 

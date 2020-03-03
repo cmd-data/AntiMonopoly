@@ -1,6 +1,9 @@
 package AntiMonopoly.Model;
 
-/*public class GasEnElektriciteitsbedrijf extends Tegel {
+import java.util.ArrayList;
+import java.util.List;
+
+public class GasEnElektriciteitsbedrijf extends Tegel {
 
 	private List<GasEnElektriciteitsbedrijf> gasEnElektriciteitsbedrijf = new ArrayList<>();
 
@@ -38,15 +41,15 @@ package AntiMonopoly.Model;
 		int aantal = 1;
 		if(speler.getIsConcurrent()==true){
 			dice.rollDice();
-			int waardeWorp = dice.getWaardeWorp();
+			int waardeWorp = dice.rollDice();
 			speler.setGeld(-waardeWorp*4);
 		} else {
 			for (int i = 0; i < this.gasEnElektriciteitsbedrijf.size(); i++) {
-				if (eigenaar.equals(gasEnElektriciteitsbedrijf.get(i).getEigenaar())&&!gasEnElektriciteitsbedrijf.equals(gasEnElektriciteitsbedrijf.get(i))){
-					aantal++;		/** weet niet goed waarom de get niet werkt *//*
+				if (eigenaar.equals(this.gasEnElektriciteitsbedrijf.get(i).getEigenaar())&&!gasEnElektriciteitsbedrijf.equals(this.gasEnElektriciteitsbedrijf.get(i))){
+					aantal++;		/** weet niet goed waarom de get niet werkt ==> Opm. Tasha: 'this.' toegevoegd*/
 				}
 				dice.rollDice();
-				int waardeWorp = dice.getWaardeWorp();
+				int waardeWorp = dice.rollDice();
 
 				if (aantal == 1) {
 					speler.setGeld(-waardeWorp * 4);
@@ -60,7 +63,7 @@ package AntiMonopoly.Model;
 
 		}
 	}
-}*/
+}
 
 
 

@@ -14,6 +14,12 @@ public class Spelbord {
 	Stad stad = new Stad();
 	Transport transport = new Transport();
 
+	/**
+	 * Case misschien veranderen door nieuwe tegels te maken? Tegel 0 = start; tegel 1 = Rue Grande in Dinant; etc.
+	 * @param i
+	 * @return
+	 */
+
 	public String locatieBepalen(int i){
 		switch (i){
 			case 0:
