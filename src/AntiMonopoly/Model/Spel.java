@@ -51,8 +51,8 @@ public class Spel {
 
 	/**
 	 * vereenvoudiging van getStartSpeler:
-	 * setRoll methode nog uitwerken + comparator (setRoll methode is eenvoudig maar niet ideaal want je creëert een variabele 'roll' bij spelers
-	 * en eigenlijk hebben we die variabele alleen bij het begin van het spel nodig)
+	 * IK GA DE METHODE NOG VERANDEREN NAAR EEN SORTEDMAP MET 2 VALUES:
+	 * speler + dobbelwaarde ==> lisjt sorteren en gebruik maken van double voor reroll (zal nog duidelijk worden als ik de code schrijf)
 	 * @return
 	 */
     public List<Speler> getSortedSpelers() {

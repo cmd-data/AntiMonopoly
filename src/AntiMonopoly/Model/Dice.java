@@ -31,6 +31,15 @@ public class Dice {
 	}
 
 	/**
+	 * Over het hoofd gezien dat we 2 dobbelstenen hebben.
+	 * Methode nog verder uitwerken
+	 * @return
+	 */
+	public static int rollDices() {
+		return 0;
+	}
+
+	/**
 	 * Methode om het gerolde nummer te krijgen
 	 * Opm. Tasha ==> ik heb alles in de methode 'rollDice' gestoken, aparte getter is volgens mij niet nodig omdat je direct de waarde wilt krijgen als je de dobbelsteen rolt
 	 */

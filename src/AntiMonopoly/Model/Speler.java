@@ -21,6 +21,7 @@ public class Speler {
 	private boolean aanZet;				//kijken of de speler aan zet is
 	private static boolean failliet;			//checken of de speler failliet is
 	private int count = 0;
+	private boolean isDubbel; 	// true of false bijhouden als speler dubbel gegooid heeft
 
 
 	/**
