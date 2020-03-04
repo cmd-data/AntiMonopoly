@@ -21,7 +21,7 @@ public class Inkomstenbelasting extends Tegel {
 		}
 
 		if (this.inkomstenBelasting > 200000) {
-			speler.setGeld(-200000);
+			speler.setGeld(-belasting);
 		} else {
 			speler.setGeld (-this.inkomstenBelasting);
 		}

@@ -55,7 +55,7 @@ public class Spel {
 	 * speler + dobbelwaarde ==> lisjt sorteren en gebruik maken van double voor reroll (zal nog duidelijk worden als ik de code schrijf)
 	 * @return
 	 */
-    public List<Speler> getSortedSpelers() {
+    /*public List<Speler> getSortedSpelers() {
 
 		for (int i = 0; i < spelers.size(); i++) {
 			spelers.get(i).setRoll(Dice.rollDice());
@@ -65,7 +65,7 @@ public class Spel {
 		return spelers.sort((Speler speler1, Speler speler2) -> {
 			return speler1.getRoll() < speler2.getRoll();
 		});
-	}
+	}*/
 
 	/**
 	 * statische methode zodat ik deze in FaillietWinnaar en andere klassen kan oproepen

@@ -11,14 +11,6 @@ public class Gevangenis extends Tegel {
 		speler.setPositie(10,speler);
 	}
 
-	/**
-	 * Methode kan dan opgeroepen worden als iemand op de tegel gaNaarGevangenis komt
-	 * @param speler
-	 */
-	public static void gaNaarGevangenis(Speler speler){
-		gevangenis = new Gevangenis(speler);
-	}
-
 	public int getBoete() { return this.boete; }
 
 	public Speler getSpeler() { return speler; }
