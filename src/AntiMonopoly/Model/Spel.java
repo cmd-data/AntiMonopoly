@@ -37,7 +37,9 @@ public class Spel {
 			String naam = kb.next();
 			System.out.println("Concurrent? ('true' of 'false'): ");
 			boolean soort = kb.nextBoolean();
-			spelers.add(new Speler(naam,soort));
+			System.out.println("Kleur pion? (Keuze uit: blauw, rood, geel en groen): ");
+			String kleur = kb.next();
+			spelers.add(new Speler(naam,soort,kleur));				// nog melding geven als kleur al gekozen is
 
 			if (2 <= i && i != 4) {
 				System.out.println("Nog een speler? ('true' of 'false'): ");

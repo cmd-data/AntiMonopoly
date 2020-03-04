@@ -10,22 +10,25 @@ public class Transport extends Tegel {
 	private static final int waarde = 200000;
 	private Speler eigenaar;
 	private String naam;
+	private int positie;
+	private final int hypotheek = 100000;
 
-	public Transport(String naam, Speler eigenaar){
+	public Transport(String naam, Speler eigenaar, int positie){
 		this.naam = naam;
 		this.eigenaar = eigenaar;
+		this.positie = positie;
 	}
 
 	/**
 	 * instantie in andere klasse maken zodat de transport lijst aangevuld wordt.
 	 */
 
-	public Transport(){
+	/*public Transport(){
 		transport.add(new Transport("Noord Station", null));
 		transport.add(new Transport("Centraal Station", null));
 		transport.add(new Transport("Buurtspoorwegen", null));
 		transport.add(new Transport("Zuid Station", null));
-	}
+	}*/
 
 
 	public static int getWaarde() { return waarde; }

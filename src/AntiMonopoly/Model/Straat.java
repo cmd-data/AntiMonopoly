@@ -1,6 +1,6 @@
 package AntiMonopoly.Model;
 
-public class Straten extends Stad {
+public class Straat extends Tegel {
 
 	private String straat;
 	private int prijs;
@@ -14,9 +14,10 @@ public class Straten extends Stad {
 	private Gebouwen gebouw;
 	private int aantalGebouwen;
 	private String stad;
+	private int positie;
 
-	public Straten(){}
-	public Straten(String straat, int prijs, int huur, int hypotheek, int prijsHuis, Speler eigenaar, Gebouwen gebouw, int aantalGebouwen, String stad) {
+	public Straat(){}
+	public Straat(String straat, int prijs, int huur, int hypotheek, int prijsHuis, Speler eigenaar, Gebouwen gebouw, int aantalGebouwen, String stad, int positie) {
 		this.straat = straat;
 		this.prijs = prijs;
 		this.huur = huur;
@@ -26,6 +27,7 @@ public class Straten extends Stad {
 		this.gebouw = gebouw;
 		this.aantalGebouwen = aantalGebouwen;
 		this.stad = stad;
+		this.positie = positie;
 	}
 
 	public String getStraat() { return straat; }
@@ -81,5 +83,7 @@ public class Straten extends Stad {
 	}
 
 	public String getStad() { return this.stad; }
+
+
 
 }

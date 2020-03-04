@@ -4,24 +4,24 @@ import java.util.Collection;
 
 public class Hypotheek {
 
-	private static Collection<Straten> hypotheekLijst = null;
+	private static Collection<Straat> hypotheekLijst = null;
 
 	public Hypotheek (){ }
 
-	public void stopHuur(Straten straat) {
+	public void stopHuur(Straat straat) {
 		if(hypotheekLijst.contains(straat)){
 			/**
 			 * Stop methode betaalHuur als iemand op de straat terecht komt*/
 		}
 	}
 
-	public static Collection<Straten> getHypotheekLijst() { return hypotheekLijst; }
+	public static Collection<Straat> getHypotheekLijst() { return hypotheekLijst; }
 
-	public void neemHypotheek(Straten straat) {
+	public void neemHypotheek(Straat straat) {
 		hypotheekLijst.add(straat);
 	}
 
-	public void uitHypotheek(Straten straat){
+	public void uitHypotheek(Straat straat){
 		hypotheekLijst.remove(straat);
 	}
 

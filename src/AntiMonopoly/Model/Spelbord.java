@@ -4,133 +4,52 @@ public class Spelbord {
 
 	private int pionBlauw;
 	private int pionGroen;
-	public int[] locaties = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39};
 
-	public void plaatsZet() { }
-	public void plaatsPion() { }
-	public void plaatsGebouw() { }
-
-	Speler speler = new Speler();
-	Stad stad = new Stad();
-	Transport transport = new Transport();
+	public void plaatsPion() { }   // Plaats pion (gelinkt aan een speler) op het spelbord
+	public void plaatsGebouw() { } // Plaats een gebouw op de juiste plaats (plaats op de tegel is verschillend voor concurrenten en monopolisten)
 
 	/**
-	 * Case misschien veranderen door nieuwe tegels te maken? Tegel 0 = start; tegel 1 = Rue Grande in Dinant; etc.
-	 * @param i
-	 * @return
+	 * Hoe gebruik ik nu een methode uit de subklassen? Ik kan met 'tegel0.' alleen methoden aanroepen uit Tegel
 	 */
 
-	public String locatieBepalen(int i){
-		switch (i){
-			case 0:
-				speler.setGeld(100000);
-				return "Je passeert Start, ontvang €100.000";
-			case 1:
-				Stad.getStraten().get(0);
-				return "Je komt aan op Rue Grande in Dinant";
-			case 2:
-			case 7:
-			case 17:
-			case 22:
-			case 33:
-			case 36:
-				new ConcurrentenOfMonopolistenvak().neemOpdrachtCon();
-				new ConcurrentenOfMonopolistenvak().neemOpdrachtMon();
-				return "Neem een Concurrent of Monopolist kaart";
-			case 3:
-				Stad.getStraten().get(1);
-				return "Je komt aan op de Diestsestraat in Leuven";
-			case 4:
-				speler.setGeld(-200000);
-				return "betaal inkomstenbelasting: €200.000";
-			case 5:
-				return "Je komt aan op het Noordstation";
-			case 6:
-				Stad.getStraten().get(2);
-				return "Je komt aan op de Steenstraat in Brugge";
-			case 8:
-				Stad.getStraten().get(3);
-				return "Je komt aan op Place du Monument in Spa";
-			case 9:
-				Stad.getStraten().get(4);
-				return "Je komt aan op de Kapellestraat in Oostende";
-			case 10:
-				return "Op bezoek in de gevangenis";
-			case 11:
-				Stad.getStraten().get(5);
-				return "Je komt aan op Rue de Diekirch in Arlon";
-			case 12:
-				return "Betaal jouw elektriciteitsfactuur, rol de dobbelsteen.";
-			case 13:
-				Stad.getStraten().get(6);
-				return "Je komt aan op Bruul in Mechelen";
-			case 14:
-				Stad.getStraten().get(7);
-				return "Je komt aan op Place Verte in Verviers";
-			case 15:
-				return "Je komt aan in het Centraalstation";
-			case 16:
-				Stad.getStraten().get(8);
-				return "Je komt aan op de Lippenslaan in Knokke";
-			case 18:
-				Stad.getStraten().get(9);
-				return "Je komt aan op Rue Royale in Tournai";
-			case 19:
-				Stad.getStraten().get(10);
-				return "Je komt aan op de Groenplaats in Antwerpen";
-			case 20:
-				AntiMonopolyStichting ams = new AntiMonopolyStichting();
-				ams.betaalBank();
-				ams.getGeld();
-				return "Anti-Monopoly Stichting";
-			case 21:
-				Stad.getStraten().get(11);
-				return "Je komt aan op Rue Saint Leonard in Liège";
-			case 23:
-				Stad.getStraten().get(12);
-				return "Je komt aan op de Lange Steenstraat in Kortrijk";
-			case 24:
-				Stad.getStraten().get(13);
-				return "Je komt aan op de Grande Place in Mons";
-			case 25:
-				return "Je komt aan op Buurtspoorwegen";
-			case 26:
-				Stad.getStraten().get(14);
-				return "Je komt aan op de Grote Markt in Hasselt";
-			case 27:
-				Stad.getStraten().get(15);
-				return "Je komt aan op Place de l'Ange in Namur";
-			case 28:
-				return "Betaal jouw gasfactuur, rol de dobbelsteen.";
-			case 29:
-				Stad.getStraten().get(16);
-				return "Je komt aan op de Hoogstraat in Brussel";
-			case 30:
-				return "Ga direct naar de gevangenis, passeer niet langs start.";
-				//return "Ga naar de prijzenoorlog, passeer niet langs start";
-			case 31:
-				Stad.getStraten().get(17);
-				return "Je komt aan op de Veldstraat in Gent";
-			case 32:
-				Stad.getStraten().get(18);
-				return "Je komt aan op Boulevard Tirou in Charleroi";
-			case 34:
-				Stad.getStraten().get(19);
-				return "Je komt aan op Boulevard d'Avroy in Liège";
-			case 35:
-				return "Je komt aan op het Zuidstation";
-			case 37:
-				Stad.getStraten().get(20);
-				return "Je komt aan op de Meir in Antwerpen";
-			case 38:
-				return "Betaal eigendomsbelasting: €75.000";
-			case 39:
-				return "Je komt aan in de Nieuwstraat in Brussel";
-		}
-		return null;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(Stad.isMonopolyStad("Rood"));					/** Testcode voor isMonopolyStad */
-	}
+	Tegel tegel0 = new Start("Start", 0);
+	Tegel tegel1 = new Straat("Rue Grande, Dinant", 60, 6, 30, 50, null,null,0, "paars",1);
+	Tegel tegel2 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 2);
+	Tegel tegel3 = new Straat("Diestsestraat, Leuven", 60, 6, 30, 50, null,null,0, "paars",3);
+	Tegel tegel4 = new Inkomstenbelasting("Inkomstenbelasting",4);
+	Tegel tegel5 = new Transport("Noord Station", null,5);
+	Tegel tegel6 = new Straat("Steenstraat, Brugge", 100, 10, 50, 50, null,null,0, "lBlauw",6);
+	Tegel tegel7 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 7);
+	Tegel tegel8 = new Straat("Place Du Monument, Spa", 100, 10, 50, 50, null,null,0, "lBlauw",8);
+	Tegel tegel9 = new Straat("Kapellestraat, Oostende", 120, 12, 60, 50, null,null,0, "lBlauw",9);
+	Tegel tegel10 = new Gevangenis("Gevangenis / Prijzenoorlog / Sigtseeing tour", 10);
+	Tegel tegel11 = new Straat("Rue De Diekirch, Arlon", 140, 14, 70, 100 , null,null,0, "roos",11);
+	Tegel tegel12 = new GasEnElektriciteitsbedrijf("Elektriciteitscentrale",null,12);
+	Tegel tegel13 = new Straat("Bruul, Mechelen", 140, 14, 70, 100 , null,null,0, "roos",13);
+	Tegel tegel14 = new Straat("Place Verte, Verviers", 160, 16, 80, 100 , null,null,0, "roos",14);
+	Tegel tegel15 = new Transport("Centraal Station", null,15);
+	Tegel tegel16 = new Straat("Lippenslaan, Knokke", 180, 18, 90, 100 , null,null,0, "oranje",16);
+	Tegel tegel17 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 17);
+	Tegel tegel18 = new Straat("Rue Royale, Tournai", 180, 18, 90, 100 , null,null,0, "oranje",18);
+	Tegel tegel19 = new Straat("Groenplaats, Antwerpen", 200, 20, 100, 100 , null,null,0, "oranje",19);
+	Tegel tegel20 = new AntiMonopolyStichting("Anti-Monopolystichting",20);
+	Tegel tegel21 = new Straat("Rue Saint Léonard, Liège", 220, 22, 110, 150 , null,null,0, "rood",21);
+	Tegel tegel22 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 22);
+	Tegel tegel23 = new Straat("Lange Steenstraat, Kortrijk", 220, 22, 110, 150 , null,null,0, "rood",23);
+	Tegel tegel24 = new Straat("Grande Place, Mons", 240, 24, 120, 150 , null,null,0, "rood",24);
+	Tegel tegel25 = new Transport("Buurtspoorwegen", null,25);
+	Tegel tegel26 = new Straat("Grote Markt, Hasselt", 260, 26, 130, 150 , null,null,0, "geel",26);
+	Tegel tegel27 = new Straat("Place De l'Ange, Namur", 260, 26, 130, 150 , null,null,0, "geel",27);
+	Tegel tegel28 = new GasEnElektriciteitsbedrijf("Gasbedrijf", null,28);
+	Tegel tegel29 = new Straat("Hoogstraat, Brussel", 280, 28, 140, 150 , null,null,0, "geel",29);
+	Tegel tegel30 = new GaNaarGevangenis("Ga naar de gevangenis!",30);
+	Tegel tegel31 = new Straat("Veldstraat, Gent", 300, 30, 150, 200 , null,null,0, "groen",31);
+	Tegel tegel32 = new Straat("Boulevard Tirou, Charleroi", 300, 30, 150, 200 , null,null,0, "groen",32);
+	Tegel tegel33 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 33);
+	Tegel tegel34 = new Straat("Boulevard Tirou, Charleroi", 300, 30, 150, 200 , null,null,0, "groen",34);
+	Tegel tegel35 = new Transport("Zuid Station", null,35);
+	Tegel tegel36 = new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 36);
+	Tegel tegel37 = new Straat("Meir, Antwerpen", 350, 35, 175, 200 , null,null,0, "dBlauw",37);
+	Tegel tegel38 = new Eigendomsbelasting("Eigendomsbelasting",38);
+	Tegel tegel39 = new Straat("Nieuwstraat, Brussel", 400, 40, 200, 200 , null,null,0, "dBlauw",39);
 }

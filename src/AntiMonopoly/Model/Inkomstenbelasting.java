@@ -5,6 +5,10 @@ public class Inkomstenbelasting extends Tegel {
 	private final int belasting = 200000;
 	private int inkomstenBelasting;
 
+	public Inkomstenbelasting(String naam, int positie) {
+		super(naam, positie);
+	}
+
 	public int getBelasting()	{
 		return this.belasting;
 	}

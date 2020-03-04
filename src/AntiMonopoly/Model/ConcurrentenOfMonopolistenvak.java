@@ -7,6 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
+
+	private int positie;
+
+	public ConcurrentenOfMonopolistenvak(String naam, int positie) {
+		super(naam, positie);
+		this.positie = positie;
+	}
+
 	private Opdrachten opdracht = new Opdrachten();
 
 	public String neemOpdrachtMon() {
@@ -38,9 +46,4 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		}
 		opdracht.setShuffledCon(rotatedCon);
 	}
-	public static void main(String[] args) {
-		System.out.println(new ConcurrentenOfMonopolistenvak().neemOpdrachtCon());       /** Testcode */
-		System.out.println(new ConcurrentenOfMonopolistenvak().neemOpdrachtMon());
-	}
-
 }

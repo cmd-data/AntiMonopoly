@@ -6,6 +6,10 @@ public class Gevangenis extends Tegel {
 	private Speler speler = null;
 	static Gevangenis gevangenis;
 
+	public Gevangenis(String naam, int positie) {
+		super(naam, positie);
+	}
+
 	public Gevangenis(Speler speler) {
 		this.speler = speler;
 		speler.setPositie(10,speler);

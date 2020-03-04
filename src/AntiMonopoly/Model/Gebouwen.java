@@ -6,7 +6,7 @@ public class Gebouwen {
 		private int hotel = 0;
 		public Hotel() { super(); }
 
-		public static void verkoopHotel(Straten straat, int aantal){					/** eerst checken of dat de speler een concurrent is of niet, dan aantal huizen aanpassen	*/
+		public static void verkoopHotel(Straat straat, int aantal){					/** eerst checken of dat de speler een concurrent is of niet, dan aantal huizen aanpassen	*/
 			if(Speler.getIsConcurrent()){
 				straat.setAantalGebouwen(4);
 			} else {straat.setAantalGebouwen(3);}
@@ -16,14 +16,14 @@ public class Gebouwen {
 	public static class Huis extends Gebouwen {
 		public Huis() { super(); }
 
-		public static void verkoopHuis(Straten straat, int aantal){
+		public static void verkoopHuis(Straat straat, int aantal){
 			straat.setAantalGebouwen(straat.getAantalGebouwen()-aantal);
 		}
 	}
 
 	public Gebouwen(){}
 
-	public Gebouwen(Straten straat, Huis huis, int aantal){
+	public Gebouwen(Straat straat, Huis huis, int aantal){
 		straat.setGebouw(huis);
 		if (Speler.getIsConcurrent()) {
 			if (straat.getAantalGebouwen()+aantal<straat.getMaxHuisCon()) {
@@ -36,12 +36,12 @@ public class Gebouwen {
 		}
 
 	}
-	public Gebouwen(Straten straat, Hotel hotel){
+	public Gebouwen(Straat straat, Hotel hotel){
 		straat.setGebouw(hotel);
 		straat.setAantalGebouwen(1);
 	}
 
-	public void verkoopGebouw(Straten straat, Gebouwen gebouw, int aantal) {
+	public void verkoopGebouw(Straat straat, Gebouwen gebouw, int aantal) {
 		if(gebouw.getClass().equals(Hotel.class)){
 			Gebouwen.Hotel.verkoopHotel(straat,aantal);
 			straat.setGebouw(new Huis());

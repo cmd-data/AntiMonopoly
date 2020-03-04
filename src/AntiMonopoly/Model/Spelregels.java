@@ -67,7 +67,7 @@ public class Spelregels {
                     "eigendommen met hypotheek apart van eventuele niet verkochte eigendommen.\n"+
                     "C. Voordat een speler zijn eigendom onder een hypotheek kan plaatsen, moeten de huizen of hotels die erop gebouwd zijn terug verkocht\n"+
                     "worden aan de bank (zie regel 12).\n"+
-                    "D. Straten en bedrijven die met een hypotheek bezwaard zijn, kunnen op elk moment door de eigenaar verkocht worden aan andere\n"+
+                    "D. Straat en bedrijven die met een hypotheek bezwaard zijn, kunnen op elk moment door de eigenaar verkocht worden aan andere\n"+
                     "spelers. De verkoper en koper onderhandelen over de prijs.\n"+
                     "E. Wanneer spelers hun met hypotheek bezwaarde eigendom weer hypotheekvrij willen maken, betalen ze de bank het bedrag dat\n"+
                     "achterop het eigendomsbewijs vermeld staat. Het eigendomsbewijs wordt dan teruggegeven aan de speler.\n"+

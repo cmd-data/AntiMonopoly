@@ -2,8 +2,8 @@ package AntiMonopoly.Model;
 
 public class Tegel {
 
-	private int positie;        //positie van de tegel op het spelbord
-	private String naam;        //naam van de tegel
+	private int positie;
+	private String naam;
 
 	/**
 	 * constructor

@@ -7,20 +7,22 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 
 	private List<GasEnElektriciteitsbedrijf> gasEnElektriciteitsbedrijf = new ArrayList<>();
 
-	private final int waarde = 150000;		//kostprijs tegel
-	private String eigenaar;				//eigenaar tegel
-	private String naam;					//naam tegel
+	private final int waarde = 150000;
+	private String eigenaar;
+	private String naam;
+	private int positie;
 
-	public GasEnElektriciteitsbedrijf(String naam, String eigenaar) {
+	public GasEnElektriciteitsbedrijf(String naam, String eigenaar, int positie) {
 		this.naam = naam;
 		this.eigenaar = eigenaar;
+		this.positie = positie;
 	}
 
-	public void voegToe(){
+	/*public void voegToe(){
 		gasEnElektriciteitsbedrijf.add(new GasEnElektriciteitsbedrijf("Elektriciteitsbedrijf",null));
 		gasEnElektriciteitsbedrijf.add(new GasEnElektriciteitsbedrijf("Gasbedrijf",null));
 
-	}
+	}*/
 
 	public String getEigenaar() {
 		return eigenaar;

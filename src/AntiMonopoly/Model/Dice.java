@@ -35,8 +35,8 @@ public class Dice {
 	 * Methode nog verder uitwerken
 	 * @return
 	 */
-	public static int rollDices() {
-		return 0;
+	public static int[] rollDices() {
+		return new int[]{rollDice(), rollDice()};
 	}
 
 	/**

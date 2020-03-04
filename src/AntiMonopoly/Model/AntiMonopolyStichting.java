@@ -2,6 +2,10 @@ package AntiMonopoly.Model;
 
 public class AntiMonopolyStichting extends Tegel {
 
+	public AntiMonopolyStichting(String naam, int positie) {
+		super(naam, positie);
+	}
+
 	public void betaalBank() {
 		Speler.setGeld(-160000);
 	}

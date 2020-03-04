@@ -22,6 +22,7 @@ public class Speler {
 	private static boolean failliet;			//checken of de speler failliet is
 	private int count = 0;
 	private boolean isDubbel; 	// true of false bijhouden als speler dubbel gegooid heeft
+	private String pion;
 
 
 	/**
@@ -34,11 +35,12 @@ public class Speler {
 	 * In de main methode dient er een counter te zitten die er op toeziet of er niet meer dan 4 spelers gecreëerd worden.
 	 * Niet in de constructor (Opmerking Tasha ==> ik zou dit dus wel in de constructor steken?)
 	 */
-	public Speler(String naam, boolean isConcurrent) {
+	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
 		Speler.isConcurrent = isConcurrent;
 		this.count++;
-	}//einde constructor
+		this.pion = pion;
+	}
 
 	/**
 	 *default constructor
@@ -140,8 +142,8 @@ public class Speler {
 	
 	public static int checkBezittingen (Speler speler) {
 		List<String> eigenaars = new ArrayList<>();
-		for (int i = 0; i < Stad.getStraten().size(); i++) {
-			eigenaars.add(Stad.getStraten().get(i).getEigenaar().getNaam());
+		for (int i = 0; i < Stad.getStraat().size(); i++) {
+			eigenaars.add(Stad.getStraat().get(i).getEigenaar().getNaam());
 			/**
 			 * Alle eigenaars in een lijst gestoken om dan te kijken of de speler nog eigendommen heeft
 			 */
@@ -169,18 +171,18 @@ public class Speler {
 
 	public int waardeBezittingen (Speler speler) {
 		int waarde = 0;
-		for (int i = 0; i < Stad.getStraten().size(); i++) {
-			if(Stad.getStraten().get(i).getEigenaar().equals(speler)&&!Hypotheek.getHypotheekLijst().contains(Stad.getStraten().get(i))){
-				waarde += Stad.getStraten().get(i).getPrijs();
-				if(Stad.getStraten().get(i).getGebouw().getClass().equals(Gebouwen.Huis.class)){
-					waarde += Stad.getStraten().get(i).getPrijsHuis()*Stad.getStraten().get(i).getAantalGebouwen();
+		for (int i = 0; i < Stad.getStraat().size(); i++) {
+			if(Stad.getStraat().get(i).getEigenaar().equals(speler)&&!Hypotheek.getHypotheekLijst().contains(Stad.getStraat().get(i))){
+				waarde += Stad.getStraat().get(i).getPrijs();
+				if(Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Huis.class)){
+					waarde += Stad.getStraat().get(i).getPrijsHuis()*Stad.getStraat().get(i).getAantalGebouwen();
 				}
-				if(Stad.getStraten().get(i).getGebouw().getClass().equals(Gebouwen.Hotel.class)){
+				if(Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Hotel.class)){
 					if(speler.isConcurrent){
-						waarde += Stad.getStraten().get(i).getPrijsHuis()*5;
+						waarde += Stad.getStraat().get(i).getPrijsHuis()*5;
 					}
 					if(!speler.isConcurrent){
-						waarde += Stad.getStraten().get(i).getPrijsHuis()*4;
+						waarde += Stad.getStraat().get(i).getPrijsHuis()*4;
 					}
 				}
 			}
