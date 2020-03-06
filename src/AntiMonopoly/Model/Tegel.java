@@ -1,9 +1,12 @@
 package AntiMonopoly.Model;
 
+import java.util.List;
+
 public class Tegel {
 
 	private int positie;
 	private String naam;
+	private List<Speler> spelers;
 
 	/**
 	 * constructor
@@ -11,8 +14,17 @@ public class Tegel {
 	 * extra constructor voor tegels van speciale vakken
 	 */
 	public Tegel(String naam, int positie) {
+		this.naam = naam;
 		this.positie = positie;
-	}//einde constructor
+	}
+
+	public void addSpeler(Speler speler){
+		spelers.add(speler);
+	}
+
+	public void removeSpeler(Speler speler){
+		spelers.remove(speler);
+	}
 
 	/**
 	 * default constructor
@@ -26,6 +38,10 @@ public class Tegel {
 	public String getNaam() {
 		return naam;
 	}//einde Methode
+
+	public List<Speler> getSpelers() {
+		return spelers;
+	}
 
 	/**
 	 * Kan de tegel gekocht worden?

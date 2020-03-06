@@ -41,7 +41,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	private void betaalHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
 		String eigenaar = gasEnElektriciteitsbedrijf.getEigenaar();
 		int aantal = 1;
-		if(speler.getIsConcurrent()==true){
+		if(speler.getIsConcurrent()){
 			dice.rollDice();
 			int waardeWorp = dice.rollDice();
 			speler.setGeld(-waardeWorp*4);

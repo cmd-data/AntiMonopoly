@@ -2,7 +2,7 @@ package AntiMonopoly.Model;
 
 public class AntiMonopolyMain {
     public static void main(String[] args) {
-        //Spel spel = new Spel(LocalDateTime.now());
+        // Spel spel = new Spel(LocalDateTime.now());
         // spel.getSortedSpelers();
 
         /** Verloop van het spel:

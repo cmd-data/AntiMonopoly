@@ -8,9 +8,9 @@ public class Speler {
 
 
 	private String naam;				//naam speler
-	private static int geld = 1500000;			//hoeveelheid geld de speler bezit, aan het begin van het spel is dit steeds hetzelfde,
+	private int geld = 1500000;			//hoeveelheid geld de speler bezit, aan het begin van het spel is dit steeds hetzelfde,
 										// dus moet niet als parameter in de constructor worden toegevoegd
-	private static boolean isConcurrent;		//Is de speler een concurent?
+	private boolean isConcurrent;		//Is de speler een concurent?
 	/**
 	 *i.p.v. concurent en monopolist toe te voegen als aparte klasse, meegeven aan de constructor als boolean
 	 */
@@ -19,7 +19,7 @@ public class Speler {
 	 *Klasse Pion kan vervangen worden door de speler een positie te geven
 	 */
 	private boolean aanZet;				//kijken of de speler aan zet is
-	private static boolean failliet;			//checken of de speler failliet is
+	private boolean failliet;			//checken of de speler failliet is
 	private int count = 0;
 	private boolean isDubbel; 	// true of false bijhouden als speler dubbel gegooid heeft
 	private String pion;
@@ -37,7 +37,7 @@ public class Speler {
 	 */
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
-		Speler.isConcurrent = isConcurrent;
+		this.isConcurrent = isConcurrent;
 		this.count++;
 		this.pion = pion;
 	}
@@ -70,7 +70,7 @@ public class Speler {
 	/**
 	 *Methode om speler geld te laten betalen
 	 */
-	public static void setGeld(int veranderGeld) {
+	public void setGeld(int veranderGeld) {
 		geld += veranderGeld;
 	}
 	//einde Methode
@@ -86,7 +86,7 @@ public class Speler {
 	/**
 	 *Methode om te checken of de speler een concurent is
 	 */
-	public static boolean getIsConcurrent() {
+	public boolean getIsConcurrent() {
 		return isConcurrent;
 	}//einde Methode
 
@@ -97,10 +97,8 @@ public class Speler {
 	public void setPositie(int positie, Speler speler) {
 		speler.positie = positie;
 	}
-	public void setPositie(Speler speler) {
-		speler.positie += Dice.rollDice();
-	}
-	//einde Methode
+	/*public void setPositie(Speler speler) { speler.positie += Dice.rollDice(); }*/
+
 
 	/**
 	 *Methode om te kijken of de speler aan zet is
@@ -119,8 +117,8 @@ public class Speler {
 	/**
 	 *Methode om te checken of de speler failliet is
 	 */
-	public static boolean isFailliet(Speler speler) {
-		if(Speler.geld == 0 && checkBezittingen(speler) == 0) {
+	public boolean isFailliet(Speler speler) {
+		if(speler.geld == 0 && checkBezittingen(speler) == 0) {
 			failliet = true;
 			return true;
 		} else {
@@ -140,7 +138,7 @@ public class Speler {
 		}
 	}//einde Methode
 	
-	public static int checkBezittingen (Speler speler) {
+	public int checkBezittingen (Speler speler) {
 		List<String> eigenaars = new ArrayList<>();
 		for (int i = 0; i < Stad.getStraat().size(); i++) {
 			eigenaars.add(Stad.getStraat().get(i).getEigenaar().getNaam());

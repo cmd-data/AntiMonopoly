@@ -33,6 +33,13 @@ public class Transport extends Tegel {
 
 	public static int getWaarde() { return waarde; }
 
+	/**
+	 * Nog uitwerken zodat de juiste speler geld bijkrijgt of verliest
+	 * Als er geen eigenaar is moet de exception nog opgevangen worden
+	 * @param naamTransportbedrijf
+	 * @param speler
+	 */
+
 	public void betaalHuur(String naamTransportbedrijf, Speler speler){
 		int aantal = 0;
 		Speler eigenaar = null;
@@ -44,12 +51,12 @@ public class Transport extends Tegel {
 		if(eigenaar.getIsConcurrent()){
 			int huur = (int) (waarde * 0.1);
 			speler.setGeld(-huur);
-			eigenaar.setGeld(huur);															/** Nog uitwerken zodat de juiste speler geld bijkrijgt of verliest */
+			eigenaar.setGeld(huur);
 		} else {
 			for (int i = 0; i < transport.size(); i++) {
 				if (eigenaar.equals(transport.get(i).getEigenaar())){
-					aantal++;																			/** checken hoeveel transportbedrijven een monopolist heeft */
-				}																						/** dit kan hopelijk nog vereenvoudigd worden */
+					aantal++;												  // checken hoeveel transportbedrijven een monopolist heeft
+				}
 			}
 			int huur = (int) (waarde * 0.2);
 			speler.setGeld(-huur*aantal);

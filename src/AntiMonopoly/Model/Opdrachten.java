@@ -5,10 +5,11 @@ import org.apache.commons.collections4.map.LinkedMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Opdrachten {
 
-	private final LinkedMap<Integer,String> monopolisten = new LinkedMap<>();            /** Apache Commons Collections 'LinkedMap' **/
+	private final LinkedMap<Integer,String> monopolisten = new LinkedMap<>();            // Apache Commons Collections 'LinkedMap'
 	private final LinkedMap<Integer,String> concurrenten = new LinkedMap<>();
 
 	private LinkedMap<Integer,String> shuffledMon = new LinkedMap<>();
@@ -74,7 +75,7 @@ public class Opdrachten {
 				" Betaal €75.000 aan de bank.");
 		concurrenten.put(15,"Je vecht om ervoor te zorgen dat een duur anti-pollutie middel niet verplicht wordt maar gelukkig voor onze lucht verlies je. " +
 				"Betaal €25.000 aan de bank.");
-		concurrenten.put(16,"Ga naar buurtspoorweg.");
+		concurrenten.put(16,"Ga naar buurtspoorwegen.");
 		concurrenten.put(17,"Ga naar Start.");
 		concurrenten.put(18,"Ga naar Start.");
 		concurrenten.put(19,"Ga naar de Meir in Antwerpen.");
@@ -100,9 +101,9 @@ public class Opdrachten {
 
 	private void monopolistenSchudden() {
 		List<Integer> keys = new ArrayList(this.monopolisten.keySet());
-		Collections.shuffle(keys);                                       	/** keys schudden (er is geen shuffle-methode voor 'map') **/
-		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			/** nieuwe geschudde LinkedMap **/
-		for (Integer i : keys){												/** interatie over keys list **/
+		Collections.shuffle(keys);                                       	// keys schudden (er is geen shuffle-methode voor 'map')
+		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			// nieuwe geschudde LinkedMap
+		for (Integer i : keys){												// interatie over keys list
 			shuffledMap.put(i,monopolisten.get(i));
 		}
 		shuffledMon.putAll(shuffledMap);
@@ -110,20 +111,12 @@ public class Opdrachten {
 
 	private void concurrentenSchudden() {
 		List<Integer> keys = new ArrayList(this.concurrenten.keySet());
-		Collections.shuffle(keys);                                       	/** keys schudden (er is geen shuffle-methode voor 'map') **/
-		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			/** nieuwe geschudde LinkedMap **/
-		for (Integer i : keys){												/** interatie over keys list **/
+		Collections.shuffle(keys);                                       	//keys schudden (er is geen shuffle-methode voor 'map')
+		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			// nieuwe geschudde LinkedMap
+		for (Integer i : keys){												// interatie over keys list
 			shuffledMap.put(i,concurrenten.get(i));
 		}
 		shuffledCon.putAll(shuffledMap);
-	}
-
-	public void doeOpdrachtMonopolist() {
-
-	}
-
-	public void doeOpdrachtConcurrent(){
-
 	}
 
 	/*public static void main(String[] args) {
