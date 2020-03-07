@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Stad {
 
-	/*private String paars = "Paars";
+	private String paars = "Paars";
 	private String lBlauw = "Licht Blauw";
 	private String roos = "Roos";
 	private String oranje = "Oranje";
@@ -16,7 +16,7 @@ public class Stad {
 
 	private static List<Straat> straat = new ArrayList<>();
 
-	public Stad(){
+	/*public Stad(){
 		straat.add(new Straat("Rue Grande, Dinant", 60, 6, 30, 50, null,null,0, this.paars));
 		straat.add(new Straat("Diestsestraat, Leuven", 60, 6, 30, 50, null,null,0, this.paars));
 
@@ -55,22 +55,26 @@ public class Stad {
 	 * @param stad
 	 * @return
 	 */
+	 /** eerst naar de eerste stad in de lijst gaan die overeenkomt met parameter
+	  *  kijken of de eigenaar van straat 1 = straat 2
+	  *  bij de volgende iteratie wordt dan gekeken naar straat 2 en 3
+	  **/
 
-	public static boolean isMonopolyStad(String stad) {
+	/*public static boolean isMonopolyStad(String stad) {
 		for (int i = 0; i < straat.size(); i++) {
 			try {
-				if (straat.get(i).getStad().equals(stad)) {                                                /** eerst naar de eerste stad in de lijst gaan die overeenkomt met parameter */
-					if (straat.get(i).getEigenaar().equals(straat.get(i + 1).getEigenaar())) {            /** kijken of de eigenaar van straat 1 = straat 2 */
-						return true;                                                                        /** bij de volgende iteratie wordt dan gekeken naar straat 2 en 3 */
+				if (straat.get(i).getStad().equals(stad)) {
+					if (straat.get(i).getEigenaar().equals(straat.get(i + 1).getEigenaar())) {
+						return true;
 					}
-					if (straat.get(i).getEigenaar().equals(straat.get(i + 2).getEigenaar())) {            /** kijken of de eigenaar van straat 1 = straat 2 */
-						return true;                                                                        /** bij de volgende iteratie wordt dan gekeken naar straat 2 en 3 */
+					if (straat.get(i).getEigenaar().equals(straat.get(i + 2).getEigenaar())) {
+						return true;
 					}
 				}
 			} catch (NullPointerException npe){}
 		}
 		return false;
-	}
+	}*/
 
 	public static List<Straat> getStraat() { return straat; }
 }

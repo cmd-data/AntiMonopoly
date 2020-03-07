@@ -12,7 +12,8 @@ public class Gevangenis extends Tegel {
 
 	public Gevangenis(Speler speler) {
 		this.speler = speler;
-		speler.setPositie(10,speler);
+		speler.setPositie(10);
+		super.addSpeler(speler);
 	}
 
 	public int getBoete() { return this.boete; }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GasEnElektriciteitsbedrijf extends Tegel {
+	Dice dice = new Dice();
 
 	private List<GasEnElektriciteitsbedrijf> gasEnElektriciteitsbedrijf = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	}
 
 	Speler speler = new Speler();
-	Dice dice = new Dice();
+
 	private void betaalHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
 		String eigenaar = gasEnElektriciteitsbedrijf.getEigenaar();
 		int aantal = 1;

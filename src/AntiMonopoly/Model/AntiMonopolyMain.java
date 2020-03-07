@@ -1,9 +1,17 @@
 package AntiMonopoly.Model;
 
+
+import java.time.LocalDateTime;
+import java.util.*;
+
 public class AntiMonopolyMain {
     public static void main(String[] args) {
-        // Spel spel = new Spel(LocalDateTime.now());
-        // spel.getSortedSpelers();
+
+        // Nieuw spel + spelers worden aangemaakt
+        Spel spel = new Spel(LocalDateTime.now());
+
+        // Sorteer spelers volgens gerolde waarde + geeft lijst weer van gesorteerd spelers
+        spel.getSortedSpelers().forEach(System.out::println);
 
         /** Verloop van het spel:
          *
@@ -15,7 +23,7 @@ public class AntiMonopolyMain {
          *
          * Wie is aan zet?
          *
-         * Speler is Concurrent?
+         * Speler is Concurrent? ==> Toch beter in de methodes steken
          *
          * In gevangenis?
          *

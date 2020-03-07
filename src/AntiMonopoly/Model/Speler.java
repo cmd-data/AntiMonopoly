@@ -35,6 +35,7 @@ public class Speler {
 	 * In de main methode dient er een counter te zitten die er op toeziet of er niet meer dan 4 spelers gecreëerd worden.
 	 * Niet in de constructor (Opmerking Tasha ==> ik zou dit dus wel in de constructor steken?)
 	 */
+
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
 		this.isConcurrent = isConcurrent;
@@ -90,15 +91,13 @@ public class Speler {
 		return isConcurrent;
 	}//einde Methode
 
-	/**
-	 * Methode in relatie gebracht met Dice. Extra argument speler toegevoegd zodat we de juiste positie aanpassen (moet nog getest worden om te zien of het zo werkt)
-	 * @param speler
-	 */
-	public void setPositie(int positie, Speler speler) {
-		speler.positie = positie;
+	public void setPositie(int positie) {
+		this.positie = positie;
 	}
-	/*public void setPositie(Speler speler) { speler.positie += Dice.rollDice(); }*/
 
+	public int getPositie() {
+		return positie;
+	}
 
 	/**
 	 *Methode om te kijken of de speler aan zet is

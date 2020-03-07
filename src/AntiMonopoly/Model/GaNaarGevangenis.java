@@ -10,7 +10,5 @@ public class GaNaarGevangenis extends Tegel {
         super(naam, positie);
     }
 
-    /**
-         * Klasse vervangen door een gaNaarGevangenis methode in klasse gevangenis
-         */
+
 }

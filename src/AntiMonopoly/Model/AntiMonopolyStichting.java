@@ -1,6 +1,7 @@
 package AntiMonopoly.Model;
 
 public class AntiMonopolyStichting extends Tegel {
+	Dice dice = new Dice();
 
 	public AntiMonopolyStichting(String naam, int positie) {
 		super(naam, positie);
@@ -11,7 +12,7 @@ public class AntiMonopolyStichting extends Tegel {
 	}
 
 	public void getGeld(Speler speler) {
-		int rol = Dice.rollDice();
+		int rol = dice.rollDice();
 		switch(rol){
 			case 1: speler.setGeld(25000); break;
 			case 2: speler.setGeld(50000);

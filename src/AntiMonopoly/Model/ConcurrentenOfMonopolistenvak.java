@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public class ConcurrentenOfMonopolistenvak extends Tegel {
 
 	private int positie;
+	Dice dice = new Dice();
 
 	public ConcurrentenOfMonopolistenvak(String naam, int positie) {
 		super(naam, positie);
@@ -61,15 +62,24 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 
 	public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch(opdracht){
-			case 0: speler.setPositie(25,speler); break;
-			case 1: if(IntStream.of(Dice.rollDices()).sum()>=8){speler.setGeld(75000);}break;
+			case 0:
+				speler.setPositie(25);
+				Spelbord.getTegels().get(25).addSpeler(speler);                          // Constructor aanpassen zodat de juiste tegel wordt meegegeven
+				break;
+			case 1: if(IntStream.of(dice.rollDices()).sum()>=8){speler.setGeld(75000);} break;  // maakt som van gerolde dobbelstenen die in array zitten
 			case 2:
 			case 21:
 			case 24:
 				speler.setGeld(50000); break;
-			case 3: speler.setPositie(12,speler); break;
+			case 3:
+				speler.setPositie(12);
+				Spelbord.getTegels().get(12).addSpeler(speler);
+				break;
 			case 4:
-			case 5: speler.setPositie(0,speler); break;
+			case 5:
+				speler.setPositie(0);
+				Spelbord.getTegels().get(0).addSpeler(speler);
+				break;
 			case 6:
 			case 14:
 				speler.setGeld(-50000); break;
@@ -78,13 +88,18 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 8: speler.setGeld(-75000); break;
 			case 9:
 			case 15: speler.setGeld(-25000); break;
-			case 10: speler.setPositie(39,speler); break;
+			case 10:
+				speler.setPositie(39);
+				Spelbord.getTegels().get(39).addSpeler(speler);
+				break;
 			case 11:
 			case 12:
 				speler.setGeld(25000); break;
 			case 13:
 			case 19:
-				speler.setPositie(10,speler); break;
+				speler.setPositie(10);
+				Spelbord.getTegels().get(10).addSpeler(speler);
+				break;
 			case 17:
 				int count = 0;
 				for (Speler spelers : Spel.getSpelers()){
@@ -113,7 +128,9 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				}
 				speler.setGeld(counter*25000);
 				break;
-			case 23: speler.setPositie(31,speler);
+			case 23:
+				speler.setPositie(31);
+				Spelbord.getTegels().get(31).addSpeler(speler);
 		}
 	}
 
@@ -124,7 +141,9 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(75000); break;
 			case 1:
 			case 13:
-				speler.setPositie(10,speler); break;
+				speler.setPositie(10);
+				Spelbord.getTegels().get(10).addSpeler(speler);
+				break;
 			case 2:
 			case 14:
 				speler.setGeld(-75000); break;
@@ -147,7 +166,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 6:
 			case 24:
 				speler.setGeld(25000); break;
-			case 8: if(IntStream.of(Dice.rollDices()).sum()>=9){speler.setGeld(75000);}break;
+			case 8: if(IntStream.of(dice.rollDices()).sum()>=9){speler.setGeld(75000);}break;
 			case 10:
 			case 21:
 				speler.setGeld(-50000); break;
@@ -162,12 +181,26 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(count*25000);
 				break;
 			case 15: speler.setGeld(-25000); break;
-			case 16: speler.setPositie(25,speler);
+			case 16:
+				speler.setPositie(25);
+				Spelbord.getTegels().get(25).addSpeler(speler);
+				break;
 			case 17:
-			case 18: speler.setPositie(0,speler); break;
-			case 19: speler.setPositie(37,speler); break;
-			case 20: speler.setPositie(28,speler); break;
-			case 22: speler.setPositie(6,speler);
+			case 18:
+				speler.setPositie(0);
+				Spelbord.getTegels().get(0).addSpeler(speler);
+				break;
+			case 19:
+				speler.setPositie(37);
+				Spelbord.getTegels().get(0).addSpeler(speler);
+				break;
+			case 20:
+				speler.setPositie(28);
+				Spelbord.getTegels().get(28).addSpeler(speler);
+				break;
+			case 22:
+				speler.setPositie(6);
+				Spelbord.getTegels().get(6).addSpeler(speler);
 		}
 	}
 }
