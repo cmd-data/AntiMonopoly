@@ -10,8 +10,19 @@ public class AntiMonopolyMain {
         // Nieuw spel + spelers worden aangemaakt
         Spel spel = new Spel(LocalDateTime.now());
 
-        // Sorteer spelers volgens gerolde waarde + geeft lijst weer van gesorteerd spelers
+        // Sorteer spelers volgens gerolde waarde + geeft lijst weer van gesorteerde spelers
         spel.getSortedSpelers().forEach(System.out::println);
+
+        // zolang er geen winnaar is blijft het spel in deze loop draaien
+        while (!spel.eindeSpel()){
+            for (Speler speler : Spel.getSpelers()) {
+                speler.setAanZet(true);
+                spel.verplaatsSpeler(speler,spel.dice.rollDices());
+            }
+
+
+
+        }
 
         /** Verloop van het spel:
          *
@@ -28,7 +39,6 @@ public class AntiMonopolyMain {
          * In gevangenis?
          *
          * Speler rolt met 2 dobbelstenen
-         * Is er dubbel gegooid?
          *
          * Speler verandert van positie
          *
@@ -45,6 +55,7 @@ public class AntiMonopolyMain {
          *
          * Spelopties (verkopen, hypotheek en bouwen)
          *
+         * Is er dubbel gegooid?
          * Einde beurt of opnieuw dobbelen bij dubbel gooien
          *
          * Herhaal

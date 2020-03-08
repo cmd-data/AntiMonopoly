@@ -71,7 +71,7 @@ public class Spel {
 
 		double divider = 0.1;                                                                     // nodig als spelers hetzelfde rollen: eerste worp = 6; tweede worp = 2 wordt dan 6.2
 		Collection<Double> keys = new ArrayList<>(playerRolls.keySet());                          // Arraylist met dobbelwaarden
-		while (spelers.size() != playerRolls.keySet().size()) {								  // als het aantal spelers niet gelijk is aan het aantal verschillende keys (er zijn dus dubbele dobbelwaarden)
+		while (spelers.size() != playerRolls.keySet().size()) {								      // als het aantal spelers niet gelijk is aan het aantal verschillende keys (er zijn dus dubbele dobbelwaarden)
 			for (Double key : keys) {															  // voor elke dobbelwaarde in de lijst van dobbelwaarden
 				if(playerRolls.get(key).size()>1){												  // als het aantal spelers achter een bepaalde key (dobbelwaarde) meer dan 1 is
 					List<Speler> players = new ArrayList<>(playerRolls.get(key));				  // list met alle spelers met dezelfde dobbelwaarde
@@ -131,5 +131,16 @@ public class Spel {
 		}																	// na 39 terug naar 0 gaat en dan verder optelt
 
 		spelbord.getTegels().get(speler.getPositie()).addSpeler(speler);
+	}
+
+	public boolean eindeSpel(){
+		FaillietWinnaar winnaar = new FaillietWinnaar();
+		List<Boolean> winnaars = new ArrayList<>();
+		for (Speler speler : spelers) {
+			winnaars.add(winnaar.isWinnaar(speler));
+		}
+		if(winnaars.contains(true)){
+			return true;
+		} else { return false; }
 	}
 }

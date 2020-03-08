@@ -21,20 +21,8 @@ public class Speler {
 	private boolean aanZet;				//kijken of de speler aan zet is
 	private boolean failliet;			//checken of de speler failliet is
 	private int count = 0;
-	private boolean isDubbel; 	// true of false bijhouden als speler dubbel gegooid heeft
+	private boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
 	private String pion;
-
-
-	/**
-	 *CONSTRUCTORS
-	 */
-
-	/**
-	 *constructor die aangeeft wie concurent is en wie monopolist
-	 * Slechts één constructor
-	 * In de main methode dient er een counter te zitten die er op toeziet of er niet meer dan 4 spelers gecreëerd worden.
-	 * Niet in de constructor (Opmerking Tasha ==> ik zou dit dus wel in de constructor steken?)
-	 */
 
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
@@ -43,50 +31,20 @@ public class Speler {
 		this.pion = pion;
 	}
 
-	/**
-	 *default constructor
-	 */
 	public Speler() {	}
-	//einde constructor
 
-	/**
-	 *METHODEN
-	 */
-
-	/**
-	 *Methode om spelersnaam op te vragen
-	 */
 	public String getNaam() {
 		return naam;
 	}//einde Methode
 
-
-	/**
-	 *Methode om de hoeveelheid geld dat een speler bezit op te vragen
-	 */
 	public int getGeld() {
 		return geld;
 	}//einde Methode
 
-	/**
-	 *Methode om speler geld te laten betalen
-	 */
 	public void setGeld(int veranderGeld) {
 		geld += veranderGeld;
 	}
-	//einde Methode
 
-	/**
-	 *Methode om te bepalen of de speler een concurent is
-	 * (Opmerking Tasha ==> methode is overbodig aangezien je de isConcurrent waarde meegeeft aan de constructor, doorheen het spel kan/mag dit niet veranderen)
-	 */
-	/* public void setConcurrent(boolean concurrent) {
-		isConcurrent = concurrent;
-	}//einde Methode */
-
-	/**
-	 *Methode om te checken of de speler een concurent is
-	 */
 	public boolean getIsConcurrent() {
 		return isConcurrent;
 	}//einde Methode
@@ -99,9 +57,6 @@ public class Speler {
 		return positie;
 	}
 
-	/**
-	 *Methode om te kijken of de speler aan zet is
-	 */
 	public boolean isAanZet() {
 		return aanZet;
 	}//einde Methode
@@ -113,9 +68,6 @@ public class Speler {
 		this.aanZet = aanZet;
 	}//einde Methode
 
-	/**
-	 *Methode om te checken of de speler failliet is
-	 */
 	public boolean isFailliet(Speler speler) {
 		if(speler.geld == 0 && checkBezittingen(speler) == 0) {
 			failliet = true;
@@ -124,7 +76,7 @@ public class Speler {
 			failliet = false;
 			return false;
 		}
-	}//einde Methode
+	}
 
 	/**
 	 *Methode om de speler €200 te geven wanneer hij startgeld krijgt
@@ -135,8 +87,8 @@ public class Speler {
 		if(this.positie < positie && positie != 30) {
 			geld += 200000;
 		}
-	}//einde Methode
-	
+	}
+
 	public int checkBezittingen (Speler speler) {
 		List<String> eigenaars = new ArrayList<>();
 		for (int i = 0; i < Stad.getStraat().size(); i++) {

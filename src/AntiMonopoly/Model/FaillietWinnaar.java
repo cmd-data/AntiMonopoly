@@ -1,6 +1,7 @@
 package AntiMonopoly.Model;
 
 public class FaillietWinnaar {
+
         public boolean isWinnaar(Speler speler){
             int count = 0;
             for (int i = 0; i < Spel.getSpelers().size(); i++) {

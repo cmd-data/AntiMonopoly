@@ -1,5 +1,6 @@
 package AntiMonopoly.Model;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Dice {
@@ -25,8 +26,16 @@ public class Dice {
 	/**
 	 * methode voor met 2 dobbelstenen te rollen
 	 */
-	public int[] rollDices() {
+	public int rollDices() {
 		worp2 = new int[]{rollDice(), rollDice()};
+		return Arrays.stream(worp2).sum();
+	}
+
+	public int getWorp1() {
+		return worp1;
+	}
+
+	public int[] getWorp2() {
 		return worp2;
 	}
 }
