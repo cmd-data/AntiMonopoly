@@ -17,7 +17,7 @@ public class AntiMonopolyMain {
         while (!spel.eindeSpel()){
             for (Speler speler : Spel.getSpelers()) {
                 speler.setAanZet(true);
-                spel.verplaatsSpeler(speler,spel.dice.rollDices());
+                spel.verplaatsSpeler(speler,Dice.rollDices());
             }
 
 

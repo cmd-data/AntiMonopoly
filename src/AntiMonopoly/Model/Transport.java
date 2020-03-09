@@ -20,16 +20,9 @@ public class Transport extends Tegel {
 	}
 
 	/**
-	 * instantie in andere klasse maken zodat de transport lijst aangevuld wordt.
+	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
 	 */
-
-	/*public Transport(){
-		transport.add(new Transport("Noord Station", null));
-		transport.add(new Transport("Centraal Station", null));
-		transport.add(new Transport("Buurtspoorwegen", null));
-		transport.add(new Transport("Zuid Station", null));
-	}*/
-
+    public Transport() {}
 
 	public static int getWaarde() { return waarde; }
 

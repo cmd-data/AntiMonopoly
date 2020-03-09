@@ -16,6 +16,9 @@ public class Straat extends Tegel {
 	private String stad;
 	private int positie;
 
+	/**
+	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
+	 */
 	public Straat(){}
 	public Straat(String straat, int prijs, int huur, int hypotheek, int prijsHuis, Speler eigenaar, Gebouwen gebouw, int aantalGebouwen, String stad, int positie) {
 		this.straat = straat;

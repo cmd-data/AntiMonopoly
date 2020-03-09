@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Dice {
 
-	private int worp1;
-	private int[] worp2;
+	private static int worp1;
+	private static int[] worp2;
 
 	public Dice() {}
 
@@ -17,7 +17,7 @@ public class Dice {
 	 * Methode moet verder aangepast worden, ik krijg geen int waarde terug als ik deze test...
 	 */
 
-	public int rollDice() {
+	public static int rollDice() {
 		Random random = new Random();
 		worp1 = (random.nextInt(6)+1);
 		return worp1;
@@ -26,16 +26,16 @@ public class Dice {
 	/**
 	 * methode voor met 2 dobbelstenen te rollen
 	 */
-	public int rollDices() {
+	public static int rollDices() {
 		worp2 = new int[]{rollDice(), rollDice()};
 		return Arrays.stream(worp2).sum();
 	}
 
-	public int getWorp1() {
+	public static int getWorp1() {
 		return worp1;
 	}
 
-	public int[] getWorp2() {
+	public static int[] getWorp2() {
 		return worp2;
 	}
 }

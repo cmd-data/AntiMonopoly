@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GasEnElektriciteitsbedrijf extends Tegel {
-	Dice dice = new Dice();
 
 	private List<GasEnElektriciteitsbedrijf> gasEnElektriciteitsbedrijf = new ArrayList<>();
 
@@ -13,17 +12,16 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	private String naam;
 	private int positie;
 
+	/**
+	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
+	 */
+	public GasEnElektriciteitsbedrijf() { }
+
 	public GasEnElektriciteitsbedrijf(String naam, String eigenaar, int positie) {
 		this.naam = naam;
 		this.eigenaar = eigenaar;
 		this.positie = positie;
 	}
-
-	/*public void voegToe(){
-		gasEnElektriciteitsbedrijf.add(new GasEnElektriciteitsbedrijf("Elektriciteitsbedrijf",null));
-		gasEnElektriciteitsbedrijf.add(new GasEnElektriciteitsbedrijf("Gasbedrijf",null));
-
-	}*/
 
 	public String getEigenaar() {
 		return eigenaar;
@@ -37,22 +35,20 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		this.eigenaar = eigenaar;
 	}
 
-	Speler speler = new Speler();
-
-	private void betaalHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
+	private void betaalHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf, Speler speler) {
 		String eigenaar = gasEnElektriciteitsbedrijf.getEigenaar();
 		int aantal = 1;
 		if(speler.getIsConcurrent()){
-			dice.rollDice();
-			int waardeWorp = dice.rollDice();
+			Dice.rollDice();
+			int waardeWorp = Dice.rollDice();
 			speler.setGeld(-waardeWorp*4);
 		} else {
 			for (int i = 0; i < this.gasEnElektriciteitsbedrijf.size(); i++) {
 				if (eigenaar.equals(this.gasEnElektriciteitsbedrijf.get(i).getEigenaar())&&!gasEnElektriciteitsbedrijf.equals(this.gasEnElektriciteitsbedrijf.get(i))){
 					aantal++;		/** weet niet goed waarom de get niet werkt ==> Opm. Tasha: 'this.' toegevoegd*/
 				}
-				dice.rollDice();
-				int waardeWorp = dice.rollDice();
+				Dice.rollDice();
+				int waardeWorp = Dice.rollDice();
 
 				if (aantal == 1) {
 					speler.setGeld(-waardeWorp * 4);

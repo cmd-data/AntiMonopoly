@@ -1,23 +1,14 @@
 package AntiMonopoly.Model;
 
-import com.sun.source.tree.Tree;
-import org.apache.commons.collections4.MultiMap;
-import org.apache.commons.collections4.MultiValuedMap;
-import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
-
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class Spel {
 
-	private LocalDateTime startTijd = null;
-	private LocalDateTime eindTijd;
-	private Speler startSpeler;
+	private LocalDateTime startTijd, eindTijd;
 	private static List<Speler> spelers = new ArrayList<>();
-	List<Integer> rolWaarde = new ArrayList<>();
-	Spelbord spelbord = new Spelbord();
-	Dice dice = new Dice();
+	private Spelbord spelbord = new Spelbord();
+	private Spelregels spelregels = new Spelregels();
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
@@ -31,10 +22,6 @@ public class Spel {
 	public LocalDateTime getEindTijd() { return this.eindTijd; }
 
 	public void setEindTijd(LocalDateTime eindTijd) { this.eindTijd = eindTijd; }
-	
-	public String getSpelregels(Spelregels spelregels) {
-        return spelregels.getSpelregels();
-	}
 
 	public void maakSpelers () {
 		Scanner kb = new Scanner(System.in);
@@ -60,48 +47,14 @@ public class Spel {
 
 
 	/**
-	 * Methode runt niet als ik 4 spelers heb: OutofMemory error (heap size al aangepast naar 3 gb en nog steeds niet...)
+	 * Volgorde spelers wordt veranderd en geeft lijst met namen nieuwe volgorde weer
+	 * In View/Presenter ervoor zorgen dat nummer 1 de hoogste fictive dobbelwaarde te zien krijgt, nummer 2: een waarde minder, etc.
 	 * @return
 	 */
     public List<String> getSortedSpelers() {
-    	MultiValuedMap<Double,Speler> playerRolls = new ArrayListValuedHashMap<>();               // MultiMap zodat er meerdere waarden voor 1 key kunnen zijn (meerdere spelers met zelfde rolwaarde)
-		for (int speler = 0; speler < spelers.size(); speler++) {
-			playerRolls.put((double)dice.rollDice(),spelers.get(speler));                         // Elke speler + rolwaarde toevoegen aan de map
-		}
+    	Collections.shuffle(spelers);
 
-		double divider = 0.1;                                                                     // nodig als spelers hetzelfde rollen: eerste worp = 6; tweede worp = 2 wordt dan 6.2
-		Collection<Double> keys = new ArrayList<>(playerRolls.keySet());                          // Arraylist met dobbelwaarden
-		while (spelers.size() != playerRolls.keySet().size()) {								      // als het aantal spelers niet gelijk is aan het aantal verschillende keys (er zijn dus dubbele dobbelwaarden)
-			for (Double key : keys) {															  // voor elke dobbelwaarde in de lijst van dobbelwaarden
-				if(playerRolls.get(key).size()>1){												  // als het aantal spelers achter een bepaalde key (dobbelwaarde) meer dan 1 is
-					List<Speler> players = new ArrayList<>(playerRolls.get(key));				  // list met alle spelers met dezelfde dobbelwaarde
-					playerRolls.removeMapping(key,players);										  // verwijder spelers + dobbelwaarde uit originele lijst
-					for (int player = 0; player < players.size(); player++) {					  // voor elke speler in de lijst van spelers (met zelfde key)
-						playerRolls.put(														  // Voeg speler toe aan lijst met nieuwe dobbelwaarde
-								(double) dice.rollDice() * divider + key,						  // deel nieuwe waarde door 10 (eerste herdobbel) en tel er originele waarde bij op
-								players.get(player));
-					}
-				}
-			}
-			divider /= 10;
-		}
-
-		if (spelers.size()==playerRolls.keySet().size()){										  // Indien lijst allemaal verschillende dobbelwaarden bevat kan ze gesorteerd worden
-			NavigableMap<Double,Collection<Speler>> sortedMap = new TreeMap<>(new Comparator<Double>() {
-				@Override
-				public int compare(Double o1, Double o2) {
-					return o2.compareTo(o1);													  // CompareTo veranderen naar descending order (ipv ascending order)
-				}
-			});
-			sortedMap.putAll(playerRolls.asMap());												  // alles van playerRolls in sortedMap steken (wordt dan automatisch gesorteerd)
-			List<Collection<Speler>> sortedSpelers = new ArrayList<>(sortedMap.values());		  // Nieuwe list van collectie van spelers
-			spelers.clear();                                                                      // Verwijder spelers uit lijst
-			for (Collection<Speler> sortedSpeler : sortedSpelers) {								  // voeg elke speler uit de collectie toe aan speler lijst
-				spelers.add(sortedSpeler.iterator().next());
-			}
-		}
-
-		List<String> namen = new ArrayList<>();													  // maak een lijst met alleen de namen voor aan de spelers te tonen
+		List<String> namen = new ArrayList<>();
 		for (Speler speler : spelers) {
 			namen.add(speler.getNaam());
 		}
@@ -122,7 +75,7 @@ public class Spel {
 	 * @param rol
 	 */
 	public void verplaatsSpeler(Speler speler, int rol){
-    	spelbord.getTegels().get(speler.getPositie()).removeSpeler(speler);
+    	Spelbord.getTegels().get(speler.getPositie()).removeSpeler(speler);
 
     	if ((speler.getPositie()+rol)<=39){
     		speler.setPositie(speler.getPositie()+rol);
@@ -130,7 +83,7 @@ public class Spel {
     		speler.setPositie(rol-(39-speler.getPositie())-1);             	// indien som van positie + rol groter is dan 39 (einde van spelbord) dan zorgt dit ervoor dat positie
 		}																	// na 39 terug naar 0 gaat en dan verder optelt
 
-		spelbord.getTegels().get(speler.getPositie()).addSpeler(speler);
+		Spelbord.getTegels().get(speler.getPositie()).addSpeler(speler);
 	}
 
 	public boolean eindeSpel(){
@@ -139,8 +92,6 @@ public class Spel {
 		for (Speler speler : spelers) {
 			winnaars.add(winnaar.isWinnaar(speler));
 		}
-		if(winnaars.contains(true)){
-			return true;
-		} else { return false; }
+		return winnaars.contains(true);
 	}
 }

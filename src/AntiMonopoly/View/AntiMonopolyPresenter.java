@@ -2,6 +2,8 @@ package AntiMonopoly.View;
 
 
 public class AntiMonopolyPresenter {
+    public void addWindowEventHandlers() {
+    }
     /*private AntiMonopoly model;
     private AntiMonopolyView view;
 

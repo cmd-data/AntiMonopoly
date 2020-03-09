@@ -44,10 +44,18 @@ public class Tegel {
 	}
 
 	/**
-	 * Kan de tegel gekocht worden?
+	 * Kan de tegel gekocht worden? (nog uitwerken)
 	 * @return
 	 */
-	public boolean isKoopbaar(){ return false; }
+	public boolean isKoopbaar(Tegel tegel){
+		Straat straat = (Straat) tegel;
+		Transport transport = (Transport) tegel;
+		GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf = (GasEnElektriciteitsbedrijf) tegel;
+		if (tegel.getClass().equals(straat.getClass())||tegel.getClass().equals(transport.getClass())||tegel.getClass().equals(gasEnElektriciteitsbedrijf.getClass())){
+			return true;
+		}
+		return false;
+	}
 
 	/**
 	 * Methode om te zien of de tegel een eigenaar heeft

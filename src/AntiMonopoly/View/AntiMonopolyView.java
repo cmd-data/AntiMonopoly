@@ -247,7 +247,7 @@ public class AntiMonopolyView extends GridPane {
         this.n3 = new Label("Nieuwstraat");
         this.n4 = new Label("€400");
 
-        //this.dobbelen = new Button("Dobbelen");
+        //this.dobbelen = new Button("Dice");
     }
 
     private void layoutNodes() {
