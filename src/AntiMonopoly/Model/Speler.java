@@ -7,20 +7,12 @@ import java.util.List;
 public class Speler {
 
 
-	private String naam;				//naam speler
+	private String naam;
 	private int geld = 1500000;			//hoeveelheid geld de speler bezit, aan het begin van het spel is dit steeds hetzelfde,
-										// dus moet niet als parameter in de constructor worden toegevoegd
 	private boolean isConcurrent;		//Is de speler een concurent?
-	/**
-	 *i.p.v. concurent en monopolist toe te voegen als aparte klasse, meegeven aan de constructor als boolean
-	 */
-	private int positie = 0; 			//Is de positie van de speler
-	/**
-	 *Klasse Pion kan vervangen worden door de speler een positie te geven
-	 */
-	private boolean aanZet;				//kijken of de speler aan zet is
-	private boolean failliet;			//checken of de speler failliet is
-	private String pion;
+	private boolean aanZet;
+	private boolean failliet;
+	private String pion;                // kleur pion
 
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
@@ -128,14 +120,6 @@ public class Speler {
 	public boolean getIsConcurrent() {
 		return isConcurrent;
 	}//einde Methode
-
-	public void setPositie(int positie) {
-		this.positie = positie;
-	}
-
-	public int getPositie() {
-		return positie;
-	}
 
 	public String getPion() { return pion; }
 }

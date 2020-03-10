@@ -107,24 +107,6 @@ public class Spel {
 		}
 	}
 
-	/**
-	 * Past posite van speler aan + speler gelinkt aan de tegel
-	 * @param speler
-	 * @param rol
-	 */
-
-	public void verplaatsSpeler(Speler speler, int rol){
-    	Spelbord.getTegels().get(speler.getPositie()).removeSpeler(speler);
-
-    	if ((speler.getPositie()+rol)<=39){
-    		speler.setPositie(speler.getPositie()+rol);
-		} else {
-    		speler.setPositie(rol-(39-speler.getPositie())-1);             	// indien som van positie + rol groter is dan 39 (einde van spelbord) dan zorgt dit ervoor dat positie
-		}																	// na 39 terug naar 0 gaat en dan verder optelt
-
-		Spelbord.getTegels().get(speler.getPositie()).addSpeler(speler);
-	}
-
 	public boolean eindeSpel(){
 		FaillietWinnaar winnaar = new FaillietWinnaar();
 		List<Boolean> winnaars = new ArrayList<>();
