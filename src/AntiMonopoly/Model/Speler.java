@@ -20,42 +20,15 @@ public class Speler {
 	 */
 	private boolean aanZet;				//kijken of de speler aan zet is
 	private boolean failliet;			//checken of de speler failliet is
-	private int count = 0;
-	private boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
 	private String pion;
 
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
 		this.isConcurrent = isConcurrent;
-		this.count++;
 		this.pion = pion;
 	}
 
 	public Speler() {	}
-
-	public String getNaam() {
-		return naam;
-	}//einde Methode
-
-	public int getGeld() {
-		return geld;
-	}//einde Methode
-
-	public void setGeld(int veranderGeld) {
-		geld += veranderGeld;
-	}
-
-	public boolean getIsConcurrent() {
-		return isConcurrent;
-	}//einde Methode
-
-	public void setPositie(int positie) {
-		this.positie = positie;
-	}
-
-	public int getPositie() {
-		return positie;
-	}
 
 	public boolean isAanZet() {
 		return aanZet;
@@ -83,11 +56,6 @@ public class Speler {
 	 * Als de speler voorbij start komt, verlaagd zijn positie.
 	 * Wanneer de speler op 'ga naar de gevangenis' komt, verlaagd zijn positie ook, dus deze postie(30), moet hiervan uitgesloten worden
 	 */
-	public void checkPasseerStart(int positie) {
-		if(this.positie < positie && positie != 30) {
-			geld += 200000;
-		}
-	}
 
 	public int checkBezittingen (Speler speler) {
 		List<String> eigenaars = new ArrayList<>();
@@ -145,8 +113,29 @@ public class Speler {
 		return waarde;
 	}
 
+	public String getNaam() {
+		return naam;
+	}//einde Methode
 
-	public String getPion() {
-		return pion;
+	public int getGeld() {
+		return geld;
+	}//einde Methode
+
+	public void setGeld(int veranderGeld) {
+		geld += veranderGeld;
 	}
+
+	public boolean getIsConcurrent() {
+		return isConcurrent;
+	}//einde Methode
+
+	public void setPositie(int positie) {
+		this.positie = positie;
+	}
+
+	public int getPositie() {
+		return positie;
+	}
+
+	public String getPion() { return pion; }
 }

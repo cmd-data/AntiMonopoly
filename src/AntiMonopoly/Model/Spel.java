@@ -87,9 +87,24 @@ public class Spel {
 
 	public void move(Speler speler,Tegel tegel){
     	if (posities.containsValue(speler)){
-    		posities.removeMapping(tegel,speler);
+    		checkPasseerStart(speler,tegel);
+    		posities.values().remove(speler);
 		}
     	posities.put(tegel,speler);
+	}
+
+	/**
+	 * Check passeer start nog uitwerken zodat het met move() kan gebruikt worden
+	 */
+
+	public void checkPasseerStart(Speler speler, Tegel tegel) {
+		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
+			if (speler.equals(entry.getValue())) {
+				if(tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
+					speler.setGeld(200000);
+				}
+			}
+		}
 	}
 
 	/**
