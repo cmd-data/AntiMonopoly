@@ -39,16 +39,16 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		String eigenaar = gasEnElektriciteitsbedrijf.getEigenaar();
 		int aantal = 1;
 		if(speler.getIsConcurrent()){
-			Dice.rollDice();
-			int waardeWorp = Dice.rollDice();
+			Dice.rollDie();
+			int waardeWorp = Dice.rollDie();
 			speler.setGeld(-waardeWorp*4);
 		} else {
 			for (int i = 0; i < this.gasEnElektriciteitsbedrijf.size(); i++) {
 				if (eigenaar.equals(this.gasEnElektriciteitsbedrijf.get(i).getEigenaar())&&!gasEnElektriciteitsbedrijf.equals(this.gasEnElektriciteitsbedrijf.get(i))){
 					aantal++;		/** weet niet goed waarom de get niet werkt ==> Opm. Tasha: 'this.' toegevoegd*/
 				}
-				Dice.rollDice();
-				int waardeWorp = Dice.rollDice();
+				Dice.rollDie();
+				int waardeWorp = Dice.rollDie();
 
 				if (aantal == 1) {
 					speler.setGeld(-waardeWorp * 4);

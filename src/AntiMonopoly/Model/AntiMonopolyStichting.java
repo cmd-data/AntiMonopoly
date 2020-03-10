@@ -11,7 +11,7 @@ public class AntiMonopolyStichting extends Tegel {
 	}
 
 	public void getGeld(Speler speler) {
-		int rol = Dice.rollDice();
+		int rol = Dice.rollDie();
 		switch(rol){
 			case 1: speler.setGeld(25000); break;
 			case 2: speler.setGeld(50000);

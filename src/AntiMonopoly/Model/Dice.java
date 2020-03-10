@@ -17,7 +17,7 @@ public class Dice {
 	 * Methode moet verder aangepast worden, ik krijg geen int waarde terug als ik deze test...
 	 */
 
-	public static int rollDice() {
+	public static int rollDie() {
 		Random random = new Random();
 		worp1 = (random.nextInt(6)+1);
 		return worp1;
@@ -26,8 +26,8 @@ public class Dice {
 	/**
 	 * methode voor met 2 dobbelstenen te rollen
 	 */
-	public static int rollDices() {
-		worp2 = new int[]{rollDice(), rollDice()};
+	public static int rollDice() {
+		worp2 = new int[]{rollDie(), rollDie()};
 		return Arrays.stream(worp2).sum();
 	}
 

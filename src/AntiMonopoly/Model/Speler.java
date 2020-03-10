@@ -146,6 +146,7 @@ public class Speler {
 	}
 
 
-
-
+	public String getPion() {
+		return pion;
+	}
 }

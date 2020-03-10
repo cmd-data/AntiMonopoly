@@ -15,9 +15,14 @@ public class DiceView extends GridPane {
     private Button rolButton;
     GridPane pane;
 
-    public DiceView() {
-        initialiseNodes();
-        layoutNodes();
+    public DiceView(int aantal) {
+       if (aantal == 2) {
+           initialiseNodes();
+           layoutNodes2();
+       } else {
+           initialiseNodes();
+           layoutNodes();
+       }
     }
 
     private void initialiseNodes() {
@@ -28,7 +33,18 @@ public class DiceView extends GridPane {
         rolButton.setPrefWidth(50);
     }
 
-    private void layoutNodes() {
+    private void layoutNodes(){
+        this.setPadding(new Insets(10));
+        this.setHgap(10);
+        this.setVgap(10);
+
+        this.add(die1,0,0);
+        this.add(rolButton,0,1,2,1);
+        GridPane.setHalignment(rolButton, HPos.CENTER);
+        pane.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
+
+    private void layoutNodes2() {
         this.setPadding(new Insets(10));
         this.setHgap(10);
         this.setVgap(10);

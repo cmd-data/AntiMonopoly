@@ -64,7 +64,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setPositie(25);
 				Spelbord.getTegels().get(25).addSpeler(speler);                          // Constructor aanpassen zodat de juiste tegel wordt meegegeven
 				break;
-			case 1: if(IntStream.of(Dice.rollDices()).sum()>=8){speler.setGeld(75000);} break;  // maakt som van gerolde dobbelstenen die in array zitten
+			case 1: if(IntStream.of(Dice.rollDice()).sum()>=8){speler.setGeld(75000);} break;  // maakt som van gerolde dobbelstenen die in array zitten
 			case 2:
 			case 21:
 			case 24:
@@ -164,7 +164,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 6:
 			case 24:
 				speler.setGeld(25000); break;
-			case 8: if(IntStream.of(Dice.rollDices()).sum()>=9){speler.setGeld(75000);}break;
+			case 8: if(IntStream.of(Dice.rollDice()).sum()>=9){speler.setGeld(75000);}break;
 			case 10:
 			case 21:
 				speler.setGeld(-50000); break;

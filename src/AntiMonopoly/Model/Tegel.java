@@ -47,11 +47,14 @@ public class Tegel {
 	 * Kan de tegel gekocht worden? (nog uitwerken)
 	 * @return
 	 */
-	public boolean isKoopbaar(Tegel tegel){
-		Straat straat = (Straat) tegel;
-		Transport transport = (Transport) tegel;
-		GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf = (GasEnElektriciteitsbedrijf) tegel;
-		if (tegel.getClass().equals(straat.getClass())||tegel.getClass().equals(transport.getClass())||tegel.getClass().equals(gasEnElektriciteitsbedrijf.getClass())){
+	public boolean isKoopbaar(int index){
+		if(Spelbord.getTegels().get(index) instanceof Straat){
+			return true;
+		}
+		if(Spelbord.getTegels().get(index) instanceof Transport){
+			return true;
+		}
+		if(Spelbord.getTegels().get(index) instanceof GasEnElektriciteitsbedrijf){
 			return true;
 		}
 		return false;

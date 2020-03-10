@@ -19,8 +19,8 @@ public class DiceMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Dice model = new Dice();
-        DiceView view = new DiceView();
-        DicePresenter presenter = new DicePresenter(model,view);
+        DiceView view = new DiceView(1);
+        DicePresenter presenter = new DicePresenter(model,view,1);
         Scene scene = new Scene(view);
         stage.setScene(scene);
         stage.show();

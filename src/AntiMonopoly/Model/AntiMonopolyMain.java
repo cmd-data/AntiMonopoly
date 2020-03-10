@@ -2,7 +2,6 @@ package AntiMonopoly.Model;
 
 
 import java.time.LocalDateTime;
-import java.util.*;
 
 public class AntiMonopolyMain {
     public static void main(String[] args) {
@@ -14,15 +13,14 @@ public class AntiMonopolyMain {
         spel.getSortedSpelers().forEach(System.out::println);
 
         // zolang er geen winnaar is blijft het spel in deze loop draaien
-        while (!spel.eindeSpel()){
+        /*while (!spel.eindeSpel()){
             for (Speler speler : Spel.getSpelers()) {
                 speler.setAanZet(true);
-                spel.verplaatsSpeler(speler,Dice.rollDices());
+                spel.verplaatsSpeler(speler,Dice.rollDice());
             }
+            }*/
 
-
-
-        }
+        System.out.println(Spelbord.getTegels().get(0).getClass().toString());
 
         /** Verloop van het spel:
          *

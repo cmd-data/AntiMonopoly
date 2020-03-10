@@ -1,5 +1,8 @@
 package AntiMonopoly.Model;
 
+import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
+
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -9,35 +12,56 @@ public class Spel {
 	private static List<Speler> spelers = new ArrayList<>();
 	private Spelbord spelbord = new Spelbord();
 	private Spelregels spelregels = new Spelregels();
+	MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
 		maakSpelers();
+		posities.putAll(Spelbord.getTegels().get(0),spelers);     // elke speler op start positie plaatsen (mag geen passeer start generereren)
 	}
 
 	public Spel(){}  // Constructor voor eenvoudig te kunnen testen in main
 
-	public LocalDateTime getStartTijd() { return this.startTijd; }
-
-	public LocalDateTime getEindTijd() { return this.eindTijd; }
-
-	public void setEindTijd(LocalDateTime eindTijd) { this.eindTijd = eindTijd; }
-
 	public void maakSpelers () {
 		Scanner kb = new Scanner(System.in);
+		List<String> kleuren = new ArrayList<>();
 
 		for (int i = 1; i < 5; i++) {
 			System.out.printf("Naam speler %d: ", i);
 			String naam = kb.next();
 			System.out.println("Concurrent? ('true' of 'false'): ");
-			boolean soort = kb.nextBoolean();
-			System.out.println("Kleur pion? (Keuze uit: blauw, rood, geel en groen): ");
+			String soort = kb.next();
+
+			while(!"true".equals(soort)&&!"false".equals(soort)){
+				System.out.println("Verkeerde input ('true' of 'false'): ");
+				soort = kb.next();
+			}
+
+			System.out.println("Kleur pion? (Keuze uit: blauw, rood, geel of groen): ");
 			String kleur = kb.next();
-			spelers.add(new Speler(naam,soort,kleur));				// nog melding geven als kleur al gekozen is
+
+			while(!"blauw".equals(kleur)&&!"rood".equals(kleur)&&!"geel".equals(kleur)&&!"groen".equals(kleur)){
+				System.out.println("Verkeerde input (blauw, rood, geel of groen): ");
+				kleur = kb.next();
+			}
+
+			while (i>1&&kleuren.contains(kleur)) {
+				System.out.println("Kleur is al gekozen, geef een andere kleur in: ");
+				kleur = kb.next();
+			}
+			spelers.add(new Speler(naam, Boolean.parseBoolean(soort), kleur));
+			kleuren.add(kleur);
 
 			if (2 <= i && i != 4) {
 				System.out.println("Nog een speler? ('true' of 'false'): ");
-				if (!kb.nextBoolean()) {
+				String antwoord = kb.next();
+
+				while(!"true".equals(antwoord)&&!"false".equals(antwoord)){
+					System.out.println("Verkeerde input ('true' of 'false'): ");
+					antwoord = kb.next();
+				}
+
+				if (!Boolean.parseBoolean(antwoord)) {
 					return;
 				}
 			}
@@ -61,12 +85,11 @@ public class Spel {
     	return namen;
 	}
 
-	/**
-	 * statische methode zodat ik deze in FaillietWinnaar en andere klassen kan oproepen
-	 * @return
-	 */
-    public static List<Speler> getSpelers(){
-		return spelers;
+	public void move(Speler speler,Tegel tegel){
+    	if (posities.containsValue(speler)){
+    		posities.removeMapping(tegel,speler);
+		}
+    	posities.put(tegel,speler);
 	}
 
 	/**
@@ -74,6 +97,7 @@ public class Spel {
 	 * @param speler
 	 * @param rol
 	 */
+
 	public void verplaatsSpeler(Speler speler, int rol){
     	Spelbord.getTegels().get(speler.getPositie()).removeSpeler(speler);
 
@@ -94,4 +118,22 @@ public class Spel {
 		}
 		return winnaars.contains(true);
 	}
+
+	/**
+	 * statische methode zodat ik deze in FaillietWinnaar en andere klassen kan oproepen
+	 * @return
+	 */
+	public static List<Speler> getSpelers(){
+		return spelers;
+	}
+
+	public LocalDateTime getStartTijd() { return this.startTijd; }
+
+	public LocalDateTime getEindTijd() { return this.eindTijd; }
+
+	public void setEindTijd(LocalDateTime eindTijd) { this.eindTijd = eindTijd; }
+
+	public Spelbord getSpelbord() { return spelbord; }
+
+	public Spelregels getSpelregels() { return spelregels; }
 }
