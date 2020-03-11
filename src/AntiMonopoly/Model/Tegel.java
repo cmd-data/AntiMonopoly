@@ -26,11 +26,6 @@ public class Tegel {
 		spelers.remove(speler);
 	}
 
-	/**
-	 * default constructor
-	 */
-	public Tegel () {}
-
 	public int getPositie() {
 		return positie;
 	}//einde Methode

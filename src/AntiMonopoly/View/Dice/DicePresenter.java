@@ -26,12 +26,12 @@ public class DicePresenter {
     }
 
     private void updateView() {
-        view.getDie1().setImage(new Image(IMAGES_DICE + "/" + Dice.getWorp1() + ".png"));
+        view.getDie1().setImage(new Image( "/Dice/die" + Dice.getWorp1() + ".png"));
     }
 
     private void updateView2() {
-        view.getDie1().setImage(new Image(IMAGES_DICE + "/" + Dice.getWorp2()[0] + ".png"));
-        view.getDie2().setImage(new Image(IMAGES_DICE + "/" + Dice.getWorp2()[1] + ".png"));
+        view.getDie1().setImage(new Image("/Dice/die" + Dice.getWorp2()[0] + ".png"));
+        view.getDie2().setImage(new Image("/Dice/die" + Dice.getWorp2()[10] + ".png"));
     }
 
     private void addEventHandlers(){

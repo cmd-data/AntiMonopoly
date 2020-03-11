@@ -11,9 +11,8 @@ public class Eigendomsbelasting extends Tegel {
 	public int getBelasting()	{
 		return this.belasting;
 	}
-	
-	Speler speler = new Speler();
-	private void betaalBelasting () {
+
+	private void betaalBelasting (Speler speler) {
 		speler.setGeld(-75000);
 	}
 

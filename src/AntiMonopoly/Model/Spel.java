@@ -97,6 +97,10 @@ public class Spel {
 	 * Check passeer start nog uitwerken zodat het met move() kan gebruikt worden
 	 */
 
+	public void betaalHuur(){
+	    //check hypotheek
+    }
+
 	public void checkPasseerStart(Speler speler, Tegel tegel) {
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
 			if (speler.equals(entry.getValue())) {
