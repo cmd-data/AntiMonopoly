@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class AntiMonopolyMain {
     public static void main(String[] args) {
 
-        //test
+        //test1
 
         // Nieuw spel + spelers worden aangemaakt
         Spel spel = new Spel(LocalDateTime.now());
