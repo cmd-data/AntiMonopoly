@@ -5,7 +5,6 @@ import org.apache.commons.collections4.map.LinkedMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
 
@@ -24,7 +23,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @param speler
 	 */
 
-	public void opdrachtMon(Speler speler){
+	/*public void opdrachtMon(Speler speler){
 		System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
 		doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
 		steekTerugMon();
@@ -34,7 +33,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
 		doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
 		steekTerugCon();
-	}
+	}*/
 
 	public void steekTerugMon() {
 		List<Integer> keys = new ArrayList(opdracht.getShuffledMon().keySet());
@@ -58,7 +57,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		opdracht.setShuffledCon(rotatedCon);
 	}
 
-	public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
+	/*public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch(opdracht){
 			case 0:
 				speler.setPositie(25);
@@ -200,5 +199,5 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setPositie(6);
 				Spelbord.getTegels().get(6).addSpeler(speler);
 		}
-	}
+	}*/
 }

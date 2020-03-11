@@ -14,15 +14,11 @@ public class Transport extends Tegel {
 	private final int hypotheek = 100000;
 
 	public Transport(String naam, Speler eigenaar, int positie){
+		super(naam,positie);
 		this.naam = naam;
 		this.eigenaar = eigenaar;
 		this.positie = positie;
 	}
-
-	/**
-	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
-	 */
-    public Transport() {}
 
 	public static int getWaarde() { return waarde; }
 

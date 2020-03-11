@@ -15,9 +15,9 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	/**
 	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
 	 */
-	public GasEnElektriciteitsbedrijf() { }
 
 	public GasEnElektriciteitsbedrijf(String naam, String eigenaar, int positie) {
+		super(naam,positie);
 		this.naam = naam;
 		this.eigenaar = eigenaar;
 		this.positie = positie;

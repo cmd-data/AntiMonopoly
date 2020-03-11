@@ -22,8 +22,6 @@ public class AntiMonopolyMain {
             }
             }*/
 
-        System.out.println(Spelbord.getTegels().get(0).getClass().toString());
-
         /** Verloop van het spel:
          *
          * Nieuw spel

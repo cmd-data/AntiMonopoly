@@ -10,11 +10,11 @@ public class Gevangenis extends Tegel {
 		super(naam, positie);
 	}
 
-	public Gevangenis(Speler speler) {
+	/*public Gevangenis(Speler speler) {
 		this.speler = speler;
 		speler.setPositie(10);
 		super.addSpeler(speler);
-	}
+	}*/
 
 	public int getBoete() { return this.boete; }
 
