@@ -9,14 +9,6 @@ public class Inkomstenbelasting extends Tegel {
 		super(naam, positie);
 	}
 
-	public int getBelasting()	{
-		return this.belasting;
-	}
-
-	/**
-	 * Instantie van speler verwijderd en als argument aan betaalBelasting meegegeven
-	 * @param speler
-	 */
 	public void betaalBelasting(Speler speler) {
 		if (speler.getIsConcurrent()) {  // '== true' moet er niet aan toe gevoegd worden, dit is automatisch 'if true'
 			this.inkomstenBelasting = (int) (speler.getGeld()*0.1+speler.waardeBezittingen(speler)*0.1); /*"10% grondprijs in bezit"+"10% huizen in bezit"*/; /* bij speler nog een int totaal bezit maken, waarbij we al de bezittingen in opnemen? */
@@ -30,5 +22,4 @@ public class Inkomstenbelasting extends Tegel {
 			speler.setGeld (-this.inkomstenBelasting);
 		}
 	}
-
 }

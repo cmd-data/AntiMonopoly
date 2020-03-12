@@ -32,8 +32,6 @@ public class AntiMonopolyMain {
          *
          * Wie is aan zet?
          *
-         * Speler is Concurrent? ==> Toch beter in de methodes steken
-         *
          * In gevangenis?
          *
          * Speler rolt met 2 dobbelstenen
@@ -46,7 +44,10 @@ public class AntiMonopolyMain {
          * Iets dat gekocht kan worden?
          * NEE ==> speciale tegel uitvoeren
          * JA ==> Is er een eigenaar?
-         *      JA ==> huur betalen indien niet van speler
+         *      JA ==>
+         *       Hypotheek?
+         *          *      JA ==> doe niets
+         *          *      NEE ==> huur betalen indien niet van speler
          *      NEE ==> Kopen?
          *
          * Check failliet/winnaar

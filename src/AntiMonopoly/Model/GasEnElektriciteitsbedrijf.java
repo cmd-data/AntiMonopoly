@@ -45,19 +45,15 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		} else {
 			for (int i = 0; i < this.gasEnElektriciteitsbedrijf.size(); i++) {
 				if (eigenaar.equals(this.gasEnElektriciteitsbedrijf.get(i).getEigenaar())&&!gasEnElektriciteitsbedrijf.equals(this.gasEnElektriciteitsbedrijf.get(i))){
-					aantal++;		/** weet niet goed waarom de get niet werkt ==> Opm. Tasha: 'this.' toegevoegd*/
+					aantal++;
 				}
 				Dice.rollDie();
 				int waardeWorp = Dice.rollDie();
 
-				if (aantal == 1) {
-					speler.setGeld(-waardeWorp * 4);
+				switch (waardeWorp){
+					case 1: speler.setGeld(-waardeWorp * 4); break;
+					case 2: speler.setGeld(-waardeWorp * 10); break;
 				}
-
-				if (aantal == 2) {
-					speler.setGeld(-waardeWorp * 10);
-				}
-
 			}
 
 		}

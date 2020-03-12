@@ -29,6 +29,8 @@ public class Transport extends Tegel {
 	 * @param speler
 	 */
 
+	public void koopTransportbedrijf(String naamTransportbedrijf, Speler speler){}
+
 	public void betaalHuur(String naamTransportbedrijf, Speler speler){
 		int aantal = 0;
 		Speler eigenaar = null;

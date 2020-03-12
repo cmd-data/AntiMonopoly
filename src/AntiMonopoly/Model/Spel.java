@@ -12,7 +12,7 @@ public class Spel {
 	private static List<Speler> spelers = new ArrayList<>();
 	private Spelbord spelbord = new Spelbord();
 	private Spelregels spelregels = new Spelregels();
-	MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
+	private static MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
@@ -85,7 +85,13 @@ public class Spel {
     	return namen;
 	}
 
-	public void move(Speler speler,Tegel tegel){
+	/**
+	 * Static voor gebruik in ConcurrentenOfMonopolistenvak
+	 * @param speler
+	 * @param tegel
+	 */
+
+	public static void move(Speler speler,Tegel tegel){
     	if (posities.containsValue(speler)){
     		checkPasseerStart(speler,tegel);
     		posities.values().remove(speler);
@@ -93,15 +99,21 @@ public class Spel {
     	posities.put(tegel,speler);
 	}
 
-	/**
-	 * Check passeer start nog uitwerken zodat het met move() kan gebruikt worden
-	 */
-
-	public void betaalHuur(){
-	    //check hypotheek
+	public void betaalHuur(Straat straat){
+		if (Hypotheek.getHypotheekLijst().contains(straat)){
+			System.out.println("Deze eigendom staat op Hypotheek.");
+		} else {
+			Straat.getHuur(straat);
+		}
     }
 
-	public void checkPasseerStart(Speler speler, Tegel tegel) {
+	/**
+	 * Static voor gebruik in statische methode move()
+	 * @param speler
+	 * @param tegel
+	 */
+
+	public static void checkPasseerStart(Speler speler, Tegel tegel) {
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
 			if (speler.equals(entry.getValue())) {
 				if(tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
@@ -109,6 +121,10 @@ public class Spel {
 				}
 			}
 		}
+	}
+
+	public static Boolean checkGevangenis(Speler speler){
+		return Gevangenis.getGevangenen().contains(speler);
 	}
 
 	public boolean eindeSpel(){
@@ -137,4 +153,6 @@ public class Spel {
 	public Spelbord getSpelbord() { return spelbord; }
 
 	public Spelregels getSpelregels() { return spelregels; }
+
+	public static MultiValuedMap<Tegel, Speler> getPosities() { return posities; }
 }

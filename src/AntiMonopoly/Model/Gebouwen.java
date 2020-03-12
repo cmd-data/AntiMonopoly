@@ -6,7 +6,7 @@ public class Gebouwen {
 		private int hotel = 0;
 		public Hotel() { super(); }
 
-		public static void verkoopHotel(Straat straat, int aantal, Speler speler){					// eerst checken of dat de speler een concurrent is of niet, dan aantal huizen aanpassen
+		public static void verkoopHotel(Straat straat, int aantal, Speler speler){	 // eerst checken of dat de speler een concurrent is of niet, dan aantal huizen aanpassen
 			if(speler.getIsConcurrent()){
 				straat.setAantalGebouwen(4);
 			} else {straat.setAantalGebouwen(3);}

@@ -7,7 +7,7 @@ public class Dice {
 
 	private static int worp1;
 	private static int[] worp2;
-	private boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
+	private static boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
 
 	public Dice() {}
 
@@ -29,6 +29,9 @@ public class Dice {
 	 */
 	public static int rollDice() {
 		worp2 = new int[]{rollDie(), rollDie()};
+		if(worp2[0]==worp2[1]){
+			Dice.isDubbel=true;
+		}
 		return Arrays.stream(worp2).sum();
 	}
 
@@ -39,4 +42,6 @@ public class Dice {
 	public static int[] getWorp2() {
 		return worp2;
 	}
+
+	public static boolean isIsDubbel() { return isDubbel; }
 }

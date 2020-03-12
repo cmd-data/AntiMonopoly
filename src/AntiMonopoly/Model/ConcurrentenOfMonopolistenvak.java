@@ -5,6 +5,7 @@ import org.apache.commons.collections4.map.LinkedMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
 
@@ -23,17 +24,18 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @param speler
 	 */
 
-	/*public void opdrachtMon(Speler speler){
-		System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
-		doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
-		steekTerugMon();
-	}
+	public void voerUit(Speler speler){
 
-	public void opdrachtCon(Speler speler){
-		System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
-		doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
-		steekTerugCon();
-	}*/
+		if (speler.getIsConcurrent()){
+			System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
+			doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
+			steekTerugCon();
+		} else {
+			System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
+			doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
+			steekTerugMon();
+		}
+	}
 
 	public void steekTerugMon() {
 		List<Integer> keys = new ArrayList(opdracht.getShuffledMon().keySet());
@@ -57,11 +59,10 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		opdracht.setShuffledCon(rotatedCon);
 	}
 
-	/*public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
+	public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch(opdracht){
 			case 0:
-				speler.setPositie(25);
-				Spelbord.getTegels().get(25).addSpeler(speler);                          // Constructor aanpassen zodat de juiste tegel wordt meegegeven
+				Spel.move(speler,Spelbord.getTegels().get(25));
 				break;
 			case 1: if(IntStream.of(Dice.rollDice()).sum()>=8){speler.setGeld(75000);} break;  // maakt som van gerolde dobbelstenen die in array zitten
 			case 2:
@@ -69,13 +70,11 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 24:
 				speler.setGeld(50000); break;
 			case 3:
-				speler.setPositie(12);
-				Spelbord.getTegels().get(12).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(12));
 				break;
 			case 4:
 			case 5:
-				speler.setPositie(0);
-				Spelbord.getTegels().get(0).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(0));
 				break;
 			case 6:
 			case 14:
@@ -86,16 +85,14 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 9:
 			case 15: speler.setGeld(-25000); break;
 			case 10:
-				speler.setPositie(39);
-				Spelbord.getTegels().get(39).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(39));
 				break;
 			case 11:
 			case 12:
 				speler.setGeld(25000); break;
 			case 13:
 			case 19:
-				speler.setPositie(10);
-				Spelbord.getTegels().get(10).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(10));
 				break;
 			case 17:
 				int count = 0;
@@ -126,8 +123,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(counter*25000);
 				break;
 			case 23:
-				speler.setPositie(31);
-				Spelbord.getTegels().get(31).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(31));
 		}
 	}
 
@@ -138,8 +134,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(75000); break;
 			case 1:
 			case 13:
-				speler.setPositie(10);
-				Spelbord.getTegels().get(10).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(10));
 				break;
 			case 2:
 			case 14:
@@ -179,25 +174,20 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				break;
 			case 15: speler.setGeld(-25000); break;
 			case 16:
-				speler.setPositie(25);
-				Spelbord.getTegels().get(25).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(25));
 				break;
 			case 17:
 			case 18:
-				speler.setPositie(0);
-				Spelbord.getTegels().get(0).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(0));
 				break;
 			case 19:
-				speler.setPositie(37);
-				Spelbord.getTegels().get(0).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(37));
 				break;
 			case 20:
-				speler.setPositie(28);
-				Spelbord.getTegels().get(28).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(28));
 				break;
 			case 22:
-				speler.setPositie(6);
-				Spelbord.getTegels().get(6).addSpeler(speler);
+				Spel.move(speler,Spelbord.getTegels().get(6));
 		}
-	}*/
+	}
 }

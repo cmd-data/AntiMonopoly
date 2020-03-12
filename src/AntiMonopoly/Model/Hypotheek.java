@@ -1,28 +1,31 @@
 package AntiMonopoly.Model;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hypotheek {
 
-	private static Collection<Straat> hypotheekLijst = null;
+	private static List<Tegel> hypotheekLijst = new ArrayList<>();
 
 	public Hypotheek (){ }
 
-	public void stopHuur(Straat straat) {
-		if(hypotheekLijst.contains(straat)){
+	public void stopHuur(Tegel tegel) {
+		if(hypotheekLijst.contains(tegel)){
 			/**
 			 * Stop methode betaalHuur als iemand op de straat terecht komt*/
 		}
 	}
 
-	public static Collection<Straat> getHypotheekLijst() { return hypotheekLijst; }
+	public static List<Tegel> getHypotheekLijst() { return hypotheekLijst; }
 
-	public void neemHypotheek(Straat straat) {
+	public void neemHypotheek(Straat straat, Speler speler) {
 		hypotheekLijst.add(straat);
+		speler.setGeld(-straat.getHypotheek());
 	}
 
-	public void uitHypotheek(Straat straat){
+	public void uitHypotheek(Straat straat, Speler speler){
 		hypotheekLijst.remove(straat);
+		speler.setGeld(straat.getHypotheek());
 	}
 
 }

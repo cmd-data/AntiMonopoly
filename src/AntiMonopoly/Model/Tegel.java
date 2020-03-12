@@ -18,14 +18,6 @@ public class Tegel {
 		this.positie = positie;
 	}
 
-	public void addSpeler(Speler speler){
-		spelers.add(speler);
-	}
-
-	public void removeSpeler(Speler speler){
-		spelers.remove(speler);
-	}
-
 	public int getPositie() {
 		return positie;
 	}//einde Methode
@@ -58,17 +50,33 @@ public class Tegel {
 	/**
 	 * Methode om te zien of de tegel een eigenaar heeft
 	 */
-	public boolean heeftEigenaar(){ return false; }
+	public boolean heeftEigenaar(Tegel tegel){
+		if(Spelbord.getTegels().get(tegel.positie) instanceof Straat){
+			if (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
+				return false;
+			}
+		}
+		if(Spelbord.getTegels().get(tegel.positie) instanceof Transport){
+			if (((Transport) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
+				return false;
+			}
+		}
+		if(Spelbord.getTegels().get(tegel.positie) instanceof GasEnElektriciteitsbedrijf){
+			if (((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
+				return false;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Methode om te zien of de tegel op hypotheek staat
 	 */
-	public boolean heeftHypotheek(){ return false; }
-
-	/**
-	 * Methode om te zien of er gebouwen op staan
-	 */
-	public boolean isBebouwd(){ return false; }
+	public boolean heeftHypotheek(Tegel tegel){
+		if (Hypotheek.getHypotheekLijst().contains(tegel)){
+			return true;
+		} else { return false; }
+	}
 
 }
 
