@@ -53,7 +53,7 @@ public class Straat extends Tegel {
 
 	public static int getHuur(Straat straat) {
 		boolean concurrent = straat.eigenaar.getIsConcurrent();
-
+		
 		if (!isBebouwd(straat)) {
 			if (concurrent){
 				if (isMonopolyStad(straat.stad)){
