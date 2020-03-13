@@ -1,15 +1,39 @@
+.label {
+    -fx-text-fill: white;
+}
+
 .menu-item {
     -fx-text-fill: black;
 }
 
-#rg,#ds,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#bda,#m,#n{
+#sm {
+    -fx-background-color: black;
+    -fx-font: 12px Tahoma;
+    -fx-alignment: center;
+}
+
+#ms,#cs {
+
+    -fx-background-image: url('/images/kaart.png');
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+    -fx-font: 20px Tahoma;
+    -fx-font-weight: bold;
+}
+
+#rg,#ds,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#s1,
+#bda,#m,#n,#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev{
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-style: solid;
-    -fx-font: 15px Tahoma;
+    -fx-font: 12px Tahoma;
     -fx-alignment: center;
     -fx-pref-width: 150px;
-    -fx-pref-height: 110px;
+    -fx-pref-height: 90px;
+    -fx-spacing: 5px;
+
 }
 
 #rg,#ds {
@@ -43,3 +67,8 @@
 #m,#n {
     -fx-background-color: darkblue;
 }
+
+#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1 {
+    -fx-background-color: black;
+}
+
