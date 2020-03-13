@@ -1,8 +1,10 @@
 package AntiMonopoly.Model;
 
+import java.util.*;
+
 public class Straat extends Tegel {
 
-	private String straat, stad;
+	private String straten, stad;
 	private int prijs, huur, hypotheek, prijsHuis, aantalGebouwen, positie;
 	private Speler eigenaar;
 	private final int MAXHOTEL = 1;
@@ -16,7 +18,7 @@ public class Straat extends Tegel {
 
 	public Straat(String straat, int prijs, int huur, int hypotheek, int prijsHuis, Speler eigenaar, Gebouwen gebouw, int aantalGebouwen, String stad, int positie) {
 		super(straat,positie);
-		this.straat = straat;
+		this.straten = straat;
 		this.prijs = prijs;
 		this.huur = huur;
 		this.hypotheek = hypotheek;
@@ -51,27 +53,61 @@ public class Straat extends Tegel {
 
 	public static int getHuur(Straat straat) {
 		boolean concurrent = straat.eigenaar.getIsConcurrent();
-		if(!isBebouwd(straat)){
-			return straat.huur;
-		}
-		if(hasHouse(straat)){
+		
+		if (!isBebouwd(straat)) {
 			if (concurrent){
-				return straat.prijsHuis/10*straat.aantalGebouwen+straat.huur;
-			} else {
-				return straat.prijsHuis/5*straat.aantalGebouwen+straat.huur;
+				if (isMonopolyStad(straat.stad)){
+					return straat.huur * 2;
+				} else {
+					return straat.huur;
+				}
 			}
 		}
-		if(hasHotel(straat)){
-			if (concurrent){
-				return straat.prijsHuis/10*5+straat.huur;
+
+		if (hasHouse(straat)) {
+			if (concurrent) {
+				return straat.prijsHuis / 10 * straat.aantalGebouwen + straat.huur;
 			} else {
-				return straat.prijsHuis/2*4+straat.huur;
+				if (isMonopolyStad(straat.stad)){
+					return (straat.prijsHuis / 5 * straat.aantalGebouwen + straat.huur)*2;
+				} else {
+					return straat.prijsHuis / 5 * straat.aantalGebouwen + straat.huur;
+				}
+			}
+		}
+
+		if (hasHotel(straat)) {
+			if (concurrent) {
+				return straat.prijsHuis / 10 * 5 + straat.huur;
+			} else {
+				if (isMonopolyStad(straat.stad)) {
+					return (straat.prijsHuis / 2 * 4 + straat.huur) *2;
+				} else {
+					return straat.prijsHuis / 2 * 4 + straat.huur;
+				}
 			}
 		}
 		return 0;
 	}
 
-	public String getStraat() { return straat; }
+	public static boolean isMonopolyStad(String stad) {
+		List<Straat> straten = new ArrayList<>();
+		Set<Speler> eigenaars = new HashSet<>();
+
+		for (Tegel tegel : Spelbord.getTegels()) {
+			if (tegel instanceof Straat && stad.equals(((Straat) tegel).stad)){
+				straten.add((Straat)tegel);
+			}
+		}
+
+		for (Straat straat : straten) {
+			eigenaars.add(straat.eigenaar);
+		}
+
+		return straten.size() > eigenaars.size();
+	}
+
+	public String getStraat() { return straten; }
 
 	public int getPrijs() { return this.prijs; }
 
