@@ -7,7 +7,7 @@ public class GaNaarGevangenis extends Tegel {
         super(naam, positie);
     }
 
-    public void gaNaarGevangenis(Speler speler){
+    public static void gaNaarGevangenis(Speler speler){
         Spel.move(speler,Spelbord.getTegels().get(10));
         Gevangenis.getGevangenen().add(speler);
     }

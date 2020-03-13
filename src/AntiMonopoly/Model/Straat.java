@@ -130,14 +130,7 @@ public class Straat extends Tegel {
 		return this.gebouw;
 	}
 
-	public void setGebouw(Gebouwen gebouw) {
-
-		/**
-		 * hoe geef ik een hotel of huis is ? new Huis(); lukte niet
-		 */
-
-		this.gebouw = gebouw;
-	}
+	public void setGebouw(Gebouwen gebouw) { this.gebouw = gebouw; }
 
 	public int getAantalGebouwen() { return aantalGebouwen; }
 

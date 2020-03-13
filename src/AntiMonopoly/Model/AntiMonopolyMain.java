@@ -12,21 +12,38 @@ public class AntiMonopolyMain {
         Spel spel = new Spel(LocalDateTime.now());
 
         // Sorteer spelers volgens gerolde waarde + geeft lijst weer van gesorteerde spelers
+        System.out.println("Volgorde van de spelers: ");
         spel.getSortedSpelers().forEach(System.out::println);
 
-        // zolang er geen winnaar is blijft het spel in deze loop draaien
-        /*while (!spel.eindeSpel()){
+        while (!spel.eindeSpel()){
             for (Speler speler : Spel.getSpelers()) {
-                speler.setAanZet(true);
-                spel.verplaatsSpeler(speler,Dice.rollDice());
+                if (!Spel.checkGevangenis(speler)) {
+                    System.out.println(speler.getNaam());
+                    speler.setAanZet(true);
+                    while (speler.isAanZet()) {
+                        int rol = Dice.rollDice();
+                        Tegel tegel = Spel.move(speler, rol);
+                        System.out.println(rol);                                // test code
+                        tegel.tegelMethode(tegel, speler);
+                        System.out.println(speler.getGeld());                   // test code
+                        System.out.println(speler.waardeBezittingen(speler));   // test code // Hier geen OutOfMemory exception maar in methode zelf wel??
+                        if (!Dice.isIsDubbel()) {
+                            speler.setAanZet(false);
+                        }
+                    }
+                } else {
+                    Gevangenis.verlaatGevangenis(speler);
+                }
             }
-            }*/
+        }
+
+        System.out.printf("Einde spel\nDe winnaar is: %s");
 
         /** Verloop van het spel:
          *
          * Nieuw spel
          *
-         * Spelers worden aangemaakt + money
+         * Spelers worden aangemaakt
          *
          * Spelers rollen voor initiative met 1 dobbelsteen
          *

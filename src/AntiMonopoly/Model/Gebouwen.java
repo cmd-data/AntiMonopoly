@@ -23,25 +23,42 @@ public class Gebouwen {
 
 	public Gebouwen(){}
 
+	public void koopHuis(Straat straat, Huis huis, int aantal, Speler speler) {
 
-	/**	Aan deze constructor moet nog een exception komen: als de voorwaarden niet nageleeefd zijn
-	 *  dan komt er een bericht op het scherm
-	 */
-
-	public Gebouwen(Straat straat, Huis huis, int aantal, Speler speler){
-		straat.setGebouw(huis);
 		if (speler.getIsConcurrent()) {
-			if (straat.getAantalGebouwen()+aantal<straat.getMaxHuisCon()) {
-				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
+			while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisCon()) {
+				System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisCon());
+			}
+			straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
+		} else {
+			while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisMon()) {
+				System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisMon());
+			}
+			straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
+		}
+		straat.setGebouw(huis);
+		speler.setGeld(-straat.getPrijsHuis() * aantal);
+	}
+
+	public void koopHotel(Straat straat, Hotel hotel, Speler speler){
+		int aantalHuizen = straat.getAantalGebouwen();
+
+		if(speler.getIsConcurrent()){
+			switch(aantalHuizen){
+				case 0: speler.setGeld(-straat.getPrijsHuis()*5); break;
+				case 1: speler.setGeld(-straat.getPrijsHuis()*4); break;
+				case 2: speler.setGeld(-straat.getPrijsHuis()*3); break;
+				case 3: speler.setGeld(-straat.getPrijsHuis()*2); break;
+				case 4: speler.setGeld(-straat.getPrijsHuis());
 			}
 		} else {
-			if (straat.getAantalGebouwen() + aantal < straat.getMaxHuisMon()) {
-				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
+			switch (aantalHuizen){
+				case 0: speler.setGeld(-straat.getPrijsHuis()*4); break;
+				case 1: speler.setGeld(-straat.getPrijsHuis()*3); break;
+				case 2: speler.setGeld(-straat.getPrijsHuis()*2); break;
+				case 3: speler.setGeld(-straat.getPrijsHuis());
 			}
 		}
-
-	}
-	public Gebouwen(Straat straat, Hotel hotel){
 		straat.setGebouw(hotel);
 		straat.setAantalGebouwen(1);
 	}

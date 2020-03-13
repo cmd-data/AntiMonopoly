@@ -22,6 +22,10 @@ public class Spel {
 
 	public Spel(){}  // Constructor voor eenvoudig te kunnen testen in main
 
+	/**
+	 * Vereisten aantal concurrenten en monopolisten nog toevoegen
+	 */
+
 	public void maakSpelers () {
 		Scanner kb = new Scanner(System.in);
 		List<String> kleuren = new ArrayList<>();
@@ -96,7 +100,11 @@ public class Spel {
 
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
 			if (speler.equals(entry.getValue())) {
-				positie = entry.getKey().getPositie() + worp;
+				if (entry.getKey().getPositie() + worp > 27){
+					positie = worp - (39-entry.getKey().getPositie()) -1;
+				} else {
+					positie = entry.getKey().getPositie() + worp;
+				}
 			}
 		}
 
@@ -111,21 +119,6 @@ public class Spel {
 		posities.put(tegel,speler);
 		return tegel;
 	}
-
-	public void betaalHuur(Tegel tegel, Speler speler){
-		if (tegel instanceof Straat){
-			speler.setGeld(-Straat.getHuur((Straat)tegel));
-			((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat)tegel));
-		}
-		if (tegel instanceof Transport){
-			speler.setGeld(-Transport.getHuur((Transport) tegel));
-			((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
-		}
-		if (tegel instanceof GasEnElektriciteitsbedrijf){
-			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
-			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
-		}
-    }
 
 	/**
 	 * Static voor gebruik in statische methode move()

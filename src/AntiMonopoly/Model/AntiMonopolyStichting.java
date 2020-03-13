@@ -6,7 +6,7 @@ public class AntiMonopolyStichting extends Tegel {
 		super(naam, positie);
 	}
 
-	public void voerUit(Speler speler){
+	public static void voerUit(Speler speler){
 		if(speler.getIsConcurrent()){
 			int rol = Dice.rollDie();
 			switch(rol){

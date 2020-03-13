@@ -15,7 +15,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		super(naam, positie);
 	}
 
-	private Opdrachten opdracht = new Opdrachten();
+	private static Opdrachten opdracht = new Opdrachten();
 
 	/**
 	 * Leest de opdracht voor
@@ -24,7 +24,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @param speler
 	 */
 
-	public void voerUit(Speler speler){
+	public static void voerUit(Speler speler){
 
 		if (speler.getIsConcurrent()){
 			System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
@@ -37,7 +37,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		}
 	}
 
-	public void steekTerugMon() {
+	public static void steekTerugMon() {
 		List<Integer> keys = new ArrayList(opdracht.getShuffledMon().keySet());
 		LinkedMap<Integer,String> rotatedMon = new LinkedMap<>();
 		Collections.rotate(keys, -1);											/** .rotate methode en -1 zorgt ervoor dat eerste de laatste key wordt en alles opschuift */
@@ -48,7 +48,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		opdracht.setShuffledMon(rotatedMon);
 	}
 
-	public void steekTerugCon() {
+	public static void steekTerugCon() {
 		List<Integer> keys = new ArrayList(opdracht.getShuffledCon().keySet());
 		LinkedMap<Integer,String> rotatedCon = new LinkedMap<>();
 		Collections.rotate(keys, -1);
@@ -59,7 +59,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		opdracht.setShuffledCon(rotatedCon);
 	}
 
-	public Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
+	public static Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch (opdracht) {
 			case 0:
 				return Spel.move(speler, Spelbord.getTegels().get(25));
@@ -132,12 +132,12 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(counter * 25000);
 				break;
 			case 23:
-				return Spel.move(speler, Spelbord.getTegels().get(31));
+				return Spel.move(speler, Spelbord.getTegels().get(31)); // -25000 na deze methode??
 		}
 		return null;
 	}
 
-	public Tegel doeOpdrachtConcurrent(int opdracht, Speler speler){
+	public static Tegel doeOpdrachtConcurrent(int opdracht, Speler speler){
 		switch(opdracht){
 			case 0:
 			case 23:

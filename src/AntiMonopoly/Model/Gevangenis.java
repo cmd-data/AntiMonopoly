@@ -6,14 +6,18 @@ import java.util.Scanner;
 
 public class Gevangenis extends Tegel {
 
-	private final int boete = 50000;
+	private static final int boete = 50000;
 	private static List<Speler> gevangenen = new ArrayList<>();
 
 	public Gevangenis(String naam, int positie) {
 		super(naam, positie);
 	}
 
-	public void verlaatGevangenis(Speler speler, Tegel tegel) {
+	public static void opBezoek (Speler speler) {
+		System.out.println("Sightseeing Tour");
+	}
+
+	public static void verlaatGevangenis(Speler speler) {
 		System.out.println("Boete betalen of dubbel gooien? ('true' of 'false'): ");
 		Scanner kb = new Scanner(System.in);
 		String reply = kb.next();
@@ -24,14 +28,13 @@ public class Gevangenis extends Tegel {
 		}
 
 		if(Boolean.parseBoolean(reply)){
-			speler.setGeld(-this.boete);
-			Spel.move(speler,tegel);
+			speler.setGeld(-boete);
 			gevangenen.remove(speler);
 		}
 		if(!Boolean.parseBoolean(reply)) {
-			Dice.rollDice();
+			int rol = Dice.rollDice();
 			if (Dice.isIsDubbel()) {
-				Spel.move(speler, tegel);
+				Spel.move(speler, rol);
 				gevangenen.remove(speler);
 			}
 		}

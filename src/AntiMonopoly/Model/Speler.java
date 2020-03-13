@@ -55,31 +55,29 @@ public class Speler {
 	}
 
 	/**
-	 * Methode om de totale waarde van de bezittingen op te tellen, inclusief het uitsluiten van straten op hypotheek
-	 * Ook transportbedrijven worden op eigenaar gecontroleerd
-	 * Dit kan hopelijk ook nog eenvoudiger...
-	 * @param speler
-	 * @return
+	 * NullPointerException lijn 70
 	 */
 
 	public int waardeBezittingen (Speler speler) {
 		int waarde = 0;
-		for (int i = 0; i < Stad.getStraat().size(); i++) {
-			if(speler.equals(Stad.getStraat().get(i).getEigenaar())&&!Hypotheek.getHypotheekLijst().contains(Stad.getStraat().get(i))){
-				waarde += Stad.getStraat().get(i).getPrijs();
-				if(Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Huis.class)){
-					waarde += Stad.getStraat().get(i).getPrijsHuis()*Stad.getStraat().get(i).getAantalGebouwen();
-				}
-				if(Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Hotel.class)){
-					if(speler.isConcurrent){
-						waarde += Stad.getStraat().get(i).getPrijsHuis()*5;
+		try {
+			for (int i = 0; i < Stad.getStraat().size(); i++) {  // OutOfMemoryError??
+				if (speler.equals(Stad.getStraat().get(i).getEigenaar()) && !Hypotheek.getHypotheekLijst().contains(Stad.getStraat().get(i))) {
+					waarde += Stad.getStraat().get(i).getPrijs();
+					if (Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Huis.class)) {
+						waarde += Stad.getStraat().get(i).getPrijsHuis() * Stad.getStraat().get(i).getAantalGebouwen();
 					}
-					if(!speler.isConcurrent){
-						waarde += Stad.getStraat().get(i).getPrijsHuis()*4;
+					if (Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Hotel.class)) {
+						if (speler.isConcurrent) {
+							waarde += Stad.getStraat().get(i).getPrijsHuis() * 5;
+						}
+						if (!speler.isConcurrent) {
+							waarde += Stad.getStraat().get(i).getPrijsHuis() * 4;
+						}
 					}
 				}
 			}
-		}
+		} catch (NullPointerException ignored){}
 
 		for (int j = 0; j < Transport.getTransport().size(); j++) {
 			if(speler.equals(Transport.getTransport().get(j).getEigenaar())){

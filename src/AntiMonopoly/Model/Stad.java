@@ -10,7 +10,7 @@ public class Stad {
 	public static List<Straat> getStraat() {
 		for (Tegel tegel : Spelbord.getTegels()) {
 			if(tegel instanceof Straat){
-				straat.add((Straat)tegel);
+				straat.add((Straat)tegel); // OutOfMemoryError??
 			}
 		}
 		return straat;
