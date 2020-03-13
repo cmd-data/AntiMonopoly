@@ -22,36 +22,30 @@ public class Transport extends Tegel {
 
 	public static int getWaarde() { return waarde; }
 
-	/**
-	 * Nog uitwerken zodat de juiste speler geld bijkrijgt of verliest
-	 * Als er geen eigenaar is moet de exception nog opgevangen worden
-	 * @param naamTransportbedrijf
-	 * @param speler
-	 */
+	public void koopTransportbedrijf(Speler speler, Transport bedrijf){
+		bedrijf.setEigenaar(speler);
+		speler.setGeld(-waarde);
+	}
 
-	public void koopTransportbedrijf(String naamTransportbedrijf, Speler speler){}
-
-	public void betaalHuur(String naamTransportbedrijf, Speler speler){
+	public static int getHuur(Transport transportBedrijf){
 		int aantal = 0;
-		Speler eigenaar = null;
-		for (int j = 0; j < transport.size(); j++) {
-			if(transport.get(j).getNaam().equals(naamTransportbedrijf)){
-				eigenaar = transport.get(j).getEigenaar();
+		Speler eigenaar = transportBedrijf.getEigenaar();
+
+		for (Tegel tegel : Spelbord.getTegels()) {
+			if (tegel instanceof Transport){
+				transport.add((Transport)tegel);
 			}
 		}
+
 		if(eigenaar.getIsConcurrent()){
-			int huur = (int) (waarde * 0.1);
-			speler.setGeld(-huur);
-			eigenaar.setGeld(huur);
+			return (int) (waarde * 0.1);
 		} else {
 			for (int i = 0; i < transport.size(); i++) {
 				if (eigenaar.equals(transport.get(i).getEigenaar())){
 					aantal++;												  // checken hoeveel transportbedrijven een monopolist heeft
 				}
 			}
-			int huur = (int) (waarde * 0.2);
-			speler.setGeld(-huur*aantal);
-			eigenaar.setGeld(huur*aantal);
+			return (int) (waarde * 0.2) * aantal;
 		}
 	}
 

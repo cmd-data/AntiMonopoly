@@ -86,24 +86,39 @@ public class Spel {
 	}
 
 	/**
-	 * Static voor gebruik in ConcurrentenOfMonopolistenvak
+	 * Geeft Tegel terug als waarde om dan in isKoopbaar(); heeftEigenaar() en heeftHypotheek() te gebruiken
 	 * @param speler
-	 * @param tegel
+	 * @return
 	 */
 
-	public static void move(Speler speler,Tegel tegel){
-    	if (posities.containsValue(speler)){
-    		checkPasseerStart(speler,tegel);
-    		posities.values().remove(speler);
+	public static Tegel move(Speler speler){
+		int worp = Dice.rollDice();
+		int positie = 0;
+
+		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
+			if (speler.equals(entry.getValue())) {
+				positie = entry.getKey().getPositie() + worp;
+			}
 		}
-    	posities.put(tegel,speler);
+
+		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
+		posities.values().remove(speler);
+    	posities.put(Spelbord.getTegels().get(positie),speler);
+    	return Spelbord.getTegels().get(positie);
 	}
 
-	public void betaalHuur(Straat straat){
-		if (Hypotheek.getHypotheekLijst().contains(straat)){
-			System.out.println("Deze eigendom staat op Hypotheek.");
-		} else {
-			Straat.getHuur(straat);
+	public void betaalHuur(Tegel tegel, Speler speler){
+		if (tegel instanceof Straat){
+			speler.setGeld(-Straat.getHuur((Straat)tegel));
+			((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat)tegel));
+		}
+		if (tegel instanceof Transport){
+			speler.setGeld(-Transport.getHuur((Transport) tegel));
+			((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
+		}
+		if (tegel instanceof GasEnElektriciteitsbedrijf){
+			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
 		}
     }
 

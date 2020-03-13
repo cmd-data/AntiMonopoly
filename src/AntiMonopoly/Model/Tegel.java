@@ -34,14 +34,14 @@ public class Tegel {
 	 * Kan de tegel gekocht worden? (nog uitwerken)
 	 * @return
 	 */
-	public boolean isKoopbaar(int index){
-		if(Spelbord.getTegels().get(index) instanceof Straat){
+	public boolean isKoopbaar(Tegel tegel){
+		if(tegel instanceof Straat){
 			return true;
 		}
-		if(Spelbord.getTegels().get(index) instanceof Transport){
+		if(tegel instanceof Transport){
 			return true;
 		}
-		if(Spelbord.getTegels().get(index) instanceof GasEnElektriciteitsbedrijf){
+		if(tegel instanceof GasEnElektriciteitsbedrijf){
 			return true;
 		}
 		return false;
@@ -51,17 +51,17 @@ public class Tegel {
 	 * Methode om te zien of de tegel een eigenaar heeft
 	 */
 	public boolean heeftEigenaar(Tegel tegel){
-		if(Spelbord.getTegels().get(tegel.positie) instanceof Straat){
+		if(tegel instanceof Straat){
 			if (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
 				return false;
 			}
 		}
-		if(Spelbord.getTegels().get(tegel.positie) instanceof Transport){
+		if(tegel instanceof Transport){
 			if (((Transport) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
 				return false;
 			}
 		}
-		if(Spelbord.getTegels().get(tegel.positie) instanceof GasEnElektriciteitsbedrijf){
+		if(tegel instanceof GasEnElektriciteitsbedrijf){
 			if (((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(tegel.positie)).getEigenaar()==null){
 				return false;
 			}
@@ -73,9 +73,7 @@ public class Tegel {
 	 * Methode om te zien of de tegel op hypotheek staat
 	 */
 	public boolean heeftHypotheek(Tegel tegel){
-		if (Hypotheek.getHypotheekLijst().contains(tegel)){
-			return true;
-		} else { return false; }
+		return Hypotheek.getHypotheekLijst().contains(tegel);
 	}
 
 }
