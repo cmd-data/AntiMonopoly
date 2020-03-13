@@ -91,8 +91,7 @@ public class Spel {
 	 * @return
 	 */
 
-	public static Tegel move(Speler speler){
-		int worp = Dice.rollDice();
+	public static Tegel move(Speler speler, int worp){
 		int positie = 0;
 
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
@@ -105,6 +104,12 @@ public class Spel {
 		posities.values().remove(speler);
     	posities.put(Spelbord.getTegels().get(positie),speler);
     	return Spelbord.getTegels().get(positie);
+	}
+
+	public static Tegel move(Speler speler, Tegel tegel){
+		posities.values().remove(speler);
+		posities.put(tegel,speler);
+		return tegel;
 	}
 
 	public void betaalHuur(Tegel tegel, Speler speler){
