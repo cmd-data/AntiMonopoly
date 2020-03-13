@@ -41,24 +41,17 @@ public class Speler {
 	}
 
 	public int checkBezittingen (Speler speler) {
-		List<String> eigenaars = new ArrayList<>();
+		List<Speler> eigenaars = new ArrayList<>();
 		for (int i = 0; i < Stad.getStraat().size(); i++) {
-			eigenaars.add(Stad.getStraat().get(i).getEigenaar().getNaam());
-			/**
-			 * Alle eigenaars in een lijst gestoken om dan te kijken of de speler nog eigendommen heeft
-			 */
+			eigenaars.add(Stad.getStraat().get(i).getEigenaar());
 		}
 		for (int j = 0; j < Transport.getTransport().size(); j++) {
-			eigenaars.add(Transport.getTransport().get(j).getNaam());
+			eigenaars.add(Transport.getTransport().get(j).getEigenaar());
 		}
-		return Collections.frequency(eigenaars, speler.getNaam());
-
-		/**
-		Om de bezittingen te checken, zou er door de stratenlijst gegaan moeten worden en elke keer de eigenaar "speler" is, de waarde van de grond + de waarde van de huizen op de straat op tellen.
-		 Dit kunnen we gebruiken om te checken of iemand failliet is en bij de inkomstenbelasting.
-
-		 (Opm. Tasha ==> Ik ga die methoden opsplitsen want voor 'isFailliet' moeten we alleen weten of hij bezittingen heeft, de waarde van de grond of huizen doen er niet toe)
-		 */
+		for (int k = 0; k < GasEnElektriciteitsbedrijf.getBedrijven().size(); k++){
+			eigenaars.add(GasEnElektriciteitsbedrijf.getBedrijven().get(k).getEigenaar());
+		}
+		return Collections.frequency(eigenaars, speler);
 	}
 
 	/**
@@ -72,7 +65,7 @@ public class Speler {
 	public int waardeBezittingen (Speler speler) {
 		int waarde = 0;
 		for (int i = 0; i < Stad.getStraat().size(); i++) {
-			if(Stad.getStraat().get(i).getEigenaar().equals(speler)&&!Hypotheek.getHypotheekLijst().contains(Stad.getStraat().get(i))){
+			if(speler.equals(Stad.getStraat().get(i).getEigenaar())&&!Hypotheek.getHypotheekLijst().contains(Stad.getStraat().get(i))){
 				waarde += Stad.getStraat().get(i).getPrijs();
 				if(Stad.getStraat().get(i).getGebouw().getClass().equals(Gebouwen.Huis.class)){
 					waarde += Stad.getStraat().get(i).getPrijsHuis()*Stad.getStraat().get(i).getAantalGebouwen();
@@ -89,9 +82,14 @@ public class Speler {
 		}
 
 		for (int j = 0; j < Transport.getTransport().size(); j++) {
-			if(Transport.getTransport().get(j).getEigenaar().equals(speler)){
+			if(speler.equals(Transport.getTransport().get(j).getEigenaar())){
 				waarde += Transport.getWaarde();
 			}
+		}
+
+		for (int k = 0; k < GasEnElektriciteitsbedrijf.getBedrijven().size(); k++) {
+			if(speler.equals(GasEnElektriciteitsbedrijf.getBedrijven().get(k).getEigenaar()));
+			waarde += GasEnElektriciteitsbedrijf.getWaarde();
 		}
 		return waarde;
 	}

@@ -7,7 +7,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 
 	private static List<GasEnElektriciteitsbedrijf> bedrijven = new ArrayList<>();
 
-	private final int waarde = 150000;
+	private static final int waarde = 150000;
 	private Speler eigenaar;
 	private String naam;
 	private int positie;
@@ -17,13 +17,13 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	 */
 
 	public GasEnElektriciteitsbedrijf(String naam, Speler eigenaar, int positie) {
-		super(naam,positie);
+		super(naam, positie);
 		this.naam = naam;
 		this.eigenaar = eigenaar;
 		this.positie = positie;
 	}
 
-	public void koopGasofElektriciteitsbedrijf(Speler speler, GasEnElektriciteitsbedrijf bedrijf){
+	public void koopGasofElektriciteitsbedrijf(Speler speler, GasEnElektriciteitsbedrijf bedrijf) {
 		bedrijf.setEigenaar(speler);
 		speler.setGeld(-waarde);
 	}
@@ -33,14 +33,14 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		int aantal = 0;
 
 		for (Tegel tegel : Spelbord.getTegels()) {
-			if (tegel instanceof GasEnElektriciteitsbedrijf){
+			if (tegel instanceof GasEnElektriciteitsbedrijf) {
 				bedrijven.add((GasEnElektriciteitsbedrijf) tegel);
 			}
 		}
 
-		if(eigenaar.getIsConcurrent()){
+		if (eigenaar.getIsConcurrent()) {
 			Dice.rollDie();
-			return Dice.rollDie()*4;
+			return Dice.rollDie() * 4;
 		} else {
 			for (GasEnElektriciteitsbedrijf bedrijf : bedrijven) {
 				if (eigenaar.equals(bedrijf.getEigenaar())) {
@@ -72,7 +72,12 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	public void setEigenaar(Speler eigenaar) {
 		this.eigenaar = eigenaar;
 	}
+
+	public static List<GasEnElektriciteitsbedrijf> getBedrijven() { return bedrijven; }
+
+	public static int getWaarde() { return waarde; }
 }
+
 
 
 
