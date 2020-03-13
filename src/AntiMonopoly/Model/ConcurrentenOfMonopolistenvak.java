@@ -5,6 +5,7 @@ import org.apache.commons.collections4.map.LinkedMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
 
@@ -23,17 +24,18 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @param speler
 	 */
 
-	/*public void opdrachtMon(Speler speler){
-		System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
-		doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
-		steekTerugMon();
-	}
+	public void voerUit(Speler speler){
 
-	public void opdrachtCon(Speler speler){
-		System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
-		doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
-		steekTerugCon();
-	}*/
+		if (speler.getIsConcurrent()){
+			System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
+			doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
+			steekTerugCon();
+		} else {
+			System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
+			doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
+			steekTerugMon();
+		}
+	}
 
 	public void steekTerugMon() {
 		List<Integer> keys = new ArrayList(opdracht.getShuffledMon().keySet());
@@ -57,90 +59,92 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		opdracht.setShuffledCon(rotatedCon);
 	}
 
-	/*public void doeOpdrachtMonopolist(int opdracht,Speler speler) {
-		switch(opdracht){
+	public Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
+		switch (opdracht) {
 			case 0:
-				speler.setPositie(25);
-				Spelbord.getTegels().get(25).addSpeler(speler);                          // Constructor aanpassen zodat de juiste tegel wordt meegegeven
+				return Spel.move(speler, Spelbord.getTegels().get(25));
+			case 1:
+				if (IntStream.of(Dice.rollDice()).sum() >= 8) {             // maakt som van gerolde dobbelstenen die in array zitten
+					speler.setGeld(75000);
+				}
 				break;
-			case 1: if(IntStream.of(Dice.rollDice()).sum()>=8){speler.setGeld(75000);} break;  // maakt som van gerolde dobbelstenen die in array zitten
 			case 2:
 			case 21:
 			case 24:
-				speler.setGeld(50000); break;
-			case 3:
-				speler.setPositie(12);
-				Spelbord.getTegels().get(12).addSpeler(speler);
+				speler.setGeld(50000);
 				break;
+			case 3:
+				return Spel.move(speler, Spelbord.getTegels().get(12));
 			case 4:
 			case 5:
-				speler.setPositie(0);
-				Spelbord.getTegels().get(0).addSpeler(speler);
-				break;
+				return Spel.move(speler, Spelbord.getTegels().get(0));
 			case 6:
 			case 14:
-				speler.setGeld(-50000); break;
-			case 7:
-			case 16: break;
-			case 8: speler.setGeld(-75000); break;
-			case 9:
-			case 15: speler.setGeld(-25000); break;
-			case 10:
-				speler.setPositie(39);
-				Spelbord.getTegels().get(39).addSpeler(speler);
+				speler.setGeld(-50000);
 				break;
+			case 7:
+			case 16:
+				break;
+			case 8:
+				speler.setGeld(-75000);
+				break;
+			case 9:
+			case 15:
+				speler.setGeld(-25000);
+				break;
+			case 10:
+				return Spel.move(speler, Spelbord.getTegels().get(39));
 			case 11:
 			case 12:
-				speler.setGeld(25000); break;
+				speler.setGeld(25000);
+				break;
 			case 13:
 			case 19:
-				speler.setPositie(10);
-				Spelbord.getTegels().get(10).addSpeler(speler);
-				break;
+				return Spel.move(speler, Spelbord.getTegels().get(10));
 			case 17:
 				int count = 0;
-				for (Speler spelers : Spel.getSpelers()){
-					if (spelers.getIsConcurrent()){
+				for (Speler spelers : Spel.getSpelers()) {
+					if (spelers.getIsConcurrent()) {
 						count++;
 						spelers.setGeld(-10000);
 					}
 				}
-				speler.setGeld(count*10000);
+				speler.setGeld(count * 10000);
 				break;
 			case 18:
-				for (Speler spelers : Spel.getSpelers()){
-					if (!spelers.getIsConcurrent()){
+				for (Speler spelers : Spel.getSpelers()) {
+					if (!spelers.getIsConcurrent()) {
 						spelers.setGeld(25000);
 					}
 				}
 				break;
-			case 20: speler.setGeld(75000); break;
+			case 20:
+				speler.setGeld(75000);
+				break;
 			case 22:
 				int counter = 0;
-				for (Speler spelers : Spel.getSpelers()){
-					if (spelers.getIsConcurrent()){
+				for (Speler spelers : Spel.getSpelers()) {
+					if (spelers.getIsConcurrent()) {
 						counter++;
 						spelers.setGeld(-25000);
 					}
 				}
-				speler.setGeld(counter*25000);
+				speler.setGeld(counter * 25000);
 				break;
 			case 23:
-				speler.setPositie(31);
-				Spelbord.getTegels().get(31).addSpeler(speler);
+				return Spel.move(speler, Spelbord.getTegels().get(31));
 		}
+		return null;
 	}
 
-	public void doeOpdrachtConcurrent(int opdracht, Speler speler){
+	public Tegel doeOpdrachtConcurrent(int opdracht, Speler speler){
 		switch(opdracht){
 			case 0:
 			case 23:
 				speler.setGeld(75000); break;
 			case 1:
 			case 13:
-				speler.setPositie(10);
-				Spelbord.getTegels().get(10).addSpeler(speler);
-				break;
+				return Spel.move(speler,Spelbord.getTegels().get(10));
 			case 2:
 			case 14:
 				speler.setGeld(-75000); break;
@@ -179,25 +183,17 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				break;
 			case 15: speler.setGeld(-25000); break;
 			case 16:
-				speler.setPositie(25);
-				Spelbord.getTegels().get(25).addSpeler(speler);
-				break;
+				return Spel.move(speler,Spelbord.getTegels().get(25));
 			case 17:
 			case 18:
-				speler.setPositie(0);
-				Spelbord.getTegels().get(0).addSpeler(speler);
-				break;
+				return Spel.move(speler,Spelbord.getTegels().get(0));
 			case 19:
-				speler.setPositie(37);
-				Spelbord.getTegels().get(0).addSpeler(speler);
-				break;
+				return Spel.move(speler,Spelbord.getTegels().get(37));
 			case 20:
-				speler.setPositie(28);
-				Spelbord.getTegels().get(28).addSpeler(speler);
-				break;
+				return Spel.move(speler,Spelbord.getTegels().get(28));
 			case 22:
-				speler.setPositie(6);
-				Spelbord.getTegels().get(6).addSpeler(speler);
+				return Spel.move(speler,Spelbord.getTegels().get(6));
 		}
-	}*/
+		return null;
+	}
 }

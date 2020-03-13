@@ -12,7 +12,7 @@ public class Spel {
 	private static List<Speler> spelers = new ArrayList<>();
 	private Spelbord spelbord = new Spelbord();
 	private Spelregels spelregels = new Spelregels();
-	MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
+	private static MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
@@ -85,23 +85,55 @@ public class Spel {
     	return namen;
 	}
 
-	public void move(Speler speler,Tegel tegel){
-    	if (posities.containsValue(speler)){
-    		checkPasseerStart(speler,tegel);
-    		posities.values().remove(speler);
-		}
-    	posities.put(tegel,speler);
-	}
-
 	/**
-	 * Check passeer start nog uitwerken zodat het met move() kan gebruikt worden
+	 * Geeft Tegel terug als waarde om dan in isKoopbaar(); heeftEigenaar() en heeftHypotheek() te gebruiken
+	 * @param speler
+	 * @return
 	 */
 
-	public void betaalHuur(){
-	    //check hypotheek
+	public static Tegel move(Speler speler, int worp){
+		int positie = 0;
+
+		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
+			if (speler.equals(entry.getValue())) {
+				positie = entry.getKey().getPositie() + worp;
+			}
+		}
+
+		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
+		posities.values().remove(speler);
+    	posities.put(Spelbord.getTegels().get(positie),speler);
+    	return Spelbord.getTegels().get(positie);
+	}
+
+	public static Tegel move(Speler speler, Tegel tegel){
+		posities.values().remove(speler);
+		posities.put(tegel,speler);
+		return tegel;
+	}
+
+	public void betaalHuur(Tegel tegel, Speler speler){
+		if (tegel instanceof Straat){
+			speler.setGeld(-Straat.getHuur((Straat)tegel));
+			((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat)tegel));
+		}
+		if (tegel instanceof Transport){
+			speler.setGeld(-Transport.getHuur((Transport) tegel));
+			((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
+		}
+		if (tegel instanceof GasEnElektriciteitsbedrijf){
+			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+		}
     }
 
-	public void checkPasseerStart(Speler speler, Tegel tegel) {
+	/**
+	 * Static voor gebruik in statische methode move()
+	 * @param speler
+	 * @param tegel
+	 */
+
+	public static void checkPasseerStart(Speler speler, Tegel tegel) {
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
 			if (speler.equals(entry.getValue())) {
 				if(tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
@@ -109,6 +141,10 @@ public class Spel {
 				}
 			}
 		}
+	}
+
+	public static Boolean checkGevangenis(Speler speler){
+		return Gevangenis.getGevangenen().contains(speler);
 	}
 
 	public boolean eindeSpel(){
@@ -137,4 +173,6 @@ public class Spel {
 	public Spelbord getSpelbord() { return spelbord; }
 
 	public Spelregels getSpelregels() { return spelregels; }
+
+	public static MultiValuedMap<Tegel, Speler> getPosities() { return posities; }
 }

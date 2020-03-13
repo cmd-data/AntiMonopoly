@@ -8,11 +8,11 @@ public class Speler {
 
 
 	private String naam;
-	private int geld = 1500000;			//hoeveelheid geld de speler bezit, aan het begin van het spel is dit steeds hetzelfde,
-	private boolean isConcurrent;		//Is de speler een concurent?
+	private int geld = 1500000;
+	private boolean isConcurrent;
 	private boolean aanZet;
 	private boolean failliet;
-	private String pion;                // kleur pion
+	private String pion;
 
 	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
@@ -26,9 +26,6 @@ public class Speler {
 		return aanZet;
 	}//einde Methode
 
-	/**
-	 *Methode om de speler al dan niet aan zet te laten
-	 */
 	public void setAanZet(boolean aanZet) {
 		this.aanZet = aanZet;
 	}//einde Methode
@@ -42,12 +39,6 @@ public class Speler {
 			return false;
 		}
 	}
-
-	/**
-	 *Methode om de speler €200 te geven wanneer hij startgeld krijgt
-	 * Als de speler voorbij start komt, verlaagd zijn positie.
-	 * Wanneer de speler op 'ga naar de gevangenis' komt, verlaagd zijn positie ook, dus deze postie(30), moet hiervan uitgesloten worden
-	 */
 
 	public int checkBezittingen (Speler speler) {
 		List<String> eigenaars = new ArrayList<>();

@@ -6,15 +6,15 @@ public class AntiMonopolyStichting extends Tegel {
 		super(naam, positie);
 	}
 
-	public void betaalBank(Speler speler) {
-		speler.setGeld(-160000);
-	}
-
-	public void getGeld(Speler speler) {
-		int rol = Dice.rollDie();
-		switch(rol){
-			case 1: speler.setGeld(25000); break;
-			case 2: speler.setGeld(50000);
+	public void voerUit(Speler speler){
+		if(speler.getIsConcurrent()){
+			int rol = Dice.rollDie();
+			switch(rol){
+				case 1: speler.setGeld(25000); break;
+				case 2: speler.setGeld(50000);
+			}
+		} else {
+			speler.setGeld(-160000);
 		}
 	}
 

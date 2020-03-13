@@ -1,46 +1,41 @@
 package AntiMonopoly.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Gevangenis extends Tegel {
 
-	private final int boete = 50;
-	private Speler speler = null;
-	static Gevangenis gevangenis;
+	private final int boete = 50000;
+	private static List<Speler> gevangenen = new ArrayList<>();
 
 	public Gevangenis(String naam, int positie) {
 		super(naam, positie);
 	}
 
-	/*public Gevangenis(Speler speler) {
-		this.speler = speler;
-		speler.setPositie(10);
-		super.addSpeler(speler);
-	}*/
+	public void verlaatGevangenis(Speler speler, Tegel tegel) {
+		System.out.println("Boete betalen of dubbel gooien? ('true' of 'false'): ");
+		Scanner kb = new Scanner(System.in);
+		String reply = kb.next();
 
-	public int getBoete() { return this.boete; }
+		while(!"true".equals(reply)&&!"false".equals(reply)){
+			System.out.println("Verkeerde input ('true' of 'false'): ");
+			reply = kb.next();
+		}
 
-	public Speler getSpeler() { return speler; }
-
-	public void setSpeler(Speler speler) { this.speler = speler; }
-
-
-	public void stopStartGeld() {
-		/** misschien moeten we de getSpeler gebruiken om te zien of er iemand in de gevangenis zit als men start passeert?
-		 */
+		if(Boolean.parseBoolean(reply)){
+			speler.setGeld(-this.boete);
+			Spel.move(speler,tegel);
+			gevangenen.remove(speler);
+		}
+		if(!Boolean.parseBoolean(reply)) {
+			Dice.rollDice();
+			if (Dice.isIsDubbel()) {
+				Spel.move(speler, tegel);
+				gevangenen.remove(speler);
+			}
+		}
 	}
 
-	/**
-	 * ook een isInGevangenis toetsen als je iets wilt kopen of huren? Dus bij elke beurt?
-	 */
-	public void stopKopen() {
-		
-	}
-
-	public void stopHuur() {
-		
-	}
-
-	public void verlaatGevangenis(Gevangenis speler) {		/** als argument geef je het gecreëerd Gevangenis object */
-		speler.setSpeler(null);
-	}
-
+	public static List<Speler> getGevangenen() { return gevangenen; }
 }
