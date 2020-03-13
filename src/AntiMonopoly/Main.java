@@ -1,12 +1,12 @@
 package AntiMonopoly;
 
-import AntiMonopoly.View.MainScreen.MainPresenter;
+import AntiMonopoly.View.AntiMonopolyPresenter;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
-import AntiMonopoly.View.MainScreen.MainView;
+import AntiMonopoly.View.MainScreen.AntiMonopolyView;
 
 
 
@@ -14,8 +14,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         AntiMonopolyMain model = new AntiMonopolyMain();
-        MainView view = new MainView();
-        MainPresenter antiMonopolyPresenter = new MainPresenter(model,view);
+        AntiMonopolyView view = new AntiMonopolyView();
+        AntiMonopolyPresenter antiMonopolyPresenter = new AntiMonopolyPresenter();
         Scene scene = new Scene(view);
         scene.getStylesheets().add("/stylesheets/main.css");
         primaryStage.setScene(scene);
