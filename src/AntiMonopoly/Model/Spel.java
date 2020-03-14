@@ -1,7 +1,7 @@
 package AntiMonopoly.Model;
 
-import org.apache.commons.collections4.MultiValuedMap;
-import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
+//import org.apache.commons.collections4.MultiValuedMap;
+//import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -12,12 +12,12 @@ public class Spel {
 	private static List<Speler> spelers = new ArrayList<>();
 	private Spelbord spelbord = new Spelbord();
 	private Spelregels spelregels = new Spelregels();
-	private static MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
+	//private static MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
 		maakSpelers();
-		posities.putAll(Spelbord.getTegels().get(0),spelers);     // elke speler op start positie plaatsen (mag geen passeer start generereren)
+		//posities.putAll(Spelbord.getTegels().get(0),spelers);     // elke speler op start positie plaatsen (mag geen passeer start generereren)
 	}
 
 	public Spel(){}  // Constructor voor eenvoudig te kunnen testen in main
@@ -167,5 +167,5 @@ public class Spel {
 
 	public Spelregels getSpelregels() { return spelregels; }
 
-	public static MultiValuedMap<Tegel, Speler> getPosities() { return posities; }
+	//public static MultiValuedMap<Tegel, Speler> getPosities() { return posities; }
 }
