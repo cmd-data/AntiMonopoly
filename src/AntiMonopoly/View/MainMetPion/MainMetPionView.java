@@ -57,4 +57,12 @@ public class MainMetPionView extends Group {
     public DiceView getDiceView() {
         return diceView;
     }
+
+    public Rectangle getRectangle1() {
+        return rectangle1;
+    }
+
+    public Rectangle getRectangle2() {
+        return rectangle2;
+    }
 }

@@ -3,6 +3,8 @@ package AntiMonopoly.View.MainMetPion;
 import AntiMonopoly.Model.AntiMonopolyMain;
 import AntiMonopoly.Model.Dice;
 import AntiMonopoly.Model.Spelregels;
+import javafx.animation.Interpolator;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class MainMetPionPresenter {
@@ -568,15 +571,24 @@ public class MainMetPionPresenter {
                 }
         );
 
+        //Aanpassingen aan het aanbrengen
+
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Dice.rollDice();
+                TranslateTransition transition1 = new TranslateTransition();
+                transition1.setNode(view.getRectangle1());
+                transition1.setDuration(Duration.seconds(1));
+                transition1.setByX((Dice.getWorp2()[0] + Dice.getWorp2()[1]) * 150);
+                //transition1.setCycleCount(Timeline.INDEFINITE);
+                transition1.setInterpolator(Interpolator.EASE_BOTH);
+                transition1.play();
                 //updateView();
             }
         });
-
     }
+    
 
     public void addWindowEventHandlers() {
 
