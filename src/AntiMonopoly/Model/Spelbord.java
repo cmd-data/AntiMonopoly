@@ -47,7 +47,7 @@ public class Spelbord {
 		tegels.add(new Straat("Veldstraat, Gent", 300000, 30000, 150000, 200000, null, null, 0, "groen", 31));
 		tegels.add(new Straat("Boulevard Tirou, Charleroi", 300000, 30000, 150000, 200000, null, null, 0, "groen", 32));
 		tegels.add(new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 33));
-		tegels.add(new Straat("Boulevard Tirou, Charleroi", 300000, 30000, 150000, 200000, null, null, 0, "groen", 34));
+		tegels.add(new Straat("Boulevard d'Avroy, Liège", 300000, 30000, 150000, 200000, null, null, 0, "groen", 34));
 		tegels.add(new Transport("Zuid Station", null, 35));
 		tegels.add(new ConcurrentenOfMonopolistenvak("Concurrent of Monopolisten vak", 36));
 		tegels.add(new Straat("Meir, Antwerpen", 350000, 35000, 175000, 200000, null, null, 0, "dBlauw", 37));

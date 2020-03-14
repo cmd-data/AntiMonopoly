@@ -18,20 +18,35 @@ public class AntiMonopolyMain {
         while (!spel.eindeSpel()){
             for (Speler speler : Spel.getSpelers()) {
                 if (!Spel.checkGevangenis(speler)) {
-                    System.out.println(speler.getNaam());
+                    System.out.println("Naam: " + speler.getNaam());                      // test code
                     speler.setAanZet(true);
+                    if (speler.isFailliet(speler)){
+                        speler.setAanZet(false);
+                    }
                     while (speler.isAanZet()) {
-                        int rol = Dice.rollDice();
-                        Tegel tegel = Spel.move(speler, rol);
-                        System.out.println(rol);                                // test code
-                        tegel.tegelMethode(tegel, speler);
-                        System.out.println(speler.getGeld());                   // test code
-                        System.out.println(speler.waardeBezittingen(speler));   // test code // Hier geen OutOfMemory exception maar in methode zelf wel??
-                        if (!Dice.isIsDubbel()) {
-                            speler.setAanZet(false);
+                        if (!Spel.checkGevangenis(speler)) {
+                            int rol = Dice.rollDice();
+                            Tegel tegel = Spel.move(speler, rol);
+
+                            System.out.println("Rol: " + rol);                                 // test code
+                            System.out.println("Geld: " + speler.getGeld());                   // test code
+
+                            tegel.tegelMethode(tegel, speler);
+
+                            System.out.println("Tegel: " + tegel.getNaam());                   // test code
+                            System.out.println(tegel.getPositie());                          // test code
+                            System.out.println("Geld na beurt: " + speler.getGeld());          // test code
+
+                            if (!Dice.isIsDubbel()) {
+                                speler.setAanZet(false);
+                            }
+                            if (speler.isFailliet(speler)) {
+                                speler.setAanZet(false);
+                            }
                         }
                     }
                 } else {
+                    System.out.println("Naam: " + speler.getNaam());                      // test code
                     Gevangenis.verlaatGevangenis(speler);
                 }
             }

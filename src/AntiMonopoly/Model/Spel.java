@@ -100,7 +100,7 @@ public class Spel {
 
 		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
 			if (speler.equals(entry.getValue())) {
-				if (entry.getKey().getPositie() + worp > 27){
+				if (entry.getKey().getPositie() + worp > 39){
 					positie = worp - (39-entry.getKey().getPositie()) -1;
 				} else {
 					positie = entry.getKey().getPositie() + worp;

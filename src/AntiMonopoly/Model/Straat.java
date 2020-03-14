@@ -31,24 +31,34 @@ public class Straat extends Tegel {
 	}
 
 	public static boolean isBebouwd(Straat straat){
-		if(straat.gebouw!=null){
-			return true;
-		} else {
-			return false;
-		}
+		try {
+			return straat.gebouw != null;
+		} catch (NullPointerException ignored) {}
+		return false;
 	}
 
 	public static boolean hasHotel(Straat straat){
-		return Gebouwen.Hotel.class.equals(straat.gebouw.getClass());
+		try {
+			return Gebouwen.Hotel.class.equals(straat.gebouw.getClass());
+		} catch (NullPointerException ignored){}
+		return false;
 	}
 
 	public static boolean hasHouse(Straat straat){
-		return Gebouwen.Huis.class.equals(straat.gebouw.getClass());
+		try {
+			return Gebouwen.Huis.class.equals(straat.gebouw.getClass());
+		} catch (NullPointerException ignored){}
+		return false;
 	}
 
 	public void koopStraat(Speler speler, Straat straat){
-		straat.setEigenaar(speler);
-		speler.setGeld(-straat.prijs);
+
+		if (speler.getGeld()<straat.prijs){
+			System.out.println("Niet genoeg geld");
+		} else {
+			speler.setGeld(-straat.prijs);
+			straat.setEigenaar(speler);
+		}
 	}
 
 	public static int getHuur(Straat straat) {
@@ -56,6 +66,8 @@ public class Straat extends Tegel {
 		
 		if (!isBebouwd(straat)) {
 			if (concurrent){
+				return straat.huur;
+			} else {
 				if (isMonopolyStad(straat.stad)){
 					return straat.huur * 2;
 				} else {

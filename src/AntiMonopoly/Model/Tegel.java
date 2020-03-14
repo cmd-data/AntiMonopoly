@@ -53,7 +53,7 @@ public class Tegel {
 				case 7:
 				case 2: ConcurrentenOfMonopolistenvak.voerUit(speler); break;
 				case 4: Inkomstenbelasting.betaalBelasting(speler); break;
-				case 10: if (speler.equals(Gevangenis.getGevangenen())){
+				case 10: if (Gevangenis.getGevangenen().contains(speler)){
 					Gevangenis.verlaatGevangenis(speler);
 						} else {
 					Gevangenis.opBezoek(speler);
@@ -94,16 +94,22 @@ public class Tegel {
 
 	public void betaalHuur(Tegel tegel, Speler speler){
 		if (tegel instanceof Straat){
-			speler.setGeld(-Straat.getHuur((Straat)tegel));
-			((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat)tegel));
+			if (!speler.equals(((Straat) tegel).getEigenaar())) {
+				speler.setGeld(-Straat.getHuur((Straat) tegel));
+				((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat) tegel));
+			}
 		}
 		if (tegel instanceof Transport){
-			speler.setGeld(-Transport.getHuur((Transport) tegel));
-			((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
+			if (!speler.equals(((Transport) tegel).getEigenaar())) {
+				speler.setGeld(-Transport.getHuur((Transport) tegel));
+				((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
+			}
 		}
 		if (tegel instanceof GasEnElektriciteitsbedrijf){
-			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
-			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+			if (!speler.equals(((GasEnElektriciteitsbedrijf) tegel).getEigenaar())) {
+				speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+				((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
+			}
 		}
 	}
 

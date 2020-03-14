@@ -5,15 +5,14 @@ import org.apache.commons.collections4.map.LinkedMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Opdrachten {
 
-	private final LinkedMap<Integer,String> monopolisten = new LinkedMap<>();            // Apache Commons Collections 'LinkedMap'
-	private final LinkedMap<Integer,String> concurrenten = new LinkedMap<>();
+	public static final LinkedMap<Integer,String> monopolisten = new LinkedMap<>();            // Apache Commons Collections 'LinkedMap'
+	public static final LinkedMap<Integer,String> concurrenten = new LinkedMap<>();
 
-	private LinkedMap<Integer,String> shuffledMon = new LinkedMap<>();
-	private LinkedMap<Integer,String> shuffledCon = new LinkedMap<>();
+	public static LinkedMap<Integer,String> shuffledMon = new LinkedMap<>();
+	public static LinkedMap<Integer,String> shuffledCon = new LinkedMap<>();
 
 	Opdrachten(){                                                             /** constructor met alle opdrachten **/
 		monopolisten.put(0,"Ga naar Buurtspoorwegen.");
@@ -85,22 +84,23 @@ public class Opdrachten {
 		concurrenten.put(23,"Je wint een gerechtelijke zaak tegen een monopolist. Zelfs na het betalen van jouw advocaten ontvang je nog €75.000");
 		concurrenten.put(24,"Een gigantische makelaar laat jou met rust om ervoor te zorgen dat de Anti-Monopolie stichting hem ook met rust laat. " +
 				"Ontvang €25.000 van de bank.");
+
 		monopolistenSchudden();
 		concurrentenSchudden();
 	}
 
-	public LinkedMap<Integer, String> getConcurrenten() { return concurrenten; }
-	public LinkedMap<Integer, String> getMonopolisten() { return monopolisten; }
+	public static LinkedMap<Integer, String> getConcurrenten() { return concurrenten; }
+	public static LinkedMap<Integer, String> getMonopolisten() { return monopolisten; }
 
-	public LinkedMap<Integer, String> getShuffledMon() { return shuffledMon; }
-	public LinkedMap<Integer, String> getShuffledCon() { return shuffledCon; }
+	public static LinkedMap<Integer, String> getShuffledMon() { return shuffledMon; }
+	public static LinkedMap<Integer, String> getShuffledCon() { return shuffledCon; }
 
-	public void setShuffledMon(LinkedMap<Integer, String> shuffledMon) { this.shuffledMon = shuffledMon; }
+	public static void setShuffledMon(LinkedMap<Integer, String> shuffledMon) { Opdrachten.shuffledMon = shuffledMon; }
 
-	public void setShuffledCon(LinkedMap<Integer, String> shuffledCon) { this.shuffledCon = shuffledCon; }
+	public static void setShuffledCon(LinkedMap<Integer, String> shuffledCon) { Opdrachten.shuffledCon = shuffledCon; }
 
-	private void monopolistenSchudden() {
-		List<Integer> keys = new ArrayList(this.monopolisten.keySet());
+	private static void monopolistenSchudden() {
+		ArrayList<Integer> keys = new ArrayList<>(Opdrachten.monopolisten.keySet());
 		Collections.shuffle(keys);                                       	// keys schudden (er is geen shuffle-methode voor 'map')
 		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			// nieuwe geschudde LinkedMap
 		for (Integer i : keys){												// interatie over keys list
@@ -109,8 +109,8 @@ public class Opdrachten {
 		shuffledMon.putAll(shuffledMap);
 	}
 
-	private void concurrentenSchudden() {
-		List<Integer> keys = new ArrayList(this.concurrenten.keySet());
+	private static void concurrentenSchudden() {
+		ArrayList<Integer> keys = new ArrayList<>(Opdrachten.concurrenten.keySet());
 		Collections.shuffle(keys);                                       	//keys schudden (er is geen shuffle-methode voor 'map')
 		LinkedMap<Integer,String> shuffledMap = new LinkedMap<>();			// nieuwe geschudde LinkedMap
 		for (Integer i : keys){												// interatie over keys list
@@ -118,12 +118,4 @@ public class Opdrachten {
 		}
 		shuffledCon.putAll(shuffledMap);
 	}
-
-	/*public static void main(String[] args) {
-		new Opdrachten().concurrentenSchudden();
-		new Opdrachten().monopolistenSchudden();
-		System.out.println(new Opdrachten().getMonopolisten());				// test code
-		System.out.println(new Opdrachten().getConcurrenten());
-		System.out.println(new Opdrachten().getShuffledCon());
-	}*/
 }

@@ -40,7 +40,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 
 		if (eigenaar.getIsConcurrent()) {
 			Dice.rollDie();
-			return Dice.rollDie() * 4;
+			return Dice.rollDie() * 4 * 1000;
 		} else {
 			for (GasEnElektriciteitsbedrijf bedrijf : bedrijven) {
 				if (eigenaar.equals(bedrijf.getEigenaar())) {

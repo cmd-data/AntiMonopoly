@@ -4,7 +4,6 @@ import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
@@ -15,7 +14,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		super(naam, positie);
 	}
 
-	private static Opdrachten opdracht = new Opdrachten();
+	private static Opdrachten opdrachten = new Opdrachten();
 
 	/**
 	 * Leest de opdracht voor
@@ -27,36 +26,48 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	public static void voerUit(Speler speler){
 
 		if (speler.getIsConcurrent()){
-			System.out.println(opdracht.getShuffledCon().getValue(opdracht.getShuffledCon().firstKey()));
-			doeOpdrachtConcurrent(opdracht.getShuffledCon().firstKey(),speler);
+
+			int firstCon = Opdrachten.shuffledCon.firstKey();
+
+			System.out.println(Opdrachten.concurrenten.getValue(firstCon));
+			doeOpdrachtConcurrent(firstCon,speler);
+			System.out.println(firstCon);		// test code
+			System.out.println(firstCon);		// test code
+
 			steekTerugCon();
 		} else {
-			System.out.println(opdracht.getShuffledMon().getValue(opdracht.getShuffledMon().firstKey()));
-			doeOpdrachtMonopolist(opdracht.getShuffledMon().firstKey(),speler);
+
+			int firstMon = Opdrachten.shuffledMon.firstKey();
+
+			System.out.println(Opdrachten.monopolisten.getValue(firstMon));
+			doeOpdrachtMonopolist(firstMon,speler);
+			System.out.println(firstMon);		// test code
+			System.out.println(firstMon);		// test code
+
 			steekTerugMon();
 		}
 	}
 
 	public static void steekTerugMon() {
-		List<Integer> keys = new ArrayList(opdracht.getShuffledMon().keySet());
+		ArrayList<Integer> keys = new ArrayList<>(Opdrachten.shuffledMon.keySet());
 		LinkedMap<Integer,String> rotatedMon = new LinkedMap<>();
 		Collections.rotate(keys, -1);											/** .rotate methode en -1 zorgt ervoor dat eerste de laatste key wordt en alles opschuift */
 		for (Integer i : keys){
-			String value = opdracht.getShuffledMon().getValue(i);
+			String value = Opdrachten.monopolisten.getValue(i);
 			rotatedMon.put(i,value);													/** plaats de waarde voor index i uit originele lijst in nieuwe map */
 		}
-		opdracht.setShuffledMon(rotatedMon);
+		Opdrachten.setShuffledMon(rotatedMon);
 	}
 
 	public static void steekTerugCon() {
-		List<Integer> keys = new ArrayList(opdracht.getShuffledCon().keySet());
+		ArrayList<Integer> keys = new ArrayList<>(Opdrachten.shuffledCon.keySet());
 		LinkedMap<Integer,String> rotatedCon = new LinkedMap<>();
 		Collections.rotate(keys, -1);
 		for (Integer i : keys){
-			String value = opdracht.getShuffledCon().getValue(i);
+			String value = Opdrachten.concurrenten.getValue(i);
 			rotatedCon.put(i,value);
 		}
-		opdracht.setShuffledCon(rotatedCon);
+		Opdrachten.setShuffledCon(rotatedCon);
 	}
 
 	public static Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
@@ -68,7 +79,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 					speler.setGeld(75000);
 				}
 				break;
-			case 2:
+			case 2:																// -25000 ??
 			case 21:
 			case 24:
 				speler.setGeld(50000);
@@ -86,11 +97,11 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 16:
 				break;
 			case 8:
-				speler.setGeld(-75000);
+				speler.setGeld(-75000);											// doet niets ??
 				break;
 			case 9:
 			case 15:
-				speler.setGeld(-25000);
+				speler.setGeld(-25000);											// + 50000 ??
 				break;
 			case 10:
 				return Spel.move(speler, Spelbord.getTegels().get(39));
@@ -99,8 +110,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(25000);
 				break;
 			case 13:
-			case 19:
-				return Spel.move(speler, Spelbord.getTegels().get(10));
+			case 19: GaNaarGevangenis.gaNaarGevangenis(speler); break;
 			case 17:
 				int count = 0;
 				for (Speler spelers : Spel.getSpelers()) {
@@ -119,7 +129,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				}
 				break;
 			case 20:
-				speler.setGeld(75000);
+				speler.setGeld(75000);									// doet niets (geen geld erbij of weg)??
 				break;
 			case 22:
 				int counter = 0;
@@ -143,8 +153,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 23:
 				speler.setGeld(75000); break;
 			case 1:
-			case 13:
-				return Spel.move(speler,Spelbord.getTegels().get(10));
+			case 13: GaNaarGevangenis.gaNaarGevangenis(speler); break;
 			case 2:
 			case 14:
 				speler.setGeld(-75000); break;
