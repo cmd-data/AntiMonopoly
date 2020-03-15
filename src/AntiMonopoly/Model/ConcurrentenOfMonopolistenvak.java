@@ -26,24 +26,16 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	public static void voerUit(Speler speler){
 
 		if (speler.getIsConcurrent()){
-
 			int firstCon = Opdrachten.shuffledCon.firstKey();
 
 			System.out.println(Opdrachten.concurrenten.getValue(firstCon));
 			doeOpdrachtConcurrent(firstCon,speler);
-			System.out.println(firstCon);		// test code
-			System.out.println(firstCon);		// test code
-
 			steekTerugCon();
 		} else {
-
 			int firstMon = Opdrachten.shuffledMon.firstKey();
 
 			System.out.println(Opdrachten.monopolisten.getValue(firstMon));
 			doeOpdrachtMonopolist(firstMon,speler);
-			System.out.println(firstMon);		// test code
-			System.out.println(firstMon);		// test code
-
 			steekTerugMon();
 		}
 	}

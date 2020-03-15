@@ -9,6 +9,9 @@ import AntiMonopoly.View.VierSpelers.VierSpelersPresenter;
 import AntiMonopoly.View.VierSpelers.VierSpelersView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.WindowEvent;
 
 public class StartPresenter {
 
@@ -57,7 +60,24 @@ public class StartPresenter {
         // Vult de view met data uit model
     }
 
-    public static void addWindowEventHandlers () {
+    public void addWindowEventHandlers () {
+        view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Spel afsluiten");
+                alert.setContentText("Bent u zeker?");
+                alert.setTitle("Afsluiten");
+                alert.getButtonTypes().clear();
+                ButtonType nee = new ButtonType("Nee");
+                ButtonType ja = new ButtonType("Ja");
+                alert.getButtonTypes().addAll(nee,ja);
+                alert.showAndWait();
+                if(alert.getResult() == null || alert.getResult().equals(nee)) {
+                    windowEvent.consume();
+                }
+            }
+        });
         // Window event handlers (anon. inner klassen)
         // Koppeling via view.getScene().getWindow()
     }

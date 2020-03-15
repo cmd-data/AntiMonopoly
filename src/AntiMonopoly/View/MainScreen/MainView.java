@@ -365,7 +365,7 @@ public class MainView extends GridPane {
         this.gpm1 = new Label("Mons");
         this.gpm2 = new Button("Straat info");
         this.gpm3 = new Label("Grande Place");
-        this.gpm4 = new Label("€240");
+        this.gpm4 = new Label("€240k");
 
         //Grote Markt, Hasselt
         this.gm1 = new Label("Hasselt");

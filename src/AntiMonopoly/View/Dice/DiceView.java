@@ -4,10 +4,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 public class DiceView extends GridPane {
@@ -31,6 +28,7 @@ public class DiceView extends GridPane {
         rolButton = new Button("Rol");
         pane = new GridPane();
         rolButton.setPrefWidth(50);
+        pane.setStyle("-fx-background-color: black");
     }
 
     private void layoutNodes(){
@@ -38,10 +36,9 @@ public class DiceView extends GridPane {
         this.setHgap(10);
         this.setVgap(10);
 
-        this.add(die1,0,0);
+        this.add(die1,1,0);
         this.add(rolButton,0,1,2,1);
         GridPane.setHalignment(rolButton, HPos.CENTER);
-        pane.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     private void layoutNodes2() {
@@ -53,7 +50,6 @@ public class DiceView extends GridPane {
         this.add(die2,1,0);
         this.add(rolButton,0,1,2,1);
         GridPane.setHalignment(rolButton, HPos.CENTER);
-        pane.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public ImageView getDie1() { return die1; }

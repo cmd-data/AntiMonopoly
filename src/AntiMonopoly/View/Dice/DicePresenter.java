@@ -6,8 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 
 public class DicePresenter {
-    private static final String IMAGES_DICE = "/Dice";
 
+    private static final String IMAGE_PACKAGE = "/images";
     private Dice model;
     private DiceView view;
 
@@ -26,12 +26,12 @@ public class DicePresenter {
     }
 
     private void updateView() {
-        view.getDie1().setImage(new Image( "/Dice/die" + Dice.getWorp1() + ".png"));
+        view.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp1() + ".png"));
     }
 
     private void updateView2() {
-        view.getDie1().setImage(new Image("/Dice/die" + Dice.getWorp2()[0] + ".png"));
-        view.getDie2().setImage(new Image("/Dice/die" + Dice.getWorp2()[10] + ".png"));
+        view.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[0] + ".png"));
+        view.getDie2().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[1] + ".png"));
     }
 
     private void addEventHandlers(){

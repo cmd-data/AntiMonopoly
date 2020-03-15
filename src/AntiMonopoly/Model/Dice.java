@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Dice {
 
-	private static int worp1;
-	private static int[] worp2;
+	private static int worp1 = 1;
+	private static int[] worp2 = {1,1};
 	private static boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
 
 	public Dice() {}

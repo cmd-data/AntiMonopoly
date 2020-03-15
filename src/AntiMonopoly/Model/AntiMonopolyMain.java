@@ -34,7 +34,7 @@ public class AntiMonopolyMain {
                             tegel.tegelMethode(tegel, speler);
 
                             System.out.println("Tegel: " + tegel.getNaam());                   // test code
-                            System.out.println(tegel.getPositie());                          // test code
+                            System.out.println("Tegel positie: " + tegel.getPositie());        // test code
                             System.out.println("Geld na beurt: " + speler.getGeld());          // test code
 
                             if (!Dice.isIsDubbel()) {

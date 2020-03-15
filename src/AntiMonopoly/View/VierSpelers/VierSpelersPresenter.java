@@ -29,7 +29,7 @@ public class VierSpelersPresenter {
             @Override
             public void handle(ActionEvent event) {
                 MainMetPionView mainView = new MainMetPionView();
-                MainMetPionPresenter mainMetPionPresenterain = new MainMetPionPresenter(model, mainView);
+                MainMetPionPresenter mainMetPionPresenter = new MainMetPionPresenter(model, mainView);
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
