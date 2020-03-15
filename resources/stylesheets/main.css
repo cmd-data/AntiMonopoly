@@ -14,13 +14,17 @@
 
 #ms,#cs {
 
-    -fx-background-image: url('/images/kaart.png');
+    -fx-background-image: url('/images/Main/kaart.png');
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
     -fx-alignment: center;
     -fx-spacing: 20px;
     -fx-font: 20px Tahoma;
     -fx-font-weight: bold;
+}
+
+#ag {
+    -fx-background-image: url('/images/Main/antiMonopolyAchtergrond.jpg');
 }
 
 #rg,#ds,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#s1,
@@ -71,4 +75,6 @@
 #ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1 {
     -fx-background-color: black;
 }
+
+
 

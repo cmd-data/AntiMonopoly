@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="commons-lang3-3.9-bin">
+    <ANNOTATIONS>
+      <root url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" />
+    </SOURCES>
+    <jarDirectory url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" recursive="false" />
+    <jarDirectory url="jar://C:/Program Files/Java/jdk-11.0.4/lib/commons-lang3-3.9-bin.zip!/" recursive="false" type="SOURCES" />
+  </library>
+</component>

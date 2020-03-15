@@ -9,7 +9,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="cmu_time_awb" level="application" />
-    <orderEntry type="library" name="javafx-swt" level="application" />
     <orderEntry type="library" name="commons-collections4-4.4-javadoc" level="application" />
+    <orderEntry type="library" name="javafx-swt" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.9-bin" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.9" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.9-sources" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.9-tests" level="project" />
+    <orderEntry type="library" name="commons-collections4-4.1" level="project" />
   </component>
 </module>

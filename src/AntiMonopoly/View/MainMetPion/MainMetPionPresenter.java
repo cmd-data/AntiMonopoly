@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -21,6 +22,7 @@ public class MainMetPionPresenter {
 
     private AntiMonopolyMain model;
     private MainMetPionView view;
+    private int count = 0 ;
 
 
 
@@ -573,22 +575,52 @@ public class MainMetPionPresenter {
 
         //Aanpassingen aan het aanbrengen
 
+
+
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Dice.rollDice();
-                TranslateTransition transition1 = new TranslateTransition();
-                transition1.setNode(view.getRectangle1());
-                transition1.setDuration(Duration.seconds(1));
-                transition1.setByX((Dice.getWorp2()[0] + Dice.getWorp2()[1]) * 150);
-                //transition1.setCycleCount(Timeline.INDEFINITE);
-                transition1.setInterpolator(Interpolator.EASE_BOTH);
-                transition1.play();
-                //updateView();
+
+                final Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                VBox dialogVBox = new VBox();
+                dialog.setTitle("Worp");
+                Button button = new Button("Zet Pion");
+                count = count++;                                                                            //counter werkt niet
+                Label label = new Label(String.valueOf(count));
+                dialogVBox.getChildren().addAll(new Text(String.valueOf(Dice.rollDice())), button, label);
+                Scene dialogScene = new Scene(dialogVBox,300,250);
+                dialogVBox.setAlignment(Pos.CENTER);
+                dialogVBox.setSpacing(10);
+                dialogVBox.setStyle("-fx-font: 20px Tahoma");
+                dialog.setScene(dialogScene);
+                dialog.show();
+
+
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        if(view.getRectangle1().getX()<1500) {                                          //if voorwaarde werkt niet
+                            for (int i = 0; i < (Dice.getWorp2()[0] + Dice.getWorp2()[1]); i++) {       //For lus werkt niet
+                                TranslateTransition transition1 = new TranslateTransition();
+                                transition1.setNode(view.getRectangle1());
+                                transition1.setDuration(Duration.seconds(1));
+                                transition1.setByX(150);
+                                //transition1.setCycleCount(Timeline.INDEFINITE);
+                                transition1.setInterpolator(Interpolator.EASE_BOTH);
+                                transition1.play();
+                                updateView();
+                            }
+                        }
+                    }
+                });
+
+
             }
         });
     }
-    
+
 
     public void addWindowEventHandlers() {
 
@@ -598,5 +630,9 @@ public class MainMetPionPresenter {
     private void updateView() {
         //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
         // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
+    }
+
+    public int getCount() {
+        return count;
     }
 }

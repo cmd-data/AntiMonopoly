@@ -1,0 +1,7 @@
+#as {
+    -fx-pref-height: 300px;
+    -fx-pref-width: 500px;
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+    -fx-font: 30px Tahoma;
+}
