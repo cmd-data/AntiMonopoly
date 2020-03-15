@@ -35,30 +35,44 @@ public class Spel {
 	public static void maakSpelers () {
 		boolean speler1 = false, speler2 = false, speler3 = false, speler4 = false;
 
-		if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
-			speler1 = true;
-		}
-		if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
-			speler2 = true;
-		}
-		if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
-			speler3 = true;
-		}
-		if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())){
-			speler4 = true;
-		}
-
 		String aantalSpelers = StartView.getAs2().getSelectionModel().getSelectedItem();
 		switch (aantalSpelers){
 
 			case "2":
+				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+					speler1 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+					speler2 = true;
+				}
 				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
 				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
 			case "3":
+				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+					speler1 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+					speler2 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
+					speler3 = true;
+				}
 				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
 				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
 				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
 			case "4":
+				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+					speler1 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+					speler2 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
+					speler3 = true;
+				}
+				if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())){
+					speler4 = true;
+				}
 				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
 				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
 				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
