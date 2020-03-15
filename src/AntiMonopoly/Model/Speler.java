@@ -1,5 +1,7 @@
 package AntiMonopoly.Model;
 
+import javafx.scene.shape.Rectangle;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +16,7 @@ public class Speler {
 	private boolean failliet;
 	private String pion;
 
-	public Speler(String naam, boolean isConcurrent, String pion) {
+	public Speler(String naam, boolean isConcurrent, Rectangle rectangle) {
 		this.naam = naam;
 		this.isConcurrent = isConcurrent;
 		this.pion = pion;

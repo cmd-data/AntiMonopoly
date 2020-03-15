@@ -1,5 +1,8 @@
 package AntiMonopoly.Model;
 
+import AntiMonopoly.View.MainMetPion.MainMetPionView;
+import AntiMonopoly.View.StartScreen.StartView;
+import AntiMonopoly.View.VierSpelers.VierSpelersView;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
@@ -29,8 +32,44 @@ public class Spel {
 	 * Vereisten aantal concurrenten en monopolisten nog toevoegen
 	 */
 
-	public void maakSpelers () {
-		Scanner kb = new Scanner(System.in);
+	public static void maakSpelers () {
+		boolean speler1 = false, speler2 = false, speler3 = false, speler4 = false;
+
+		if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+			speler1 = true;
+		}
+		if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+			speler2 = true;
+		}
+		if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
+			speler3 = true;
+		}
+		if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())){
+			speler4 = true;
+		}
+
+		String aantalSpelers = StartView.getAs2().getSelectionModel().getSelectedItem();
+		switch (aantalSpelers){
+
+			case "2":
+				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
+				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
+			case "3":
+				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
+				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
+				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
+			case "4":
+				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
+				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
+				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
+				spelers.add(new Speler(VierSpelersView.getVs9().getText(), speler4, MainMetPionView.getRectangle4()));
+		}
+
+
+
+		Collections.shuffle(spelers);                    // spelers worden direct na creatie geshuffeld
+
+		/*Scanner kb = new Scanner(System.in);
 		List<String> kleuren = new ArrayList<>();
 
 		for (int i = 1; i < 5; i++) {
@@ -73,7 +112,7 @@ public class Spel {
 				}
 			}
 		}
-		kb.close();
+		kb.close();*/
 	}
 
 

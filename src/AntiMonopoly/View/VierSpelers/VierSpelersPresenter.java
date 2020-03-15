@@ -1,6 +1,7 @@
 package AntiMonopoly.View.VierSpelers;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
+import AntiMonopoly.Model.Spel;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import AntiMonopoly.View.MainScreen.MainPresenter;
@@ -33,7 +34,7 @@ public class VierSpelersPresenter {
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
-
+                Spel.maakSpelers();
             }
         });
     }

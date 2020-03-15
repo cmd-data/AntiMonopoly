@@ -51,7 +51,7 @@ public class Straat extends Tegel {
 		return false;
 	}
 
-	public void koopStraat(Speler speler, Straat straat){
+	public static void koopStraat(Speler speler, Straat straat){
 
 		if (speler.getGeld()<straat.prijs){
 			System.out.println("Niet genoeg geld");

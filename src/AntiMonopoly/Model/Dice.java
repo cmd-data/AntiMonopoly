@@ -8,6 +8,7 @@ public class Dice {
 	private static int worp1 = 1;
 	private static int[] worp2 = {1,1};
 	private static boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
+	private static int count = 0;
 
 	public Dice() {}
 
@@ -33,7 +34,17 @@ public class Dice {
 		if(worp2[0]==worp2[1]){
 			Dice.isDubbel = true;
 		}
+		if(!isIsDubbel()){
+			count++;
+			counterCheck();
+		}
 		return Arrays.stream(worp2).sum();
+	}
+
+	public static void counterCheck(){
+		if(count > Spel.getSpelers().size()){
+			count = 0;
+		}
 	}
 
 	public static int getWorp1() {

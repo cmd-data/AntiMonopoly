@@ -18,8 +18,8 @@ import javafx.scene.layout.VBox;
 public class VierSpelersView extends GridPane {
 
     private Label vs1,vs2,vs3,vs4,vs5;
-    private TextField vs6,vs7,vs8,vs9;
-    private ComboBox<String> vs10,vs11,vs12,vs13;
+    private static TextField vs6,vs7,vs8,vs9;
+    private static ComboBox<String> vs10,vs11,vs12,vs13;
     private Button vs14;
     private VBox vierSpelers;
 
@@ -28,33 +28,33 @@ public class VierSpelersView extends GridPane {
         this.layoutNodes();
     }
     private void initialiseNodes() {
-        this.vs1 = new Label("Geef de namen van de drie spelers in: ");
+        this.vs1 = new Label("Geef de namen van de vier spelers in: ");
         //Speler1
         this.vs2 = new Label("Naam speler 1: ");
-        this.vs6 = new TextField();
-        this.vs10 = new ComboBox<>();
+        vs6 = new TextField();
+        vs10 = new ComboBox<>();
         ObservableList<String> deTweeSpelers =
                 FXCollections.observableArrayList("Monopolist","Concurrent");
-        this.vs10.setItems(deTweeSpelers);
-        this.vs10.getSelectionModel().select(0);
+        vs10.setItems(deTweeSpelers);
+        vs10.getSelectionModel().select(0);
         //Speler2
         this.vs3 = new Label("Naam speler 2: ");
-        this.vs7 = new TextField();
-        this.vs11 = new ComboBox<>();
-        this.vs11.setItems(deTweeSpelers);
-        this.vs11.getSelectionModel().select(0);
+        vs7 = new TextField();
+        vs11 = new ComboBox<>();
+        vs11.setItems(deTweeSpelers);
+        vs11.getSelectionModel().select(0);
         //Speler3
         this.vs4 = new Label("Naam speler 3: ");
-        this.vs8 = new TextField();
-        this.vs12 = new ComboBox<>();
-        this.vs12.setItems(deTweeSpelers);
-        this.vs12.getSelectionModel().select(0);
+        vs8 = new TextField();
+        vs12 = new ComboBox<>();
+        vs12.setItems(deTweeSpelers);
+        vs12.getSelectionModel().select(0);
         //Speler4
         this.vs5 = new Label("Naam speler 4: ");
-        this.vs9 = new TextField();
-        this.vs13 = new ComboBox<>();
-        this.vs13.setItems(deTweeSpelers);
-        this.vs13.getSelectionModel().select(0);
+        vs9 = new TextField();
+        vs13 = new ComboBox<>();
+        vs13.setItems(deTweeSpelers);
+        vs13.getSelectionModel().select(0);
         //Knop
         this.vs14 = new Button("OK");
     }
@@ -69,35 +69,35 @@ public class VierSpelersView extends GridPane {
         return vs14;
     }
 
-    public TextField getVs6() {
+    public static TextField getVs6() {
         return vs6;
     }
 
-    public TextField getVs7() {
+    public static TextField getVs7() {
         return vs7;
     }
 
-    public TextField getVs8() {
+    public static TextField getVs8() {
         return vs8;
     }
 
-    public TextField getVs9() {
+    public static TextField getVs9() {
         return vs9;
     }
 
-    public ComboBox<String> getVs10() {
+    public static ComboBox<String> getVs10() {
         return vs10;
     }
 
-    public ComboBox<String> getVs11() {
+    public static ComboBox<String> getVs11() {
         return vs11;
     }
 
-    public ComboBox<String> getVs12() {
+    public static ComboBox<String> getVs12() {
         return vs12;
     }
 
-    public ComboBox<String> getVs13() {
+    public static ComboBox<String> getVs13() {
         return vs13;
     }
 }

@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 public class MainMetPionView extends Group {
     private Canvas canvas;
     private MainView mainView;
-    private Rectangle rectangle1, rectangle2;
+    private static Rectangle rectangle1, rectangle2, rectangle3, rectangle4;
     private DiceView diceView;
 
     public  MainMetPionView() {
@@ -26,12 +26,12 @@ public class MainMetPionView extends Group {
 
     private void initialiseNodes() {
         this.canvas = new Canvas(1500,1000);
-        this.rectangle1 = new Rectangle(100, 100, 20, 20);
-        this.rectangle1.setFill(Color.VIOLET);
-        this.rectangle2 = new Rectangle(100, 70, 20, 20);
-        this.rectangle2.setFill(Color.GRAY);
+        rectangle1 = new Rectangle(100, 100, 20, 20);
+        rectangle1.setFill(Color.VIOLET);
+        rectangle2 = new Rectangle(100, 70, 20, 20);
+        rectangle2.setFill(Color.GRAY);
         this.mainView = new MainView();
-        this.rectangle1.toFront();
+        rectangle1.toFront();
         this.diceView = new DiceView(2);
         this.diceView.setLayoutX(750);
         this.diceView.setLayoutY(500);
@@ -58,11 +58,15 @@ public class MainMetPionView extends Group {
         return diceView;
     }
 
-    public Rectangle getRectangle1() {
+    public static Rectangle getRectangle1() {
         return rectangle1;
     }
 
-    public Rectangle getRectangle2() {
+    public static Rectangle getRectangle2() {
         return rectangle2;
     }
+
+    public static Rectangle getRectangle3() { return rectangle3; }
+
+    public static Rectangle getRectangle4() { return rectangle4; }
 }

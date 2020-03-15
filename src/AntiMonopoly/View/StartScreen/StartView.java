@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class StartView extends GridPane {
 
     private Label as1;
-    private ComboBox<String> as2;
+    private static ComboBox<String> as2;
     private Button as3;
     private VBox aantalSpelers;
 
@@ -24,11 +24,11 @@ public class StartView extends GridPane {
 
     private void initialiseNodes() {
         this.as1 = new Label("Geef het aantal spelers in: ");
-        this.as2 = new ComboBox<>();
+        as2 = new ComboBox<>();
         ObservableList<String> hetAantalSpelers =
                 FXCollections.observableArrayList("2","3","4");
-        this.as2.setItems(hetAantalSpelers);
-        this.as2.getSelectionModel().select(0);
+        as2.setItems(hetAantalSpelers);
+        as2.getSelectionModel().select(0);
         this.as3 = new Button("OK");
     }
 
@@ -43,7 +43,7 @@ public class StartView extends GridPane {
         return as3;
     }
 
-    public ComboBox<String> getAs2() {
+    public static ComboBox<String> getAs2() {
         return as2;
     }
 

@@ -632,7 +632,7 @@ public class MainMetPionPresenter {
 
     private void updateView() {
         //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
-        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
+        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[1] + ".png"*/));
     }
 
     public int getCount() {

@@ -34,7 +34,7 @@ public class Tegel {
 
 				if (Boolean.parseBoolean(input)){
 					if (tegel instanceof Straat){
-						((Straat) tegel).koopStraat(speler,(Straat) tegel);
+						  Straat.koopStraat(speler,(Straat) tegel);
 					}
 					if (tegel instanceof Transport){
 						((Transport) tegel).koopTransportbedrijf(speler,(Transport) tegel);
