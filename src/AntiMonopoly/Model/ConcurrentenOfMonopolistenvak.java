@@ -23,19 +23,24 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @param speler
 	 */
 
-	public static void voerUit(Speler speler){
+	public static String zieKaart (Speler speler){											// activeren met 'trek kaart'
 
 		if (speler.getIsConcurrent()){
-			int firstCon = Opdrachten.shuffledCon.firstKey();
+			return Opdrachten.concurrenten.getValue(Opdrachten.shuffledCon.firstKey());
+		} else {
+			return Opdrachten.monopolisten.getValue(Opdrachten.shuffledMon.firstKey());
+		}
+	}
 
-			System.out.println(Opdrachten.concurrenten.getValue(firstCon));
-			doeOpdrachtConcurrent(firstCon,speler);
+	public static void voerUit(Speler speler){												// activeren met knop 'OK' op de kaart
+
+		if (speler.getIsConcurrent()){
+
+			doeOpdrachtConcurrent(Opdrachten.shuffledCon.firstKey(),speler);
 			steekTerugCon();
 		} else {
-			int firstMon = Opdrachten.shuffledMon.firstKey();
 
-			System.out.println(Opdrachten.monopolisten.getValue(firstMon));
-			doeOpdrachtMonopolist(firstMon,speler);
+			doeOpdrachtMonopolist(Opdrachten.shuffledMon.firstKey(),speler);
 			steekTerugMon();
 		}
 	}
@@ -61,6 +66,13 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		}
 		Opdrachten.setShuffledCon(rotatedCon);
 	}
+
+	/**
+	 * Alle move methoden nog linken met pion op spelbord (zowel voor monopolist als concurrent)
+	 * @param opdracht
+	 * @param speler
+	 * @return
+	 */
 
 	public static Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch (opdracht) {

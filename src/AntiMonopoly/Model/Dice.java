@@ -55,6 +55,10 @@ public class Dice {
 		return worp2;
 	}
 
+	public static int getCount() { return count; }
+
+	public static void setCount(int count) { Dice.count += count; }
+
 	public static boolean isIsDubbel() { return isDubbel; }
 
 	public static void setIsDubbel(boolean isDubbel) { Dice.isDubbel = isDubbel; }
