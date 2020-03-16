@@ -21,10 +21,12 @@ public class Spel {
 	private Spelbord spelbord = new Spelbord();
 	private Spelregels spelregels = new Spelregels();
 	private static MultiValuedMap<Tegel,Speler> posities = new ArrayListValuedHashMap<>();
+	static int positie;
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
-		posities.putAll(Spelbord.getTegels().get(0),spelers);                                      // elke speler op start positie plaatsen (mag geen passeer start generereren)
+		posities.putAll(Spelbord.getTegels().get(0),spelers);
+		// elke speler op start positie plaatsen (mag geen passeer start genereren)
 	}
 
 	/**
@@ -154,17 +156,18 @@ public class Spel {
 	 */
 
 	public static Tegel move(Speler speler, int worp){
-		int positie = 0;
 
-		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
-			if (speler.equals(entry.getValue())) {
-				if (entry.getKey().getPositie() + worp > 39){
-					positie = worp - (39-entry.getKey().getPositie()) -1;
-				} else {
-					positie = entry.getKey().getPositie() + worp;
+		try {
+			for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
+				if (entry.getValue().equals(speler)) {
+					if (entry.getKey().getPositie() + worp > 39) {
+						positie = worp - (39 - entry.getKey().getPositie()) - 1;
+					} else {
+						positie = entry.getKey().getPositie() + worp;
+					}
 				}
 			}
-		}
+		} catch (NullPointerException ignored) {}
 
 		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
 		posities.values().remove(speler);
@@ -185,13 +188,16 @@ public class Spel {
 	 */
 
 	public static void checkPasseerStart(Speler speler, Tegel tegel) {
-		for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
-			if (speler.equals(entry.getValue())) {
-				if(tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
-					speler.setGeld(200000);
+
+		try {
+			for (Map.Entry<Tegel, Speler> entry : posities.entries()) {
+				if (entry.getValue().equals(speler)) {
+					if (tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
+						speler.setGeld(200000);
+					}
 				}
 			}
-		}
+		} catch (NullPointerException ignored) {}
 	}
 
 	public static Boolean checkGevangenis(Speler speler){

@@ -4,7 +4,7 @@ package AntiMonopoly.Model;
 import java.time.LocalDateTime;
 
 public class AntiMonopolyMain {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         //test1
 
@@ -52,7 +52,7 @@ public class AntiMonopolyMain {
             }
         }
 
-        System.out.printf("Einde spel\nDe winnaar is: %s");
+        System.out.printf("Einde spel\nDe winnaar is: %s"); */
 
         /** Verloop van het spel:
          *
@@ -94,5 +94,5 @@ public class AntiMonopolyMain {
 
 
 
-    }
+
 }

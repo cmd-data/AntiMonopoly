@@ -48,7 +48,7 @@ public class DicePresenter {
         view.getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Dice.rollDice();
+                //Dice.rollDice();
                 updateView2();
             }
         });

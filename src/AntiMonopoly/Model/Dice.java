@@ -42,7 +42,7 @@ public class Dice {
 	}
 
 	public static void counterCheck(){
-		if(count > Spel.getSpelers().size()){
+		if(count == Spel.getSpelers().size()){
 			count = 0;
 		}
 	}
