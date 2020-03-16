@@ -9,15 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 
@@ -632,7 +629,7 @@ public class MainMetPionPresenter {
 
     private void updateView() {
         //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
-        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[1] + ".png"*/));
+        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
     }
 
     public int getCount() {

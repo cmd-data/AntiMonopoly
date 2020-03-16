@@ -22,7 +22,7 @@ public class Speler {
 		this.pion = pion;
 	}
 
-	public Speler() {	}
+	public Speler(String naam1, boolean isConcurrent1, String pion1) {	}
 
 	public boolean isAanZet() {
 		return aanZet;

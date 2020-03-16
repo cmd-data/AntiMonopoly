@@ -1,23 +1,12 @@
 package AntiMonopoly.View.MainScreen;
 
-import AntiMonopoly.View.TweeSpelers.TweeSpelersView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 
 public class MainView extends GridPane {
-
-    private TweeSpelersView tweeSpelersView;
 
     //private Canvas canvas;
     //private Rectangle rectangle1, rectangle2;
@@ -255,10 +244,20 @@ public class MainView extends GridPane {
 
     //Spelersnamen invullen
     //Speler 1
-    private Label s1,s2,s3;
-    private TextField s4;
-    private ComboBox<String> s5;
+    private Label s11,s12;
     private VBox speler1;
+
+    //Speler 2
+    private Label s21,s22;
+    private VBox speler2;
+
+    //Speler 3
+    private Label s31,s32;
+    private VBox speler3;
+
+    //Speler 4
+    private Label s41,s42;
+    private VBox speler4;
 
     public MainView() {
         this.initialiseNodes();
@@ -516,17 +515,20 @@ public class MainView extends GridPane {
 
         //Spelersnamen
         //Speler 1
-        this.tweeSpelersView =new TweeSpelersView();
-        this.s1 = new Label(tweeSpelersView.getTs4().getText());
-        this.s2 = new Label("Geld: ");
-        this.s3 = new Label("Naam: ");
-        this.s4 = new TextField();
-        this.s5 = new ComboBox<>();
-        ObservableList<String> soortSpeler =
-                FXCollections.observableArrayList(
-                        "Concurrent","Monopolist");
-        this.s5.setItems(soortSpeler);
+        this.s11 = new Label();
+        this.s12 = new Label("Geld: ");
 
+        //Speler 2
+        this.s21 = new Label();
+        this.s22 = new Label("Geld: ");
+
+        //Speler 3
+        this.s31 = new Label();
+        this.s32 = new Label("Geld: ");
+
+        //Speler 4
+        this.s41 = new Label();
+        this.s42 = new Label("Geld: ");
 
         //this.dobbelen = new Button("Dobbelen");
     }
@@ -815,12 +817,34 @@ public class MainView extends GridPane {
         monopolistenTrekstapel.setRotate(-50);
 
         //Spelersnamen
+        //Speler1
         this.speler1 = new VBox();
-        //this.tweeSpelersView = new TweeSpelersView();
-        //s1.setText(tweeSpelersView.getTs4().getText());//werkt nog niet
-        speler1.getChildren().addAll(s1,s2,s3,s4,s5);
+        speler1.getChildren().addAll(s11,s12);
         this.add(speler1,11,1,2,2);
         speler1.setId("s1");
+
+        //Speler2
+        this.speler2 = new VBox();
+        speler2.getChildren().addAll(s21,s22);
+        this.add(speler2,11,3,2,2);
+        speler2.setId("s2");
+
+        //Speler3
+        //if(VierSpelersView.getVs8().getText() != null) {
+            this.speler3 = new VBox();
+            speler3.getChildren().addAll(s31, s32);
+            this.add(speler3, 11, 5, 2, 2);
+            speler3.setId("s3");
+        //}
+        //Speler4
+        //if(VierSpelersView.getVs9().getText() != null) {
+            this.speler4 = new VBox();
+            speler4.getChildren().addAll(s41, s42);
+            this.add(speler4, 11, 7, 2, 2);
+            speler4.setId("s4");
+       //}
+
+
 
 
 
@@ -970,4 +994,19 @@ public class MainView extends GridPane {
         return cs2;
     }
 
+    public Label getS11() {
+        return s11;
+    }
+
+    public Label getS21() {
+        return s21;
+    }
+
+    public Label getS31() {
+        return s31;
+    }
+
+    public Label getS41() {
+        return s41;
+    }
 }

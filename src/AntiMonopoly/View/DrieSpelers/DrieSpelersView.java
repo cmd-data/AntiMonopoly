@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class DrieSpelersView extends GridPane{
 
     private Label ds1,ds2,ds3,ds4;
-    private TextField ds5,ds6,ds7;
+    private static TextField ds5,ds6,ds7;
     private ComboBox<String> ds8,ds9,ds10;
     private Button ds11;
     private VBox drieSpelers;
@@ -59,15 +59,15 @@ public class DrieSpelersView extends GridPane{
         return ds11;
     }
 
-    public TextField getDs5() {
+    public static TextField getDs5() {
         return ds5;
     }
 
-    public TextField getDs6() {
+    public static TextField getDs6() {
         return ds6;
     }
 
-    public TextField getDs7() {
+    public static TextField getDs7() {
         return ds7;
     }
 

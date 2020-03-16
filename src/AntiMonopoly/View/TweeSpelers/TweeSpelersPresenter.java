@@ -1,10 +1,9 @@
 package AntiMonopoly.View.TweeSpelers;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
+import AntiMonopoly.Model.Spel;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
-import AntiMonopoly.View.MainScreen.MainPresenter;
-import AntiMonopoly.View.MainScreen.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -30,6 +29,14 @@ public class TweeSpelersPresenter {
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
+                mainView.getMainView().getS11().setText(TweeSpelersView.getTs4().getText());
+                mainView.getMainView().getS21().setText(TweeSpelersView.getTs5().getText());
+                Spel.maakSpelers();
+
+
+
+  //              Spel spel = new Spel(LocalDateTime.now());
+
 
             }
         });
@@ -37,7 +44,7 @@ public class TweeSpelersPresenter {
 
 
     private void updateView() {
-        // Vult de view met data uit model
+
     }
 
     public static void addWindowEventHandlers(){

@@ -576,7 +576,7 @@ public class MainPresenter {
 
 
     private void updateView() {
-        // Vult de view met data uit model
+
     }
 
     public static void addWindowEventHandlers() {

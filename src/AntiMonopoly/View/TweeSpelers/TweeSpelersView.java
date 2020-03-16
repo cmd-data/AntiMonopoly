@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class TweeSpelersView extends GridPane {
 
     private Label ts1,ts2,ts3;
-    private TextField ts4, ts5;
+    private static TextField ts4, ts5;
     private ComboBox<String> ts6,ts7;
     private Button ts8;
     private VBox tweeSpelers;
@@ -61,11 +61,11 @@ public class TweeSpelersView extends GridPane {
         return ts8;
     }
 
-    public TextField getTs4() {
+    public static TextField getTs4() {
         return ts4;
     }
 
-    public TextField getTs5() {
+    public static TextField getTs5() {
         return ts5;
     }
 

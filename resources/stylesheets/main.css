@@ -27,7 +27,7 @@
     -fx-background-image: url('/images/Main/antiMonopolyAchtergrond.jpg');
 }
 
-#rg,#ds,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#s1,
+#rg,#ds,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#s1,#s2,#s3,#s4,
 #bda,#m,#n,#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev{
     -fx-border-color: black;
     -fx-border-width: 1px;
@@ -72,7 +72,7 @@
     -fx-background-color: darkblue;
 }
 
-#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1 {
+#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1,#s2,#s3,#s4 {
     -fx-background-color: black;
 }
 

@@ -4,8 +4,6 @@ import AntiMonopoly.Model.AntiMonopolyMain;
 import AntiMonopoly.Model.Spel;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
-import AntiMonopoly.View.MainScreen.MainPresenter;
-import AntiMonopoly.View.MainScreen.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -16,6 +14,7 @@ import javafx.event.EventHandler;
 public class VierSpelersPresenter {
     private AntiMonopolyMain model;
     private VierSpelersView view;
+
 
     public VierSpelersPresenter(AntiMonopolyMain model, VierSpelersView view) {
         this.model = model;
@@ -34,6 +33,10 @@ public class VierSpelersPresenter {
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
+                mainView.getMainView().getS11().setText(VierSpelersView.getVs6().getText());
+                mainView.getMainView().getS21().setText(VierSpelersView.getVs7().getText());
+                mainView.getMainView().getS31().setText(VierSpelersView.getVs8().getText());
+                mainView.getMainView().getS41().setText(VierSpelersView.getVs9().getText());
                 Spel.maakSpelers();
             }
         });
