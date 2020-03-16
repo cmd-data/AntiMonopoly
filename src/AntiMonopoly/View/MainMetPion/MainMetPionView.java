@@ -27,14 +27,14 @@ public class MainMetPionView extends Group {
 
     private void initialiseNodes() {
         this.canvas = new Canvas(1500,1000);
-        this.rectangle1 = new Rectangle(130, 40, 10, 10);
-        this.rectangle1.setFill(Color.VIOLET);
-        this.rectangle2 = new Rectangle(130, 60, 10, 10);
-        this.rectangle2.setFill(Color.GRAY);
-        this.rectangle3 = new Rectangle(130, 80, 10, 10);
-        this.rectangle3.setFill(Color.ALICEBLUE);
-        this.rectangle4 = new Rectangle(130, 100, 10, 10);
-        this.rectangle4.setFill(Color.ORANGERED);
+        rectangle1 = new Rectangle(130, 40, 10, 10);
+        rectangle1.setFill(Color.VIOLET);
+        rectangle2 = new Rectangle(130, 60, 10, 10);
+        rectangle2.setFill(Color.GRAY);
+        rectangle3 = new Rectangle(130, 80, 10, 10);
+        rectangle3.setFill(Color.ALICEBLUE);
+        rectangle4 = new Rectangle(130, 100, 10, 10);
+        rectangle4.setFill(Color.ORANGERED);
         this.mainView = new MainView();
         //this.rectangle1.toFront();
         this.diceView = new DiceView(2);
@@ -45,10 +45,10 @@ public class MainMetPionView extends Group {
     private void layoutNodes() {
         this.getChildren().add(this.canvas);
         this.getChildren().add(this.mainView);
-        this.getChildren().add(this.rectangle1);
-        this.getChildren().add(this.rectangle2);
-        this.getChildren().add(this.rectangle3);
-        this.getChildren().add(this.rectangle4);
+        this.getChildren().add(rectangle1);
+        this.getChildren().add(rectangle2);
+        this.getChildren().add(rectangle3);
+        this.getChildren().add(rectangle4);
         this.getChildren().add(this.diceView);
 
     }

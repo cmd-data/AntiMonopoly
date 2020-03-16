@@ -24,11 +24,8 @@ public class Spel {
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
-		maakSpelers();
-		//posities.putAll(Spelbord.getTegels().get(0),spelers);     // elke speler op start positie plaatsen (mag geen passeer start generereren)
+		posities.putAll(Spelbord.getTegels().get(0),spelers);                                      // elke speler op start positie plaatsen (mag geen passeer start generereren)
 	}
-
-	public Spel(){}  // Constructor voor eenvoudig te kunnen testen in main
 
 	/**
 	 * Vereisten aantal concurrenten en monopolisten nog toevoegen

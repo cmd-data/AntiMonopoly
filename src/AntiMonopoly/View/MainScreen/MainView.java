@@ -514,19 +514,19 @@ public class MainView extends GridPane {
         //Spelersnamen
         //Speler 1
         this.s11 = new Label();
-        this.s12 = new Label("Geld: ");
+        this.s12 = new Label();
 
         //Speler 2
         this.s21 = new Label();
-        this.s22 = new Label("Geld: ");
+        this.s22 = new Label();
 
         //Speler 3
         this.s31 = new Label();
-        this.s32 = new Label("Geld: ");
+        this.s32 = new Label();
 
         //Speler 4
         this.s41 = new Label();
-        this.s42 = new Label("Geld: ");
+        this.s42 = new Label();
 
         //this.dobbelen = new Button("Dobbelen");
     }
@@ -997,5 +997,21 @@ public class MainView extends GridPane {
 
     public Label getS41() {
         return s41;
+    }
+
+    public Label getS12() {
+        return s12;
+    }
+
+    public Label getS22() {
+        return s22;
+    }
+
+    public Label getS32() {
+        return s32;
+    }
+
+    public Label getS42() {
+        return s42;
     }
 }

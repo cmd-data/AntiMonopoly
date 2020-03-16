@@ -7,6 +7,8 @@ import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.time.LocalDateTime;
+
 
 public class DrieSpelersPresenter {
     private AntiMonopolyMain model;
@@ -25,15 +27,19 @@ public class DrieSpelersPresenter {
             @Override
             public void handle(ActionEvent event) {
                 MainMetPionView mainView = new MainMetPionView();
-                MainMetPionPresenter mainMetPionPresenterain = new MainMetPionPresenter(model, mainView);
+                MainMetPionPresenter mainMetPionPresenter = new MainMetPionPresenter(model, mainView);
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
                 mainView.getMainView().getS11().setText(DrieSpelersView.getDs5().getText());
                 mainView.getMainView().getS21().setText(DrieSpelersView.getDs6().getText());
                 mainView.getMainView().getS31().setText(DrieSpelersView.getDs7().getText());
-                Spel.maakSpelers();
+                mainView.getMainView().getS12().setText("€1500000");
+                mainView.getMainView().getS22().setText("€1500000");
+                mainView.getMainView().getS32().setText("€1500000");
 
+                Spel.maakSpelers();
+                Spel spel = new Spel(LocalDateTime.now());
             }
         });
     }

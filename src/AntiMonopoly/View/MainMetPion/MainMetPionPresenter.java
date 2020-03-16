@@ -2,6 +2,7 @@ package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
 import AntiMonopoly.Model.Dice;
+import AntiMonopoly.Model.Spel;
 import AntiMonopoly.Model.Spelregels;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
@@ -580,7 +581,7 @@ public class MainMetPionPresenter {
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Dice.rollDice();
+                int worp = Dice.rollDice();
 
                 final Stage dialog = new Stage();
                 dialog.initModality(Modality.APPLICATION_MODAL);
@@ -588,7 +589,7 @@ public class MainMetPionPresenter {
                 dialog.setTitle("Worp");
                 Button button = new Button("Zet Pion");
                 Label label = new Label(String.valueOf(count));
-                dialogVBox.getChildren().addAll(new Text(String.valueOf(Dice.rollDice())), button, label);
+                dialogVBox.getChildren().addAll(new Text(String.valueOf(worp)), button, label);
                 Scene dialogScene = new Scene(dialogVBox, 300, 250);
                 dialogVBox.setAlignment(Pos.CENTER);
                 dialogVBox.setSpacing(10);
@@ -600,7 +601,9 @@ public class MainMetPionPresenter {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        switch (2) {
+                        int locatie = Spel.move(Spel.getSpelers().get(0),worp).getPositie();
+
+                        switch (locatie) {
 
                             case 0:
                                 TranslateTransition transition0 = new TranslateTransition();
@@ -1569,6 +1572,7 @@ public class MainMetPionPresenter {
     private void updateView() {
         //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
         // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
+        
     }
 
     public int getCount() {

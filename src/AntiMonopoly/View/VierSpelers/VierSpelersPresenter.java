@@ -7,6 +7,8 @@ import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Bram Verheyen
  * @version 1.0 13/03/2020 16:38
@@ -37,14 +39,20 @@ public class VierSpelersPresenter {
                 mainView.getMainView().getS21().setText(VierSpelersView.getVs7().getText());
                 mainView.getMainView().getS31().setText(VierSpelersView.getVs8().getText());
                 mainView.getMainView().getS41().setText(VierSpelersView.getVs9().getText());
+                mainView.getMainView().getS12().setText("€1500000");
+                mainView.getMainView().getS22().setText("€1500000");
+                mainView.getMainView().getS32().setText("€1500000");
+                mainView.getMainView().getS42().setText("€1500000");
+
                 Spel.maakSpelers();
+                Spel spel = new Spel(LocalDateTime.now());
             }
         });
     }
 
 
     private void updateView() {
-        // Vult de view met data uit model
+
     }
 
     public static void addWindowEventHandlers(){
