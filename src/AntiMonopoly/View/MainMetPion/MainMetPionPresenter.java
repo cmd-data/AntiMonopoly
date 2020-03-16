@@ -45,7 +45,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Grande");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
-                                new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"), new Button("Koop"));
+                                new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -65,7 +65,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Diestsestraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
-                                new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"), new Button("Koop"));
+                                new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -85,7 +85,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Steenstraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"),new Text("Huur: €10.000"),
-                                new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"), new Button("Koop"));
+                                new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -105,7 +105,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place Du Monument");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"),new Text("Huur: €10.000"),
-                                new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"), new Button("Koop"));
+                                new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -125,7 +125,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Kapellestraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €120.000"),new Text("Huur: €12.000"),
-                                new Text("Hypotheek: €60.000"), new Text("Huisprijs: €50.000"), new Button("Koop"));
+                                new Text("Hypotheek: €60.000"), new Text("Huisprijs: €50.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -145,7 +145,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue De Diekirch");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"),new Text("Huur: €14.000"),
-                                new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -165,7 +165,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Bruul");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"),new Text("Huur: €14.000"),
-                                new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -185,7 +185,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place Verte");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €160.000"),new Text("Huur: €16.000"),
-                                new Text("Hypotheek: €80.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €80.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -205,7 +205,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Lippenslaan");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"),new Text("Huur: €18.000"),
-                                new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -225,7 +225,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Royal");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"),new Text("Huur: €18.000"),
-                                new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -246,7 +246,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Groenplaats");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"),new Text("Huur: €20.000"),
-                                new Text("Hypotheek: €100.000"), new Text("Huisprijs: €100.000"), new Button("Koop"));
+                                new Text("Hypotheek: €100.000"), new Text("Huisprijs: €100.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -266,7 +266,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Saint Leonard");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"),new Text("Huur: €22.000"),
-                                new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -286,7 +286,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Lange Steenstraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"),new Text("Huur: €22.000"),
-                                new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -306,7 +306,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Grand Place");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €240.000"),new Text("Huur: €24.000"),
-                                new Text("Hypotheek: €120.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €120.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -326,7 +326,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Grote Markt");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"),new Text("Huur: €26.000"),
-                                new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -346,7 +346,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place De l'Ange");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"),new Text("Huur: €26.000"),
-                                new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -366,7 +366,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Hoogstraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €280.000"),new Text("Huur: €28.000"),
-                                new Text("Hypotheek: €140.000"), new Text("Huisprijs: €150.000"), new Button("Koop"));
+                                new Text("Hypotheek: €140.000"), new Text("Huisprijs: €150.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -386,7 +386,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Veldstraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"),new Text("Huur: €30.000"),
-                                new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"), new Button("Koop"));
+                                new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -406,7 +406,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Boulevard Tirou");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"),new Text("Huur: €30.000"),
-                                new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"), new Button("Koop"));
+                                new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -426,7 +426,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Boulevard d'Avroy");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €320.000"),new Text("Huur: €32.000"),
-                                new Text("Hypotheek: €160.000"), new Text("Huisprijs: €200.000"), new Button("Koop"));
+                                new Text("Hypotheek: €160.000"), new Text("Huisprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -446,7 +446,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Meir");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €350.000"),new Text("Huur: €35.000"),
-                                new Text("Hypotheek: €175.000"), new Text("Huisprijs: €200.000"), new Button("Koop"));
+                                new Text("Hypotheek: €175.000"), new Text("Huisprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -466,7 +466,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Nieuwstraat");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €400.000"),new Text("Huur: €40.000"),
-                                new Text("Hypotheek: €200.000"), new Text("Huisprijs: €200.000"), new Button("Koop"));
+                                new Text("Hypotheek: €200.000"), new Text("Huisprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -486,7 +486,7 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Noord Station");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"), new Button("Koop"));
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -505,7 +505,7 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Zuid Station");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"), new Button("Koop"));
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -524,7 +524,7 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Oost Station");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"), new Button("Koop"));
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
@@ -543,7 +543,7 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("West Station");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"), new Button("Koop"));
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
                         Scene dialogScene = new Scene(dialogVBox,300,250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
