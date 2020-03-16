@@ -44,8 +44,8 @@ public class Spel {
 				if ("Concurrent".equals(TweeSpelersView.getTs7().getSelectionModel().getSelectedItem())){
 					speler2 = true;
 				}
-				spelers.add(new Speler(TweeSpelersView.getTs4().getText(), speler1 , MainMetPionView.getRectangle1()));
-				spelers.add(new Speler(TweeSpelersView.getTs5().getText(), speler2, MainMetPionView.getRectangle2()));
+				spelers.add(new Speler(TweeSpelersView.getTs4().getText(), speler1 , "grey square"));
+				spelers.add(new Speler(TweeSpelersView.getTs5().getText(), speler2, "pink square"));
 				break;
 			case "3":
 				if ("Concurrent".equals(DrieSpelersView.getDs8().getSelectionModel().getSelectedItem())){
@@ -57,9 +57,9 @@ public class Spel {
 				if ("Concurrent".equals(DrieSpelersView.getDs10().getSelectionModel().getSelectedItem())){
 					speler3 = true;
 				}
-				spelers.add(new Speler(DrieSpelersView.getDs5().getText(), speler1 , MainMetPionView.getRectangle1()));
-				spelers.add(new Speler(DrieSpelersView.getDs6().getText(), speler2, MainMetPionView.getRectangle2()));
-				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, MainMetPionView.getRectangle3()));
+				spelers.add(new Speler(DrieSpelersView.getDs5().getText(), speler1 , "grey square"));
+				spelers.add(new Speler(DrieSpelersView.getDs6().getText(), speler2, "pink square"));
+				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, "red square"));
 				break;
 			case "4":
 				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
@@ -74,10 +74,10 @@ public class Spel {
 				if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())){
 					speler4 = true;
 				}
-				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
-				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
-				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
-				spelers.add(new Speler(VierSpelersView.getVs9().getText(), speler4, MainMetPionView.getRectangle4()));
+				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , "grey square"));
+				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, "pink square"));
+				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, "red square"));
+				spelers.add(new Speler(VierSpelersView.getVs9().getText(), speler4, "white square"));
 				break;
 		}
 

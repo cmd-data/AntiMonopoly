@@ -16,13 +16,11 @@ public class Speler {
 	private boolean failliet;
 	private String pion;
 
-	public Speler(String naam, boolean isConcurrent, Rectangle rectangle) {
+	public Speler(String naam, boolean isConcurrent, String pion) {
 		this.naam = naam;
 		this.isConcurrent = isConcurrent;
 		this.pion = pion;
 	}
-
-	public Speler(String naam1, boolean isConcurrent1, String pion1) {	}
 
 	public boolean isAanZet() {
 		return aanZet;
