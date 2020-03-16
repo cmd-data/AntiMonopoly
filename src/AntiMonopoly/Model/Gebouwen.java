@@ -23,7 +23,7 @@ public class Gebouwen {
 
 	public Gebouwen(){}
 
-	public void koopHuis(Straat straat, Huis huis, int aantal, Speler speler) {
+	public static void koopHuis(Straat straat, Huis huis, int aantal, Speler speler) {
 
 		if (speler.getIsConcurrent()) {
 			while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisCon()) {
@@ -50,7 +50,7 @@ public class Gebouwen {
 		}
 	}
 
-	public void koopHotel(Straat straat, Hotel hotel, Speler speler){
+	public static void koopHotel(Straat straat, Hotel hotel, Speler speler){
 		int aantalHuizen = straat.getAantalGebouwen();
 
 		if(speler.getIsConcurrent()){

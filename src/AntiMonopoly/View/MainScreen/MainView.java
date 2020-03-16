@@ -1,18 +1,9 @@
 package AntiMonopoly.View.MainScreen;
 
-import AntiMonopoly.View.MainMetPion.MainMetPionView;
-import com.sun.tools.javadoc.Main;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
-import java.awt.*;
 
 
 public class MainView extends GridPane {

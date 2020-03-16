@@ -1,9 +1,6 @@
 package AntiMonopoly.View.MainMetPion;
 
-import AntiMonopoly.Model.AntiMonopolyMain;
-import AntiMonopoly.Model.Dice;
-import AntiMonopoly.Model.Spel;
-import AntiMonopoly.Model.Spelregels;
+import AntiMonopoly.Model.*;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -639,18 +636,61 @@ public class MainMetPionPresenter {
                                 transition1.setInterpolator(Interpolator.EASE_BOTH);
                                 transition1.play();
 
-                                final Stage dialog1 = new Stage();
-                                dialog1.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox1 = new VBox();
-                                dialog1.setTitle("Rue Grande");
-                                dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
-                                        new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
-                                Scene dialogScene1 = new Scene(dialogVBox1,300,250);
-                                dialogVBox1.setAlignment(Pos.CENTER);
-                                dialogVBox1.setSpacing(10);
-                                dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                dialog1.setScene(dialogScene1);
-                                dialog1.show();
+                                if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(1))){
+                                    final Stage dialog1 = new Stage();
+                                    dialog1.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox1 = new VBox();
+                                    dialog1.setTitle("Rue Grande");
+                                    Button button1 = new Button("Koop");
+                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
+                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1);
+                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                    dialogVBox1.setAlignment(Pos.CENTER);
+                                    dialogVBox1.setSpacing(10);
+                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                    dialog1.setScene(dialogScene1);
+                                    dialog1.show();
+
+                                    button1.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                           Tegel.koopEigendom(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+                                        }
+                                    });
+                                }
+
+                                if(!Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    final Stage dialog1 = new Stage();
+                                    dialog1.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox1 = new VBox();
+                                    dialog1.setTitle("Rue Grande");
+                                    Button button1 = new Button("Betaal huur");
+                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
+                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1);
+                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                    dialogVBox1.setAlignment(Pos.CENTER);
+                                    dialogVBox1.setSpacing(10);
+                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                    dialog1.setScene(dialogScene1);
+                                    dialog1.show();
+                                }
+
+                                if(Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    final Stage dialog1 = new Stage();
+                                    dialog1.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox1 = new VBox();
+                                    dialog1.setTitle("Rue Grande");
+                                    Button button1 = new Button("Bouw huis");
+                                    Button button2 = new Button("Bouw hotel");
+                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
+                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1,button2);
+                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                    dialogVBox1.setAlignment(Pos.CENTER);
+                                    dialogVBox1.setSpacing(10);
+                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                    dialog1.setScene(dialogScene1);
+                                    dialog1.show();
+                                }
 
                                 break;
 

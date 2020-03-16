@@ -60,7 +60,7 @@ public class Tegel {
 
 	public void kopen(){}
 
-	public void koopEigendom (Tegel tegel, Speler speler){
+	public static void koopEigendom (Tegel tegel, Speler speler){
 
 		if (tegel instanceof Straat){
 			Straat.koopStraat(speler,(Straat) tegel);
@@ -83,7 +83,7 @@ public class Tegel {
 		return tegel instanceof GasEnElektriciteitsbedrijf;
 	}
 
-	public boolean heeftEigenaar(Tegel tegel){
+	public static boolean heeftEigenaar(Tegel tegel){
 		if(tegel instanceof Straat){
 			return (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar() !=null);
 		}
