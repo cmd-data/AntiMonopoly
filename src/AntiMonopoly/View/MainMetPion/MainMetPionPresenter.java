@@ -601,6 +601,7 @@ public class MainMetPionPresenter {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
                         int locatie = Spel.move(Spel.getSpelers().get(0),worp).getPositie();
 
                         switch (locatie) {
@@ -609,8 +610,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition0 = new TranslateTransition();
                                 transition0.setNode(MainMetPionView.getRectangle1());
                                 transition0.setDuration(Duration.seconds(1));
-                                transition0.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition0.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition0.setToX(0);
+                                transition0.setToY(0);
                                 //transition0.setCycleCount(Timeline.INDEFINITE);
                                 transition0.setInterpolator(Interpolator.EASE_BOTH);
                                 transition0.play();
@@ -632,9 +633,9 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition1 = new TranslateTransition();
                                 transition1.setNode(MainMetPionView.getRectangle1());
                                 transition1.setDuration(Duration.seconds(1));
-                                transition1.setByX(-MainMetPionView.getRectangle1().getX()+130+150);
-                                transition1.setByY(-MainMetPionView.getRectangle1().getY()+40);
-                               //transition1.setCycleCount(Timeline.INDEFINITE);
+                                transition1.setToX(150);
+                                transition1.setToY(0);
+                                //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition1.setInterpolator(Interpolator.EASE_BOTH);
                                 transition1.play();
 
@@ -657,8 +658,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition2 = new TranslateTransition();
                                 transition2.setNode(MainMetPionView.getRectangle1());
                                 transition2.setDuration(Duration.seconds(1));
-                                transition2.setByX(-MainMetPionView.getRectangle1().getX()+130+ 2*150);
-                                transition2.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition2.setToX(2*150);
+                                transition2.setToY(0);
                                 //transition2.setCycleCount(Timeline.INDEFINITE);
                                 transition2.setInterpolator(Interpolator.EASE_BOTH);
                                 transition2.play();
@@ -675,14 +676,21 @@ public class MainMetPionPresenter {
                                 dialogVBox2.setStyle("-fx-font: 20px Tahoma");
                                 dialog2.setScene(dialogScene2);
                                 dialog2.show();
+
+                                button2.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog2.close();
+                                    }
+                                });
                                 break;
 
                             case 3:
                                 TranslateTransition transition3 = new TranslateTransition();
                                 transition3.setNode(MainMetPionView.getRectangle1());
                                 transition3.setDuration(Duration.seconds(1));
-                                transition3.setByX(-MainMetPionView.getRectangle1().getX()+130+ 3*150);
-                                transition3.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition3.setToX(3*150);
+                                transition3.setToY(0);
                                 //transition3.setCycleCount(Timeline.INDEFINITE);
                                 transition3.setInterpolator(Interpolator.EASE_BOTH);
                                 transition3.play();
@@ -705,8 +713,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition4 = new TranslateTransition();
                                 transition4.setNode(MainMetPionView.getRectangle1());
                                 transition4.setDuration(Duration.seconds(1));
-                                transition4.setByX(-MainMetPionView.getRectangle1().getX()+130+ 4*150);
-                                transition4.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition4.setToX(4*150);
+                                transition4.setToY(0);
                                 //transition4.setCycleCount(Timeline.INDEFINITE);
                                 transition4.setInterpolator(Interpolator.EASE_BOTH);
                                 transition4.play();
@@ -729,8 +737,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition5 = new TranslateTransition();
                                 transition5.setNode(MainMetPionView.getRectangle1());
                                 transition5.setDuration(Duration.seconds(1));
-                                transition5.setByX(-MainMetPionView.getRectangle1().getX()+130+ 5*150);
-                                transition5.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition5.setToX(5*150);
+                                transition5.setToY(0);
                                 //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition5.setInterpolator(Interpolator.EASE_BOTH);
                                 transition5.play();
@@ -752,8 +760,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition6 = new TranslateTransition();
                                 transition6.setNode(MainMetPionView.getRectangle1());
                                 transition6.setDuration(Duration.seconds(1));
-                                transition6.setByX(-MainMetPionView.getRectangle1().getX()+130+ 6*150);
-                                transition6.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition6.setToX(6*150);
+                                transition6.setToY(0);
                                 //transition6.setCycleCount(Timeline.INDEFINITE);
                                 transition6.setInterpolator(Interpolator.EASE_BOTH);
                                 transition6.play();
@@ -776,8 +784,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition7 = new TranslateTransition();
                                 transition7.setNode(MainMetPionView.getRectangle1());
                                 transition7.setDuration(Duration.seconds(1));
-                                transition7.setByX(-MainMetPionView.getRectangle1().getX()+130+ 7*150);
-                                transition7.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition7.setToX(7*150);
+                                transition7.setToY(0);
                                 //transition7.setCycleCount(Timeline.INDEFINITE);
                                 transition7.setInterpolator(Interpolator.EASE_BOTH);
                                 transition7.play();
@@ -794,6 +802,13 @@ public class MainMetPionPresenter {
                                 dialogVBox7.setStyle("-fx-font: 20px Tahoma");
                                 dialog7.setScene(dialogScene7);
                                 dialog7.show();
+
+                                button7.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog7.close();
+                                    }
+                                });
                                 break;
 
 
@@ -801,8 +816,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition8 = new TranslateTransition();
                                 transition8.setNode(MainMetPionView.getRectangle1());
                                 transition8.setDuration(Duration.seconds(1));
-                                transition8.setByX(-MainMetPionView.getRectangle1().getX()+130+ 8*150);
-                                transition8.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition8.setToX(8*150);
+                                transition8.setToY(0);
                                 //transition8.setCycleCount(Timeline.INDEFINITE);
                                 transition8.setInterpolator(Interpolator.EASE_BOTH);
                                 transition8.play();
@@ -825,8 +840,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition9 = new TranslateTransition();
                                 transition9.setNode(MainMetPionView.getRectangle1());
                                 transition9.setDuration(Duration.seconds(1));
-                                transition9.setByX(-MainMetPionView.getRectangle1().getX()+130+ 9*150);
-                                transition9.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition9.setToX(9*150);
+                                transition9.setToY(0);
                                 //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition9.setInterpolator(Interpolator.EASE_BOTH);
                                 transition9.play();
@@ -849,8 +864,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition10 = new TranslateTransition();
                                 transition10.setNode(MainMetPionView.getRectangle1());
                                 transition10.setDuration(Duration.seconds(1));
-                                transition10.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition10.setByY(-MainMetPionView.getRectangle1().getY()+40);
+                                transition10.setToX(10*150);
+                                transition10.setToY(0);
                                 //transition10.setCycleCount(Timeline.INDEFINITE);
                                 transition10.setInterpolator(Interpolator.EASE_BOTH);
                                 transition10.play();
@@ -872,8 +887,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition11 = new TranslateTransition();
                                 transition11.setNode(MainMetPionView.getRectangle1());
                                 transition11.setDuration(Duration.seconds(1));
-                                transition11.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition11.setByY(-MainMetPionView.getRectangle1().getY()+40 + 90);
+                                transition11.setToX(10*150);
+                                transition11.setToY(90);
                                 //transition11.setCycleCount(Timeline.INDEFINITE);
                                 transition11.setInterpolator(Interpolator.EASE_BOTH);
                                 transition11.play();
@@ -896,8 +911,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition12 = new TranslateTransition();
                                 transition12.setNode(MainMetPionView.getRectangle1());
                                 transition12.setDuration(Duration.seconds(1));
-                                transition12.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition12.setByY(-MainMetPionView.getRectangle1().getY()+40 + 2*90);
+                                transition12.setToX(10*150);
+                                transition12.setToY(2 * 90);
                                 //transition12.setCycleCount(Timeline.INDEFINITE);
                                 transition12.setInterpolator(Interpolator.EASE_BOTH);
                                 transition12.play();
@@ -922,8 +937,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition13 = new TranslateTransition();
                                 transition13.setNode(MainMetPionView.getRectangle1());
                                 transition13.setDuration(Duration.seconds(1));
-                                transition13.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition13.setByY(-MainMetPionView.getRectangle1().getY()+40 + 3*90);
+                                transition13.setToX(10*150);
+                                transition13.setToY(3 * 90);
                                 //transition13.setCycleCount(Timeline.INDEFINITE);
                                 transition13.setInterpolator(Interpolator.EASE_BOTH);
                                 transition13.play();
@@ -946,8 +961,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition14 = new TranslateTransition();
                                 transition14.setNode(MainMetPionView.getRectangle1());
                                 transition14.setDuration(Duration.seconds(1));
-                                transition14.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition14.setByY(-MainMetPionView.getRectangle1().getY()+40 +4*90);
+                                transition14.setToX(10*150);
+                                transition14.setToY(4 * 90);
                                 //transition14.setCycleCount(Timeline.INDEFINITE);
                                 transition14.setInterpolator(Interpolator.EASE_BOTH);
                                 transition14.play();
@@ -970,8 +985,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition15 = new TranslateTransition();
                                 transition15.setNode(MainMetPionView.getRectangle1());
                                 transition15.setDuration(Duration.seconds(1));
-                                transition15.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition15.setByY(-MainMetPionView.getRectangle1().getY()+40 + 5*90);
+                                transition15.setToX(10*150);
+                                transition15.setToY(5 * 90);
                                 //transition15.setCycleCount(Timeline.INDEFINITE);
                                 transition15.setInterpolator(Interpolator.EASE_BOTH);
                                 transition15.play();
@@ -993,8 +1008,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition16 = new TranslateTransition();
                                 transition16.setNode(MainMetPionView.getRectangle1());
                                 transition16.setDuration(Duration.seconds(1));
-                                transition16.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition16.setByY(-MainMetPionView.getRectangle1().getY()+40 + 6*90);
+                                transition16.setToX(10*150);
+                                transition16.setToY(6 * 90);
                                 //transition16.setCycleCount(Timeline.INDEFINITE);
                                 transition16.setInterpolator(Interpolator.EASE_BOTH);
                                 transition16.play();
@@ -1017,8 +1032,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition17 = new TranslateTransition();
                                 transition17.setNode(MainMetPionView.getRectangle1());
                                 transition17.setDuration(Duration.seconds(1));
-                                transition17.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition17.setByY(-MainMetPionView.getRectangle1().getY()+40 + 7*90);
+                                transition17.setToX(10*150);
+                                transition17.setToY(7 * 90);
                                 //transition17.setCycleCount(Timeline.INDEFINITE);
                                 transition17.setInterpolator(Interpolator.EASE_BOTH);
                                 transition17.play();
@@ -1035,14 +1050,21 @@ public class MainMetPionPresenter {
                                 dialogVBox17.setStyle("-fx-font: 20px Tahoma");
                                 dialog17.setScene(dialogScene17);
                                 dialog17.show();
+
+                                button17.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog17.close();
+                                    }
+                                });
                                 break;
 
                             case 18:
                                 TranslateTransition transition18 = new TranslateTransition();
                                 transition18.setNode(MainMetPionView.getRectangle1());
                                 transition18.setDuration(Duration.seconds(1));
-                                transition18.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition18.setByY(-MainMetPionView.getRectangle1().getY()+40 +8*90);
+                                transition18.setToX(10*150);
+                                transition18.setToY(8 * 90);
                                 //transition18.setCycleCount(Timeline.INDEFINITE);
                                 transition18.setInterpolator(Interpolator.EASE_BOTH);
                                 transition18.play();
@@ -1065,8 +1087,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition19 = new TranslateTransition();
                                 transition19.setNode(MainMetPionView.getRectangle1());
                                 transition19.setDuration(Duration.seconds(1));
-                                transition19.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition19.setByY(-MainMetPionView.getRectangle1().getY()+40 +9*90);
+                                transition19.setToX(10*150);
+                                transition19.setToY(9 * 90);
                                 //transition19.setCycleCount(Timeline.INDEFINITE);
                                 transition19.setInterpolator(Interpolator.EASE_BOTH);
                                 transition19.play();
@@ -1089,8 +1111,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition20 = new TranslateTransition();
                                 transition20.setNode(MainMetPionView.getRectangle1());
                                 transition20.setDuration(Duration.seconds(1));
-                                transition20.setByX(-MainMetPionView.getRectangle1().getX()+130+ 10*150);
-                                transition20.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition20.setToX(10*150);
+                                transition20.setToY(10 * 90);
                                 //transition20.setCycleCount(Timeline.INDEFINITE);
                                 transition20.setInterpolator(Interpolator.EASE_BOTH);
                                 transition20.play();
@@ -1116,8 +1138,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition21 = new TranslateTransition();
                                 transition21.setNode(MainMetPionView.getRectangle1());
                                 transition21.setDuration(Duration.seconds(1));
-                                transition21.setByX(-MainMetPionView.getRectangle1().getX()+130+ 9*150);
-                                transition21.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition21.setToX(9*150);
+                                transition21.setToY(10 * 90);
                                 //transition21.setCycleCount(Timeline.INDEFINITE);
                                 transition21.setInterpolator(Interpolator.EASE_BOTH);
                                 transition21.play();
@@ -1140,8 +1162,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition22 = new TranslateTransition();
                                 transition22.setNode(MainMetPionView.getRectangle1());
                                 transition22.setDuration(Duration.seconds(1));
-                                transition22.setByX(-MainMetPionView.getRectangle1().getX()+130+ 8*150);
-                                transition22.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition22.setToX(8*150);
+                                transition22.setToY(10 * 90);
                                 //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition22.setInterpolator(Interpolator.EASE_BOTH);
                                 transition22.play();
@@ -1158,14 +1180,21 @@ public class MainMetPionPresenter {
                                 dialogVBox22.setStyle("-fx-font: 20px Tahoma");
                                 dialog22.setScene(dialogScene22);
                                 dialog22.show();
+
+                                button22.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog22.close();
+                                    }
+                                });
                                 break;
 
                             case 23:
                                 TranslateTransition transition23= new TranslateTransition();
                                 transition23.setNode(MainMetPionView.getRectangle1());
                                 transition23.setDuration(Duration.seconds(1));
-                                transition23.setByX(-MainMetPionView.getRectangle1().getX()+130+ 7*150);
-                                transition23.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition23.setToX(7*150);
+                                transition23.setToY(10 * 90);
                                 //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition23.setInterpolator(Interpolator.EASE_BOTH);
                                 transition23.play();
@@ -1188,8 +1217,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition24 = new TranslateTransition();
                                 transition24.setNode(MainMetPionView.getRectangle1());
                                 transition24.setDuration(Duration.seconds(1));
-                                transition24.setByX(-MainMetPionView.getRectangle1().getX()+130+ 6*150);
-                                transition24.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition24.setToX(6*150);;
+                                transition24.setToY(10 * 90);
                                 //transition24.setCycleCount(Timeline.INDEFINITE);
                                 transition24.setInterpolator(Interpolator.EASE_BOTH);
                                 transition24.play();
@@ -1212,8 +1241,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition25 = new TranslateTransition();
                                 transition25.setNode(MainMetPionView.getRectangle1());
                                 transition25.setDuration(Duration.seconds(1));
-                                transition25.setByX(-MainMetPionView.getRectangle1().getX()+130+ 5*150);
-                                transition25.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition25.setToX(5*150);
+                                transition25.setToY(10 * 90);
                                 //transition25.setCycleCount(Timeline.INDEFINITE);
                                 transition25.setInterpolator(Interpolator.EASE_BOTH);
                                 transition25.play();
@@ -1235,8 +1264,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition26 = new TranslateTransition();
                                 transition26.setNode(MainMetPionView.getRectangle1());
                                 transition26.setDuration(Duration.seconds(1));
-                                transition26.setByX(-MainMetPionView.getRectangle1().getX()+130+ 4*150);
-                                transition26.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition26.setToX(4*150);
+                                transition26.setToY(10 * 90);
                                 //transition26.setCycleCount(Timeline.INDEFINITE);
                                 transition26.setInterpolator(Interpolator.EASE_BOTH);
                                 transition26.play();
@@ -1259,8 +1288,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition27 = new TranslateTransition();
                                 transition27.setNode(MainMetPionView.getRectangle1());
                                 transition27.setDuration(Duration.seconds(1));
-                                transition27.setByX(-MainMetPionView.getRectangle1().getX()+130+ 3*150);
-                                transition27.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition27.setToX(3*150);
+                                transition27.setToY(10 * 90);
                                 //transition27.setCycleCount(Timeline.INDEFINITE);
                                 transition27.setInterpolator(Interpolator.EASE_BOTH);
                                 transition27.play();
@@ -1283,8 +1312,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition28 = new TranslateTransition();
                                 transition28.setNode(MainMetPionView.getRectangle1());
                                 transition28.setDuration(Duration.seconds(1));
-                                transition28.setByX(-MainMetPionView.getRectangle1().getX()+130+ 2*150);
-                                transition28.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition28.setToX(2*150);
+                                transition28.setToY(10 * 90);
                                 //transition28.setCycleCount(Timeline.INDEFINITE);
                                 transition28.setInterpolator(Interpolator.EASE_BOTH);
                                 transition28.play();
@@ -1309,8 +1338,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition29 = new TranslateTransition();
                                 transition29.setNode(MainMetPionView.getRectangle1());
                                 transition29.setDuration(Duration.seconds(1));
-                                transition29.setByX(-MainMetPionView.getRectangle1().getX()+130+ 1*150);
-                                transition29.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition29.setToX(150);
+                                transition29.setToY(10 * 90);
                                 //transition1.setCycleCount(Timeline.INDEFINITE);
                                 transition29.setInterpolator(Interpolator.EASE_BOTH);
                                 transition29.play();
@@ -1333,8 +1362,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition30 = new TranslateTransition();
                                 transition30.setNode(MainMetPionView.getRectangle1());
                                 transition30.setDuration(Duration.seconds(1));
-                                transition30.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition30.setByY(-MainMetPionView.getRectangle1().getY()+40 + 10*90);
+                                transition30.setToX(0);
+                                transition30.setToY(10 * 90);
                                 //transition30.setCycleCount(Timeline.INDEFINITE);
                                 transition30.setInterpolator(Interpolator.EASE_BOTH);
                                 transition30.play();
@@ -1344,8 +1373,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition31 = new TranslateTransition();
                                 transition31.setNode(MainMetPionView.getRectangle1());
                                 transition31.setDuration(Duration.seconds(1));
-                                transition31.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition31.setByY(-MainMetPionView.getRectangle1().getY()+40 + 9*90);
+                                transition31.setToX(0);
+                                transition31.setToY(9 * 90);
                                 //transition31.setCycleCount(Timeline.INDEFINITE);
                                 transition31.setInterpolator(Interpolator.EASE_BOTH);
                                 transition31.play();
@@ -1368,8 +1397,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition32 = new TranslateTransition();
                                 transition32.setNode(MainMetPionView.getRectangle1());
                                 transition32.setDuration(Duration.seconds(1));
-                                transition32.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition32.setByY(-MainMetPionView.getRectangle1().getY()+40 + 8*90);
+                                transition32.setToX(0);
+                                transition32.setToY(8 * 90);
                                 //transition32.setCycleCount(Timeline.INDEFINITE);
                                 transition32.setInterpolator(Interpolator.EASE_BOTH);
                                 transition32.play();
@@ -1392,8 +1421,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition33 = new TranslateTransition();
                                 transition33.setNode(MainMetPionView.getRectangle1());
                                 transition33.setDuration(Duration.seconds(1));
-                                transition33.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition33.setByY(-MainMetPionView.getRectangle1().getY()+40 + 7*90);
+                                transition33.setToX(0);
+                                transition33.setToY(7 * 90);
                                 //transition33.setCycleCount(Timeline.INDEFINITE);
                                 transition33.setInterpolator(Interpolator.EASE_BOTH);
                                 transition33.play();
@@ -1410,14 +1439,21 @@ public class MainMetPionPresenter {
                                 dialogVBox33.setStyle("-fx-font: 20px Tahoma");
                                 dialog33.setScene(dialogScene33);
                                 dialog33.show();
+
+                                button33.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog33.close();
+                                    }
+                                });
                                 break;
 
                             case 34:
                                 TranslateTransition transition34 = new TranslateTransition();
                                 transition34.setNode(MainMetPionView.getRectangle1());
                                 transition34.setDuration(Duration.seconds(1));
-                                transition34.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition34.setByY(-MainMetPionView.getRectangle1().getY()+40 + 6*90);
+                                transition34.setToX(0);
+                                transition34.setToY(6 * 90);
                                 //transition34.setCycleCount(Timeline.INDEFINITE);
                                 transition34.setInterpolator(Interpolator.EASE_BOTH);
                                 transition34.play();
@@ -1440,8 +1476,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition35 = new TranslateTransition();
                                 transition35.setNode(MainMetPionView.getRectangle1());
                                 transition35.setDuration(Duration.seconds(1));
-                                transition35.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition35.setByY(-MainMetPionView.getRectangle1().getY()+40 + 5*90);
+                                transition35.setToX(0);
+                                transition35.setToY(5 * 90);
                                 //transition35.setCycleCount(Timeline.INDEFINITE);
                                 transition35.setInterpolator(Interpolator.EASE_BOTH);
                                 transition35.play();
@@ -1463,8 +1499,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition36 = new TranslateTransition();
                                 transition36.setNode(MainMetPionView.getRectangle1());
                                 transition36.setDuration(Duration.seconds(1));
-                                transition36.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition36.setByY(-MainMetPionView.getRectangle1().getY()+40 + 4*90);
+                                transition36.setToX(0);
+                                transition36.setToY(4 * 90);
                                 //transition36.setCycleCount(Timeline.INDEFINITE);
                                 transition36.setInterpolator(Interpolator.EASE_BOTH);
                                 transition36.play();
@@ -1481,14 +1517,21 @@ public class MainMetPionPresenter {
                                 dialogVBox36.setStyle("-fx-font: 20px Tahoma");
                                 dialog36.setScene(dialogScene36);
                                 dialog36.show();
+
+                                button36.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog36.close();
+                                    }
+                                });
                                 break;
 
                             case 37:
                                 TranslateTransition transition37 = new TranslateTransition();
                                 transition37.setNode(MainMetPionView.getRectangle1());
                                 transition37.setDuration(Duration.seconds(1));
-                                transition37.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition37.setByY(-MainMetPionView.getRectangle1().getY()+40 + 3*90);
+                                transition37.setToX(0);
+                                transition37.setToY(3 * 90);
                                 //transition37.setCycleCount(Timeline.INDEFINITE);
                                 transition37.setInterpolator(Interpolator.EASE_BOTH);
                                 transition37.play();
@@ -1511,8 +1554,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition38 = new TranslateTransition();
                                 transition38.setNode(MainMetPionView.getRectangle1());
                                 transition38.setDuration(Duration.seconds(1));
-                                transition38.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition38.setByY(-MainMetPionView.getRectangle1().getY()+40 + 2*90);
+                                transition38.setToX(0);
+                                transition38.setToY(2 * 90);
                                 //transition38.setCycleCount(Timeline.INDEFINITE);
                                 transition38.setInterpolator(Interpolator.EASE_BOTH);
                                 transition38.play();
@@ -1535,8 +1578,8 @@ public class MainMetPionPresenter {
                                 TranslateTransition transition39 = new TranslateTransition();
                                 transition39.setNode(MainMetPionView.getRectangle1());
                                 transition39.setDuration(Duration.seconds(1));
-                                transition39.setByX(-MainMetPionView.getRectangle1().getX()+130);
-                                transition39.setByY(-MainMetPionView.getRectangle1().getY()+40 + 1*90);
+                                transition39.setToX(0);
+                                transition39.setToY(90);
                                 //transition39.setCycleCount(Timeline.INDEFINITE);
                                 transition39.setInterpolator(Interpolator.EASE_BOTH);
                                 transition39.play();

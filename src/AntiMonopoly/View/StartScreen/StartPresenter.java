@@ -60,7 +60,7 @@ public class StartPresenter {
         // Vult de view met data uit model
     }
 
-    public void addWindowEventHandlers () {
+    public void addWindowEventHandlers () {                                                 // melding als je spel wilt afsluiten
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
