@@ -13,7 +13,7 @@ public class TweeSpelersView extends GridPane {
 
     private Label ts1,ts2,ts3;
     private static TextField ts4, ts5;
-    private ComboBox<String> ts6,ts7;
+    private static ComboBox<String> ts6,ts7;
     private Button ts8;
     private VBox tweeSpelers;
 
@@ -26,18 +26,18 @@ public class TweeSpelersView extends GridPane {
         this.ts1 = new Label("Geef de namen van de twee spelers in: ");
         //Speler1
         this.ts2 = new Label("Naam speler 1: ");
-        this.ts4 = new TextField();
-        this.ts6 = new ComboBox<>();
+        ts4 = new TextField();
+        ts6 = new ComboBox<>();
         ObservableList<String> deTweeSpelers =
                 FXCollections.observableArrayList("Monopolist","Concurrent");
-        this.ts6.setItems(deTweeSpelers);
-        this.ts6.getSelectionModel().select(0);
+        ts6.setItems(deTweeSpelers);
+        ts6.getSelectionModel().select(0);
         //speler2
         this.ts3 = new Label("Naam speler 2: ");
-        this.ts5 = new TextField();
-        this.ts7 = new ComboBox<>();
-        this.ts7.setItems(deTweeSpelers);
-        this.ts7.getSelectionModel().select(0);
+        ts5 = new TextField();
+        ts7 = new ComboBox<>();
+        ts7.setItems(deTweeSpelers);
+        ts7.getSelectionModel().select(0);
         //knop
         this.ts8 = new Button("OK");
     }
@@ -49,11 +49,11 @@ public class TweeSpelersView extends GridPane {
         tweeSpelers.setId("ts");
     }
 
-    public ComboBox<String> getTs6() {
+    public static ComboBox<String> getTs6() {
         return ts6;
     }
 
-    public ComboBox<String> getTs7() {
+    public static ComboBox<String> getTs7() {
         return ts7;
     }
 

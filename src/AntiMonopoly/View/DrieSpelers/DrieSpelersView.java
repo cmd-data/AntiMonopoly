@@ -13,7 +13,7 @@ public class DrieSpelersView extends GridPane{
 
     private Label ds1,ds2,ds3,ds4;
     private static TextField ds5,ds6,ds7;
-    private ComboBox<String> ds8,ds9,ds10;
+    private static ComboBox<String> ds8,ds9,ds10;
     private Button ds11;
     private VBox drieSpelers;
 
@@ -26,24 +26,24 @@ public class DrieSpelersView extends GridPane{
         this.ds1 = new Label("Geef de namen van de drie spelers in: ");
         //Speler1
         this.ds2 = new Label("Naam speler 1: ");
-        this.ds5 = new TextField();
-        this.ds8 = new ComboBox<>();
+        ds5 = new TextField();
+        ds8 = new ComboBox<>();
         ObservableList<String> deTweeSpelers =
                 FXCollections.observableArrayList("Monopolist","Concurrent");
-        this.ds8.setItems(deTweeSpelers);
-        this.ds8.getSelectionModel().select(0);
+        ds8.setItems(deTweeSpelers);
+        ds8.getSelectionModel().select(0);
         //Speler2
         this.ds3 = new Label("Naam speler 2: ");
-        this.ds6 = new TextField();
-        this.ds9 = new ComboBox<>();
-        this.ds9.setItems(deTweeSpelers);
-        this.ds9.getSelectionModel().select(0);
+        ds6 = new TextField();
+        ds9 = new ComboBox<>();
+        ds9.setItems(deTweeSpelers);
+        ds9.getSelectionModel().select(0);
         //Speler3
         this.ds4 = new Label("Naam speler 3: ");
-        this.ds7 = new TextField();
-        this.ds10 = new ComboBox<>();
-        this.ds10.setItems(deTweeSpelers);
-        this.ds10.getSelectionModel().select(0);
+        ds7 = new TextField();
+        ds10 = new ComboBox<>();
+        ds10.setItems(deTweeSpelers);
+        ds10.getSelectionModel().select(0);
         //Knop
         this.ds11 = new Button("OK");
     }
@@ -71,15 +71,15 @@ public class DrieSpelersView extends GridPane{
         return ds7;
     }
 
-    public ComboBox<String> getDs8() {
+    public static ComboBox<String> getDs8() {
         return ds8;
     }
 
-    public ComboBox<String> getDs9() {
+    public static ComboBox<String> getDs9() {
         return ds9;
     }
 
-    public ComboBox<String> getDs10() {
+    public static ComboBox<String> getDs10() {
         return ds10;
     }
 }

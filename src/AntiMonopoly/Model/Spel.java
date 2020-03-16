@@ -1,7 +1,9 @@
 package AntiMonopoly.Model;
 
+import AntiMonopoly.View.DrieSpelers.DrieSpelersView;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import AntiMonopoly.View.StartScreen.StartView;
+import AntiMonopoly.View.TweeSpelers.TweeSpelersView;
 import AntiMonopoly.View.VierSpelers.VierSpelersView;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
@@ -39,27 +41,27 @@ public class Spel {
 		switch (aantalSpelers){
 
 			case "2":
-				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(TweeSpelersView.getTs6().getSelectionModel().getSelectedItem())){
 					speler1 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(TweeSpelersView.getTs7().getSelectionModel().getSelectedItem())){
 					speler2 = true;
 				}
-				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
-				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
+				spelers.add(new Speler(TweeSpelersView.getTs4().getText(), speler1 , MainMetPionView.getRectangle1()));
+				spelers.add(new Speler(TweeSpelersView.getTs5().getText(), speler2, MainMetPionView.getRectangle2()));
 			case "3":
-				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs8().getSelectionModel().getSelectedItem())){
 					speler1 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs9().getSelectionModel().getSelectedItem())){
 					speler2 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs10().getSelectionModel().getSelectedItem())){
 					speler3 = true;
 				}
-				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1 , MainMetPionView.getRectangle1()));
-				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
-				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
+				spelers.add(new Speler(DrieSpelersView.getDs5().getText(), speler1 , MainMetPionView.getRectangle1()));
+				spelers.add(new Speler(DrieSpelersView.getDs6().getText(), speler2, MainMetPionView.getRectangle2()));
+				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, MainMetPionView.getRectangle3()));
 			case "4":
 				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
 					speler1 = true;
