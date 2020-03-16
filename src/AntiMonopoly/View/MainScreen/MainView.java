@@ -1,5 +1,6 @@
 package AntiMonopoly.View.MainScreen;
 
+import AntiMonopoly.Model.Spel;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -829,20 +830,17 @@ public class MainView extends GridPane {
         this.add(speler2,11,3,2,2);
         speler2.setId("s2");
 
-        //Speler3
-        //if(VierSpelersView.getVs8().getText() != null) {
-            this.speler3 = new VBox();
-            speler3.getChildren().addAll(s31, s32);
-            this.add(speler3, 11, 5, 2, 2);
-            speler3.setId("s3");
-        //}
-        //Speler4
-        //if(VierSpelersView.getVs9().getText() != null) {
-            this.speler4 = new VBox();
-            speler4.getChildren().addAll(s41, s42);
-            this.add(speler4, 11, 7, 2, 2);
-            speler4.setId("s4");
-       //}
+        this.speler3 = new VBox();
+        speler3.getChildren().addAll(s31, s32);
+        this.add(speler3, 11, 5, 2, 2);
+        speler3.setId("s3");
+
+
+        this.speler4 = new VBox();
+        speler4.getChildren().addAll(s41, s42);
+        this.add(speler4, 11, 7, 2, 2);
+        speler4.setId("s4");
+
 
 
 

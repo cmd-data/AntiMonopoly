@@ -49,6 +49,7 @@ public class Spel {
 				}
 				spelers.add(new Speler(TweeSpelersView.getTs4().getText(), speler1 , MainMetPionView.getRectangle1()));
 				spelers.add(new Speler(TweeSpelersView.getTs5().getText(), speler2, MainMetPionView.getRectangle2()));
+				break;
 			case "3":
 				if ("Concurrent".equals(DrieSpelersView.getDs8().getSelectionModel().getSelectedItem())){
 					speler1 = true;
@@ -62,6 +63,7 @@ public class Spel {
 				spelers.add(new Speler(DrieSpelersView.getDs5().getText(), speler1 , MainMetPionView.getRectangle1()));
 				spelers.add(new Speler(DrieSpelersView.getDs6().getText(), speler2, MainMetPionView.getRectangle2()));
 				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, MainMetPionView.getRectangle3()));
+				break;
 			case "4":
 				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
 					speler1 = true;
@@ -79,6 +81,7 @@ public class Spel {
 				spelers.add(new Speler(VierSpelersView.getVs7().getText(), speler2, MainMetPionView.getRectangle2()));
 				spelers.add(new Speler(VierSpelersView.getVs8().getText(), speler3, MainMetPionView.getRectangle3()));
 				spelers.add(new Speler(VierSpelersView.getVs9().getText(), speler4, MainMetPionView.getRectangle4()));
+				break;
 		}
 
 
