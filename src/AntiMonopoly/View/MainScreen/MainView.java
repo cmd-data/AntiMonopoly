@@ -1,6 +1,5 @@
 package AntiMonopoly.View.MainScreen;
 
-import AntiMonopoly.Model.Spel;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -235,12 +234,10 @@ public class MainView extends GridPane {
     //Trekstapels
     //Monopolistenstapel
     private Label ms1;
-    private Button ms2;
     private VBox monopolistenTrekstapel;
 
     //Concurrententrekstapel
     private Label cs1;
-    private Button cs2;
     private VBox concurrentenTrekstapel;
 
     //Spelersnamen invullen
@@ -508,11 +505,11 @@ public class MainView extends GridPane {
         //Trekstapels
         //Monopolistentrekstapel
         this.ms1 = new Label("Monopolisten Kaarten");
-        this.ms2 = new Button("Trek Kaart");
+
 
         //Concurrententrekstapel
         this.cs1 = new Label("Concurrenten Kaarten");
-        this.cs2 = new Button("Trek Kaart");
+
 
         //Spelersnamen
         //Speler 1
@@ -805,14 +802,14 @@ public class MainView extends GridPane {
         //Trekkaarten
         //Monopolistenkaarten
         this.concurrentenTrekstapel = new VBox();
-        concurrentenTrekstapel.getChildren().addAll(cs1, cs2);
+        concurrentenTrekstapel.getChildren().addAll(cs1);
         this.add(concurrentenTrekstapel, 7, 7, 2, 2);
         concurrentenTrekstapel.setId("cs");
         concurrentenTrekstapel.setRotate(-50);
 
         //Concurentenkaarten
         this.monopolistenTrekstapel = new VBox();
-        monopolistenTrekstapel.getChildren().addAll(ms1, ms2);
+        monopolistenTrekstapel.getChildren().addAll(ms1);
         this.add(monopolistenTrekstapel, 2, 4, 2, 2);
         monopolistenTrekstapel.setId("ms");
         monopolistenTrekstapel.setRotate(-50);
@@ -984,13 +981,7 @@ public class MainView extends GridPane {
         return ws2;
     }
 
-    public Button getMs2() {
-        return ms2;
-    }
 
-    public Button getCs2() {
-        return cs2;
-    }
 
     public Label getS11() {
         return s11;
