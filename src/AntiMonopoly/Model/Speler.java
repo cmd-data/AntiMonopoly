@@ -15,11 +15,13 @@ public class Speler {
 	private boolean aanZet;
 	private boolean failliet;
 	private String pion;
+	private Rectangle rectangle;
 
-	public Speler(String naam, boolean isConcurrent, String pion) {
+	public Speler(String naam, boolean isConcurrent, Rectangle rectangle, String pion) {
 		this.naam = naam;
 		this.isConcurrent = isConcurrent;
 		this.pion = pion;
+		this.rectangle = rectangle;
 	}
 
 	public boolean isAanZet() {
@@ -109,4 +111,6 @@ public class Speler {
 	}//einde Methode
 
 	public String getPion() { return pion; }
+
+	public Rectangle getRectangle() { return rectangle; }
 }
