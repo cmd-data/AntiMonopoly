@@ -35,16 +35,18 @@ public class VierSpelersPresenter {
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
-                mainView.getMainView().getS11().setText(VierSpelersView.getVs6().getText());
-                mainView.getMainView().getS21().setText(VierSpelersView.getVs7().getText());
-                mainView.getMainView().getS31().setText(VierSpelersView.getVs8().getText());
-                mainView.getMainView().getS41().setText(VierSpelersView.getVs9().getText());
+
+                Spel.maakSpelers();
+
+                mainView.getMainView().getS11().setText(Spel.getSpelers().get(0).getNaam());
+                mainView.getMainView().getS21().setText(Spel.getSpelers().get(1).getNaam());
+                mainView.getMainView().getS31().setText(Spel.getSpelers().get(2).getNaam());
+                mainView.getMainView().getS41().setText(Spel.getSpelers().get(3).getNaam());
                 mainView.getMainView().getS12().setText("€1500000");
                 mainView.getMainView().getS22().setText("€1500000");
                 mainView.getMainView().getS32().setText("€1500000");
                 mainView.getMainView().getS42().setText("€1500000");
 
-                Spel.maakSpelers();
                 Spel spel = new Spel(LocalDateTime.now());
             }
         });

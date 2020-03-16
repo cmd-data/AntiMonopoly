@@ -82,6 +82,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				if (IntStream.of(Dice.rollDice()).sum() >= 8) {             // maakt som van gerolde dobbelstenen die in array zitten
 					speler.setGeld(75000);
 				}
+				Dice.setCount(-1);
 				break;
 			case 2:																// -25000 ??
 			case 21:
@@ -180,7 +181,11 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			case 6:
 			case 24:
 				speler.setGeld(25000); break;
-			case 8: if(IntStream.of(Dice.rollDice()).sum()>=9){speler.setGeld(75000);}break;
+			case 8: if(IntStream.of(Dice.rollDice()).sum()>=9) {
+				speler.setGeld(75000);
+			}
+			Dice.setCount(-1);
+			break;
 			case 10:
 			case 21:
 				speler.setGeld(-50000); break;

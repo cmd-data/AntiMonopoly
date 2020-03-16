@@ -31,7 +31,7 @@ public class Gevangenis extends Tegel {
 		if(Boolean.parseBoolean(reply)){
 			speler.setGeld(-boete);
 			gevangenen.remove(speler);
-			Dice.setCount(1);																		// counter omhoog als je boet betaald hebt
+			Dice.setCount(1);																		// counter omhoog als je boete betaald hebt
 		}
 		if(!Boolean.parseBoolean(reply)) {
 			int rol = Dice.rollDice();
