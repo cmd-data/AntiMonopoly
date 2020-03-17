@@ -689,6 +689,7 @@ public class MainMetPionPresenter {
                                             @Override
                                             public void handle(ActionEvent event) {
                                                 Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet);
+                                                dialog1.close();
                                             }
                                         });
                                     }
@@ -713,6 +714,7 @@ public class MainMetPionPresenter {
                                             @Override
                                             public void handle(ActionEvent actionEvent) {
                                                 Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet1);
+                                                dialog1.close();
                                             }
                                         });
                                     } else {
@@ -736,12 +738,14 @@ public class MainMetPionPresenter {
                                             @Override
                                             public void handle(ActionEvent actionEvent) {
                                                 Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(), 1, finalAanZet2); // nog combobox voor aantal
+                                                dialog1.close();
                                             }
                                         });
                                         button2.setOnAction(new EventHandler<ActionEvent>() {
                                             @Override
                                             public void handle(ActionEvent actionEvent) {
                                                 Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(),finalAanZet2);
+                                                dialog1.close();
                                             }
                                         });
                                     }
@@ -771,10 +775,32 @@ public class MainMetPionPresenter {
                                     dialog2.setScene(dialogScene2);
                                     dialog2.show();
 
+                                    Speler finalAanZet3 = aanZet;
                                     button2.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent actionEvent) {
                                             dialog2.close();
+
+                                            final Stage dialog = new Stage();
+                                            dialog.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox2 = new VBox();
+                                            dialog.setTitle("Opdracht");
+                                            Button button2 = new Button("OK");
+                                            dialogVBox2.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet3)), button2);
+                                            Scene dialogScene2 = new Scene(dialogVBox2, 300, 250);
+                                            dialogVBox2.setAlignment(Pos.CENTER);
+                                            dialogVBox2.setSpacing(10);
+                                            dialogVBox2.setStyle("-fx-font: 20px Tahoma");
+                                            dialog.setScene(dialogScene2);
+                                            dialog.show();
+
+                                            button2.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent actionEvent) {
+                                                    ConcurrentenOfMonopolistenvak.voerUit(finalAanZet3);
+                                                    dialog.close();
+                                                }
+                                            });
                                         }
                                     });
                                     break;
