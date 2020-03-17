@@ -4028,7 +4028,7 @@ public class MainMetPionPresenter {
 
                             case 26:
                                 TranslateTransition transition26 = new TranslateTransition();
-                                transition26.setNode(MainMetPionView.getRectangle1());
+                                transition26.setNode(pion);
                                 transition26.setDuration(Duration.seconds(1));
                                 transition26.setToX(4 * 150);
                                 transition26.setToY(10 * 90);
