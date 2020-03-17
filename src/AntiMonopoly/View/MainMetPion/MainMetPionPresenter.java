@@ -653,13 +653,22 @@ public class MainMetPionPresenter {
                                 dialog0.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox0 = new VBox();
                                 dialog0.setTitle("Start");
-                                dialogVBox0.getChildren().addAll(new Text("U staat op start."));
+                                Button button0 = new Button("OK");
+                                dialogVBox0.getChildren().addAll(new Text("U staat op start en ontvangt: \n€200.000"));
                                 Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
                                 dialogVBox0.setAlignment(Pos.CENTER);
                                 dialogVBox0.setSpacing(10);
                                 dialogVBox0.setStyle("-fx-font: 20px Tahoma");
                                 dialog0.setScene(dialogScene0);
                                 dialog0.show();
+
+                                button0.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog0.close();
+                                    }
+                                });
+
                                 break;
 
                             case 1:
@@ -1997,19 +2006,48 @@ public class MainMetPionPresenter {
                                 transition12.setInterpolator(Interpolator.EASE_BOTH);
                                 transition12.play();
 
-                                final Stage dialog12 = new Stage();
-                                dialog12.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox12 = new VBox();
-                                dialog12.setTitle("Elektriciteitsmaatschappij");
-                                Button button12 = new Button("Dobbelen");
-                                dialogVBox12.getChildren().addAll(new Text("Gasmaatschappij"), new Text("Dobbel voor rekening"),
-                                        button12);
-                                Scene dialogScene12 = new Scene(dialogVBox12, 300, 250);
-                                dialogVBox12.setAlignment(Pos.CENTER);
-                                dialogVBox12.setSpacing(10);
-                                dialogVBox12.setStyle("-fx-font: 20px Tahoma");
-                                dialog12.setScene(dialogScene12);
-                                dialog12.show();
+                                final Stage dialog121 = new Stage();
+                                dialog121.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox121 = new VBox();
+                                dialog121.setTitle("Electriciteitscentrale");
+                                Button button121 = new Button("Dobbelen");
+                                dialogVBox121.getChildren().addAll(new Text("Electriciteitscentrale"), new Text("Dobbel voor rekening"),
+                                        button121);
+                                Scene dialogScene12 = new Scene(dialogVBox121, 300, 250);
+                                dialogVBox121.setAlignment(Pos.CENTER);
+                                dialogVBox121.setSpacing(10);
+                                dialogVBox121.setStyle("-fx-font: 20px Tahoma");
+                                dialog121.setScene(dialogScene12);
+                                dialog121.show();
+
+                                Speler finalAanZet2 = aanZet;
+                                button121.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        GasEnElektriciteitsbedrijf.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet2);
+                                        dialog121.close();
+
+                                        final Stage dialog122 = new Stage();
+                                        dialog122.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox122 = new VBox();
+                                        dialog122.setTitle("Electriciteitscentrale");
+                                        Button button122 = new Button("OK");
+                                        dialogVBox122.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), button122);
+                                        Scene dialogScene28 = new Scene(dialogVBox122, 300, 250);
+                                        dialogVBox122.setAlignment(Pos.CENTER);
+                                        dialogVBox122.setSpacing(10);
+                                        dialogVBox122.setStyle("-fx-font: 20px Tahoma");
+                                        dialog122.setScene(dialogScene28);
+                                        dialog122.show();
+
+                                        button122.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                dialog122.close();
+                                            }
+                                        });
+                                    }
+                                });
                                 break;
 
 
@@ -3061,21 +3099,34 @@ public class MainMetPionPresenter {
                                 dialog20.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox20 = new VBox();
                                 dialog20.setTitle("Antimonopoly-stichting");
-                                String soortSpeler;
+
+                                AntiMonopolyStichting.voerUit(aanZet);
+
+                                String soortSpeler, tekst;
 
                                 if (aanZet.getIsConcurrent()){
                                     soortSpeler = "Concurrent";
+                                    tekst = "\nen ontvangt: €" + AntiMonopolyStichting.getRol();
                                 } else {
                                     soortSpeler = "Monopolist";
+                                    tekst = "\nen moet €160.000 betalen";
                                 }
+                                Button button20 = new Button("OK");
 
-                                dialogVBox20.getChildren().addAll(new Text("Antimonopoly-stichting"), new Text("U bent een " + soortSpeler));
+                                dialogVBox20.getChildren().addAll(new Text("Antimonopoly-stichting"), new Text("U bent een " + soortSpeler + tekst));
                                 Scene dialogScene20 = new Scene(dialogVBox20, 300, 250);
                                 dialogVBox20.setAlignment(Pos.CENTER);
                                 dialogVBox20.setSpacing(10);
                                 dialogVBox20.setStyle("-fx-font: 20px Tahoma");
                                 dialog20.setScene(dialogScene20);
                                 dialog20.show();
+
+                                button20.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        dialog20.close();
+                                    }
+                                });
                                 break;
 
 
@@ -4122,10 +4173,10 @@ public class MainMetPionPresenter {
                                 transition28.setInterpolator(Interpolator.EASE_BOTH);
                                 transition28.play();
 
-                                final Stage dialog28 = new Stage();
-                                dialog28.initModality(Modality.APPLICATION_MODAL);
+                                final Stage dialog281 = new Stage();
+                                dialog281.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox28 = new VBox();
-                                dialog28.setTitle("Gasmaatschappij");
+                                dialog281.setTitle("Gasmaatschappij");
                                 Button button28 = new Button("Dobbelen");
                                 dialogVBox28.getChildren().addAll(new Text("Gasmaatschappij"), new Text("Dobbel voor rekening"),
                                         button28);
@@ -4133,8 +4184,37 @@ public class MainMetPionPresenter {
                                 dialogVBox28.setAlignment(Pos.CENTER);
                                 dialogVBox28.setSpacing(10);
                                 dialogVBox28.setStyle("-fx-font: 20px Tahoma");
-                                dialog28.setScene(dialogScene28);
-                                dialog28.show();
+                                dialog281.setScene(dialogScene28);
+                                dialog281.show();
+
+                                Speler finalAanZet28 = aanZet;
+                                button28.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        GasEnElektriciteitsbedrijf.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet28);
+                                        dialog281.close();
+
+                                        final Stage dialog282 = new Stage();
+                                        dialog282.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox28 = new VBox();
+                                        dialog282.setTitle("Gasmaatschappij");
+                                        Button button28 = new Button("OK");
+                                        dialogVBox28.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), button28);
+                                        Scene dialogScene28 = new Scene(dialogVBox28, 300, 250);
+                                        dialogVBox28.setAlignment(Pos.CENTER);
+                                        dialogVBox28.setSpacing(10);
+                                        dialogVBox28.setStyle("-fx-font: 20px Tahoma");
+                                        dialog282.setScene(dialogScene28);
+                                        dialog282.show();
+
+                                        button28.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                dialog282.close();
+                                            }
+                                        });
+                                    }
+                                });
                                 break;
 
 
@@ -4339,6 +4419,28 @@ public class MainMetPionPresenter {
                                 //transition30.setCycleCount(Timeline.INDEFINITE);
                                 transition30.setInterpolator(Interpolator.EASE_BOTH);
                                 transition30.play();
+
+                                final Stage dialog301 = new Stage();
+                                dialog301.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox301 = new VBox();
+                                dialog301.setTitle("Ga naar de Gevangenis!");
+                                Button button301 = new Button("OK");
+                                dialogVBox301.getChildren().addAll(button301);
+                                Scene dialogScene311 = new Scene(dialogVBox301, 300, 250);
+                                dialogVBox301.setAlignment(Pos.CENTER);
+                                dialogVBox301.setSpacing(10);
+                                dialogVBox301.setStyle("-fx-font: 20px Tahoma");
+                                dialog301.setScene(dialogScene311);
+                                dialog301.show();
+
+                                Speler finalAanZet3 = aanZet;
+                                button301.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        GaNaarGevangenis.gaNaarGevangenis(finalAanZet3);
+                                        dialog301.close();
+                                    }
+                                });
                                 break;
 
                             case 31:
@@ -4359,11 +4461,11 @@ public class MainMetPionPresenter {
                                     Button button311 = new Button("koop");
                                     dialogVBox311.getChildren().addAll(new Text("Aankoopprijs: €300.000"), new Text("Huur: €30.000"),
                                             new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"), button311);
-                                    Scene dialogScene311 = new Scene(dialogVBox311, 300, 250);
+                                    Scene dialogScene312 = new Scene(dialogVBox311, 300, 250);
                                     dialogVBox311.setAlignment(Pos.CENTER);
                                     dialogVBox311.setSpacing(10);
                                     dialogVBox311.setStyle("-fx-font: 20px Tahoma");
-                                    dialog311.setScene(dialogScene311);
+                                    dialog311.setScene(dialogScene312);
                                     dialog311.show();
 
                                     Speler finalAanZet311 = aanZet;
@@ -5251,14 +5353,24 @@ public class MainMetPionPresenter {
                                 dialog38.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox38 = new VBox();
                                 dialog38.setTitle("Eigendomsbelasting");
-                                Button button38 = new Button();
-                                dialogVBox38.getChildren().addAll(new Text("Betaal"), button38);
+                                Button button38 = new Button("Betaal Eigendomsbelasting\n€75.000");
+                                dialogVBox38.getChildren().addAll(button38);
                                 Scene dialogScene38 = new Scene(dialogVBox38, 300, 250);
                                 dialogVBox38.setAlignment(Pos.CENTER);
                                 dialogVBox38.setSpacing(10);
                                 dialogVBox38.setStyle("-fx-font: 20px Tahoma");
                                 dialog38.setScene(dialogScene38);
                                 dialog38.show();
+
+                                Speler finalAanZet1 = aanZet;
+                                button38.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        Eigendomsbelasting.betaalBelasting(finalAanZet1);
+                                        dialog38.close();
+                                    }
+                                });
+
                                 break;
 
                             case 39:

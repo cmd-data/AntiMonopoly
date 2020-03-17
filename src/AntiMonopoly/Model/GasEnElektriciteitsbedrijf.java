@@ -33,6 +33,8 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	}
 
 	public static int getHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
+		int waardeWorp = Dice.rollDie();
+
 		Speler eigenaar = gasEnElektriciteitsbedrijf.getEigenaar();
 		int aantal = 0;
 
@@ -43,16 +45,13 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		}
 
 		if (eigenaar.getIsConcurrent()) {
-			Dice.rollDie();
-			return Dice.rollDie() * 4 * 1000;
+			return waardeWorp * 4 * 1000;
 		} else {
 			for (GasEnElektriciteitsbedrijf bedrijf : bedrijven) {
 				if (eigenaar.equals(bedrijf.getEigenaar())) {
 					aantal++;
 				}
 			}
-
-			int waardeWorp = Dice.rollDie();
 
 			switch (aantal) {
 				case 1:
