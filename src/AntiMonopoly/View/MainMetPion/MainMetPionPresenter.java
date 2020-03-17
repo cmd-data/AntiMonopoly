@@ -764,7 +764,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if(Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -875,7 +875,7 @@ public class MainMetPionPresenter {
                                 dialog21.setScene(dialogScene21);
                                 dialog21.show();
 
-                                Speler finalAanZet3 = aanZet;
+                                Speler finalAanZet21 = aanZet;
                                 button21.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
@@ -886,7 +886,7 @@ public class MainMetPionPresenter {
                                         VBox dialogVBox22 = new VBox();
                                         dialog.setTitle("Opdracht");
                                         Button button22 = new Button("OK");
-                                        dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet3)), button22);
+                                        dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet21)), button22);
                                         Scene dialogScene22 = new Scene(dialogVBox22, 300, 250);
                                         dialogVBox22.setAlignment(Pos.CENTER);
                                         dialogVBox22.setSpacing(10);
@@ -897,7 +897,7 @@ public class MainMetPionPresenter {
                                         button22.setOnAction(new EventHandler<ActionEvent>() {
                                             @Override
                                             public void handle(ActionEvent actionEvent) {
-                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet3);
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet21);
                                                 dialog21.close();
                                                 dialog22.close();
                                             }
@@ -1010,7 +1010,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {// tegel is van de speler zelf
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {// tegel is van de speler zelf
 
                                     final Stage dialog35 = new Stage();
                                     dialog35.initModality(Modality.APPLICATION_MODAL);
@@ -1248,7 +1248,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else { //Tegel is van de speler zelf
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) { //Tegel is van de speler zelf
 
                                     final Stage dialog65 = new Stage();
                                     dialog65.initModality(Modality.APPLICATION_MODAL);
@@ -1345,25 +1345,49 @@ public class MainMetPionPresenter {
                                 transition7.setInterpolator(Interpolator.EASE_BOTH);
                                 transition7.play();
 
-                                final Stage dialog7 = new Stage();
-                                dialog7.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox7 = new VBox();
-                                dialog7.setTitle("Neem Kaart");
-                                Button button7 = new Button("Neem een kaart");
-                                dialogVBox7.getChildren().addAll(new Text("Neem een kaart"), button7);
-                                Scene dialogScene7 = new Scene(dialogVBox7, 300, 250);
-                                dialogVBox7.setAlignment(Pos.CENTER);
-                                dialogVBox7.setSpacing(10);
-                                dialogVBox7.setStyle("-fx-font: 20px Tahoma");
-                                dialog7.setScene(dialogScene7);
-                                dialog7.show();
+                                final Stage dialog71 = new Stage();
+                                dialog71.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox71 = new VBox();
+                                dialog71.setTitle("Neem Kaart");
+                                Button button71 = new Button("Neem een kaart");
+                                dialogVBox71.getChildren().addAll(new Text("Neem een kaart"), button71);
+                                Scene dialogScene71 = new Scene(dialogVBox71, 300, 250);
+                                dialogVBox71.setAlignment(Pos.CENTER);
+                                dialogVBox71.setSpacing(10);
+                                dialogVBox71.setStyle("-fx-font: 20px Tahoma");
+                                dialog71.setScene(dialogScene71);
+                                dialog71.show();
 
-                                button7.setOnAction(new EventHandler<ActionEvent>() {
+                                Speler finalAanZet7 = aanZet;
+                                button71.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
-                                        dialog7.close();
+                                        dialog71.close();
+
+                                        final Stage dialog72 = new Stage();
+                                        dialog72.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox72 = new VBox();
+                                        dialog.setTitle("Opdracht");
+                                        Button button72 = new Button("OK");
+                                        dialogVBox72.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet7)), button72);
+                                        Scene dialogScene72 = new Scene(dialogVBox72, 300, 250);
+                                        dialogVBox72.setAlignment(Pos.CENTER);
+                                        dialogVBox72.setSpacing(10);
+                                        dialogVBox72.setStyle("-fx-font: 20px Tahoma");
+                                        dialog72.setScene(dialogScene72);
+                                        dialog72.show();
+
+                                        button72.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet7);
+                                                dialog71.close();
+                                                dialog72.close();
+                                            }
+                                        });
                                     }
                                 });
+
                                 break;
 
 
@@ -1403,7 +1427,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox82 = new VBox();
                                             dialog82.setTitle("Proficiat met uw aankoop!");
                                             Button button82 = new Button("OK");
-                                            dialogVBox82.getChildren().addAll(new Text("U hebt Place Du Monument aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox82.getChildren().addAll(new Text("U hebt Place Du Monument aangekocht"), new Text("voor €100.000"),
                                                     button82);
                                             Scene dialogScene82 = new Scene(dialogVBox82, 300, 250);
                                             dialogVBox82.setAlignment(Pos.CENTER);
@@ -1470,7 +1494,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {// tegel is van de speler zelf
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {// tegel is van de speler zelf
 
                                     final Stage dialog85 = new Stage();
                                     dialog85.initModality(Modality.APPLICATION_MODAL);
@@ -1595,7 +1619,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox92 = new VBox();
                                             dialog92.setTitle("Proficiat met uw aankoop!");
                                             Button button92 = new Button("OK");
-                                            dialogVBox92.getChildren().addAll(new Text("U hebt Kapellestraat aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox92.getChildren().addAll(new Text("U hebt Kapellestraat aangekocht"), new Text("voor €120.000"),
                                                     button92);
                                             Scene dialogScene92 = new Scene(dialogVBox92, 300, 250);
                                             dialogVBox92.setAlignment(Pos.CENTER);
@@ -1661,7 +1685,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -1809,7 +1833,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox112 = new VBox();
                                             dialog112.setTitle("Proficiat met uw aankoop!");
                                             Button button112 = new Button("OK");
-                                            dialogVBox112.getChildren().addAll(new Text("U hebt Rue De Diekirch aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox112.getChildren().addAll(new Text("U hebt Rue De Diekirch aangekocht"), new Text("voor €140.000"),
                                                     button112);
                                             Scene dialogScene112 = new Scene(dialogVBox112, 300, 250);
                                             dialogVBox112.setAlignment(Pos.CENTER);
@@ -1875,7 +1899,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -2026,7 +2050,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox132 = new VBox();
                                             dialog132.setTitle("Proficiat met uw aankoop!");
                                             Button button132 = new Button("OK");
-                                            dialogVBox132.getChildren().addAll(new Text("U hebt Bruul aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox132.getChildren().addAll(new Text("U hebt Bruul aangekocht"), new Text("voor €140.000"),
                                                     button132);
                                             Scene dialogScene132 = new Scene(dialogVBox132, 300, 250);
                                             dialogVBox132.setAlignment(Pos.CENTER);
@@ -2092,7 +2116,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -2218,7 +2242,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox142 = new VBox();
                                             dialog142.setTitle("Proficiat met uw aankoop!");
                                             Button button142 = new Button("OK");
-                                            dialogVBox142.getChildren().addAll(new Text("U hebt Place Verte aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox142.getChildren().addAll(new Text("U hebt Place Verte aangekocht"), new Text("voor €160.000"),
                                                     button142);
                                             Scene dialogScene142 = new Scene(dialogVBox142, 300, 250);
                                             dialogVBox142.setAlignment(Pos.CENTER);
@@ -2284,7 +2308,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -2432,7 +2456,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox162 = new VBox();
                                             dialog162.setTitle("Proficiat met uw aankoop!");
                                             Button button162 = new Button("OK");
-                                            dialogVBox162.getChildren().addAll(new Text("U hebt Lippenslaan aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox162.getChildren().addAll(new Text("U hebt Lippenslaan aangekocht"), new Text("voor €180.000"),
                                                     button162);
                                             Scene dialogScene162 = new Scene(dialogVBox162, 300, 250);
                                             dialogVBox162.setAlignment(Pos.CENTER);
@@ -2498,7 +2522,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -2597,23 +2621,46 @@ public class MainMetPionPresenter {
                                 transition17.setInterpolator(Interpolator.EASE_BOTH);
                                 transition17.play();
 
-                                final Stage dialog17 = new Stage();
-                                dialog17.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox17 = new VBox();
-                                dialog17.setTitle("Neem Kaart");
-                                Button button17 = new Button("Neem een kaart");
-                                dialogVBox17.getChildren().addAll(new Text("Neem een kaart"), button17);
-                                Scene dialogScene17 = new Scene(dialogVBox17, 300, 250);
-                                dialogVBox17.setAlignment(Pos.CENTER);
-                                dialogVBox17.setSpacing(10);
-                                dialogVBox17.setStyle("-fx-font: 20px Tahoma");
-                                dialog17.setScene(dialogScene17);
-                                dialog17.show();
+                                final Stage dialog171 = new Stage();
+                                dialog171.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox171 = new VBox();
+                                dialog171.setTitle("Neem Kaart");
+                                Button button171 = new Button("Neem een kaart");
+                                dialogVBox171.getChildren().addAll(new Text("Neem een kaart"), button171);
+                                Scene dialogScene171 = new Scene(dialogVBox171, 300, 250);
+                                dialogVBox171.setAlignment(Pos.CENTER);
+                                dialogVBox171.setSpacing(10);
+                                dialogVBox171.setStyle("-fx-font: 20px Tahoma");
+                                dialog171.setScene(dialogScene171);
+                                dialog171.show();
 
-                                button17.setOnAction(new EventHandler<ActionEvent>() {
+                                Speler finalAanZet17 = aanZet;
+                                button171.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
-                                        dialog17.close();
+                                        dialog171.close();
+
+                                        final Stage dialog172 = new Stage();
+                                        dialog172.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox172 = new VBox();
+                                        dialog.setTitle("Opdracht");
+                                        Button button172 = new Button("OK");
+                                        dialogVBox172.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button172);
+                                        Scene dialogScene172 = new Scene(dialogVBox172, 300, 250);
+                                        dialogVBox172.setAlignment(Pos.CENTER);
+                                        dialogVBox172.setSpacing(10);
+                                        dialogVBox172.setStyle("-fx-font: 20px Tahoma");
+                                        dialog172.setScene(dialogScene172);
+                                        dialog172.show();
+
+                                        button172.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet17);
+                                                dialog171.close();
+                                                dialog172.close();
+                                            }
+                                        });
                                     }
                                 });
                                 break;
@@ -2654,7 +2701,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox182 = new VBox();
                                             dialog182.setTitle("Proficiat met uw aankoop!");
                                             Button button182 = new Button("OK");
-                                            dialogVBox182.getChildren().addAll(new Text("U hebt Rue Royal aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox182.getChildren().addAll(new Text("U hebt Rue Royal aangekocht"), new Text("voor €180.000"),
                                                     button182);
                                             Scene dialogScene182 = new Scene(dialogVBox182, 300, 250);
                                             dialogVBox182.setAlignment(Pos.CENTER);
@@ -2720,7 +2767,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -2846,7 +2893,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox192 = new VBox();
                                             dialog192.setTitle("Proficiat met uw aankoop!");
                                             Button button192 = new Button("OK");
-                                            dialogVBox192.getChildren().addAll(new Text("U hebt Groenplaats aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox192.getChildren().addAll(new Text("U hebt Groenplaats aangekocht"), new Text("voor €200.000"),
                                                     button192);
                                             Scene dialogScene192 = new Scene(dialogVBox192, 300, 250);
                                             dialogVBox192.setAlignment(Pos.CENTER);
@@ -2912,7 +2959,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -3064,7 +3111,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox212 = new VBox();
                                             dialog212.setTitle("Proficiat met uw aankoop!");
                                             Button button212 = new Button("OK");
-                                            dialogVBox212.getChildren().addAll(new Text("Rue Saint Leonard"), new Text("voor €60.000"),
+                                            dialogVBox212.getChildren().addAll(new Text("Rue Saint Leonard"), new Text("voor €220.000"),
                                                     button212);
                                             Scene dialogScene212 = new Scene(dialogVBox212, 300, 250);
                                             dialogVBox212.setAlignment(Pos.CENTER);
@@ -3130,7 +3177,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -3230,23 +3277,46 @@ public class MainMetPionPresenter {
                                 transition22.setInterpolator(Interpolator.EASE_BOTH);
                                 transition22.play();
 
-                                final Stage dialog22 = new Stage();
-                                dialog22.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox22 = new VBox();
-                                dialog22.setTitle("Neem Kaart");
-                                Button button22 = new Button("Neem een kaart");
-                                dialogVBox22.getChildren().addAll(new Text("Neem een kaart"), button22);
-                                Scene dialogScene22 = new Scene(dialogVBox22, 300, 250);
-                                dialogVBox22.setAlignment(Pos.CENTER);
-                                dialogVBox22.setSpacing(10);
-                                dialogVBox22.setStyle("-fx-font: 20px Tahoma");
-                                dialog22.setScene(dialogScene22);
-                                dialog22.show();
+                                final Stage dialog221 = new Stage();
+                                dialog221.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox221 = new VBox();
+                                dialog221.setTitle("Neem Kaart");
+                                Button button221 = new Button("Neem een kaart");
+                                dialogVBox221.getChildren().addAll(new Text("Neem een kaart"), button221);
+                                Scene dialogScene221 = new Scene(dialogVBox221, 300, 250);
+                                dialogVBox221.setAlignment(Pos.CENTER);
+                                dialogVBox221.setSpacing(10);
+                                dialogVBox221.setStyle("-fx-font: 20px Tahoma");
+                                dialog221.setScene(dialogScene221);
+                                dialog221.show();
 
-                                button22.setOnAction(new EventHandler<ActionEvent>() {
+                                Speler finalAanZet22 = aanZet;
+                                button221.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
-                                        dialog22.close();
+                                        dialog221.close();
+
+                                        final Stage dialog222 = new Stage();
+                                        dialog222.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox222 = new VBox();
+                                        dialog.setTitle("Opdracht");
+                                        Button button222 = new Button("OK");
+                                        dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button222);
+                                        Scene dialogScene222 = new Scene(dialogVBox222, 300, 250);
+                                        dialogVBox222.setAlignment(Pos.CENTER);
+                                        dialogVBox222.setSpacing(10);
+                                        dialogVBox222.setStyle("-fx-font: 20px Tahoma");
+                                        dialog222.setScene(dialogScene222);
+                                        dialog222.show();
+
+                                        button222.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet22);
+                                                dialog221.close();
+                                                dialog222.close();
+                                            }
+                                        });
                                     }
                                 });
                                 break;
@@ -3287,7 +3357,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox232 = new VBox();
                                             dialog232.setTitle("Proficiat met uw aankoop!");
                                             Button button232 = new Button("OK");
-                                            dialogVBox232.getChildren().addAll(new Text("U hebt Lange Steenstraat aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox232.getChildren().addAll(new Text("U hebt Lange Steenstraat aangekocht"), new Text("voor €220.000"),
                                                     button232);
                                             Scene dialogScene232 = new Scene(dialogVBox232, 300, 250);
                                             dialogVBox232.setAlignment(Pos.CENTER);
@@ -3353,7 +3423,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -3479,7 +3549,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox242 = new VBox();
                                             dialog242.setTitle("Proficiat met uw aankoop!");
                                             Button button242 = new Button("OK");
-                                            dialogVBox242.getChildren().addAll(new Text("U hebt Grand Place aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox242.getChildren().addAll(new Text("U hebt Grand Place aangekocht"), new Text("voor €240.000"),
                                                     button242);
                                             Scene dialogScene242 = new Scene(dialogVBox242, 300, 250);
                                             dialogVBox242.setAlignment(Pos.CENTER);
@@ -3545,7 +3615,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -3692,7 +3762,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox262 = new VBox();
                                             dialog262.setTitle("Proficiat met uw aankoop!");
                                             Button button262 = new Button("OK");
-                                            dialogVBox262.getChildren().addAll(new Text("U hebt Grote Markt aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox262.getChildren().addAll(new Text("U hebt Grote Markt aangekocht"), new Text("voor €260.000"),
                                                     button262);
                                             Scene dialogScene262 = new Scene(dialogVBox262, 300, 250);
                                             dialogVBox262.setAlignment(Pos.CENTER);
@@ -3758,7 +3828,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -3883,7 +3953,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox272 = new VBox();
                                             dialog272.setTitle("Proficiat met uw aankoop!");
                                             Button button272 = new Button("OK");
-                                            dialogVBox272.getChildren().addAll(new Text("U hebt Place De l'Ange aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox272.getChildren().addAll(new Text("U hebt Place De l'Ange aangekocht"), new Text("voor €260.000"),
                                                     button272);
                                             Scene dialogScene272 = new Scene(dialogVBox272, 300, 250);
                                             dialogVBox272.setAlignment(Pos.CENTER);
@@ -3949,7 +4019,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -4100,7 +4170,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox292 = new VBox();
                                             dialog292.setTitle("Proficiat met uw aankoop!");
                                             Button button292 = new Button("OK");
-                                            dialogVBox292.getChildren().addAll(new Text("U hebt Hoogstraat aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox292.getChildren().addAll(new Text("U hebt Hoogstraat aangekocht"), new Text("voor €280.000"),
                                                     button292);
                                             Scene dialogScene292 = new Scene(dialogVBox292, 300, 250);
                                             dialogVBox292.setAlignment(Pos.CENTER);
@@ -4166,7 +4236,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -4303,7 +4373,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox312 = new VBox();
                                             dialog312.setTitle("Proficiat met uw aankoop!");
                                             Button button312 = new Button("OK");
-                                            dialogVBox312.getChildren().addAll(new Text("Veldstraat"), new Text("voor €60.000"),
+                                            dialogVBox312.getChildren().addAll(new Text("Veldstraat"), new Text("voor €300.000"),
                                                     button312);
                                             Scene dialogScene312 = new Scene(dialogVBox312, 300, 250);
                                             dialogVBox312.setAlignment(Pos.CENTER);
@@ -4369,7 +4439,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -4493,7 +4563,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox322 = new VBox();
                                             dialog322.setTitle("Proficiat met uw aankoop!");
                                             Button button322 = new Button("OK");
-                                            dialogVBox322.getChildren().addAll(new Text("U hebt Boulevard Tirou aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox322.getChildren().addAll(new Text("U hebt Boulevard Tirou aangekocht"), new Text("voor €300.000"),
                                                     button322);
                                             Scene dialogScene322 = new Scene(dialogVBox322, 300, 250);
                                             dialogVBox322.setAlignment(Pos.CENTER);
@@ -4559,7 +4629,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -4659,26 +4729,50 @@ public class MainMetPionPresenter {
                                 transition33.setInterpolator(Interpolator.EASE_BOTH);
                                 transition33.play();
 
-                                final Stage dialog33 = new Stage();
-                                dialog33.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox33 = new VBox();
-                                dialog33.setTitle("Neem Kaart");
-                                Button button33 = new Button("Neem een kaart");
-                                dialogVBox33.getChildren().addAll(new Text("Neem een kaart"), button33);
-                                Scene dialogScene33 = new Scene(dialogVBox33, 300, 250);
-                                dialogVBox33.setAlignment(Pos.CENTER);
-                                dialogVBox33.setSpacing(10);
-                                dialogVBox33.setStyle("-fx-font: 20px Tahoma");
-                                dialog33.setScene(dialogScene33);
-                                dialog33.show();
+                                final Stage dialog331 = new Stage();
+                                dialog331.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox331 = new VBox();
+                                dialog331.setTitle("Neem Kaart");
+                                Button button331 = new Button("Neem een kaart");
+                                dialogVBox331.getChildren().addAll(new Text("Neem een kaart"), button331);
+                                Scene dialogScene331 = new Scene(dialogVBox331, 300, 250);
+                                dialogVBox331.setAlignment(Pos.CENTER);
+                                dialogVBox331.setSpacing(10);
+                                dialogVBox331.setStyle("-fx-font: 20px Tahoma");
+                                dialog331.setScene(dialogScene331);
+                                dialog331.show();
 
-                                button33.setOnAction(new EventHandler<ActionEvent>() {
+                                Speler finalAanZet33 = aanZet;
+                                button331.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
-                                        dialog33.close();
+                                        dialog331.close();
+
+                                        final Stage dialog332 = new Stage();
+                                        dialog332.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox332 = new VBox();
+                                        dialog.setTitle("Opdracht");
+                                        Button button332 = new Button("OK");
+                                        dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button332);
+                                        Scene dialogScene332 = new Scene(dialogVBox332, 300, 250);
+                                        dialogVBox332.setAlignment(Pos.CENTER);
+                                        dialogVBox332.setSpacing(10);
+                                        dialogVBox332.setStyle("-fx-font: 20px Tahoma");
+                                        dialog332.setScene(dialogScene332);
+                                        dialog332.show();
+
+                                        button332.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet33);
+                                                dialog331.close();
+                                                dialog332.close();
+                                            }
+                                        });
                                     }
                                 });
                                 break;
+
 
                             case 34:
                                 TranslateTransition transition34 = new TranslateTransition();
@@ -4716,7 +4810,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox342 = new VBox();
                                             dialog342.setTitle("Proficiat met uw aankoop!");
                                             Button button342 = new Button("OK");
-                                            dialogVBox342.getChildren().addAll(new Text("U hebt Boulevard d'Avroy aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox342.getChildren().addAll(new Text("U hebt Boulevard d'Avroy aangekocht"), new Text("voor €320.000"),
                                                     button342);
                                             Scene dialogScene342 = new Scene(dialogVBox342, 300, 250);
                                             dialogVBox342.setAlignment(Pos.CENTER);
@@ -4782,7 +4876,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -4904,27 +4998,49 @@ public class MainMetPionPresenter {
                                 transition36.setInterpolator(Interpolator.EASE_BOTH);
                                 transition36.play();
 
-                                final Stage dialog36 = new Stage();
-                                dialog36.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox36 = new VBox();
-                                dialog36.setTitle("Neem Kaart");
-                                Button button36 = new Button("Neem een kaart");
-                                dialogVBox36.getChildren().addAll(new Text("Neem een kaart"), button36);
-                                Scene dialogScene36 = new Scene(dialogVBox36, 300, 250);
-                                dialogVBox36.setAlignment(Pos.CENTER);
-                                dialogVBox36.setSpacing(10);
-                                dialogVBox36.setStyle("-fx-font: 20px Tahoma");
-                                dialog36.setScene(dialogScene36);
-                                dialog36.show();
+                                final Stage dialog361 = new Stage();
+                                dialog361.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox361 = new VBox();
+                                dialog361.setTitle("Neem Kaart");
+                                Button button361 = new Button("Neem een kaart");
+                                dialogVBox361.getChildren().addAll(new Text("Neem een kaart"), button361);
+                                Scene dialogScene361 = new Scene(dialogVBox361, 300, 250);
+                                dialogVBox361.setAlignment(Pos.CENTER);
+                                dialogVBox361.setSpacing(10);
+                                dialogVBox361.setStyle("-fx-font: 20px Tahoma");
+                                dialog361.setScene(dialogScene361);
+                                dialog361.show();
 
-                                button36.setOnAction(new EventHandler<ActionEvent>() {
+                                Speler finalAanZet36 = aanZet;
+                                button361.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
-                                        dialog36.close();
+                                        dialog361.close();
+
+                                        final Stage dialog362 = new Stage();
+                                        dialog362.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox362 = new VBox();
+                                        dialog.setTitle("Opdracht");
+                                        Button button362 = new Button("OK");
+                                        dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button362);
+                                        Scene dialogScene362 = new Scene(dialogVBox362, 300, 250);
+                                        dialogVBox362.setAlignment(Pos.CENTER);
+                                        dialogVBox362.setSpacing(10);
+                                        dialogVBox362.setStyle("-fx-font: 20px Tahoma");
+                                        dialog362.setScene(dialogScene362);
+                                        dialog362.show();
+
+                                        button362.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                ConcurrentenOfMonopolistenvak.voerUit(finalAanZet36);
+                                                dialog361.close();
+                                                dialog362.close();
+                                            }
+                                        });
                                     }
                                 });
                                 break;
-
                             case 37:
                                 TranslateTransition transition37 = new TranslateTransition();
                                 transition37.setNode(MainMetPionView.getRectangle1());
@@ -4961,7 +5077,7 @@ public class MainMetPionPresenter {
                                             VBox dialogVBox372 = new VBox();
                                             dialog372.setTitle("Proficiat met uw aankoop!");
                                             Button button372 = new Button("OK");
-                                            dialogVBox372.getChildren().addAll(new Text("U hebt Meir aangekocht"), new Text("voor €60.000"),
+                                            dialogVBox372.getChildren().addAll(new Text("U hebt Meir aangekocht"), new Text("voor €350.000"),
                                                     button372);
                                             Scene dialogScene372 = new Scene(dialogVBox372, 300, 250);
                                             dialogVBox372.setAlignment(Pos.CENTER);
@@ -5027,7 +5143,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
@@ -5157,7 +5273,7 @@ public class MainMetPionPresenter {
                                     VBox dialogVBox391 = new VBox();
                                     dialog391.setTitle("Nieuwstraat");
                                     Button button391 = new Button("Koop");
-                                    dialogVBox391.getChildren().addAll(new Text("Aankoopprijs: €400.000"), new Text("Huur: €40.000"),
+                                    dialogVBox391.getChildren().addAll(new Text("Aankoopprijs: €400.000"), new Text("Huur: €400.000"),
                                             new Text("Hypotheek: €200.000"), new Text("Huisprijs: €200.000"), button391);
                                     Scene dialogScene391 = new Scene(dialogVBox391, 300, 250);
                                     dialogVBox391.setAlignment(Pos.CENTER);
@@ -5243,7 +5359,7 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                } else {
+                                } if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     // tegel is van de speler zelf
 
