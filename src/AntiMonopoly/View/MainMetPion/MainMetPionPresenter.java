@@ -1,6 +1,8 @@
 package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.*;
+import AntiMonopoly.View.Dice.DiceView;
+import AntiMonopoly.View.MainScreen.MainView;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -27,9 +30,7 @@ public class MainMetPionPresenter {
 
     private AntiMonopolyMain model;
     private MainMetPionView view;
-    private int count = 0 ;
-
-
+    private DiceView diceView;
 
     public MainMetPionPresenter(AntiMonopolyMain model, MainMetPionView view) {
         this.model = model;
@@ -37,8 +38,6 @@ public class MainMetPionPresenter {
         this.addEventHandlers();
         this.updateView();
     }
-
-
 
     private void addEventHandlers() {
         view.getMainView().getRg2().setOnAction(
@@ -592,10 +591,10 @@ public class MainMetPionPresenter {
                 VBox dialogVBox = new VBox();
                 dialog.setTitle("Worp");
                 Button button = new Button("Zet Pion");
-                Label label1 = new Label (String.valueOf(Dice.getWorp2()[0]));
+                DiceView.getDie1().setImage(new Image("/images/die" + Dice.getWorp2()[0] + ".png"));
+                DiceView.getDie2().setImage(new Image("/images/die" + Dice.getWorp2()[1] + ".png"));
                 Label label2 = new Label (String.valueOf(Dice.getWorp2()[1]));
-                Label label3 = new Label (String.valueOf(Dice.getCount()));
-                dialogVBox.getChildren().addAll(button, label1, label2, label3);
+                dialogVBox.getChildren().addAll(button, DiceView.getDie1(), DiceView.getDie2());
                 Scene dialogScene = new Scene(dialogVBox, 300, 250);
                 dialogVBox.setAlignment(Pos.CENTER);
                 dialogVBox.setSpacing(10);
@@ -637,7 +636,6 @@ public class MainMetPionPresenter {
 
                         int locatie = Spel.move(aanZet,worp).getPositie();
                         dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
-
 
                         switch (locatie) {
 
@@ -722,7 +720,7 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if(!Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                if(!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
                                     final Stage dialog1 = new Stage();
                                     dialog1.initModality(Modality.APPLICATION_MODAL);
@@ -855,7 +853,7 @@ public class MainMetPionPresenter {
 
                             case 2:
                                 TranslateTransition transition2 = new TranslateTransition();
-                                transition2.setNode(MainMetPionView.getRectangle1());
+                                transition2.setNode(pion);
                                 transition2.setDuration(Duration.seconds(1));
                                 transition2.setToX(2*150);
                                 transition2.setToY(0);
@@ -908,7 +906,7 @@ public class MainMetPionPresenter {
 
                             case 3:
                                 TranslateTransition transition3 = new TranslateTransition();
-                                transition3.setNode(MainMetPionView.getRectangle1());
+                                transition3.setNode(pion);
                                 transition3.setDuration(Duration.seconds(1));
                                 transition3.setToX(3*150);
                                 transition3.setToY(0);
@@ -1094,7 +1092,7 @@ public class MainMetPionPresenter {
 
                             case 4:
                                 TranslateTransition transition4 = new TranslateTransition();
-                                transition4.setNode(MainMetPionView.getRectangle1());
+                                transition4.setNode(pion);
                                 transition4.setDuration(Duration.seconds(1));
                                 transition4.setToX(4*150);
                                 transition4.setToY(0);
@@ -1118,7 +1116,7 @@ public class MainMetPionPresenter {
 
                             case 5:
                                 TranslateTransition transition5 = new TranslateTransition();
-                                transition5.setNode(MainMetPionView.getRectangle1());
+                                transition5.setNode(pion);
                                 transition5.setDuration(Duration.seconds(1));
                                 transition5.setToX(5*150);
                                 transition5.setToY(0);
@@ -1141,7 +1139,7 @@ public class MainMetPionPresenter {
 
                             case 6:
                                 TranslateTransition transition6 = new TranslateTransition();
-                                transition6.setNode(MainMetPionView.getRectangle1());
+                                transition6.setNode(pion);
                                 transition6.setDuration(Duration.seconds(1));
                                 transition6.setToX(6*150);
                                 transition6.setToY(0);
@@ -1324,7 +1322,7 @@ public class MainMetPionPresenter {
 
                             case 7:
                                 TranslateTransition transition7 = new TranslateTransition();
-                                transition7.setNode(MainMetPionView.getRectangle1());
+                                transition7.setNode(pion);
                                 transition7.setDuration(Duration.seconds(1));
                                 transition7.setToX(7*150);
                                 transition7.setToY(0);
@@ -1356,7 +1354,7 @@ public class MainMetPionPresenter {
 
                             case 8:
                                 TranslateTransition transition8 = new TranslateTransition();
-                                transition8.setNode(MainMetPionView.getRectangle1());
+                                transition8.setNode(pion);
                                 transition8.setDuration(Duration.seconds(1));
                                 transition8.setToX(8*150);
                                 transition8.setToY(0);
@@ -1380,7 +1378,7 @@ public class MainMetPionPresenter {
 
                             case 9:
                                 TranslateTransition transition9 = new TranslateTransition();
-                                transition9.setNode(MainMetPionView.getRectangle1());
+                                transition9.setNode(pion);
                                 transition9.setDuration(Duration.seconds(1));
                                 transition9.setToX(9*150);
                                 transition9.setToY(0);
@@ -1404,7 +1402,7 @@ public class MainMetPionPresenter {
 
                             case 10:
                                 TranslateTransition transition10 = new TranslateTransition();
-                                transition10.setNode(MainMetPionView.getRectangle1());
+                                transition10.setNode(pion);
                                 transition10.setDuration(Duration.seconds(1));
                                 transition10.setToX(10*150);
                                 transition10.setToY(0);
@@ -1427,7 +1425,7 @@ public class MainMetPionPresenter {
 
                             case 11:
                                 TranslateTransition transition11 = new TranslateTransition();
-                                transition11.setNode(MainMetPionView.getRectangle1());
+                                transition11.setNode(pion);
                                 transition11.setDuration(Duration.seconds(1));
                                 transition11.setToX(10*150);
                                 transition11.setToY(90);
@@ -1451,7 +1449,7 @@ public class MainMetPionPresenter {
 
                             case 12:
                                 TranslateTransition transition12 = new TranslateTransition();
-                                transition12.setNode(MainMetPionView.getRectangle1());
+                                transition12.setNode(pion);
                                 transition12.setDuration(Duration.seconds(1));
                                 transition12.setToX(10*150);
                                 transition12.setToY(2 * 90);
@@ -1477,7 +1475,7 @@ public class MainMetPionPresenter {
 
                             case 13:
                                 TranslateTransition transition13 = new TranslateTransition();
-                                transition13.setNode(MainMetPionView.getRectangle1());
+                                transition13.setNode(pion);
                                 transition13.setDuration(Duration.seconds(1));
                                 transition13.setToX(10*150);
                                 transition13.setToY(3 * 90);
@@ -1501,7 +1499,7 @@ public class MainMetPionPresenter {
 
                             case 14:
                                 TranslateTransition transition14 = new TranslateTransition();
-                                transition14.setNode(MainMetPionView.getRectangle1());
+                                transition14.setNode(pion);
                                 transition14.setDuration(Duration.seconds(1));
                                 transition14.setToX(10*150);
                                 transition14.setToY(4 * 90);
@@ -1525,7 +1523,7 @@ public class MainMetPionPresenter {
 
                             case 15:
                                 TranslateTransition transition15 = new TranslateTransition();
-                                transition15.setNode(MainMetPionView.getRectangle1());
+                                transition15.setNode(pion);
                                 transition15.setDuration(Duration.seconds(1));
                                 transition15.setToX(10*150);
                                 transition15.setToY(5 * 90);
@@ -1548,7 +1546,7 @@ public class MainMetPionPresenter {
 
                             case 16:
                                 TranslateTransition transition16 = new TranslateTransition();
-                                transition16.setNode(MainMetPionView.getRectangle1());
+                                transition16.setNode(pion);
                                 transition16.setDuration(Duration.seconds(1));
                                 transition16.setToX(10*150);
                                 transition16.setToY(6 * 90);
@@ -1572,7 +1570,7 @@ public class MainMetPionPresenter {
 
                             case 17:
                                 TranslateTransition transition17 = new TranslateTransition();
-                                transition17.setNode(MainMetPionView.getRectangle1());
+                                transition17.setNode(pion);
                                 transition17.setDuration(Duration.seconds(1));
                                 transition17.setToX(10*150);
                                 transition17.setToY(7 * 90);
@@ -1603,7 +1601,7 @@ public class MainMetPionPresenter {
 
                             case 18:
                                 TranslateTransition transition18 = new TranslateTransition();
-                                transition18.setNode(MainMetPionView.getRectangle1());
+                                transition18.setNode(pion);
                                 transition18.setDuration(Duration.seconds(1));
                                 transition18.setToX(10*150);
                                 transition18.setToY(8 * 90);
@@ -1627,7 +1625,7 @@ public class MainMetPionPresenter {
 
                             case 19:
                                 TranslateTransition transition19 = new TranslateTransition();
-                                transition19.setNode(MainMetPionView.getRectangle1());
+                                transition19.setNode(pion);
                                 transition19.setDuration(Duration.seconds(1));
                                 transition19.setToX(10*150);
                                 transition19.setToY(9 * 90);
@@ -1651,7 +1649,7 @@ public class MainMetPionPresenter {
 
                             case 20:
                                 TranslateTransition transition20 = new TranslateTransition();
-                                transition20.setNode(MainMetPionView.getRectangle1());
+                                transition20.setNode(pion);
                                 transition20.setDuration(Duration.seconds(1));
                                 transition20.setToX(10*150);
                                 transition20.setToY(10 * 90);
@@ -1678,7 +1676,7 @@ public class MainMetPionPresenter {
 
                             case 21:
                                 TranslateTransition transition21 = new TranslateTransition();
-                                transition21.setNode(MainMetPionView.getRectangle1());
+                                transition21.setNode(pion);
                                 transition21.setDuration(Duration.seconds(1));
                                 transition21.setToX(9*150);
                                 transition21.setToY(10 * 90);
@@ -1702,7 +1700,7 @@ public class MainMetPionPresenter {
 
                             case 22:
                                 TranslateTransition transition22 = new TranslateTransition();
-                                transition22.setNode(MainMetPionView.getRectangle1());
+                                transition22.setNode(pion);
                                 transition22.setDuration(Duration.seconds(1));
                                 transition22.setToX(8*150);
                                 transition22.setToY(10 * 90);
@@ -1733,7 +1731,7 @@ public class MainMetPionPresenter {
 
                             case 23:
                                 TranslateTransition transition23= new TranslateTransition();
-                                transition23.setNode(MainMetPionView.getRectangle1());
+                                transition23.setNode(pion);
                                 transition23.setDuration(Duration.seconds(1));
                                 transition23.setToX(7*150);
                                 transition23.setToY(10 * 90);
@@ -1757,7 +1755,7 @@ public class MainMetPionPresenter {
 
                             case 24:
                                 TranslateTransition transition24 = new TranslateTransition();
-                                transition24.setNode(MainMetPionView.getRectangle1());
+                                transition24.setNode(pion);
                                 transition24.setDuration(Duration.seconds(1));
                                 transition24.setToX(6*150);;
                                 transition24.setToY(10 * 90);
@@ -1781,7 +1779,7 @@ public class MainMetPionPresenter {
 
                             case 25:
                                 TranslateTransition transition25 = new TranslateTransition();
-                                transition25.setNode(MainMetPionView.getRectangle1());
+                                transition25.setNode(pion);
                                 transition25.setDuration(Duration.seconds(1));
                                 transition25.setToX(5*150);
                                 transition25.setToY(10 * 90);
@@ -1804,7 +1802,7 @@ public class MainMetPionPresenter {
 
                             case 26:
                                 TranslateTransition transition26 = new TranslateTransition();
-                                transition26.setNode(MainMetPionView.getRectangle1());
+                                transition26.setNode(pion);
                                 transition26.setDuration(Duration.seconds(1));
                                 transition26.setToX(4*150);
                                 transition26.setToY(10 * 90);
@@ -1828,7 +1826,7 @@ public class MainMetPionPresenter {
 
                             case 27:
                                 TranslateTransition transition27 = new TranslateTransition();
-                                transition27.setNode(MainMetPionView.getRectangle1());
+                                transition27.setNode(pion);
                                 transition27.setDuration(Duration.seconds(1));
                                 transition27.setToX(3*150);
                                 transition27.setToY(10 * 90);
@@ -1852,7 +1850,7 @@ public class MainMetPionPresenter {
 
                             case 28:
                                 TranslateTransition transition28 = new TranslateTransition();
-                                transition28.setNode(MainMetPionView.getRectangle1());
+                                transition28.setNode(pion);
                                 transition28.setDuration(Duration.seconds(1));
                                 transition28.setToX(2*150);
                                 transition28.setToY(10 * 90);
@@ -1878,7 +1876,7 @@ public class MainMetPionPresenter {
 
                             case 29:
                                 TranslateTransition transition29 = new TranslateTransition();
-                                transition29.setNode(MainMetPionView.getRectangle1());
+                                transition29.setNode(pion);
                                 transition29.setDuration(Duration.seconds(1));
                                 transition29.setToX(150);
                                 transition29.setToY(10 * 90);
@@ -1902,7 +1900,7 @@ public class MainMetPionPresenter {
 
                             case 30:
                                 TranslateTransition transition30 = new TranslateTransition();
-                                transition30.setNode(MainMetPionView.getRectangle1());
+                                transition30.setNode(pion);
                                 transition30.setDuration(Duration.seconds(1));
                                 transition30.setToX(0);
                                 transition30.setToY(10 * 90);
@@ -1913,7 +1911,7 @@ public class MainMetPionPresenter {
 
                             case 31:
                                 TranslateTransition transition31 = new TranslateTransition();
-                                transition31.setNode(MainMetPionView.getRectangle1());
+                                transition31.setNode(pion);
                                 transition31.setDuration(Duration.seconds(1));
                                 transition31.setToX(0);
                                 transition31.setToY(9 * 90);
@@ -1937,7 +1935,7 @@ public class MainMetPionPresenter {
 
                             case 32:
                                 TranslateTransition transition32 = new TranslateTransition();
-                                transition32.setNode(MainMetPionView.getRectangle1());
+                                transition32.setNode(pion);
                                 transition32.setDuration(Duration.seconds(1));
                                 transition32.setToX(0);
                                 transition32.setToY(8 * 90);
@@ -1961,7 +1959,7 @@ public class MainMetPionPresenter {
 
                             case 33:
                                 TranslateTransition transition33 = new TranslateTransition();
-                                transition33.setNode(MainMetPionView.getRectangle1());
+                                transition33.setNode(pion);
                                 transition33.setDuration(Duration.seconds(1));
                                 transition33.setToX(0);
                                 transition33.setToY(7 * 90);
@@ -1992,7 +1990,7 @@ public class MainMetPionPresenter {
 
                             case 34:
                                 TranslateTransition transition34 = new TranslateTransition();
-                                transition34.setNode(MainMetPionView.getRectangle1());
+                                transition34.setNode(pion);
                                 transition34.setDuration(Duration.seconds(1));
                                 transition34.setToX(0);
                                 transition34.setToY(6 * 90);
@@ -2016,7 +2014,7 @@ public class MainMetPionPresenter {
 
                             case 35:
                                 TranslateTransition transition35 = new TranslateTransition();
-                                transition35.setNode(MainMetPionView.getRectangle1());
+                                transition35.setNode(pion);
                                 transition35.setDuration(Duration.seconds(1));
                                 transition35.setToX(0);
                                 transition35.setToY(5 * 90);
@@ -2039,7 +2037,7 @@ public class MainMetPionPresenter {
 
                             case 36:
                                 TranslateTransition transition36 = new TranslateTransition();
-                                transition36.setNode(MainMetPionView.getRectangle1());
+                                transition36.setNode(pion);
                                 transition36.setDuration(Duration.seconds(1));
                                 transition36.setToX(0);
                                 transition36.setToY(4 * 90);
@@ -2070,7 +2068,7 @@ public class MainMetPionPresenter {
 
                             case 37:
                                 TranslateTransition transition37 = new TranslateTransition();
-                                transition37.setNode(MainMetPionView.getRectangle1());
+                                transition37.setNode(pion);
                                 transition37.setDuration(Duration.seconds(1));
                                 transition37.setToX(0);
                                 transition37.setToY(3 * 90);
@@ -2094,7 +2092,7 @@ public class MainMetPionPresenter {
 
                             case 38:
                                 TranslateTransition transition38 = new TranslateTransition();
-                                transition38.setNode(MainMetPionView.getRectangle1());
+                                transition38.setNode(pion);
                                 transition38.setDuration(Duration.seconds(1));
                                 transition38.setToX(0);
                                 transition38.setToY(2 * 90);
@@ -2118,7 +2116,7 @@ public class MainMetPionPresenter {
 
                             case 39:
                                 TranslateTransition transition39 = new TranslateTransition();
-                                transition39.setNode(MainMetPionView.getRectangle1());
+                                transition39.setNode(pion);
                                 transition39.setDuration(Duration.seconds(1));
                                 transition39.setToX(0);
                                 transition39.setToY(90);
@@ -2155,13 +2153,7 @@ public class MainMetPionPresenter {
 
 
     private void updateView() {
-        //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
-        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
-        
     }
 
-    public int getCount() {
-        return count;
-    }
 }
 

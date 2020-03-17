@@ -4,6 +4,7 @@ import AntiMonopoly.Model.AntiMonopolyMain;
 import AntiMonopoly.Model.Spel;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
+import AntiMonopoly.View.MainScreen.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -39,9 +40,9 @@ public class DrieSpelersPresenter {
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(1).getNaam());
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(2).getNaam());
 
-                mainView.getMainView().getS12().setText("€1500000");
-                mainView.getMainView().getS22().setText("€1500000");
-                mainView.getMainView().getS32().setText("€1500000");
+                MainView.getS12().setText("€1500000");
+                MainView.getS22().setText("€1500000");
+                MainView.getS32().setText("€1500000");
 
                 mainView.getMainView().getS13().setImage(new Image("images/" + Spel.getSpelers().get(0).getPion() + ".png"));
                 mainView.getMainView().getS23().setImage(new Image("images/" + Spel.getSpelers().get(1).getPion() + ".png"));

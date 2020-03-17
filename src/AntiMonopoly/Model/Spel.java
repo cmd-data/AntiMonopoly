@@ -2,6 +2,7 @@ package AntiMonopoly.Model;
 
 import AntiMonopoly.View.DrieSpelers.DrieSpelersView;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
+import AntiMonopoly.View.MainScreen.MainView;
 import AntiMonopoly.View.StartScreen.StartView;
 import AntiMonopoly.View.TweeSpelers.TweeSpelersView;
 import AntiMonopoly.View.VierSpelers.VierSpelersView;
@@ -27,6 +28,23 @@ public class Spel {
 		this.startTijd = startTijd;
 		posities.putAll(Spelbord.getTegels().get(0),spelers);
 		// elke speler op start positie plaatsen (mag geen passeer start genereren)
+	}
+
+	/**
+	 * geeft geld veranderingen weer op het spelbord
+	 */
+
+	public void updateGeld(Speler speler){
+
+		if (Spel.getSpelers().get(0).equals(speler)) {
+			MainView.getS12().setText("€ " + speler.getGeld());
+		} else if (Spel.getSpelers().get(1).equals(speler)) {
+			MainView.getS22().setText("€ " + speler.getGeld());
+		} else if (Spel.getSpelers().get(2).equals(speler)) {
+			MainView.getS32().setText("€ " + speler.getGeld());
+		} else if (Spel.getSpelers().get(3).equals(speler)) {
+			MainView.getS42().setText("€ " + speler.getGeld());
+		}
 	}
 
 	/**
