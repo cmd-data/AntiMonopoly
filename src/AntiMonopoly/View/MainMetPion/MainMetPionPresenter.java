@@ -589,7 +589,8 @@ public class MainMetPionPresenter {
                 Button button = new Button("Zet Pion");
                 Label label1 = new Label (String.valueOf(Dice.getWorp2()[0]));
                 Label label2 = new Label (String.valueOf(Dice.getWorp2()[1]));
-                dialogVBox.getChildren().addAll(button, label1, label2);
+                Label label3 = new Label (String.valueOf(Dice.getCount()));
+                dialogVBox.getChildren().addAll(button, label1, label2, label3);
                 Scene dialogScene = new Scene(dialogVBox, 300, 250);
                 dialogVBox.setAlignment(Pos.CENTER);
                 dialogVBox.setSpacing(10);
@@ -612,19 +613,19 @@ public class MainMetPionPresenter {
                         Speler aanZet = null;
 
                         switch (Dice.getCount()){
-                            case 0:
+                            case 1:
                                 pion = pionnen.get(0);
                                 aanZet = Spel.getSpelers().get(0);
                                 break;
-                            case 1:
+                            case 2:
                                 pion = pionnen.get(1);
                                 aanZet = Spel.getSpelers().get(1);
                                 break;
-                            case 2:
+                            case 3:
                                 pion = pionnen.get(2);
                                 aanZet = Spel.getSpelers().get(2);
                                 break;
-                            case 3:
+                            case 4:
                                 pion = pionnen.get(3);
                                 aanZet = Spel.getSpelers().get(3);
                         }

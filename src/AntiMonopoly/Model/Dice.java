@@ -29,21 +29,21 @@ public class Dice {
 	 * methode voor met 2 dobbelstenen te rollen
 	 */
 	public static int rollDice() {
+		if(!isIsDubbel()){
+			count++;
+			counterCheck();
+		}
 		Dice.isDubbel = false;
 		worp2 = new int[]{rollDie(), rollDie()};
 		if(worp2[0]==worp2[1]){
 			Dice.isDubbel = true;
 		}
-		if(!isIsDubbel()){
-			count++;
-			counterCheck();
-		}
 		return Arrays.stream(worp2).sum();
 	}
 
 	public static void counterCheck(){
-		if(count == Spel.getSpelers().size()){
-			count = 0;
+		if(count > Spel.getSpelers().size()){
+			count = 1;
 		}
 	}
 

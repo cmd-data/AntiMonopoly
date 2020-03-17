@@ -37,43 +37,43 @@ public class Spel {
 		boolean speler1 = false, speler2 = false, speler3 = false, speler4 = false;
 
 		String aantalSpelers = StartView.getAs2().getSelectionModel().getSelectedItem();
-		switch (aantalSpelers){
+		switch (aantalSpelers) {
 
 			case "2":
-				if ("Concurrent".equals(TweeSpelersView.getTs6().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(TweeSpelersView.getTs6().getSelectionModel().getSelectedItem())) {
 					speler1 = true;
 				}
-				if ("Concurrent".equals(TweeSpelersView.getTs7().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(TweeSpelersView.getTs7().getSelectionModel().getSelectedItem())) {
 					speler2 = true;
 				}
 				spelers.add(new Speler(TweeSpelersView.getTs4().getText(), speler1, MainMetPionView.getRectangle2(), "grey square"));
 				spelers.add(new Speler(TweeSpelersView.getTs5().getText(), speler2, MainMetPionView.getRectangle1(), "pink square"));
 				break;
 			case "3":
-				if ("Concurrent".equals(DrieSpelersView.getDs8().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs8().getSelectionModel().getSelectedItem())) {
 					speler1 = true;
 				}
-				if ("Concurrent".equals(DrieSpelersView.getDs9().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs9().getSelectionModel().getSelectedItem())) {
 					speler2 = true;
 				}
-				if ("Concurrent".equals(DrieSpelersView.getDs10().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(DrieSpelersView.getDs10().getSelectionModel().getSelectedItem())) {
 					speler3 = true;
 				}
 				spelers.add(new Speler(DrieSpelersView.getDs5().getText(), speler1, MainMetPionView.getRectangle2(), "grey square"));
 				spelers.add(new Speler(DrieSpelersView.getDs6().getText(), speler2, MainMetPionView.getRectangle1(), "pink square"));
-				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, MainMetPionView.getRectangle4(),"red square"));
+				spelers.add(new Speler(DrieSpelersView.getDs7().getText(), speler3, MainMetPionView.getRectangle4(), "red square"));
 				break;
 			case "4":
-				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(VierSpelersView.getVs10().getSelectionModel().getSelectedItem())) {
 					speler1 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(VierSpelersView.getVs11().getSelectionModel().getSelectedItem())) {
 					speler2 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(VierSpelersView.getVs12().getSelectionModel().getSelectedItem())) {
 					speler3 = true;
 				}
-				if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())){
+				if ("Concurrent".equals(VierSpelersView.getVs13().getSelectionModel().getSelectedItem())) {
 					speler4 = true;
 				}
 				spelers.add(new Speler(VierSpelersView.getVs6().getText(), speler1, MainMetPionView.getRectangle2(), "grey square"));
@@ -83,54 +83,7 @@ public class Spel {
 				break;
 		}
 
-
-
 		Collections.shuffle(spelers);                    // spelers worden direct na creatie geshuffeld
-
-		/*Scanner kb = new Scanner(System.in);
-		List<String> kleuren = new ArrayList<>();
-
-		for (int i = 1; i < 5; i++) {
-			System.out.printf("Naam speler %d: ", i);
-			String naam = kb.next();
-			System.out.println("Concurrent? ('true' of 'false'): ");
-			String soort = kb.next();
-
-			while(!"true".equals(soort)&&!"false".equals(soort)){
-				System.out.println("Verkeerde input ('true' of 'false'): ");
-				soort = kb.next();
-			}
-
-			System.out.println("Kleur pion? (Keuze uit: blauw, rood, geel of groen): ");
-			String kleur = kb.next();
-
-			while(!"blauw".equals(kleur)&&!"rood".equals(kleur)&&!"geel".equals(kleur)&&!"groen".equals(kleur)){
-				System.out.println("Verkeerde input (blauw, rood, geel of groen): ");
-				kleur = kb.next();
-			}
-
-			while (i>1&&kleuren.contains(kleur)) {
-				System.out.println("Kleur is al gekozen, geef een andere kleur in: ");
-				kleur = kb.next();
-			}
-			spelers.add(new Speler(naam, Boolean.parseBoolean(soort), kleur));
-			kleuren.add(kleur);
-
-			if (2 <= i && i != 4) {
-				System.out.println("Nog een speler? ('true' of 'false'): ");
-				String antwoord = kb.next();
-
-				while(!"true".equals(antwoord)&&!"false".equals(antwoord)){
-					System.out.println("Verkeerde input ('true' of 'false'): ");
-					antwoord = kb.next();
-				}
-
-				if (!Boolean.parseBoolean(antwoord)) {
-					return;
-				}
-			}
-		}
-		kb.close();*/
 	}
 
 
