@@ -48,6 +48,7 @@ public class Gebouwen {
 				System.out.println("Niet genoeg geld");
 			}
 		}
+		Spel.updateGeld(speler);
 	}
 
 	public static void koopHotel(Straat straat, Hotel hotel, Speler speler){
@@ -123,6 +124,7 @@ public class Gebouwen {
 				}
 			}
 		}
+		Spel.updateGeld(speler);
 	}
 
 	public void verkoopGebouw(Straat straat, Gebouwen gebouw, int aantal,Speler speler) {

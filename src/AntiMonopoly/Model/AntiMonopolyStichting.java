@@ -16,6 +16,7 @@ public class AntiMonopolyStichting extends Tegel {
 		} else {
 			speler.setGeld(-160000);
 		}
+		Spel.updateGeld(speler);
 	}
 
 }

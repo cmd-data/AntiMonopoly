@@ -34,7 +34,7 @@ public class Spel {
 	 * geeft geld veranderingen weer op het spelbord
 	 */
 
-	public void updateGeld(Speler speler){
+	public static void updateGeld(Speler speler){
 
 		if (Spel.getSpelers().get(0).equals(speler)) {
 			MainView.getS12().setText("€ " + speler.getGeld());

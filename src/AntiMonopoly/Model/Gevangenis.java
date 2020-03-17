@@ -40,6 +40,7 @@ public class Gevangenis extends Tegel {
 				gevangenen.remove(speler);
 			}
 		}
+		Spel.updateGeld(speler);
 	}
 
 	public static List<Speler> getGevangenen() { return gevangenen; }

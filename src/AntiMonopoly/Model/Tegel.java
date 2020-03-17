@@ -71,6 +71,7 @@ public class Tegel {
 		if (tegel instanceof GasEnElektriciteitsbedrijf){
 			((GasEnElektriciteitsbedrijf) tegel).koopGasofElektriciteitsbedrijf(speler,(GasEnElektriciteitsbedrijf) tegel);
 		}
+		Spel.updateGeld(speler);
 	}
 
 	public boolean kopen(Tegel tegel){
@@ -130,6 +131,7 @@ public class Tegel {
 			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
 			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
 		}
+		Spel.updateGeld(speler);
 	}
 
 

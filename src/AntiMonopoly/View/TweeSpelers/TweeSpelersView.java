@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 
 public class TweeSpelersView extends GridPane {
 
-    private Label ts1,ts2,ts3;
+    private Label ts1,ts2,ts3,ts9;
     private static TextField ts4, ts5;
     private static ComboBox<String> ts6,ts7;
     private Button ts8;

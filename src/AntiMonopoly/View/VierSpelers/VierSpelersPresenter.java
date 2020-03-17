@@ -35,6 +35,7 @@ public class VierSpelersPresenter {
             public void handle(ActionEvent event) {
                 MainMetPionView mainView = new MainMetPionView();
                 MainMetPionPresenter mainMetPionPresenter = new MainMetPionPresenter(model, mainView);
+
                 view.getScene().getStylesheets().add("/stylesheets/main.css");
                 view.getScene().setRoot(mainView);
                 mainView.getScene().getWindow().sizeToScene();
