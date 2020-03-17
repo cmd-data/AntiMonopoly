@@ -113,7 +113,7 @@ public class Tegel {
 		return Hypotheek.getHypotheekLijst().contains(tegel);
 	}
 
-	public void betaalHuur(Tegel tegel, Speler speler){
+	public static void betaalHuur(Tegel tegel, Speler speler){
 
 		if (tegel instanceof Straat){
 			speler.setGeld(-Straat.getHuur((Straat) tegel));
