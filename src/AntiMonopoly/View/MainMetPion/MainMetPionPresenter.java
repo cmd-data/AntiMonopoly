@@ -1,7 +1,6 @@
 package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.*;
-import com.sun.jdi.BooleanType;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -720,7 +719,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog13 = new Stage();
                                     dialog13.initModality(Modality.APPLICATION_MODAL);
@@ -964,7 +964,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog33 = new Stage();
                                     dialog33.initModality(Modality.APPLICATION_MODAL);
@@ -1202,7 +1203,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog63 = new Stage();
                                     dialog63.initModality(Modality.APPLICATION_MODAL);
@@ -1422,7 +1424,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog83 = new Stage();
                                     dialog83.initModality(Modality.APPLICATION_MODAL);
@@ -1613,7 +1616,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog93 = new Stage();
                                     dialog93.initModality(Modality.APPLICATION_MODAL);
@@ -1826,7 +1830,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog113 = new Stage();
                                     dialog113.initModality(Modality.APPLICATION_MODAL);
@@ -2042,7 +2047,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog133 = new Stage();
                                     dialog133.initModality(Modality.APPLICATION_MODAL);
@@ -2233,7 +2239,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog143 = new Stage();
                                     dialog143.initModality(Modality.APPLICATION_MODAL);
@@ -2446,7 +2453,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog163 = new Stage();
                                     dialog163.initModality(Modality.APPLICATION_MODAL);
@@ -2667,7 +2675,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog183 = new Stage();
                                     dialog183.initModality(Modality.APPLICATION_MODAL);
@@ -2858,7 +2867,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog193 = new Stage();
                                     dialog193.initModality(Modality.APPLICATION_MODAL);
@@ -3075,7 +3085,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog213 = new Stage();
                                     dialog213.initModality(Modality.APPLICATION_MODAL);
@@ -3297,7 +3308,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog233 = new Stage();
                                     dialog233.initModality(Modality.APPLICATION_MODAL);
@@ -3488,7 +3500,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog243 = new Stage();
                                     dialog243.initModality(Modality.APPLICATION_MODAL);
@@ -3700,7 +3713,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog263 = new Stage();
                                     dialog263.initModality(Modality.APPLICATION_MODAL);
@@ -3890,7 +3904,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog273 = new Stage();
                                     dialog273.initModality(Modality.APPLICATION_MODAL);
@@ -4106,7 +4121,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog293 = new Stage();
                                     dialog293.initModality(Modality.APPLICATION_MODAL);
@@ -4308,7 +4324,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog313 = new Stage();
                                     dialog313.initModality(Modality.APPLICATION_MODAL);
@@ -4450,18 +4467,186 @@ public class MainMetPionPresenter {
                                 transition32.setInterpolator(Interpolator.EASE_BOTH);
                                 transition32.play();
 
-                                final Stage dialog32 = new Stage();
-                                dialog32.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox32 = new VBox();
-                                dialog32.setTitle("Boulevard Tirou");
-                                dialogVBox32.getChildren().addAll(new Text("Aankoopprijs: €300.000"), new Text("Huur: €30.000"),
-                                        new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"));
-                                Scene dialogScene32 = new Scene(dialogVBox32, 300, 250);
-                                dialogVBox32.setAlignment(Pos.CENTER);
-                                dialogVBox32.setSpacing(10);
-                                dialogVBox32.setStyle("-fx-font: 20px Tahoma");
-                                dialog32.setScene(dialogScene32);
-                                dialog32.show();
+                                if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))){
+                                final Stage dialog321 = new Stage();
+                                dialog321.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox321 = new VBox();
+                                dialog321.setTitle("Boulevard Tirou");
+                                Button button321 = new Button("Koop");
+                                dialogVBox321.getChildren().addAll(new Text("Aankoopprijs: €300.000"), new Text("Huur: €30.000"),
+                                        new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"),button321);
+                                Scene dialogScene321 = new Scene(dialogVBox321, 300, 250);
+                                dialogVBox321.setAlignment(Pos.CENTER);
+                                dialogVBox321.setSpacing(10);
+                                dialogVBox321.setStyle("-fx-font: 20px Tahoma");
+                                dialog321.setScene(dialogScene321);
+                                dialog321.show();
+
+                                    Speler finalAanZet321 = aanZet;
+                                    button321.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet321);
+
+                                            final Stage dialog322 = new Stage();
+                                            dialog322.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox322 = new VBox();
+                                            dialog322.setTitle("Proficiat met uw aankoop!");
+                                            Button button322 = new Button("OK");
+                                            dialogVBox322.getChildren().addAll(new Text("U hebt Boulevard Tirou aangekocht"), new Text("voor €60.000"),
+                                                    button322);
+                                            Scene dialogScene322 = new Scene(dialogVBox322, 300, 250);
+                                            dialogVBox322.setAlignment(Pos.CENTER);
+                                            dialogVBox322.setSpacing(10);
+                                            dialogVBox322.setStyle("-fx-font: 20px Tahoma");
+                                            dialog322.setScene(dialogScene322);
+                                            dialog322.show();
+
+                                            button322.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog321.close();
+                                                    dialog322.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+                                //Tegel is van een andere eigenaar
+                                if(!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+
+                                    final Stage dialog323 = new Stage();
+                                    dialog323.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox323 = new VBox();
+                                    dialog323.setTitle("Betaal Huur");
+                                    Button button323 = new Button("Betaal huur");
+                                    dialogVBox323.getChildren().addAll(new Text("U dient huur te betalen. "),button323);
+                                    Scene dialogScene323 = new Scene(dialogVBox323, 300, 250);
+                                    dialogVBox323.setAlignment(Pos.CENTER);
+                                    dialogVBox323.setSpacing(10);
+                                    dialogVBox323.setStyle("-fx-font: 20px Tahoma");
+                                    dialog323.setScene(dialogScene323);
+                                    dialog323.show();
+
+                                    Speler finalAanZet322 = aanZet;
+                                    button323.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet322);
+
+                                            final Stage dialog324 = new Stage();
+                                            dialog324.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox324 = new VBox();
+                                            dialog324.setTitle("Huur");
+                                            Button button32 = new Button("OK");
+                                            dialogVBox324.getChildren().addAll(new Text("U betaalde huur"),
+                                                    button32);
+                                            Scene dialogScene324 = new Scene(dialogVBox324, 300, 250);
+                                            dialogVBox324.setAlignment(Pos.CENTER);
+                                            dialogVBox324.setSpacing(10);
+                                            dialogVBox324.setStyle("-fx-font: 20px Tahoma");
+                                            dialog324.setScene(dialogScene324);
+                                            dialog324.show();
+
+                                            button32.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog323.close();
+                                                    dialog324.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                } else {
+
+                                    // tegel is van de speler zelf
+
+                                    final Stage dialog325 = new Stage();
+                                    dialog325.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox325 = new VBox();
+                                    dialog325.setTitle("Bouw");
+                                    Button button324 = new Button("Bouw Hotel");
+                                    ComboBox<Integer> comboBox = new ComboBox<>();
+                                    ObservableList<Integer> hetAantalHuizen =
+                                            FXCollections.observableArrayList(0,1,2,3,4);
+                                    comboBox.setItems(hetAantalHuizen);
+                                    Button button325 = new Button("Bouw Huis");
+                                    dialogVBox325.getChildren().addAll( new Text("Huisprijs: €200.000"), new Text("hoeveel huizen wilt u?"),
+                                            comboBox , button324, button325);
+                                    Scene dialogScene325 = new Scene(dialogVBox325, 300, 250);
+                                    dialogVBox325.setAlignment(Pos.CENTER);
+                                    dialogVBox325.setSpacing(10);
+                                    dialogVBox325.setStyle("-fx-font: 20px Tahoma");
+                                    dialog325.setScene(dialogScene325);
+                                    dialog325.show();
+
+                                    //Koop Hotel
+                                    Speler finalAanZet323 = aanZet;
+                                    button324.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet323);
+
+                                            final Stage dialog326 = new Stage();
+                                            dialog326.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox326 = new VBox();
+                                            dialog326.setTitle("Hotel");
+                                            Button button326 = new Button("OK");
+                                            dialogVBox326.getChildren().addAll(new Text("U kocht een hotel"),
+                                                    button326);
+                                            Scene dialogScene326 = new Scene(dialogVBox326, 300, 250);
+                                            dialogVBox326.setAlignment(Pos.CENTER);
+                                            dialogVBox326.setSpacing(10);
+                                            dialogVBox326.setStyle("-fx-font: 20px Tahoma");
+                                            dialog326.setScene(dialogScene326);
+                                            dialog326.show();
+
+                                            button326.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog325.close();
+                                                    dialog326.close();
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                    //Koop huis
+                                    Speler finalAanZet324 = aanZet;
+                                    button325.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
+                                                    comboBox.getValue(), finalAanZet324);
+
+                                            final Stage dialog327 = new Stage();
+                                            dialog327.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox327 = new VBox();
+                                            dialog327.setTitle("Hotel");
+                                            Button button327 = new Button("OK");
+                                            dialogVBox327.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen"),
+                                                    button327);
+                                            Scene dialogScene327 = new Scene(dialogVBox327, 300, 250);
+                                            dialogVBox327.setAlignment(Pos.CENTER);
+                                            dialogVBox327.setSpacing(10);
+                                            dialogVBox327.setStyle("-fx-font: 20px Tahoma");
+                                            dialog327.setScene(dialogScene327);
+                                            dialog327.show();
+
+                                            button327.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog325.close();
+                                                    dialog327.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+
                                 break;
 
                             case 33:
@@ -4552,7 +4737,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog343 = new Stage();
                                     dialog343.initModality(Modality.APPLICATION_MODAL);
@@ -4796,7 +4982,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog373 = new Stage();
                                     dialog373.initModality(Modality.APPLICATION_MODAL);
@@ -5011,7 +5198,8 @@ public class MainMetPionPresenter {
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
+                                        && Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 
                                     final Stage dialog393 = new Stage();
                                     dialog393.initModality(Modality.APPLICATION_MODAL);
