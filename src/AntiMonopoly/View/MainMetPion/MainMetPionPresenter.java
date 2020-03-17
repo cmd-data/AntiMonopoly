@@ -684,15 +684,16 @@ public class MainMetPionPresenter {
                                         dialog1.setScene(dialogScene1);
                                         dialog1.show();
 
+                                        Speler finalAanZet = aanZet;
                                         button1.setOnAction(new EventHandler<ActionEvent>() {
                                             @Override
                                             public void handle(ActionEvent event) {
-                                                Tegel.koopEigendom(Spelbord.getTegels().get(1), Spel.getSpelers().get(0));
+                                                Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet);
                                             }
                                         });
                                     }
 
-                                    if (!Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    if (!aanZet.getNaam().equals(Spelbord.getTegels().get(locatie).Eigenaar(Spelbord.getTegels().get(1)))) {
                                         final Stage dialog1 = new Stage();
                                         dialog1.initModality(Modality.APPLICATION_MODAL);
                                         VBox dialogVBox1 = new VBox();
@@ -706,9 +707,15 @@ public class MainMetPionPresenter {
                                         dialogVBox1.setStyle("-fx-font: 20px Tahoma");
                                         dialog1.setScene(dialogScene1);
                                         dialog1.show();
-                                    }
 
-                                    if (Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                        Speler finalAanZet1 = aanZet;
+                                        button1.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet1);
+                                            }
+                                        });
+                                    } else {
                                         final Stage dialog1 = new Stage();
                                         dialog1.initModality(Modality.APPLICATION_MODAL);
                                         VBox dialogVBox1 = new VBox();
@@ -723,6 +730,20 @@ public class MainMetPionPresenter {
                                         dialogVBox1.setStyle("-fx-font: 20px Tahoma");
                                         dialog1.setScene(dialogScene1);
                                         dialog1.show();
+
+                                        Speler finalAanZet2 = aanZet;
+                                        button1.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(), 1, finalAanZet2); // nog combobox voor aantal
+                                            }
+                                        });
+                                        button2.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent actionEvent) {
+                                                Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(),finalAanZet2);
+                                            }
+                                        });
                                     }
 
                                     break;

@@ -26,9 +26,9 @@ public class Gebouwen {
 	public static void koopHuis(Straat straat, Huis huis, int aantal, Speler speler) {
 
 		if (speler.getIsConcurrent()) {
-			while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisCon()) {
-				System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisCon());
-			}
+			//while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisCon()) {
+			//	System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisCon());		// ==> veranderen door combobox
+			//}
 			if (speler.getGeld() >= straat.getPrijsHuis()*aantal) {
 				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
 				straat.setGebouw(huis);
@@ -37,9 +37,9 @@ public class Gebouwen {
 				System.out.println("Niet genoeg geld");
 			}
 		} else {
-			while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisMon()) {
-				System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisMon());
-			}
+			//while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisMon()) {
+			//	System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisMon());    // ==> veranderen door combobox
+			//}
 			if (speler.getGeld() >= straat.getPrijsHuis()*aantal) {
 				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
 				straat.setGebouw(huis);

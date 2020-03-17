@@ -23,8 +23,13 @@ public class Transport extends Tegel {
 	public static int getWaarde() { return waarde; }
 
 	public void koopTransportbedrijf(Speler speler, Transport bedrijf){
-		bedrijf.setEigenaar(speler);
-		speler.setGeld(-waarde);
+
+		if (speler.getGeld() < waarde) {
+			System.out.println("Niet genoeg geld");
+		} else {
+			bedrijf.setEigenaar(speler);
+			speler.setGeld(-waarde);
+		}
 	}
 
 	public static int getHuur(Transport transportBedrijf){
