@@ -3305,7 +3305,7 @@ public class MainMetPionPresenter {
                                         VBox dialogVBox222 = new VBox();
                                         dialog.setTitle("Opdracht");
                                         Button button222 = new Button("OK");
-                                        dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button222);
+                                        dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet22)), button222);
                                         Scene dialogScene222 = new Scene(dialogVBox222, 300, 250);
                                         dialogVBox222.setAlignment(Pos.CENTER);
                                         dialogVBox222.setSpacing(10);
@@ -4757,7 +4757,7 @@ public class MainMetPionPresenter {
                                         VBox dialogVBox332 = new VBox();
                                         dialog.setTitle("Opdracht");
                                         Button button332 = new Button("OK");
-                                        dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button332);
+                                        dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet33)), button332);
                                         Scene dialogScene332 = new Scene(dialogVBox332, 300, 250);
                                         dialogVBox332.setAlignment(Pos.CENTER);
                                         dialogVBox332.setSpacing(10);
@@ -5026,7 +5026,7 @@ public class MainMetPionPresenter {
                                         VBox dialogVBox362 = new VBox();
                                         dialog.setTitle("Opdracht");
                                         Button button362 = new Button("OK");
-                                        dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button362);
+                                        dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet36)), button362);
                                         Scene dialogScene362 = new Scene(dialogVBox362, 300, 250);
                                         dialogVBox362.setAlignment(Pos.CENTER);
                                         dialogVBox362.setSpacing(10);
