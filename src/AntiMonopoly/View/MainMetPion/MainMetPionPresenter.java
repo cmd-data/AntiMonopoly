@@ -1113,14 +1113,23 @@ public class MainMetPionPresenter {
                                 dialog4.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox4 = new VBox();
                                 dialog4.setTitle("Inkomstenbelasting");
-                                Button button4 = new Button();
-                                dialogVBox4.getChildren().addAll(new Text("Betaal"), button4);
+                                Button button4 = new Button("Betaal belasting\n€200.000");
+                                dialogVBox4.getChildren().addAll(button4);
                                 Scene dialogScene4 = new Scene(dialogVBox4, 300, 250);
                                 dialogVBox4.setAlignment(Pos.CENTER);
                                 dialogVBox4.setSpacing(10);
                                 dialogVBox4.setStyle("-fx-font: 20px Tahoma");
                                 dialog4.setScene(dialogScene4);
                                 dialog4.show();
+
+                                Speler finalAanZet = aanZet;
+                                button4.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        Inkomstenbelasting.betaalBelasting(finalAanZet);
+                                        dialog4.close();
+                                    }
+                                });
                                 break;
 
                             case 5:
@@ -1761,17 +1770,6 @@ public class MainMetPionPresenter {
                                 transition10.setInterpolator(Interpolator.EASE_BOTH);
                                 transition10.play();
 
-                                final Stage dialog10 = new Stage();
-                                dialog10.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox10 = new VBox();
-                                dialog10.setTitle("Start");
-                                dialogVBox10.getChildren().addAll(new Text("U bent op bezoek in de gevangenis."));
-                                Scene dialogScene10 = new Scene(dialogVBox10, 300, 250);
-                                dialogVBox10.setAlignment(Pos.CENTER);
-                                dialogVBox10.setSpacing(10);
-                                dialogVBox10.setStyle("-fx-font: 20px Tahoma");
-                                dialog10.setScene(dialogScene10);
-                                dialog10.show();
                                 break;
 
                             case 11:
@@ -3016,10 +3014,15 @@ public class MainMetPionPresenter {
                                 dialog20.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox20 = new VBox();
                                 dialog20.setTitle("Antimonopoly-stichting");
-                                Button button201 = new Button("Concurrent");
-                                Button button202 = new Button("Monopolist");
-                                dialogVBox20.getChildren().addAll(new Text("Antimonopoly-stichting"), new Text("Ik ben een: "),
-                                        button201, button202);
+                                String soortSpeler;
+
+                                if (aanZet.getIsConcurrent()){
+                                    soortSpeler = "Concurrent";
+                                } else {
+                                    soortSpeler = "Monopolist";
+                                }
+
+                                dialogVBox20.getChildren().addAll(new Text("Antimonopoly-stichting"), new Text("U bent een " + soortSpeler));
                                 Scene dialogScene20 = new Scene(dialogVBox20, 300, 250);
                                 dialogVBox20.setAlignment(Pos.CENTER);
                                 dialogVBox20.setSpacing(10);
