@@ -13,10 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainMetPionPresenter {
@@ -588,10 +592,10 @@ public class MainMetPionPresenter {
                 VBox dialogVBox = new VBox();
                 dialog.setTitle("Worp");
                 Button button = new Button("Zet Pion");
-                Label label = new Label(String.valueOf(count));
                 Label label1 = new Label (String.valueOf(Dice.getWorp2()[0]));
-                Label label2 = new Label(String.valueOf(Dice.getWorp2()[1]));
-                dialogVBox.getChildren().addAll(new Text(String.valueOf(worp)), button, label, label1, label2);
+                Label label2 = new Label (String.valueOf(Dice.getWorp2()[1]));
+                Label label3 = new Label (String.valueOf(Dice.getCount()));
+                dialogVBox.getChildren().addAll(button, label1, label2, label3);
                 Scene dialogScene = new Scene(dialogVBox, 300, 250);
                 dialogVBox.setAlignment(Pos.CENTER);
                 dialogVBox.setSpacing(10);
@@ -603,43 +607,72 @@ public class MainMetPionPresenter {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+
+                        List<Rectangle> pionnen = new ArrayList<>();
+
+                        for (int i = 0; i < Spel.getSpelers().size(); i++) {
+                            pionnen.add(Spel.getSpelers().get(i).getRectangle());
+                        }
+
+                        Rectangle pion = null;
+                        Speler aanZet = null;
+
+                        switch (Dice.getCount()){
+                            case 1:
+                                pion = pionnen.get(0);
+                                aanZet = Spel.getSpelers().get(0);
+                                break;
+                            case 2:
+                                pion = pionnen.get(1);
+                                aanZet = Spel.getSpelers().get(1);
+                                break;
+                            case 3:
+                                pion = pionnen.get(2);
+                                aanZet = Spel.getSpelers().get(2);
+                                break;
+                            case 4:
+                                pion = pionnen.get(3);
+                                aanZet = Spel.getSpelers().get(3);
+                        }
+
+                        int locatie = Spel.move(aanZet,worp).getPositie();
                         dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
-                        int locatie = Spel.move(Spel.getSpelers().get(0),worp).getPositie();
+
 
                         switch (locatie) {
 
-                            case 0:
-                                TranslateTransition transition0 = new TranslateTransition();
-                                transition0.setNode(MainMetPionView.getRectangle1());
-                                transition0.setDuration(Duration.seconds(1));
-                                transition0.setToX(0);
-                                transition0.setToY(0);
-                                //transition0.setCycleCount(Timeline.INDEFINITE);
-                                transition0.setInterpolator(Interpolator.EASE_BOTH);
-                                transition0.play();
+                                case 0:
+                                    TranslateTransition transition0 = new TranslateTransition();
+                                    transition0.setNode(pion);
+                                    transition0.setDuration(Duration.seconds(1));
+                                    transition0.setToX(0);
+                                    transition0.setToY(0);
+                                    //transition0.setCycleCount(Timeline.INDEFINITE);
+                                    transition0.setInterpolator(Interpolator.EASE_BOTH);
+                                    transition0.play();
 
-                                final Stage dialog0 = new Stage();
-                                dialog0.initModality(Modality.APPLICATION_MODAL);
-                                VBox dialogVBox0 = new VBox();
-                                dialog0.setTitle("Start");
-                                dialogVBox0.getChildren().addAll(new Text("U staat op start."));
-                                Scene dialogScene0 = new Scene(dialogVBox0,300,250);
-                                dialogVBox0.setAlignment(Pos.CENTER);
-                                dialogVBox0.setSpacing(10);
-                                dialogVBox0.setStyle("-fx-font: 20px Tahoma");
-                                dialog0.setScene(dialogScene0);
-                                dialog0.show();
-                                break;
+                                    final Stage dialog0 = new Stage();
+                                    dialog0.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox0 = new VBox();
+                                    dialog0.setTitle("Start");
+                                    dialogVBox0.getChildren().addAll(new Text("U staat op start."));
+                                    Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
+                                    dialogVBox0.setAlignment(Pos.CENTER);
+                                    dialogVBox0.setSpacing(10);
+                                    dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+                                    dialog0.setScene(dialogScene0);
+                                    dialog0.show();
+                                    break;
 
-                            case 1:
-                                TranslateTransition transition1 = new TranslateTransition();
-                                transition1.setNode(MainMetPionView.getRectangle1());
-                                transition1.setDuration(Duration.seconds(1));
-                                transition1.setToX(150);
-                                transition1.setToY(0);
-                                //transition1.setCycleCount(Timeline.INDEFINITE);
-                                transition1.setInterpolator(Interpolator.EASE_BOTH);
-                                transition1.play();
+                                case 1:
+                                    TranslateTransition transition1 = new TranslateTransition();
+                                    transition1.setNode(pion);
+                                    transition1.setDuration(Duration.seconds(1));
+                                    transition1.setToX(150);
+                                    transition1.setToY(0);
+                                    //transition1.setCycleCount(Timeline.INDEFINITE);
+                                    transition1.setInterpolator(Interpolator.EASE_BOTH);
+                                    transition1.play();
 
                                 //Tegel heeft geen eigenaar
                                 if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(1))){
@@ -657,10 +690,12 @@ public class MainMetPionPresenter {
                                     dialog1.setScene(dialogScene1);
                                     dialog1.show();
 
+                                    Speler finalAanZet1 = aanZet;
                                     button11.setOnAction(new EventHandler<ActionEvent>() {
                                             @Override
                                             public void handle(ActionEvent event) {
-                                                Tegel.koopEigendom(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+                                                dialog1.close();                                        // sluit koop venster
+                                                Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet1);
 
                                                 final Stage dialog1 = new Stage();
                                                 dialog1.initModality(Modality.APPLICATION_MODAL);
@@ -702,10 +737,12 @@ public class MainMetPionPresenter {
                                     dialog1.setScene(dialogScene1);
                                     dialog1.show();
 
+                                    Speler finalAanZet = aanZet;
                                     button13.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
-                                            Tegel.betaalHuur(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+                                            dialog1.close();
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet);
 
                                             final Stage dialog1 = new Stage();
                                             dialog1.initModality(Modality.APPLICATION_MODAL);
@@ -729,10 +766,10 @@ public class MainMetPionPresenter {
                                             });
                                         }
                                     });
-                                }
+                                } else {
 
-                                //Tegel is van de speler zelf
-                                if(Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    // tegel is van de speler zelf
+
                                     final Stage dialog1 = new Stage();
                                     dialog1.initModality(Modality.APPLICATION_MODAL);
                                     VBox dialogVBox1 = new VBox();
@@ -753,10 +790,12 @@ public class MainMetPionPresenter {
                                     dialog1.show();
 
                                     //Koop Hotel
+                                    Speler finalAanZet2 = aanZet;
                                     button14.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
-                                            Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(1), new Gebouwen.Hotel(), Spel.getSpelers().get(0));
+                                            dialog1.close();
+                                            Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet2);
 
                                             final Stage dialog1 = new Stage();
                                             dialog1.initModality(Modality.APPLICATION_MODAL);
@@ -782,10 +821,12 @@ public class MainMetPionPresenter {
                                     });
 
                                     //Koop huis
+                                    Speler finalAanZet3 = aanZet;
                                     button15.setOnAction(new EventHandler<ActionEvent>() {
                                             @Override
                                             public void handle(ActionEvent event) {
-                                                Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(1), new Gebouwen.Huis(), comboBox.getValue(),Spel.getSpelers().get(0));
+                                                dialog1.close();
+                                                Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(), comboBox.getValue(), finalAanZet3);
 
                                                 final Stage dialog1 = new Stage();
                                                 dialog1.initModality(Modality.APPLICATION_MODAL);
@@ -835,13 +876,35 @@ public class MainMetPionPresenter {
                                 dialog2.setScene(dialogScene2);
                                 dialog2.show();
 
-                                button2.setOnAction(new EventHandler<ActionEvent>() {
-                                    @Override
-                                    public void handle(ActionEvent actionEvent) {
-                                        dialog2.close();
-                                    }
-                                });
-                                break;
+                                    Speler finalAanZet3 = aanZet;
+                                    button2.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent actionEvent) {
+                                            dialog2.close();
+
+                                            final Stage dialog = new Stage();
+                                            dialog.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox2 = new VBox();
+                                            dialog.setTitle("Opdracht");
+                                            Button button2 = new Button("OK");
+                                            dialogVBox2.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet3)), button2);
+                                            Scene dialogScene2 = new Scene(dialogVBox2, 300, 250);
+                                            dialogVBox2.setAlignment(Pos.CENTER);
+                                            dialogVBox2.setSpacing(10);
+                                            dialogVBox2.setStyle("-fx-font: 20px Tahoma");
+                                            dialog.setScene(dialogScene2);
+                                            dialog.show();
+
+                                            button2.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent actionEvent) {
+                                                    ConcurrentenOfMonopolistenvak.voerUit(finalAanZet3);
+                                                    dialog.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                    break;
 
                             case 3:
                                 TranslateTransition transition3 = new TranslateTransition();
