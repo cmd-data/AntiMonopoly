@@ -242,22 +242,26 @@ public class MainView extends GridPane {
 
     //Spelersnamen invullen
     //Speler 1
-    private Label s11,s12;
+    private Label s11;
+    private static Label s12;
     private VBox speler1;
     private ImageView s13;
 
     //Speler 2
-    private Label s21,s22;
+    private Label s21;
+    private static Label s22;
     private VBox speler2;
     private ImageView s23;
 
     //Speler 3
-    private Label s31,s32;
+    private Label s31;
+    private static Label s32;
     private VBox speler3;
     private ImageView s33;
 
     //Speler 4
-    private Label s41,s42;
+    private Label s41;
+    private static Label s42;
     private VBox speler4;
     private ImageView s43;
 
@@ -518,22 +522,22 @@ public class MainView extends GridPane {
         //Spelersnamen
         //Speler 1
         this.s11 = new Label();
-        this.s12 = new Label();
+        s12 = new Label();
         this.s13 = new ImageView();
 
         //Speler 2
         this.s21 = new Label();
-        this.s22 = new Label();
+        s22 = new Label();
         this.s23 = new ImageView();
 
         //Speler 3
         this.s31 = new Label();
-        this.s32 = new Label();
+        s32 = new Label();
         this.s33 = new ImageView();
 
         //Speler 4
         this.s41 = new Label();
-        this.s42 = new Label();
+        s42 = new Label();
         this.s43 = new ImageView();
 
         //this.dobbelen = new Button("Dobbelen");
@@ -1007,19 +1011,17 @@ public class MainView extends GridPane {
         return s41;
     }
 
-    public Label getS12() {
-        return s12;
-    }
+    public static Label getS12() { return s12; }
 
-    public Label getS22() {
+    public static Label getS22() {
         return s22;
     }
 
-    public Label getS32() {
+    public static Label getS32() {
         return s32;
     }
 
-    public Label getS42() {
+    public static Label getS42() {
         return s42;
     }
 

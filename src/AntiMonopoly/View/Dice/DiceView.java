@@ -3,12 +3,13 @@ package AntiMonopoly.View.Dice;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 public class DiceView extends GridPane {
-    private ImageView die1, die2;
+    private static ImageView die1, die2;
     private Button rolButton;
     GridPane pane;
 
@@ -25,9 +26,9 @@ public class DiceView extends GridPane {
     private void initialiseNodes() {
         die1 = new ImageView();
         die2 = new ImageView();
-        rolButton = new Button("Rol");
+        rolButton = new Button();
+        rolButton.setGraphic(new ImageView("/images/dice.png"));
         pane = new GridPane();
-        rolButton.setPrefWidth(50);
         pane.setStyle("-fx-background-color: black");
     }
 
@@ -52,9 +53,9 @@ public class DiceView extends GridPane {
         GridPane.setHalignment(rolButton, HPos.CENTER);
     }
 
-    public ImageView getDie1() { return die1; }
+    public static ImageView getDie1() { return die1; }
 
-    public ImageView getDie2() { return die2; }
+    public static ImageView getDie2() { return die2; }
 
     public Button getRolButton() { return rolButton; }
 }

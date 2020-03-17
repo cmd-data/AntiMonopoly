@@ -43,6 +43,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			doeOpdrachtMonopolist(Opdrachten.shuffledMon.firstKey(),speler);
 			steekTerugMon();
 		}
+		Spel.updateGeld(speler);
 	}
 
 	public static void steekTerugMon() {

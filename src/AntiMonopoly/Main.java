@@ -20,6 +20,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         startPresenter.addWindowEventHandlers();
         primaryStage.setTitle("AntiMonopoly");
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
