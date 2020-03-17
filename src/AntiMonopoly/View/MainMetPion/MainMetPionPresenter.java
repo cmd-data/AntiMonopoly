@@ -1,8 +1,6 @@
 package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.*;
-import AntiMonopoly.View.Dice.DiceView;
-import AntiMonopoly.View.MainScreen.MainView;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -14,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -39,6 +36,8 @@ public class MainMetPionPresenter {
         this.updateView();
     }
 
+
+
     private void addEventHandlers() {
         view.getMainView().getRg2().setOnAction(
                 new EventHandler<ActionEvent>() {
@@ -48,9 +47,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Grande");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
                                 new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -68,9 +67,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Diestsestraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
                                 new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -88,9 +87,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Steenstraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"),new Text("Huur: €10.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"), new Text("Huur: €10.000"),
                                 new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -108,9 +107,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place Du Monument");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"),new Text("Huur: €10.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €100.000"), new Text("Huur: €10.000"),
                                 new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -128,9 +127,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Kapellestraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €120.000"),new Text("Huur: €12.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €120.000"), new Text("Huur: €12.000"),
                                 new Text("Hypotheek: €60.000"), new Text("Huisprijs: €50.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -148,9 +147,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue De Diekirch");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"),new Text("Huur: €14.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"), new Text("Huur: €14.000"),
                                 new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -168,9 +167,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Bruul");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"),new Text("Huur: €14.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €140.000"), new Text("Huur: €14.000"),
                                 new Text("Hypotheek: €70.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -188,9 +187,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place Verte");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €160.000"),new Text("Huur: €16.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €160.000"), new Text("Huur: €16.000"),
                                 new Text("Hypotheek: €80.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -208,9 +207,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Lippenslaan");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"),new Text("Huur: €18.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"), new Text("Huur: €18.000"),
                                 new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -228,9 +227,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Royal");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"),new Text("Huur: €18.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €180.000"), new Text("Huur: €18.000"),
                                 new Text("Hypotheek: €90.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -249,9 +248,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Groenplaats");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"),new Text("Huur: €20.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"), new Text("Huur: €20.000"),
                                 new Text("Hypotheek: €100.000"), new Text("Huisprijs: €100.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -269,9 +268,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Rue Saint Leonard");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"),new Text("Huur: €22.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"), new Text("Huur: €22.000"),
                                 new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -289,9 +288,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Lange Steenstraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"),new Text("Huur: €22.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €220.000"), new Text("Huur: €22.000"),
                                 new Text("Hypotheek: €110.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -309,9 +308,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Grand Place");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €240.000"),new Text("Huur: €24.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €240.000"), new Text("Huur: €24.000"),
                                 new Text("Hypotheek: €120.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -329,9 +328,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Grote Markt");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"),new Text("Huur: €26.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"), new Text("Huur: €26.000"),
                                 new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -349,9 +348,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Place De l'Ange");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"),new Text("Huur: €26.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €260.000"), new Text("Huur: €26.000"),
                                 new Text("Hypotheek: €130.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -369,9 +368,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Hoogstraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €280.000"),new Text("Huur: €28.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €280.000"), new Text("Huur: €28.000"),
                                 new Text("Hypotheek: €140.000"), new Text("Huisprijs: €150.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -389,9 +388,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Veldstraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"),new Text("Huur: €30.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"), new Text("Huur: €30.000"),
                                 new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -409,9 +408,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Boulevard Tirou");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"),new Text("Huur: €30.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €300.000"), new Text("Huur: €30.000"),
                                 new Text("Hypotheek: €150.000"), new Text("Huisprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -429,9 +428,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Boulevard d'Avroy");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €320.000"),new Text("Huur: €32.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €320.000"), new Text("Huur: €32.000"),
                                 new Text("Hypotheek: €160.000"), new Text("Huisprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -449,9 +448,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Meir");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €350.000"),new Text("Huur: €35.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €350.000"), new Text("Huur: €35.000"),
                                 new Text("Hypotheek: €175.000"), new Text("Huisprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -469,9 +468,9 @@ public class MainMetPionPresenter {
                         dialog.initModality(Modality.APPLICATION_MODAL);
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Nieuwstraat");
-                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €400.000"),new Text("Huur: €40.000"),
+                        dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €400.000"), new Text("Huur: €40.000"),
                                 new Text("Hypotheek: €200.000"), new Text("Huisprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -491,7 +490,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Noord Station");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -510,7 +509,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Zuid Station");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -529,7 +528,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("Oost Station");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -548,7 +547,7 @@ public class MainMetPionPresenter {
                         VBox dialogVBox = new VBox();
                         dialog.setTitle("West Station");
                         dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €200.000"));
-                        Scene dialogScene = new Scene(dialogVBox,300,250);
+                        Scene dialogScene = new Scene(dialogVBox, 300, 250);
                         dialogVBox.setAlignment(Pos.CENTER);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -568,7 +567,7 @@ public class MainMetPionPresenter {
                         dialog.setTitle("Spelregels");
                         Spelregels spelregels = new Spelregels();
                         dialogVBox.getChildren().addAll(new Text(spelregels.getSpelregels()));
-                        Scene dialogScene = new Scene(dialogVBox,2000,1000);
+                        Scene dialogScene = new Scene(dialogVBox, 2000, 1000);
                         dialogVBox.setSpacing(10);
                         dialogVBox.setStyle("-fx-font: 10px Tahoma");
                         dialog.setScene(dialogScene);
@@ -578,7 +577,6 @@ public class MainMetPionPresenter {
         );
 
         //Aanpassingen aan het aanbrengen
-
 
 
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
@@ -616,7 +614,7 @@ public class MainMetPionPresenter {
                         Rectangle pion = null;
                         Speler aanZet = null;
 
-                        switch (Dice.getCount()){
+                        switch (Dice.getCount()) {
                             case 1:
                                 pion = pionnen.get(0);
                                 aanZet = Spel.getSpelers().get(0);
@@ -634,132 +632,133 @@ public class MainMetPionPresenter {
                                 aanZet = Spel.getSpelers().get(3);
                         }
 
-                        int locatie = Spel.move(aanZet,worp).getPositie();
+                        int locatie = Spel.move(aanZet, worp).getPositie();
                         dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
+
 
                         switch (locatie) {
 
-                                case 0:
-                                    TranslateTransition transition0 = new TranslateTransition();
-                                    transition0.setNode(pion);
-                                    transition0.setDuration(Duration.seconds(1));
-                                    transition0.setToX(0);
-                                    transition0.setToY(0);
-                                    //transition0.setCycleCount(Timeline.INDEFINITE);
-                                    transition0.setInterpolator(Interpolator.EASE_BOTH);
-                                    transition0.play();
+                            case 0:
+                                TranslateTransition transition0 = new TranslateTransition();
+                                transition0.setNode(pion);
+                                transition0.setDuration(Duration.seconds(1));
+                                transition0.setToX(0);
+                                transition0.setToY(0);
+                                //transition0.setCycleCount(Timeline.INDEFINITE);
+                                transition0.setInterpolator(Interpolator.EASE_BOTH);
+                                transition0.play();
 
-                                    final Stage dialog0 = new Stage();
-                                    dialog0.initModality(Modality.APPLICATION_MODAL);
-                                    VBox dialogVBox0 = new VBox();
-                                    dialog0.setTitle("Start");
-                                    dialogVBox0.getChildren().addAll(new Text("U staat op start."));
-                                    Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
-                                    dialogVBox0.setAlignment(Pos.CENTER);
-                                    dialogVBox0.setSpacing(10);
-                                    dialogVBox0.setStyle("-fx-font: 20px Tahoma");
-                                    dialog0.setScene(dialogScene0);
-                                    dialog0.show();
-                                    break;
+                                final Stage dialog0 = new Stage();
+                                dialog0.initModality(Modality.APPLICATION_MODAL);
+                                VBox dialogVBox0 = new VBox();
+                                dialog0.setTitle("Start");
+                                dialogVBox0.getChildren().addAll(new Text("U staat op start."));
+                                Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
+                                dialogVBox0.setAlignment(Pos.CENTER);
+                                dialogVBox0.setSpacing(10);
+                                dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+                                dialog0.setScene(dialogScene0);
+                                dialog0.show();
+                                break;
 
-                                case 1:
-                                    TranslateTransition transition1 = new TranslateTransition();
-                                    transition1.setNode(pion);
-                                    transition1.setDuration(Duration.seconds(1));
-                                    transition1.setToX(150);
-                                    transition1.setToY(0);
-                                    //transition1.setCycleCount(Timeline.INDEFINITE);
-                                    transition1.setInterpolator(Interpolator.EASE_BOTH);
-                                    transition1.play();
+                            case 1:
+                                TranslateTransition transition1 = new TranslateTransition();
+                                transition1.setNode(pion);
+                                transition1.setDuration(Duration.seconds(1));
+                                transition1.setToX(150);
+                                transition1.setToY(0);
+                                //transition1.setCycleCount(Timeline.INDEFINITE);
+                                transition1.setInterpolator(Interpolator.EASE_BOTH);
+                                transition1.play();
 
                                 //Tegel heeft geen eigenaar
-                                if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(1))){
-                                    final Stage dialog1 = new Stage();
-                                    dialog1.initModality(Modality.APPLICATION_MODAL);
-                                    VBox dialogVBox1 = new VBox();
-                                    dialog1.setTitle("Rue Grande");
+                                if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+                                    final Stage dialog11 = new Stage();
+                                    dialog11.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox11 = new VBox();
+                                    dialog11.setTitle("Rue Grande");
                                     Button button11 = new Button("Koop");
-                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
-                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button11);
-                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                    dialogVBox1.setAlignment(Pos.CENTER);
-                                    dialogVBox1.setSpacing(10);
-                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                    dialog1.setScene(dialogScene1);
-                                    dialog1.show();
+                                    dialogVBox11.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
+                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"), button11);
+                                    Scene dialogScene11 = new Scene(dialogVBox11, 300, 250);
+                                    dialogVBox11.setAlignment(Pos.CENTER);
+                                    dialogVBox11.setSpacing(10);
+                                    dialogVBox11.setStyle("-fx-font: 20px Tahoma");
+                                    dialog11.setScene(dialogScene11);
+                                    dialog11.show();
 
-                                    Speler finalAanZet1 = aanZet;
+                                    Speler finalAanZet11 = aanZet;
                                     button11.setOnAction(new EventHandler<ActionEvent>() {
-                                            @Override
-                                            public void handle(ActionEvent event) {
-                                                dialog1.close();                                        // sluit koop venster
-                                                Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet1);
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet11);
 
-                                                final Stage dialog1 = new Stage();
-                                                dialog1.initModality(Modality.APPLICATION_MODAL);
-                                                VBox dialogVBox1 = new VBox();
-                                                dialog1.setTitle("Proficiat met uw aankoop!");
-                                                Button button12 = new Button("OK");
-                                                dialogVBox1.getChildren().addAll(new Text("U hebt Rue Grande aangekocht"), new Text("voor €60.000"),
-                                                        button12);
-                                                Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                                dialogVBox1.setAlignment(Pos.CENTER);
-                                                dialogVBox1.setSpacing(10);
-                                                dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                                dialog1.setScene(dialogScene1);
-                                                dialog1.show();
+                                            final Stage dialog12 = new Stage();
+                                            dialog12.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox12 = new VBox();
+                                            dialog12.setTitle("Proficiat met uw aankoop!");
+                                            Button button12 = new Button("OK");
+                                            dialogVBox12.getChildren().addAll(new Text("U hebt Rue Grande aangekocht"), new Text("voor €60.000"),
+                                                    button12);
+                                            Scene dialogScene12 = new Scene(dialogVBox12, 300, 250);
+                                            dialogVBox12.setAlignment(Pos.CENTER);
+                                            dialogVBox12.setSpacing(10);
+                                            dialogVBox12.setStyle("-fx-font: 20px Tahoma");
+                                            dialog12.setScene(dialogScene12);
+                                            dialog12.show();
 
-                                                button12.setOnAction(new EventHandler<ActionEvent>() {
-                                                    @Override
-                                                    public void handle(ActionEvent event) {
-                                                        dialog1.close();
-                                                    }
-                                                });
-                                            }
+                                            button12.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog11.close();
+                                                    dialog12.close();
+                                                }
+                                            });
+                                        }
                                     });
                                 }
 
                                 //Tegel is van een andere eigenaar
-                                if(!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+                                if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
 
-                                    final Stage dialog1 = new Stage();
-                                    dialog1.initModality(Modality.APPLICATION_MODAL);
-                                    VBox dialogVBox1 = new VBox();
-                                    dialog1.setTitle("Betaal Huur");
+                                    final Stage dialog13 = new Stage();
+                                    dialog13.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox13 = new VBox();
+                                    dialog13.setTitle("Betaal Huur");
                                     Button button13 = new Button("Betaal huur");
-                                    dialogVBox1.getChildren().addAll(new Text("U dient huur te betalen. "),button13);
-                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                    dialogVBox1.setAlignment(Pos.CENTER);
-                                    dialogVBox1.setSpacing(10);
-                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                    dialog1.setScene(dialogScene1);
-                                    dialog1.show();
+                                    dialogVBox13.getChildren().addAll(new Text("U dient huur te betalen. "), button13);
+                                    Scene dialogScene13 = new Scene(dialogVBox13, 300, 250);
+                                    dialogVBox13.setAlignment(Pos.CENTER);
+                                    dialogVBox13.setSpacing(10);
+                                    dialogVBox13.setStyle("-fx-font: 20px Tahoma");
+                                    dialog13.setScene(dialogScene13);
+                                    dialog13.show();
 
-                                    Speler finalAanZet = aanZet;
+                                    Speler finalAanZet12 = aanZet;
                                     button13.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
-                                            dialog1.close();
-                                            Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet);
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet12);
 
-                                            final Stage dialog1 = new Stage();
-                                            dialog1.initModality(Modality.APPLICATION_MODAL);
-                                            VBox dialogVBox1 = new VBox();
-                                            dialog1.setTitle("Huur");
+                                            final Stage dialog14 = new Stage();
+                                            dialog14.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox14 = new VBox();
+                                            dialog14.setTitle("Huur");
                                             Button button1 = new Button("OK");
-                                            dialogVBox1.getChildren().addAll(new Text("U betaalde huur"),
+                                            dialogVBox14.getChildren().addAll(new Text("U betaalde huur"),
                                                     button1);
-                                            Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                            dialogVBox1.setAlignment(Pos.CENTER);
-                                            dialogVBox1.setSpacing(10);
-                                            dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                            dialog1.setScene(dialogScene1);
-                                            dialog1.show();
+                                            Scene dialogScene14 = new Scene(dialogVBox14, 300, 250);
+                                            dialogVBox14.setAlignment(Pos.CENTER);
+                                            dialogVBox14.setSpacing(10);
+                                            dialogVBox14.setStyle("-fx-font: 20px Tahoma");
+                                            dialog14.setScene(dialogScene14);
+                                            dialog14.show();
 
                                             button1.setOnAction(new EventHandler<ActionEvent>() {
                                                 @Override
                                                 public void handle(ActionEvent event) {
-                                                    dialog1.close();
+                                                    dialog13.close();
+                                                    dialog14.close();
                                                 }
                                             });
                                         }
@@ -768,24 +767,24 @@ public class MainMetPionPresenter {
 
                                     // tegel is van de speler zelf
 
-                                    final Stage dialog1 = new Stage();
-                                    dialog1.initModality(Modality.APPLICATION_MODAL);
-                                    VBox dialogVBox1 = new VBox();
-                                    dialog1.setTitle("Bouw");
+                                    final Stage dialog15 = new Stage();
+                                    dialog15.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox15 = new VBox();
+                                    dialog15.setTitle("Bouw");
                                     Button button14 = new Button("Bouw Hotel");
                                     ComboBox<Integer> comboBox = new ComboBox<>();
                                     ObservableList<Integer> hetAantalHuizen =
-                                            FXCollections.observableArrayList(0,1,2,3,4);
+                                            FXCollections.observableArrayList(0, 1, 2, 3, 4);
                                     comboBox.setItems(hetAantalHuizen);
                                     Button button15 = new Button("Bouw Huis");
-                                    dialogVBox1.getChildren().addAll( new Text("Huisprijs: €50.000"), new Text("hoeveel huizen wilt u?"),
-                                            comboBox , button14, button15);
-                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                    dialogVBox1.setAlignment(Pos.CENTER);
-                                    dialogVBox1.setSpacing(10);
-                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                    dialog1.setScene(dialogScene1);
-                                    dialog1.show();
+                                    dialogVBox15.getChildren().addAll(new Text("Huisprijs: €50.000"), new Text("hoeveel huizen wilt u?"),
+                                            comboBox, button14, button15);
+                                    Scene dialogScene15 = new Scene(dialogVBox15, 300, 250);
+                                    dialogVBox15.setAlignment(Pos.CENTER);
+                                    dialogVBox15.setSpacing(10);
+                                    dialogVBox15.setStyle("-fx-font: 20px Tahoma");
+                                    dialog15.setScene(dialogScene15);
+                                    dialog15.show();
 
                                     //Koop Hotel
                                     Speler finalAanZet2 = aanZet;
@@ -853,7 +852,7 @@ public class MainMetPionPresenter {
 
                             case 2:
                                 TranslateTransition transition2 = new TranslateTransition();
-                                transition2.setNode(pion);
+                                transition2.setNode(MainMetPionView.getRectangle1());
                                 transition2.setDuration(Duration.seconds(1));
                                 transition2.setToX(2*150);
                                 transition2.setToY(0);
@@ -906,7 +905,7 @@ public class MainMetPionPresenter {
 
                             case 3:
                                 TranslateTransition transition3 = new TranslateTransition();
-                                transition3.setNode(pion);
+                                transition3.setNode(MainMetPionView.getRectangle1());
                                 transition3.setDuration(Duration.seconds(1));
                                 transition3.setToX(3*150);
                                 transition3.setToY(0);
@@ -1092,7 +1091,7 @@ public class MainMetPionPresenter {
 
                             case 4:
                                 TranslateTransition transition4 = new TranslateTransition();
-                                transition4.setNode(pion);
+                                transition4.setNode(MainMetPionView.getRectangle1());
                                 transition4.setDuration(Duration.seconds(1));
                                 transition4.setToX(4*150);
                                 transition4.setToY(0);
@@ -1116,7 +1115,7 @@ public class MainMetPionPresenter {
 
                             case 5:
                                 TranslateTransition transition5 = new TranslateTransition();
-                                transition5.setNode(pion);
+                                transition5.setNode(MainMetPionView.getRectangle1());
                                 transition5.setDuration(Duration.seconds(1));
                                 transition5.setToX(5*150);
                                 transition5.setToY(0);
@@ -1139,7 +1138,7 @@ public class MainMetPionPresenter {
 
                             case 6:
                                 TranslateTransition transition6 = new TranslateTransition();
-                                transition6.setNode(pion);
+                                transition6.setNode(MainMetPionView.getRectangle1());
                                 transition6.setDuration(Duration.seconds(1));
                                 transition6.setToX(6*150);
                                 transition6.setToY(0);
@@ -1322,7 +1321,7 @@ public class MainMetPionPresenter {
 
                             case 7:
                                 TranslateTransition transition7 = new TranslateTransition();
-                                transition7.setNode(pion);
+                                transition7.setNode(MainMetPionView.getRectangle1());
                                 transition7.setDuration(Duration.seconds(1));
                                 transition7.setToX(7*150);
                                 transition7.setToY(0);
@@ -1354,7 +1353,7 @@ public class MainMetPionPresenter {
 
                             case 8:
                                 TranslateTransition transition8 = new TranslateTransition();
-                                transition8.setNode(pion);
+                                transition8.setNode(MainMetPionView.getRectangle1());
                                 transition8.setDuration(Duration.seconds(1));
                                 transition8.setToX(8*150);
                                 transition8.setToY(0);
@@ -1378,7 +1377,7 @@ public class MainMetPionPresenter {
 
                             case 9:
                                 TranslateTransition transition9 = new TranslateTransition();
-                                transition9.setNode(pion);
+                                transition9.setNode(MainMetPionView.getRectangle1());
                                 transition9.setDuration(Duration.seconds(1));
                                 transition9.setToX(9*150);
                                 transition9.setToY(0);
@@ -1402,7 +1401,7 @@ public class MainMetPionPresenter {
 
                             case 10:
                                 TranslateTransition transition10 = new TranslateTransition();
-                                transition10.setNode(pion);
+                                transition10.setNode(MainMetPionView.getRectangle1());
                                 transition10.setDuration(Duration.seconds(1));
                                 transition10.setToX(10*150);
                                 transition10.setToY(0);
@@ -1425,7 +1424,7 @@ public class MainMetPionPresenter {
 
                             case 11:
                                 TranslateTransition transition11 = new TranslateTransition();
-                                transition11.setNode(pion);
+                                transition11.setNode(MainMetPionView.getRectangle1());
                                 transition11.setDuration(Duration.seconds(1));
                                 transition11.setToX(10*150);
                                 transition11.setToY(90);
@@ -1449,7 +1448,7 @@ public class MainMetPionPresenter {
 
                             case 12:
                                 TranslateTransition transition12 = new TranslateTransition();
-                                transition12.setNode(pion);
+                                transition12.setNode(MainMetPionView.getRectangle1());
                                 transition12.setDuration(Duration.seconds(1));
                                 transition12.setToX(10*150);
                                 transition12.setToY(2 * 90);
@@ -1475,7 +1474,7 @@ public class MainMetPionPresenter {
 
                             case 13:
                                 TranslateTransition transition13 = new TranslateTransition();
-                                transition13.setNode(pion);
+                                transition13.setNode(MainMetPionView.getRectangle1());
                                 transition13.setDuration(Duration.seconds(1));
                                 transition13.setToX(10*150);
                                 transition13.setToY(3 * 90);
@@ -1499,7 +1498,7 @@ public class MainMetPionPresenter {
 
                             case 14:
                                 TranslateTransition transition14 = new TranslateTransition();
-                                transition14.setNode(pion);
+                                transition14.setNode(MainMetPionView.getRectangle1());
                                 transition14.setDuration(Duration.seconds(1));
                                 transition14.setToX(10*150);
                                 transition14.setToY(4 * 90);
@@ -1523,7 +1522,7 @@ public class MainMetPionPresenter {
 
                             case 15:
                                 TranslateTransition transition15 = new TranslateTransition();
-                                transition15.setNode(pion);
+                                transition15.setNode(MainMetPionView.getRectangle1());
                                 transition15.setDuration(Duration.seconds(1));
                                 transition15.setToX(10*150);
                                 transition15.setToY(5 * 90);
@@ -1546,7 +1545,7 @@ public class MainMetPionPresenter {
 
                             case 16:
                                 TranslateTransition transition16 = new TranslateTransition();
-                                transition16.setNode(pion);
+                                transition16.setNode(MainMetPionView.getRectangle1());
                                 transition16.setDuration(Duration.seconds(1));
                                 transition16.setToX(10*150);
                                 transition16.setToY(6 * 90);
@@ -1570,7 +1569,7 @@ public class MainMetPionPresenter {
 
                             case 17:
                                 TranslateTransition transition17 = new TranslateTransition();
-                                transition17.setNode(pion);
+                                transition17.setNode(MainMetPionView.getRectangle1());
                                 transition17.setDuration(Duration.seconds(1));
                                 transition17.setToX(10*150);
                                 transition17.setToY(7 * 90);
@@ -1601,7 +1600,7 @@ public class MainMetPionPresenter {
 
                             case 18:
                                 TranslateTransition transition18 = new TranslateTransition();
-                                transition18.setNode(pion);
+                                transition18.setNode(MainMetPionView.getRectangle1());
                                 transition18.setDuration(Duration.seconds(1));
                                 transition18.setToX(10*150);
                                 transition18.setToY(8 * 90);
@@ -1625,7 +1624,7 @@ public class MainMetPionPresenter {
 
                             case 19:
                                 TranslateTransition transition19 = new TranslateTransition();
-                                transition19.setNode(pion);
+                                transition19.setNode(MainMetPionView.getRectangle1());
                                 transition19.setDuration(Duration.seconds(1));
                                 transition19.setToX(10*150);
                                 transition19.setToY(9 * 90);
@@ -1649,7 +1648,7 @@ public class MainMetPionPresenter {
 
                             case 20:
                                 TranslateTransition transition20 = new TranslateTransition();
-                                transition20.setNode(pion);
+                                transition20.setNode(MainMetPionView.getRectangle1());
                                 transition20.setDuration(Duration.seconds(1));
                                 transition20.setToX(10*150);
                                 transition20.setToY(10 * 90);
@@ -1676,7 +1675,7 @@ public class MainMetPionPresenter {
 
                             case 21:
                                 TranslateTransition transition21 = new TranslateTransition();
-                                transition21.setNode(pion);
+                                transition21.setNode(MainMetPionView.getRectangle1());
                                 transition21.setDuration(Duration.seconds(1));
                                 transition21.setToX(9*150);
                                 transition21.setToY(10 * 90);
@@ -1700,7 +1699,7 @@ public class MainMetPionPresenter {
 
                             case 22:
                                 TranslateTransition transition22 = new TranslateTransition();
-                                transition22.setNode(pion);
+                                transition22.setNode(MainMetPionView.getRectangle1());
                                 transition22.setDuration(Duration.seconds(1));
                                 transition22.setToX(8*150);
                                 transition22.setToY(10 * 90);
@@ -1731,7 +1730,7 @@ public class MainMetPionPresenter {
 
                             case 23:
                                 TranslateTransition transition23= new TranslateTransition();
-                                transition23.setNode(pion);
+                                transition23.setNode(MainMetPionView.getRectangle1());
                                 transition23.setDuration(Duration.seconds(1));
                                 transition23.setToX(7*150);
                                 transition23.setToY(10 * 90);
@@ -1755,7 +1754,7 @@ public class MainMetPionPresenter {
 
                             case 24:
                                 TranslateTransition transition24 = new TranslateTransition();
-                                transition24.setNode(pion);
+                                transition24.setNode(MainMetPionView.getRectangle1());
                                 transition24.setDuration(Duration.seconds(1));
                                 transition24.setToX(6*150);;
                                 transition24.setToY(10 * 90);
@@ -1779,7 +1778,7 @@ public class MainMetPionPresenter {
 
                             case 25:
                                 TranslateTransition transition25 = new TranslateTransition();
-                                transition25.setNode(pion);
+                                transition25.setNode(MainMetPionView.getRectangle1());
                                 transition25.setDuration(Duration.seconds(1));
                                 transition25.setToX(5*150);
                                 transition25.setToY(10 * 90);
@@ -1802,7 +1801,7 @@ public class MainMetPionPresenter {
 
                             case 26:
                                 TranslateTransition transition26 = new TranslateTransition();
-                                transition26.setNode(pion);
+                                transition26.setNode(MainMetPionView.getRectangle1());
                                 transition26.setDuration(Duration.seconds(1));
                                 transition26.setToX(4*150);
                                 transition26.setToY(10 * 90);
@@ -1826,7 +1825,7 @@ public class MainMetPionPresenter {
 
                             case 27:
                                 TranslateTransition transition27 = new TranslateTransition();
-                                transition27.setNode(pion);
+                                transition27.setNode(MainMetPionView.getRectangle1());
                                 transition27.setDuration(Duration.seconds(1));
                                 transition27.setToX(3*150);
                                 transition27.setToY(10 * 90);
@@ -1850,7 +1849,7 @@ public class MainMetPionPresenter {
 
                             case 28:
                                 TranslateTransition transition28 = new TranslateTransition();
-                                transition28.setNode(pion);
+                                transition28.setNode(MainMetPionView.getRectangle1());
                                 transition28.setDuration(Duration.seconds(1));
                                 transition28.setToX(2*150);
                                 transition28.setToY(10 * 90);
@@ -1876,7 +1875,7 @@ public class MainMetPionPresenter {
 
                             case 29:
                                 TranslateTransition transition29 = new TranslateTransition();
-                                transition29.setNode(pion);
+                                transition29.setNode(MainMetPionView.getRectangle1());
                                 transition29.setDuration(Duration.seconds(1));
                                 transition29.setToX(150);
                                 transition29.setToY(10 * 90);
@@ -1900,7 +1899,7 @@ public class MainMetPionPresenter {
 
                             case 30:
                                 TranslateTransition transition30 = new TranslateTransition();
-                                transition30.setNode(pion);
+                                transition30.setNode(MainMetPionView.getRectangle1());
                                 transition30.setDuration(Duration.seconds(1));
                                 transition30.setToX(0);
                                 transition30.setToY(10 * 90);
@@ -1911,7 +1910,7 @@ public class MainMetPionPresenter {
 
                             case 31:
                                 TranslateTransition transition31 = new TranslateTransition();
-                                transition31.setNode(pion);
+                                transition31.setNode(MainMetPionView.getRectangle1());
                                 transition31.setDuration(Duration.seconds(1));
                                 transition31.setToX(0);
                                 transition31.setToY(9 * 90);
@@ -1935,7 +1934,7 @@ public class MainMetPionPresenter {
 
                             case 32:
                                 TranslateTransition transition32 = new TranslateTransition();
-                                transition32.setNode(pion);
+                                transition32.setNode(MainMetPionView.getRectangle1());
                                 transition32.setDuration(Duration.seconds(1));
                                 transition32.setToX(0);
                                 transition32.setToY(8 * 90);
@@ -1959,7 +1958,7 @@ public class MainMetPionPresenter {
 
                             case 33:
                                 TranslateTransition transition33 = new TranslateTransition();
-                                transition33.setNode(pion);
+                                transition33.setNode(MainMetPionView.getRectangle1());
                                 transition33.setDuration(Duration.seconds(1));
                                 transition33.setToX(0);
                                 transition33.setToY(7 * 90);
@@ -1990,7 +1989,7 @@ public class MainMetPionPresenter {
 
                             case 34:
                                 TranslateTransition transition34 = new TranslateTransition();
-                                transition34.setNode(pion);
+                                transition34.setNode(MainMetPionView.getRectangle1());
                                 transition34.setDuration(Duration.seconds(1));
                                 transition34.setToX(0);
                                 transition34.setToY(6 * 90);
@@ -2014,7 +2013,7 @@ public class MainMetPionPresenter {
 
                             case 35:
                                 TranslateTransition transition35 = new TranslateTransition();
-                                transition35.setNode(pion);
+                                transition35.setNode(MainMetPionView.getRectangle1());
                                 transition35.setDuration(Duration.seconds(1));
                                 transition35.setToX(0);
                                 transition35.setToY(5 * 90);
@@ -2037,7 +2036,7 @@ public class MainMetPionPresenter {
 
                             case 36:
                                 TranslateTransition transition36 = new TranslateTransition();
-                                transition36.setNode(pion);
+                                transition36.setNode(MainMetPionView.getRectangle1());
                                 transition36.setDuration(Duration.seconds(1));
                                 transition36.setToX(0);
                                 transition36.setToY(4 * 90);
@@ -2068,7 +2067,7 @@ public class MainMetPionPresenter {
 
                             case 37:
                                 TranslateTransition transition37 = new TranslateTransition();
-                                transition37.setNode(pion);
+                                transition37.setNode(MainMetPionView.getRectangle1());
                                 transition37.setDuration(Duration.seconds(1));
                                 transition37.setToX(0);
                                 transition37.setToY(3 * 90);
@@ -2092,7 +2091,7 @@ public class MainMetPionPresenter {
 
                             case 38:
                                 TranslateTransition transition38 = new TranslateTransition();
-                                transition38.setNode(pion);
+                                transition38.setNode(MainMetPionView.getRectangle1());
                                 transition38.setDuration(Duration.seconds(1));
                                 transition38.setToX(0);
                                 transition38.setToY(2 * 90);
@@ -2116,7 +2115,7 @@ public class MainMetPionPresenter {
 
                             case 39:
                                 TranslateTransition transition39 = new TranslateTransition();
-                                transition39.setNode(pion);
+                                transition39.setNode(MainMetPionView.getRectangle1());
                                 transition39.setDuration(Duration.seconds(1));
                                 transition39.setToX(0);
                                 transition39.setToY(90);
@@ -2153,7 +2152,13 @@ public class MainMetPionPresenter {
 
 
     private void updateView() {
+        //view.getDiceView().getDie1().setImage(new Image("/images/Dice/die1.png" /* + Dice.getWorp2()[0] + ".png"*/));
+        // view.getDiceView().getDie2().setImage(new Image("/images/Dice/die2.png" /*+ Dice.getWorp2()[10] + ".png"*/));
+        
     }
 
+    public int getCount() {
+        return count;
+    }
 }
 
