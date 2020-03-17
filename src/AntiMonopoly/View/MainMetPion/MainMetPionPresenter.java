@@ -3,11 +3,14 @@ package AntiMonopoly.View.MainMetPion;
 import AntiMonopoly.Model.*;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -586,7 +589,9 @@ public class MainMetPionPresenter {
                 dialog.setTitle("Worp");
                 Button button = new Button("Zet Pion");
                 Label label = new Label(String.valueOf(count));
-                dialogVBox.getChildren().addAll(new Text(String.valueOf(worp)), button, label);
+                Label label1 = new Label (String.valueOf(Dice.getWorp2()[0]));
+                Label label2 = new Label(String.valueOf(Dice.getWorp2()[1]));
+                dialogVBox.getChildren().addAll(new Text(String.valueOf(worp)), button, label, label1, label2);
                 Scene dialogScene = new Scene(dialogVBox, 300, 250);
                 dialogVBox.setAlignment(Pos.CENTER);
                 dialogVBox.setSpacing(10);
@@ -636,14 +641,15 @@ public class MainMetPionPresenter {
                                 transition1.setInterpolator(Interpolator.EASE_BOTH);
                                 transition1.play();
 
+                                //Tegel heeft geen eigenaar
                                 if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(1))){
                                     final Stage dialog1 = new Stage();
                                     dialog1.initModality(Modality.APPLICATION_MODAL);
                                     VBox dialogVBox1 = new VBox();
                                     dialog1.setTitle("Rue Grande");
-                                    Button button1 = new Button("Koop");
+                                    Button button11 = new Button("Koop");
                                     dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
-                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1);
+                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button11);
                                     Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
                                     dialogVBox1.setAlignment(Pos.CENTER);
                                     dialogVBox1.setSpacing(10);
@@ -651,47 +657,159 @@ public class MainMetPionPresenter {
                                     dialog1.setScene(dialogScene1);
                                     dialog1.show();
 
-                                    button1.setOnAction(new EventHandler<ActionEvent>() {
+                                    button11.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent event) {
+                                                Tegel.koopEigendom(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+
+                                                final Stage dialog1 = new Stage();
+                                                dialog1.initModality(Modality.APPLICATION_MODAL);
+                                                VBox dialogVBox1 = new VBox();
+                                                dialog1.setTitle("Proficiat met uw aankoop!");
+                                                Button button12 = new Button("OK");
+                                                dialogVBox1.getChildren().addAll(new Text("U hebt Rue Grande aangekocht"), new Text("voor €60.000"),
+                                                        button12);
+                                                Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                                dialogVBox1.setAlignment(Pos.CENTER);
+                                                dialogVBox1.setSpacing(10);
+                                                dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                                dialog1.setScene(dialogScene1);
+                                                dialog1.show();
+
+                                                button12.setOnAction(new EventHandler<ActionEvent>() {
+                                                    @Override
+                                                    public void handle(ActionEvent event) {
+                                                        dialog1.close();
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+
+                                //Tegel is van een andere eigenaar
+                                if(!Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+
+                                    final Stage dialog1 = new Stage();
+                                    dialog1.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox1 = new VBox();
+                                    dialog1.setTitle("Betaal Huur");
+                                    Button button13 = new Button("Betaal huur");
+                                    dialogVBox1.getChildren().addAll(new Text("U dient huur te betalen. "),button13);
+                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                    dialogVBox1.setAlignment(Pos.CENTER);
+                                    dialogVBox1.setSpacing(10);
+                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                    dialog1.setScene(dialogScene1);
+                                    dialog1.show();
+
+                                    button13.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
-                                           Tegel.koopEigendom(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+
+                                            final Stage dialog1 = new Stage();
+                                            dialog1.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox1 = new VBox();
+                                            dialog1.setTitle("Huur");
+                                            Button button1 = new Button("OK");
+                                            dialogVBox1.getChildren().addAll(new Text("U betaalde huur"),
+                                                    button1);
+                                            Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                            dialogVBox1.setAlignment(Pos.CENTER);
+                                            dialogVBox1.setSpacing(10);
+                                            dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                            dialog1.setScene(dialogScene1);
+                                            dialog1.show();
+
+                                            button1.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog1.close();
+                                                }
+                                            });
                                         }
                                     });
                                 }
 
-                                if(!Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
-                                    final Stage dialog1 = new Stage();
-                                    dialog1.initModality(Modality.APPLICATION_MODAL);
-                                    VBox dialogVBox1 = new VBox();
-                                    dialog1.setTitle("Rue Grande");
-                                    Button button1 = new Button("Betaal huur");
-                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
-                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1);
-                                    Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
-                                    dialogVBox1.setAlignment(Pos.CENTER);
-                                    dialogVBox1.setSpacing(10);
-                                    dialogVBox1.setStyle("-fx-font: 20px Tahoma");
-                                    dialog1.setScene(dialogScene1);
-                                    dialog1.show();
-                                }
-
+                                //Tegel is van de speler zelf
                                 if(Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
                                     final Stage dialog1 = new Stage();
                                     dialog1.initModality(Modality.APPLICATION_MODAL);
                                     VBox dialogVBox1 = new VBox();
-                                    dialog1.setTitle("Rue Grande");
-                                    Button button1 = new Button("Bouw huis");
-                                    Button button2 = new Button("Bouw hotel");
-                                    dialogVBox1.getChildren().addAll(new Text("Aankoopprijs: €60.000"), new Text("Huur: €6.000"),
-                                            new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button1,button2);
+                                    dialog1.setTitle("Bouw");
+                                    Button button14 = new Button("Bouw Hotel");
+                                    ComboBox<Integer> comboBox = new ComboBox<>();
+                                    ObservableList<Integer> hetAantalHuizen =
+                                            FXCollections.observableArrayList(0,1,2,3,4);
+                                    comboBox.setItems(hetAantalHuizen);
+                                    Button button15 = new Button("Bouw Huis");
+                                    dialogVBox1.getChildren().addAll( new Text("Huisprijs: €50.000"), new Text("hoeveel huizen wilt u?"),
+                                            comboBox , button14, button15);
                                     Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
                                     dialogVBox1.setAlignment(Pos.CENTER);
                                     dialogVBox1.setSpacing(10);
                                     dialogVBox1.setStyle("-fx-font: 20px Tahoma");
                                     dialog1.setScene(dialogScene1);
                                     dialog1.show();
-                                }
 
+                                    //Koop Hotel
+                                    button14.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(1), new Gebouwen.Hotel(), Spel.getSpelers().get(0));
+
+                                            final Stage dialog1 = new Stage();
+                                            dialog1.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox1 = new VBox();
+                                            dialog1.setTitle("Hotel");
+                                            Button button16 = new Button("OK");
+                                            dialogVBox1.getChildren().addAll(new Text("U kocht een hotel"),
+                                                    button16);
+                                            Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                            dialogVBox1.setAlignment(Pos.CENTER);
+                                            dialogVBox1.setSpacing(10);
+                                            dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                            dialog1.setScene(dialogScene1);
+                                            dialog1.show();
+
+                                            button16.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog1.close();
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                    //Koop huis
+                                    button15.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent event) {
+                                                Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(1), new Gebouwen.Huis(), comboBox.getValue(),Spel.getSpelers().get(0));
+
+                                                final Stage dialog1 = new Stage();
+                                                dialog1.initModality(Modality.APPLICATION_MODAL);
+                                                VBox dialogVBox1 = new VBox();
+                                                dialog1.setTitle("Hotel");
+                                                Button button17 = new Button("OK");
+                                                dialogVBox1.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen"),
+                                                        button17);
+                                                Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                                dialogVBox1.setAlignment(Pos.CENTER);
+                                                dialogVBox1.setSpacing(10);
+                                                dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                                dialog1.setScene(dialogScene1);
+                                                dialog1.show();
+
+                                                button17.setOnAction(new EventHandler<ActionEvent>() {
+                                                    @Override
+                                                    public void handle(ActionEvent event) {
+                                                        dialog1.close();
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
                                 break;
 
                             case 2:
@@ -735,19 +853,181 @@ public class MainMetPionPresenter {
                                 transition3.setInterpolator(Interpolator.EASE_BOTH);
                                 transition3.play();
 
+                                //Tegel heeft geen eigenaar
+                                if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(3))){
                                 final Stage dialog3 = new Stage();
                                 dialog3.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox3 = new VBox();
                                 dialog3.setTitle("Diestsestraat");
+                                Button button31 = new Button("Koop");
                                 dialogVBox3.getChildren().addAll(new Text("Aankoopprijs: €60.000"),new Text("Huur: €6.000"),
-                                        new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"));
+                                        new Text("Hypotheek: €30.000"), new Text("Huisprijs: €50.000"),button31);
                                 Scene dialogScene3 = new Scene(dialogVBox3,300,250);
                                 dialogVBox3.setAlignment(Pos.CENTER);
                                 dialogVBox3.setSpacing(10);
                                 dialogVBox3.setStyle("-fx-font: 20px Tahoma");
                                 dialog3.setScene(dialogScene3);
                                 dialog3.show();
-                                break;
+
+                                    button31.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.koopEigendom(Spelbord.getTegels().get(3),Spel.getSpelers().get(0));
+
+                                            final Stage dialog1 = new Stage();
+                                            dialog1.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox1 = new VBox();
+                                            dialog1.setTitle("Proficiat met uw aankoop!");
+                                            Button button32 = new Button("OK");
+                                            dialogVBox1.getChildren().addAll(new Text("U hebt Diestsestraat aangekocht"), new Text("voor €60.000"),
+                                                    button32);
+                                            Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                            dialogVBox1.setAlignment(Pos.CENTER);
+                                            dialogVBox1.setSpacing(10);
+                                            dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                            dialog1.setScene(dialogScene1);
+                                            dialog1.show();
+
+                                            button32.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog1.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+                                //Tegel is van een andere eigenaar
+                                if(!Spelbord.getTegels().get(3).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+
+                                    final Stage dialog3 = new Stage();
+                                    dialog3.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox3 = new VBox();
+                                    dialog3.setTitle("Betaal Huur");
+                                    Button button33 = new Button("Betaal Huur");
+                                    dialogVBox3.getChildren().addAll(new Text("U dient huur te betalen. "),button33);
+                                    Scene dialogScene3 = new Scene(dialogVBox3,300,250);
+                                    dialogVBox3.setAlignment(Pos.CENTER);
+                                    dialogVBox3.setSpacing(10);
+                                    dialogVBox3.setStyle("-fx-font: 20px Tahoma");
+                                    dialog3.setScene(dialogScene3);
+                                    dialog3.show();
+
+                                    button33.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+
+                                            final Stage dialog3 = new Stage();
+                                            dialog3.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox3 = new VBox();
+                                            dialog3.setTitle("Huur");
+                                            Button button1 = new Button("OK");
+                                            dialogVBox3.getChildren().addAll(new Text("U betaalde huur"),
+                                                    button1);
+                                            Scene dialogScene3 = new Scene(dialogVBox3, 300, 250);
+                                            dialogVBox3.setAlignment(Pos.CENTER);
+                                            dialogVBox3.setSpacing(10);
+                                            dialog3.setScene(dialogScene3);
+                                            dialogVBox3.setStyle("-fx-font: 20px Tahoma");
+                                            dialog3.show();
+
+                                            button1.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog3.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+                                //Tegel is van de speler zelf
+                                if(Spelbord.getTegels().get(1).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    Tegel.betaalHuur(Spelbord.getTegels().get(1),Spel.getSpelers().get(0));
+
+                                    final Stage dialog3 = new Stage();
+                                    dialog3.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox3 = new VBox();
+                                    dialog3.setTitle("Bouw");
+                                    Button button34 = new Button("Bouw Hotel");
+                                    ComboBox<Integer> comboBox = new ComboBox<>();
+                                    ObservableList<Integer> hetAantalHuizen =
+                                            FXCollections.observableArrayList(0,1,2,3,4);
+                                    comboBox.setItems(hetAantalHuizen);
+                                    Button button35 = new Button("Bouw Huis");
+                                    dialogVBox3.getChildren().addAll( new Text("Huisprijs: €50.000"), new Text("hoeveel huizen wilt u?"),
+                                            comboBox , button34, button35);
+                                    Scene dialogScene3 = new Scene(dialogVBox3, 300, 250);
+                                    dialogVBox3.setAlignment(Pos.CENTER);
+                                    dialogVBox3.setSpacing(10);
+                                    dialog3.setScene(dialogScene3);
+                                    dialogVBox3.setStyle("-fx-font: 20px Tahoma");
+                                    dialog3.show();
+
+
+                                //Koop Hotel
+                                button34.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent event) {
+                                        Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(3), new Gebouwen.Hotel(), Spel.getSpelers().get(0));
+                                        final Stage dialog3 = new Stage();
+                                        dialog3.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox3 = new VBox();
+                                        dialog3.setTitle("Hotel");
+                                        Button button36 = new Button("OK");
+                                        dialogVBox3.getChildren().addAll( new Text("U kocht een hotel"), new Text("hoeveel huizen wilt u?"),
+                                                button36);
+                                        Scene dialogScene3 = new Scene(dialogVBox3, 300, 250);
+                                        dialogVBox3.setAlignment(Pos.CENTER);
+                                        dialogVBox3.setSpacing(10);
+                                        dialog3.setScene(dialogScene3);
+                                        dialogVBox3.setStyle("-fx-font: 20px Tahoma");
+                                        dialog3.show();
+
+                                        button36.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent event) {
+                                                dialog3.close();
+                                            }
+
+                                        });
+                                    }
+                                });
+
+                                //Koop huis
+                                button35.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent event) {
+                                        Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(3), new Gebouwen.Huis(),
+                                                comboBox.getValue(),Spel.getSpelers().get(0));
+                                        final Stage dialog1 = new Stage();
+                                        dialog1.initModality(Modality.APPLICATION_MODAL);
+                                        VBox dialogVBox1 = new VBox();
+                                        dialog1.setTitle("Hotel");
+                                        Button button37 = new Button("OK");
+                                        dialogVBox1.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen"),
+                                                button37);
+                                        Scene dialogScene1 = new Scene(dialogVBox1, 300, 250);
+                                        dialogVBox1.setAlignment(Pos.CENTER);
+                                        dialogVBox1.setSpacing(10);
+                                        dialogVBox1.setStyle("-fx-font: 20px Tahoma");
+                                        dialog1.setScene(dialogScene1);
+                                        dialog1.show();
+
+                                        button37.setOnAction(new EventHandler<ActionEvent>() {
+                                            @Override
+                                            public void handle(ActionEvent event) {
+                                                dialog1.close();
+                                            }
+                                        });
+                                    }
+                                });
+                                }
+
+
+                                        break;
 
                             case 4:
                                 TranslateTransition transition4 = new TranslateTransition();
@@ -806,18 +1086,177 @@ public class MainMetPionPresenter {
                                 transition6.setInterpolator(Interpolator.EASE_BOTH);
                                 transition6.play();
 
+                                if(!Tegel.heeftEigenaar(Spelbord.getTegels().get(1))){
                                 final Stage dialog6 = new Stage();
                                 dialog6.initModality(Modality.APPLICATION_MODAL);
                                 VBox dialogVBox6 = new VBox();
                                 dialog6.setTitle("Steenstraat");
+                                Button button61 = new Button("Koop");
                                 dialogVBox6.getChildren().addAll(new Text("Aankoopprijs: €100.000"),new Text("Huur: €10.000"),
-                                        new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"));
+                                        new Text("Hypotheek: €50.000"), new Text("Huisprijs: €50.000"),button61);
                                 Scene dialogScene6 = new Scene(dialogVBox6,300,250);
                                 dialogVBox6.setAlignment(Pos.CENTER);
                                 dialogVBox6.setSpacing(10);
                                 dialogVBox6.setStyle("-fx-font: 20px Tahoma");
                                 dialog6.setScene(dialogScene6);
                                 dialog6.show();
+
+                                button61.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.koopEigendom(Spelbord.getTegels().get(6),Spel.getSpelers().get(0));
+
+                                            final Stage dialog6 = new Stage();
+                                            dialog6.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox6 = new VBox();
+                                            dialog6.setTitle("Proficiat met uw aankoop!");
+                                            Button button62 = new Button("OK");
+                                            dialogVBox6.getChildren().addAll(new Text("U hebt Steenstraat aangekocht"), new Text("voor €100.000"),
+                                                    button62);
+                                            Scene dialogScene1 = new Scene(dialogVBox6, 300, 250);
+                                            dialogVBox6.setAlignment(Pos.CENTER);
+                                            dialogVBox6.setSpacing(10);
+                                            dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                            dialog6.setScene(dialogScene6);
+                                            dialog6.show();
+
+                                            button62.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog6.close();
+                                                }
+                                            });
+                                        }
+                                });
+                                }
+
+                                //Tegel is van een andere eigenaar
+                                if(!Spelbord.getTegels().get(6).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+
+                                    final Stage dialog6 = new Stage();
+                                    dialog6.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox6 = new VBox();
+                                    dialog6.setTitle("Betaal Huur");
+                                    Button button63 = new Button("Betaal huur");
+                                    dialogVBox6.getChildren().addAll(new Text("U dient huur te betalen. "),button63);
+                                    Scene dialogScene6 = new Scene(dialogVBox6, 300, 250);
+                                    dialogVBox6.setAlignment(Pos.CENTER);
+                                    dialogVBox6.setSpacing(10);
+                                    dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                    dialog6.setScene(dialogScene6);
+                                    dialog6.show();
+
+                                    button63.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Tegel.betaalHuur(Spelbord.getTegels().get(6),Spel.getSpelers().get(0));
+
+                                            final Stage dialog6 = new Stage();
+                                            dialog6.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox6 = new VBox();
+                                            dialog6.setTitle("Huur");
+                                            Button button6= new Button("OK");
+                                            dialogVBox6.getChildren().addAll(new Text("U betaalde huur"),
+                                                    button6);
+                                            Scene dialogScene6 = new Scene(dialogVBox6, 300, 250);
+                                            dialogVBox6.setAlignment(Pos.CENTER);
+                                            dialogVBox6.setSpacing(10);
+                                            dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                            dialog6.setScene(dialogScene6);
+                                            dialog6.show();
+
+                                            button6.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog6.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+                                //Tegel is van de speler zelf
+                                if(Spelbord.getTegels().get(6).getNaam().equals(Spel.getSpelers().get(0).getNaam())) {
+                                    final Stage dialog6 = new Stage();
+                                    dialog6.initModality(Modality.APPLICATION_MODAL);
+                                    VBox dialogVBox6 = new VBox();
+                                    dialog6.setTitle("Bouw");
+                                    Button button64 = new Button("Bouw Hotel");
+                                    ComboBox<Integer> comboBox = new ComboBox<>();
+                                    ObservableList<Integer> hetAantalHuizen =
+                                            FXCollections.observableArrayList(0,1,2,3,4);
+                                    comboBox.setItems(hetAantalHuizen);
+                                    Button button65 = new Button("Bouw Huis");
+                                    dialogVBox6.getChildren().addAll( new Text("Huisprijs: €50.000"), new Text("hoeveel huizen wilt u?"),
+                                            comboBox , button64, button65);
+                                    Scene dialogScene6 = new Scene(dialogVBox6, 300, 250);
+                                    dialogVBox6.setAlignment(Pos.CENTER);
+                                    dialogVBox6.setSpacing(10);
+                                    dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                    dialog6.setScene(dialogScene6);
+                                    dialog6.show();
+
+                                    //Koop Hotel
+                                    button64.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(6), new Gebouwen.Hotel(), Spel.getSpelers().get(0));
+
+                                            final Stage dialog6 = new Stage();
+                                            dialog6.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox6 = new VBox();
+                                            dialog6.setTitle("Hotel");
+                                            Button button66 = new Button("OK");
+                                            dialogVBox6.getChildren().addAll(new Text("U kocht een hotel"),
+                                                    button66);
+                                            Scene dialogScene6 = new Scene(dialogVBox6, 300, 250);
+                                            dialogVBox6.setAlignment(Pos.CENTER);
+                                            dialogVBox6.setSpacing(10);
+                                            dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                            dialog6.setScene(dialogScene6);
+                                            dialog6.show();
+
+                                            button66.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog6.close();
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                    //Koop huis
+                                    button65.setOnAction(new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(6), new Gebouwen.Huis(), comboBox.getValue(),Spel.getSpelers().get(0));
+
+                                            final Stage dialog6 = new Stage();
+                                            dialog6.initModality(Modality.APPLICATION_MODAL);
+                                            VBox dialogVBox6 = new VBox();
+                                            dialog6.setTitle("Hotel");
+                                            Button button67 = new Button("OK");
+                                            dialogVBox6.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen"),
+                                                    button67);
+                                            Scene dialogScene6 = new Scene(dialogVBox6, 300, 250);
+                                            dialogVBox6.setAlignment(Pos.CENTER);
+                                            dialogVBox6.setSpacing(10);
+                                            dialogVBox6.setStyle("-fx-font: 20px Tahoma");
+                                            dialog6.setScene(dialogScene6);
+                                            dialog6.show();
+
+                                            button67.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialog6.close();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+
+
+
                                 break;
 
                             case 7:
