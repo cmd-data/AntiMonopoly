@@ -7,8 +7,15 @@ import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import AntiMonopoly.View.MainScreen.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 
@@ -58,6 +65,26 @@ public class VierSpelersPresenter {
                 mainView.getMainView().getS43().setImage(new Image("images/" + Spel.getSpelers().get(3).getPion() + ".png"));
 
                 Spel spel = new Spel(LocalDateTime.now());
+
+                final Stage dialog0 = new Stage();
+                dialog0.initModality(Modality.APPLICATION_MODAL);
+                VBox dialogVBox0 = new VBox();
+                dialog0.setTitle("Volgorde");
+                Button button0 = new Button("OK");
+                dialogVBox0.getChildren().addAll(new Text("Speler '" + Spel.getSpelers().get(0).getNaam() + "' begint."),button0);
+                Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
+                dialogVBox0.setAlignment(Pos.CENTER);
+                dialogVBox0.setSpacing(10);
+                dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+                dialog0.setScene(dialogScene0);
+                dialog0.show();
+
+                button0.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        dialog0.close();
+                    }
+                });
             }
         });
     }

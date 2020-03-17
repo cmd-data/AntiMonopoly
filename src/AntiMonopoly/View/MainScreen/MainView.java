@@ -243,25 +243,25 @@ public class MainView extends GridPane {
     //Spelersnamen invullen
     //Speler 1
     private Label s11;
-    private static Label s12;
+    private static Label s12, s14;
     private VBox speler1;
     private ImageView s13;
 
     //Speler 2
     private Label s21;
-    private static Label s22;
+    private static Label s22, s24;
     private VBox speler2;
     private ImageView s23;
 
     //Speler 3
     private Label s31;
-    private static Label s32;
+    private static Label s32, s34;
     private VBox speler3;
     private ImageView s33;
 
     //Speler 4
     private Label s41;
-    private static Label s42;
+    private static Label s42, s44;
     private VBox speler4;
     private ImageView s43;
 
@@ -524,21 +524,25 @@ public class MainView extends GridPane {
         this.s11 = new Label();
         s12 = new Label();
         this.s13 = new ImageView();
+        s14 = new Label();
 
         //Speler 2
         this.s21 = new Label();
         s22 = new Label();
         this.s23 = new ImageView();
+        s24 = new Label();
 
         //Speler 3
         this.s31 = new Label();
         s32 = new Label();
         this.s33 = new ImageView();
+        s34 = new Label();
 
         //Speler 4
         this.s41 = new Label();
         s42 = new Label();
         this.s43 = new ImageView();
+        s44 = new Label();
 
         //this.dobbelen = new Button("Dobbelen");
     }
@@ -829,24 +833,24 @@ public class MainView extends GridPane {
         //Spelersnamen
         //Speler1
         this.speler1 = new VBox();
-        speler1.getChildren().addAll(s11,s12,s13);
+        speler1.getChildren().addAll(s11,s12,s13,s14);
         this.add(speler1,11,1,2,2);
         speler1.setId("s1");
 
         //Speler2
         this.speler2 = new VBox();
-        speler2.getChildren().addAll(s21,s22,s23);
+        speler2.getChildren().addAll(s21,s22,s23,s24);
         this.add(speler2,11,3,2,2);
         speler2.setId("s2");
 
         this.speler3 = new VBox();
-        speler3.getChildren().addAll(s31,s32,s33);
+        speler3.getChildren().addAll(s31,s32,s33,s34);
         this.add(speler3, 11, 5, 2, 2);
         speler3.setId("s3");
 
 
         this.speler4 = new VBox();
-        speler4.getChildren().addAll(s41,s42,s43);
+        speler4.getChildren().addAll(s41,s42,s43,s44);
         this.add(speler4, 11, 7, 2, 2);
         speler4.setId("s4");
 
@@ -1032,4 +1036,20 @@ public class MainView extends GridPane {
     public ImageView getS33() { return s33; }
 
     public ImageView getS43() { return s43; }
+
+    public static Label getS14() { return s14; }
+
+    public static void setS14(Label s14) { MainView.s14 = s14; }
+
+    public static Label getS24() { return s24; }
+
+    public static void setS24(Label s24) { MainView.s24 = s24; }
+
+    public static Label getS34() { return s34; }
+
+    public static void setS34(Label s34) { MainView.s34 = s34; }
+
+    public static Label getS44() { return s44; }
+
+    public static void setS44(Label s44) { MainView.s44 = s44; }
 }

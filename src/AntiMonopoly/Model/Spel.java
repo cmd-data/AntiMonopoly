@@ -34,6 +34,36 @@ public class Spel {
 	 * geeft geld veranderingen weer op het spelbord
 	 */
 
+	/*public static void updateAanZet(){
+
+		switch (Dice.getCount()){
+			case 1:
+				MainView.getS14().setText("AAN ZET");
+				MainView.getS24().setText("");
+				MainView.getS34().setText("");
+				MainView.getS44().setText("");
+				break;
+			case 2:
+				MainView.getS14().setText("");
+				MainView.getS24().setText("AAN ZET");
+				MainView.getS34().setText("");
+				MainView.getS44().setText("");
+				break;
+			case 3:
+				MainView.getS14().setText("");
+				MainView.getS24().setText("");
+				MainView.getS34().setText("AAN ZET");
+				MainView.getS44().setText("");
+				break;
+			case 4:
+				MainView.getS14().setText("");
+				MainView.getS24().setText("");
+				MainView.getS34().setText("");
+				MainView.getS44().setText("AAN ZET");
+				break;
+		}
+	}*/
+
 	public static void updateGeld(Speler speler){
 
 		if (Spel.getSpelers().get(0).equals(speler)) {

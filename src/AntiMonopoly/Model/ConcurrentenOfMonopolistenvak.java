@@ -35,11 +35,9 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	public static void voerUit(Speler speler){												// activeren met knop 'OK' op de kaart
 
 		if (speler.getIsConcurrent()){
-
 			doeOpdrachtConcurrent(Opdrachten.shuffledCon.firstKey(),speler);
 			steekTerugCon();
 		} else {
-
 			doeOpdrachtMonopolist(Opdrachten.shuffledMon.firstKey(),speler);
 			steekTerugMon();
 		}
@@ -75,48 +73,59 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	 * @return
 	 */
 
-	public static Tegel doeOpdrachtMonopolist(int opdracht,Speler speler) {
+	public static void doeOpdrachtMonopolist(int opdracht,Speler speler) {
 		switch (opdracht) {
 			case 0:
-				return Spel.move(speler, Spelbord.getTegels().get(25));
+				Tegel.tegelMethode(speler.getRectangle(), speler, 25);
+				Spel.move(speler, Spelbord.getTegels().get(25));
+				break;
 			case 1:
 				if (IntStream.of(Dice.rollDice()).sum() >= 8) {             // maakt som van gerolde dobbelstenen die in array zitten
 					speler.setGeld(75000);
 				}
 				Dice.setCount(-1);
 				break;
-			case 2:																// -25000 ??
+			case 2:                                                                // -25000 ??
 			case 21:
 			case 24:
 				speler.setGeld(50000);
 				break;
 			case 3:
-				return Spel.move(speler, Spelbord.getTegels().get(12));
+				Tegel.tegelMethode(speler.getRectangle(), speler, 12);
+				Spel.move(speler, Spelbord.getTegels().get(12));
+				break;
 			case 4:
 			case 5:
-				return Spel.move(speler, Spelbord.getTegels().get(0));
+				Tegel.tegelMethode(speler.getRectangle(), speler, 0);
+				Spel.move(speler, Spelbord.getTegels().get(0));
+				break;
 			case 6:
-			case 14:
 				speler.setGeld(-50000);
 				break;
 			case 7:
 			case 16:
 				break;
 			case 8:
-				speler.setGeld(-75000);											// doet niets ??
+			case 14:
+				speler.setGeld(-75000);                                            // doet niets ??
 				break;
 			case 9:
 			case 15:
-				speler.setGeld(-25000);											// + 50000 ??
+				speler.setGeld(-25000);                                            // + 50000 ??
 				break;
 			case 10:
-				return Spel.move(speler, Spelbord.getTegels().get(39));
+				Tegel.tegelMethode(speler.getRectangle(), speler, 39);
+				Spel.move(speler, Spelbord.getTegels().get(39));
+				break;
 			case 11:
 			case 12:
 				speler.setGeld(25000);
 				break;
 			case 13:
-			case 19: GaNaarGevangenis.gaNaarGevangenis(speler); break;
+			case 19:
+				Tegel.tegelMethode(speler.getRectangle(), speler, 30);
+				GaNaarGevangenis.gaNaarGevangenis(speler);
+				break;
 			case 17:
 				int count = 0;
 				for (Speler spelers : Spel.getSpelers()) {
@@ -135,7 +144,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				}
 				break;
 			case 20:
-				speler.setGeld(75000);									// doet niets (geen geld erbij of weg)??
+				speler.setGeld(75000);                                    // doet niets (geen geld erbij of weg)??
 				break;
 			case 22:
 				int counter = 0;
@@ -148,71 +157,92 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				speler.setGeld(counter * 25000);
 				break;
 			case 23:
-				return Spel.move(speler, Spelbord.getTegels().get(31)); // -25000 na deze methode??
+				Tegel.tegelMethode(speler.getRectangle(), speler, 31);
+				Spel.move(speler, Spelbord.getTegels().get(31));
 		}
-		return null;
 	}
 
-	public static Tegel doeOpdrachtConcurrent(int opdracht, Speler speler){
-		switch(opdracht){
-			case 0:
-			case 23:
-				speler.setGeld(75000); break;
-			case 1:
-			case 13: GaNaarGevangenis.gaNaarGevangenis(speler); break;
-			case 2:
-			case 14:
-				speler.setGeld(-75000); break;
-			case 3:
-				int counter = 0;
-				for (Speler spelers : Spel.getSpelers()){
-					if (spelers.getIsConcurrent()){
-						counter++;
-						spelers.setGeld(10000);
+	public static void doeOpdrachtConcurrent (int opdracht, Speler speler) {
+
+			switch (opdracht) {
+				case 0:
+				case 23:
+					speler.setGeld(75000);
+					break;
+				case 1:
+				case 13:
+					Tegel.tegelMethode(speler.getRectangle(),speler,30);
+					GaNaarGevangenis.gaNaarGevangenis(speler);
+					break;
+				case 2:
+				case 14:
+					speler.setGeld(-75000);
+					break;
+				case 3:
+					int counter = 0;
+					for (Speler spelers : Spel.getSpelers()) {
+						if (spelers.getIsConcurrent()) {
+							counter++;
+							spelers.setGeld(10000);
+						}
 					}
-				}
-				speler.setGeld(counter*-10000);
-				break;
-			case 4:
-			case 9: break;
-			case 5:
-			case 7:
-			case 11:
-				speler.setGeld(50000); break;
-			case 6:
-			case 24:
-				speler.setGeld(25000); break;
-			case 8: if(IntStream.of(Dice.rollDice()).sum()>=9) {
-				speler.setGeld(75000);
+					speler.setGeld(counter * -10000);
+					break;
+				case 4:
+				case 9:
+					break;
+				case 5:
+				case 7:
+				case 11:
+					speler.setGeld(50000);
+					break;
+				case 6:
+				case 24:
+					speler.setGeld(25000);
+					break;
+				case 8:
+					if (IntStream.of(Dice.rollDice()).sum() >= 9) {
+						speler.setGeld(75000);
+					}
+					Dice.setCount(-1);
+					break;
+				case 10:
+				case 21:
+					speler.setGeld(-50000);
+					break;
+				case 12:
+					int count = 0;
+					for (Speler spelers : Spel.getSpelers()) {
+						if (!spelers.getIsConcurrent()) {
+							count++;
+							spelers.setGeld(-25000);
+						}
+					}
+					speler.setGeld(count * 25000);
+					break;
+				case 15:
+					speler.setGeld(-25000);
+					break;
+				case 16:
+					Tegel.tegelMethode(speler.getRectangle(),speler,25);
+					Spel.move(speler, Spelbord.getTegels().get(25));
+					break;
+				case 17:
+				case 18:
+					Tegel.tegelMethode(speler.getRectangle(),speler,0);
+					Spel.move(speler, Spelbord.getTegels().get(0));
+					break;
+				case 19:
+					Tegel.tegelMethode(speler.getRectangle(),speler,37);
+					Spel.move(speler, Spelbord.getTegels().get(37));
+					break;
+				case 20:
+					Tegel.tegelMethode(speler.getRectangle(),speler,28);
+					Spel.move(speler, Spelbord.getTegels().get(28));
+					break;
+				case 22:
+					Tegel.tegelMethode(speler.getRectangle(),speler,6);
+					Spel.move(speler, Spelbord.getTegels().get(6));
 			}
-			Dice.setCount(-1);
-			break;
-			case 10:
-			case 21:
-				speler.setGeld(-50000); break;
-			case 12:
-				int count = 0;
-				for (Speler spelers : Spel.getSpelers()){
-					if (!spelers.getIsConcurrent()){
-						count++;
-						spelers.setGeld(-25000);
-					}
-				}
-				speler.setGeld(count*25000);
-				break;
-			case 15: speler.setGeld(-25000); break;
-			case 16:
-				return Spel.move(speler,Spelbord.getTegels().get(25));
-			case 17:
-			case 18:
-				return Spel.move(speler,Spelbord.getTegels().get(0));
-			case 19:
-				return Spel.move(speler,Spelbord.getTegels().get(37));
-			case 20:
-				return Spel.move(speler,Spelbord.getTegels().get(28));
-			case 22:
-				return Spel.move(speler,Spelbord.getTegels().get(6));
 		}
-		return null;
 	}
-}
