@@ -97,15 +97,17 @@ public class Tegel {
 	}
 
 	public String Eigenaar (Tegel tegel){
-		if(tegel instanceof Straat){
-			return (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam());
-		}
-		if(tegel instanceof Transport){
-			return (((Transport) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam());
-		}
-		if(tegel instanceof GasEnElektriciteitsbedrijf){
-			return ((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam();
-		}
+		try {
+			if (tegel instanceof Straat) {
+				return (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam());
+			}
+			if (tegel instanceof Transport) {
+				return (((Transport) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam());
+			}
+			if (tegel instanceof GasEnElektriciteitsbedrijf) {
+				return ((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam();
+			}
+		} catch (NullPointerException ignored) {}
 		return null;
 	}
 
