@@ -17,8 +17,6 @@ public class MainView extends GridPane {
     private VBox achtergrond;
 
     //Menubar
-    private MenuItem afsluitenMI;
-    private MenuItem standMI;
     private MenuItem spelregelsMI;
     private Label spelInfo;
 
@@ -282,8 +280,6 @@ public class MainView extends GridPane {
 
 
         //Menubar
-        this.afsluitenMI = new MenuItem("Afsluiten");
-        this.standMI = new MenuItem("Stand");
         this.spelregelsMI = new MenuItem("Spelregels");
         this.spelInfo = new Label("Wachtend op actie");
 
@@ -553,7 +549,7 @@ public class MainView extends GridPane {
 
 
         //Menubar
-        Menu spelMenu = new Menu("Opties", null, afsluitenMI, standMI, spelregelsMI);
+        Menu spelMenu = new Menu("Opties", null, spelregelsMI);
         MenuBar menuBar = new MenuBar(spelMenu);
         this.add(menuBar, 0, 0, 1, 1);
         menuBar.setId("sm");
@@ -879,14 +875,6 @@ public class MainView extends GridPane {
 
     private void animate() {
 
-    }
-
-    public MenuItem getAfsluitenMI() {
-        return afsluitenMI;
-    }
-
-    public MenuItem getStandMI() {
-        return standMI;
     }
 
     public MenuItem getSpelregelsMI() {

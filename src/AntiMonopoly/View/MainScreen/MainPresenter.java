@@ -565,9 +565,9 @@ public class MainPresenter {
                     }
                 }
         );
-
-
     }
+
+
     // Koppelt event handlers (anon. inner klassen)
     // aan de controls uit de view.
     // Event handlers: roepen methodes aan uit het
