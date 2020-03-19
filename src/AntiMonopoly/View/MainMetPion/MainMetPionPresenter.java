@@ -4,6 +4,7 @@ import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -562,6 +563,7 @@ public class MainMetPionPresenter {
                         dialog.setTitle("Spelregels");
                         Spelregels spelregels = new Spelregels();
                         VBox vBoxSR = new VBox();
+                        vBoxSR.setPadding(new Insets(30));
                         vBoxSR.getChildren().addAll(new Text(spelregels.getSpelregels()));
                         ScrollPane scrollPane = new ScrollPane();
                         scrollPane.setContent(vBoxSR);
