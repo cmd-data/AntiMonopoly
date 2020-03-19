@@ -66,6 +66,7 @@ public class Spel {
 			MainView.getS32().setText("€ " + spelers.get(2).getGeld());
 		}
 		if (spelers.size()==4) {
+			MainView.getS32().setText("€ " + spelers.get(2).getGeld());
 			MainView.getS42().setText("€ " + spelers.get(3).getGeld());
 		}
 	}
