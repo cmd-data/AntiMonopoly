@@ -261,6 +261,10 @@ public class Straat extends Tegel {
 			button2.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
+					String tekst = " huizen voor €";
+					if (comboBox.getValue()==1){
+						tekst = " huis voor €";
+					}
 
 					dialog.close();
 					int geldVoorAankoop = aanZet.getGeld();
@@ -273,7 +277,7 @@ public class Straat extends Tegel {
 					VBox dialogVBox17 = new VBox();
 					dialog.setTitle("Hotel");
 					Button button = new Button("OK");
-					dialogVBox17.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen voor €" + prijsHuis),
+					dialogVBox17.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + tekst + prijsHuis),
 							button);
 					Scene dialogScene17 = new Scene(dialogVBox17, 400, 250);
 					dialogVBox17.setAlignment(Pos.CENTER);

@@ -27,14 +27,14 @@ public class MainMetPionView extends Group {
 
     private void initialiseNodes() {
         this.canvas = new Canvas(1500,1000);
-        rectangle1 = new Rectangle(130, 40, 10, 10);
+        rectangle1 = new Rectangle(130, 40, 20, 20);
         rectangle1.setFill(Color.VIOLET);
-        rectangle2 = new Rectangle(130, 60, 10, 10);
+        rectangle2 = new Rectangle(130, 60, 20, 20);
         rectangle2.setFill(Color.GRAY);
-        rectangle3 = new Rectangle(130, 80, 10, 10);
+        rectangle3 = new Rectangle(130, 80, 20, 20);
         rectangle3.setFill(Color.ALICEBLUE);
-        rectangle4 = new Rectangle(130, 100, 10, 10);
-        rectangle4.setFill(Color.ORANGERED);
+        rectangle4 = new Rectangle(130, 100, 20, 20);
+        rectangle4.setFill(Color.DARKTURQUOISE);
         this.mainView = new MainView();
         //this.rectangle1.toFront();
         this.diceView = new DiceView(2);

@@ -129,7 +129,7 @@ public class Tegel {
 				VBox dialogVBox0 = new VBox();
 				dialog0.setTitle("Start");
 				Button button0 = new Button("OK");
-				dialogVBox0.getChildren().addAll(new Text("U staat op start en ontvangt: \n€200.000"));
+				dialogVBox0.getChildren().addAll(new Text("U staat op start en ontvangt: \n€200.000"), button0);
 				Scene dialogScene0 = new Scene(dialogVBox0, 500,300);
 				dialogVBox0.setAlignment(Pos.CENTER);
 				dialogVBox0.setSpacing(10);
@@ -140,6 +140,7 @@ public class Tegel {
 				button0.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
+
 						dialog0.close();
 					}
 				});
