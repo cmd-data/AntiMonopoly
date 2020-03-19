@@ -177,6 +177,7 @@ public class Spel {
 	}
 
 	public static Tegel move(Speler speler, Tegel tegel){
+		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
 		posities.values().remove(speler);
 		posities.put(tegel,speler);
 		return tegel;
@@ -199,6 +200,7 @@ public class Spel {
 				}
 			}
 		} catch (NullPointerException ignored) {}
+		updateGeld(speler);
 	}
 
 	public static Boolean checkGevangenis(Speler speler){

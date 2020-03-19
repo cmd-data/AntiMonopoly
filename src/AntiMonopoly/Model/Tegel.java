@@ -72,7 +72,7 @@ public class Tegel {
 		return true;
 	}
 
-	public String Eigenaar (Tegel tegel){
+	public static String eigenaar(Tegel tegel){
 		try {
 			if (tegel instanceof Straat) {
 				return (((Straat) Spelbord.getTegels().get(tegel.positie)).getEigenaar().getNaam());
@@ -174,11 +174,10 @@ public class Tegel {
 					dialog11.setScene(dialogScene11);
 					dialog11.show();
 
-					Speler finalAanZet11 = aanZet;
 					button11.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet11);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog12 = new Stage();
 							dialog12.initModality(Modality.APPLICATION_MODAL);
@@ -203,12 +202,8 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
+					//Tegel is van een andere eigenaar
 					final Stage dialog13 = new Stage();
 					dialog13.initModality(Modality.APPLICATION_MODAL);
 					VBox dialogVBox13 = new VBox();
@@ -222,11 +217,10 @@ public class Tegel {
 					dialog13.setScene(dialogScene13);
 					dialog13.show();
 
-					Speler finalAanZet12 = aanZet;
 					button13.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet12);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog14 = new Stage();
 							dialog14.initModality(Modality.APPLICATION_MODAL);
@@ -251,8 +245,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -276,11 +269,10 @@ public class Tegel {
 					dialog15.show();
 
 					//Koop Hotel
-					Speler finalAanZet13 = aanZet;
 					button14.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet13);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog16 = new Stage();
 							dialog16.initModality(Modality.APPLICATION_MODAL);
@@ -307,12 +299,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet14 = aanZet;
 					button15.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet14);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog17 = new Stage();
 							dialog17.initModality(Modality.APPLICATION_MODAL);
@@ -363,7 +354,6 @@ public class Tegel {
 				dialog21.setScene(dialogScene21);
 				dialog21.show();
 
-				Speler finalAanZet21 = aanZet;
 				button21.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
@@ -374,7 +364,7 @@ public class Tegel {
 						VBox dialogVBox22 = new VBox();
 						dialog22.setTitle("Opdracht");
 						Button button22 = new Button("OK");
-						dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet21)), button22);
+						dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button22);
 						Scene dialogScene22 = new Scene(dialogVBox22, 300, 250);
 						dialogVBox22.setAlignment(Pos.CENTER);
 						dialogVBox22.setSpacing(10);
@@ -385,7 +375,7 @@ public class Tegel {
 						button22.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet21);
+								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
 								dialog21.close();
 								dialog22.close();
 							}
@@ -420,11 +410,10 @@ public class Tegel {
 					dialog31.setScene(dialogScene31);
 					dialog31.show();
 
-					Speler finalAanZet31 = aanZet;
 					button31.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet31);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog32 = new Stage();
 							dialog32.initModality(Modality.APPLICATION_MODAL);
@@ -449,12 +438,8 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
+					// tegel is van andere eigenaar
 					final Stage dialog33 = new Stage();
 					dialog33.initModality(Modality.APPLICATION_MODAL);
 					VBox dialogVBox33 = new VBox();
@@ -469,11 +454,10 @@ public class Tegel {
 					dialog33.show();
 
 
-					Speler finalAanZet32 = aanZet;
 					button33.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet32);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog34 = new Stage();
 							dialog34.initModality(Modality.APPLICATION_MODAL);
@@ -498,8 +482,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {// tegel is van de speler zelf
+				} else {// tegel is van de speler zelf
 
 					final Stage dialog35 = new Stage();
 					dialog35.initModality(Modality.APPLICATION_MODAL);
@@ -522,11 +505,10 @@ public class Tegel {
 
 
 					//Koop Hotel
-					Speler finalAanZet33 = aanZet;
 					button34.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet33);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 							final Stage dialog36 = new Stage();
 							dialog36.initModality(Modality.APPLICATION_MODAL);
 							VBox dialogVBox36 = new VBox();
@@ -553,12 +535,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet34 = aanZet;
 					button35.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet34);
+									comboBox.getValue(), aanZet);
 							final Stage dialog37 = new Stage();
 							dialog37.initModality(Modality.APPLICATION_MODAL);
 							VBox dialogVBox37 = new VBox();
@@ -610,11 +591,10 @@ public class Tegel {
 				dialog4.setScene(dialogScene4);
 				dialog4.show();
 
-				Speler finalAanZet = aanZet;
 				button4.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
-						Inkomstenbelasting.betaalBelasting(finalAanZet);
+						Inkomstenbelasting.betaalBelasting(aanZet);
 						dialog4.close();
 					}
 				});
@@ -645,11 +625,10 @@ public class Tegel {
 					dialog51.setScene(dialogScene51);
 					dialog51.show();
 
-					Speler finalAanZet51 = aanZet;
 					button51.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet51);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog52 = new Stage();
 							dialog52.initModality(Modality.APPLICATION_MODAL);
@@ -674,10 +653,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog53 = new Stage();
 					dialog53.initModality(Modality.APPLICATION_MODAL);
@@ -692,11 +668,10 @@ public class Tegel {
 					dialog53.setScene(dialogScene53);
 					dialog53.show();
 
-					Speler finalAanZet52 = aanZet;
 					button53.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet52);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog54 = new Stage();
 							dialog54.initModality(Modality.APPLICATION_MODAL);
@@ -750,11 +725,10 @@ public class Tegel {
 					dialog61.setScene(dialogScene61);
 					dialog61.show();
 
-					Speler finalAanZet61 = aanZet;
 					button61.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet61);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog62 = new Stage();
 							dialog62.initModality(Modality.APPLICATION_MODAL);
@@ -779,11 +753,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))){
 
 					final Stage dialog63 = new Stage();
 					dialog63.initModality(Modality.APPLICATION_MODAL);
@@ -798,11 +768,10 @@ public class Tegel {
 					dialog63.setScene(dialogScene63);
 					dialog63.show();
 
-					Speler finalAanZet62 = aanZet;
 					button63.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet62);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog64 = new Stage();
 							dialog64.initModality(Modality.APPLICATION_MODAL);
@@ -827,8 +796,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) { //Tegel is van de speler zelf
+				} else { //Tegel is van de speler zelf
 
 					final Stage dialog65 = new Stage();
 					dialog65.initModality(Modality.APPLICATION_MODAL);
@@ -850,11 +818,10 @@ public class Tegel {
 					dialog65.show();
 
 					//Koop Hotel
-					Speler finalAanZet63 = aanZet;
 					button64.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet63);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog66 = new Stage();
 							dialog66.initModality(Modality.APPLICATION_MODAL);
@@ -881,12 +848,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet64 = aanZet;
 					button65.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet64);
+									comboBox.getValue(), aanZet);
 							final Stage dialog67 = new Stage();
 							dialog67.initModality(Modality.APPLICATION_MODAL);
 							VBox dialogVBox67 = new VBox();
@@ -938,7 +904,6 @@ public class Tegel {
 				dialog71.setScene(dialogScene71);
 				dialog71.show();
 
-				Speler finalAanZet7 = aanZet;
 				button71.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
@@ -949,7 +914,7 @@ public class Tegel {
 						VBox dialogVBox72 = new VBox();
 						dialog72.setTitle("Opdracht");
 						Button button72 = new Button("OK");
-						dialogVBox72.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet7)), button72);
+						dialogVBox72.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button72);
 						Scene dialogScene72 = new Scene(dialogVBox72, 300, 250);
 						dialogVBox72.setAlignment(Pos.CENTER);
 						dialogVBox72.setSpacing(10);
@@ -960,7 +925,7 @@ public class Tegel {
 						button72.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet7);
+								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
 								dialog71.close();
 								dialog72.close();
 							}
@@ -996,11 +961,10 @@ public class Tegel {
 					dialog81.setScene(dialogScene8);
 					dialog81.show();
 
-					Speler finalAanZet81 = aanZet;
 					button81.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet81);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog82 = new Stage();
 							dialog82.initModality(Modality.APPLICATION_MODAL);
@@ -1025,11 +989,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog83 = new Stage();
 					dialog83.initModality(Modality.APPLICATION_MODAL);
@@ -1045,11 +1005,10 @@ public class Tegel {
 					dialog83.show();
 
 
-					Speler finalAanZet82 = aanZet;
 					button83.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet82);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog84 = new Stage();
 							dialog84.initModality(Modality.APPLICATION_MODAL);
@@ -1074,8 +1033,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {// tegel is van de speler zelf
+				} else {// tegel is van de speler zelf
 
 					final Stage dialog85 = new Stage();
 					dialog85.initModality(Modality.APPLICATION_MODAL);
@@ -1098,12 +1056,11 @@ public class Tegel {
 
 
 					//Koop Hotel
-					Speler finalAanZet83 = aanZet;
 					button84.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(),
-									finalAanZet83);
+									aanZet);
 							final Stage dialog86 = new Stage();
 							dialog86.initModality(Modality.APPLICATION_MODAL);
 							VBox dialogVBox86 = new VBox();
@@ -1130,12 +1087,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet84 = aanZet;
 					button85.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet84);
+									comboBox.getValue(), aanZet);
 							final Stage dialog87 = new Stage();
 							dialog87.initModality(Modality.APPLICATION_MODAL);
 							VBox dialogVBox87 = new VBox();
@@ -1189,11 +1145,10 @@ public class Tegel {
 					dialog91.setScene(dialogScene91);
 					dialog91.show();
 
-					Speler finalAanZet91 = aanZet;
 					button91.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet91);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog92 = new Stage();
 							dialog92.initModality(Modality.APPLICATION_MODAL);
@@ -1218,11 +1173,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog93 = new Stage();
 					dialog93.initModality(Modality.APPLICATION_MODAL);
@@ -1237,11 +1188,10 @@ public class Tegel {
 					dialog93.setScene(dialogScene93);
 					dialog93.show();
 
-					Speler finalAanZet92 = aanZet;
 					button93.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet92);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog94 = new Stage();
 							dialog94.initModality(Modality.APPLICATION_MODAL);
@@ -1266,8 +1216,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -1291,11 +1240,10 @@ public class Tegel {
 					dialog95.show();
 
 					//Koop Hotel
-					Speler finalAanZet93 = aanZet;
 					button94.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet93);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog96 = new Stage();
 							dialog96.initModality(Modality.APPLICATION_MODAL);
@@ -1322,12 +1270,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet14 = aanZet;
 					button95.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet14);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog97 = new Stage();
 							dialog97.initModality(Modality.APPLICATION_MODAL);
@@ -1393,11 +1340,10 @@ public class Tegel {
 					dialog111.setScene(dialogScene111);
 					dialog111.show();
 
-					Speler finalAanZet111 = aanZet;
 					button111.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet111);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog112 = new Stage();
 							dialog112.initModality(Modality.APPLICATION_MODAL);
@@ -1422,11 +1368,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog113 = new Stage();
 					dialog113.initModality(Modality.APPLICATION_MODAL);
@@ -1441,11 +1383,10 @@ public class Tegel {
 					dialog113.setScene(dialogScene113);
 					dialog113.show();
 
-					Speler finalAanZet112 = aanZet;
 					button113.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet112);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog114 = new Stage();
 							dialog114.initModality(Modality.APPLICATION_MODAL);
@@ -1470,8 +1411,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -1495,11 +1435,10 @@ public class Tegel {
 					dialog115.show();
 
 					//Koop Hotel
-					Speler finalAanZet113 = aanZet;
 					button114.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet113);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog116 = new Stage();
 							dialog116.initModality(Modality.APPLICATION_MODAL);
@@ -1526,12 +1465,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet114 = aanZet;
 					button115.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet114);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog117 = new Stage();
 							dialog117.initModality(Modality.APPLICATION_MODAL);
@@ -1585,11 +1523,10 @@ public class Tegel {
 					dialog121.setScene(dialogScene281);
 					dialog121.show();
 
-					Speler finalAanZet281 = aanZet;
 					button121.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet281);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog122 = new Stage();
 							dialog122.initModality(Modality.APPLICATION_MODAL);
@@ -1614,10 +1551,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog123 = new Stage();
 					dialog123.initModality(Modality.APPLICATION_MODAL);
@@ -1632,11 +1566,10 @@ public class Tegel {
 					dialog123.setScene(dialogScene123);
 					dialog123.show();
 
-					Speler finalAanZet122 = aanZet;
 					button123.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet122);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog124 = new Stage();
 							dialog124.initModality(Modality.APPLICATION_MODAL);
@@ -1690,11 +1623,10 @@ public class Tegel {
 					dialog131.setScene(dialogScene131);
 					dialog131.show();
 
-					Speler finalAanZet131 = aanZet;
 					button131.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet131);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog132 = new Stage();
 							dialog132.initModality(Modality.APPLICATION_MODAL);
@@ -1719,11 +1651,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog133 = new Stage();
 					dialog133.initModality(Modality.APPLICATION_MODAL);
@@ -1738,11 +1666,10 @@ public class Tegel {
 					dialog133.setScene(dialogScene133);
 					dialog133.show();
 
-					Speler finalAanZet132 = aanZet;
 					button133.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet132);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog134 = new Stage();
 							dialog134.initModality(Modality.APPLICATION_MODAL);
@@ -1767,8 +1694,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -1792,11 +1718,10 @@ public class Tegel {
 					dialog135.show();
 
 					//Koop Hotel
-					Speler finalAanZet133 = aanZet;
 					button134.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet133);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog136 = new Stage();
 							dialog136.initModality(Modality.APPLICATION_MODAL);
@@ -1883,11 +1808,10 @@ public class Tegel {
 					dialog141.setScene(dialogScene141);
 					dialog141.show();
 
-					Speler finalAanZet141 = aanZet;
 					button141.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet141);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog142 = new Stage();
 							dialog142.initModality(Modality.APPLICATION_MODAL);
@@ -1912,11 +1836,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog143 = new Stage();
 					dialog143.initModality(Modality.APPLICATION_MODAL);
@@ -1931,11 +1851,10 @@ public class Tegel {
 					dialog143.setScene(dialogScene143);
 					dialog143.show();
 
-					Speler finalAanZet142 = aanZet;
 					button143.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet142);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog144 = new Stage();
 							dialog144.initModality(Modality.APPLICATION_MODAL);
@@ -1960,8 +1879,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -1985,11 +1903,10 @@ public class Tegel {
 					dialog145.show();
 
 					//Koop Hotel
-					Speler finalAanZet143 = aanZet;
 					button144.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet143);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog146 = new Stage();
 							dialog146.initModality(Modality.APPLICATION_MODAL);
@@ -2016,12 +1933,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet144 = aanZet;
 					button145.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet144);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog147 = new Stage();
 							dialog147.initModality(Modality.APPLICATION_MODAL);
@@ -2075,11 +1991,10 @@ public class Tegel {
 					dialog151.setScene(dialogScene151);
 					dialog151.show();
 
-					Speler finalAanZet151 = aanZet;
 					button151.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet151);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog152 = new Stage();
 							dialog152.initModality(Modality.APPLICATION_MODAL);
@@ -2104,10 +2019,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog153 = new Stage();
 					dialog153.initModality(Modality.APPLICATION_MODAL);
@@ -2122,11 +2034,10 @@ public class Tegel {
 					dialog153.setScene(dialogScene153);
 					dialog153.show();
 
-					Speler finalAanZet152 = aanZet;
 					button153.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet152);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog154 = new Stage();
 							dialog154.initModality(Modality.APPLICATION_MODAL);
@@ -2180,11 +2091,10 @@ public class Tegel {
 					dialog161.setScene(dialogScene161);
 					dialog161.show();
 
-					Speler finalAanZet161 = aanZet;
 					button161.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet161);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog162 = new Stage();
 							dialog162.initModality(Modality.APPLICATION_MODAL);
@@ -2209,11 +2119,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog163 = new Stage();
 					dialog163.initModality(Modality.APPLICATION_MODAL);
@@ -2228,11 +2134,10 @@ public class Tegel {
 					dialog163.setScene(dialogScene163);
 					dialog163.show();
 
-					Speler finalAanZet162 = aanZet;
 					button163.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet162);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog164 = new Stage();
 							dialog164.initModality(Modality.APPLICATION_MODAL);
@@ -2257,8 +2162,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -2282,11 +2186,10 @@ public class Tegel {
 					dialog165.show();
 
 					//Koop Hotel
-					Speler finalAanZet163 = aanZet;
 					button164.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet163);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog166 = new Stage();
 							dialog166.initModality(Modality.APPLICATION_MODAL);
@@ -2313,12 +2216,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet164 = aanZet;
 					button165.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet164);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog167 = new Stage();
 							dialog167.initModality(Modality.APPLICATION_MODAL);
@@ -2426,11 +2328,10 @@ public class Tegel {
 					dialog181.setScene(dialogScene181);
 					dialog181.show();
 
-					Speler finalAanZet181 = aanZet;
 					button181.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet181);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog182 = new Stage();
 							dialog182.initModality(Modality.APPLICATION_MODAL);
@@ -2455,11 +2356,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog183 = new Stage();
 					dialog183.initModality(Modality.APPLICATION_MODAL);
@@ -2474,11 +2371,10 @@ public class Tegel {
 					dialog183.setScene(dialogScene183);
 					dialog183.show();
 
-					Speler finalAanZet182 = aanZet;
 					button183.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet182);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog184 = new Stage();
 							dialog184.initModality(Modality.APPLICATION_MODAL);
@@ -2503,8 +2399,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -2528,11 +2423,10 @@ public class Tegel {
 					dialog185.show();
 
 					//Koop Hotel
-					Speler finalAanZet183 = aanZet;
 					button184.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet183);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog186 = new Stage();
 							dialog186.initModality(Modality.APPLICATION_MODAL);
@@ -2559,12 +2453,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet184 = aanZet;
 					button185.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet184);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog187 = new Stage();
 							dialog187.initModality(Modality.APPLICATION_MODAL);
@@ -2619,11 +2512,10 @@ public class Tegel {
 					dialog191.setScene(dialogScene191);
 					dialog191.show();
 
-					Speler finalAanZet191 = aanZet;
 					button191.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet191);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog192 = new Stage();
 							dialog192.initModality(Modality.APPLICATION_MODAL);
@@ -2648,11 +2540,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog193 = new Stage();
 					dialog193.initModality(Modality.APPLICATION_MODAL);
@@ -2667,11 +2555,10 @@ public class Tegel {
 					dialog193.setScene(dialogScene193);
 					dialog193.show();
 
-					Speler finalAanZet192 = aanZet;
 					button193.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet192);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog194 = new Stage();
 							dialog194.initModality(Modality.APPLICATION_MODAL);
@@ -2696,8 +2583,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -2721,11 +2607,10 @@ public class Tegel {
 					dialog195.show();
 
 					//Koop Hotel
-					Speler finalAanZet193 = aanZet;
 					button194.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet193);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog196 = new Stage();
 							dialog196.initModality(Modality.APPLICATION_MODAL);
@@ -2752,12 +2637,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet194 = aanZet;
 					button195.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet194);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog197 = new Stage();
 							dialog197.initModality(Modality.APPLICATION_MODAL);
@@ -2856,11 +2740,10 @@ public class Tegel {
 				dialog211.show();
 
 				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Speler finalAanZet211 = aanZet;
 					button211.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet211);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog212 = new Stage();
 							dialog212.initModality(Modality.APPLICATION_MODAL);
@@ -2885,11 +2768,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog213 = new Stage();
 					dialog213.initModality(Modality.APPLICATION_MODAL);
@@ -2904,11 +2783,10 @@ public class Tegel {
 					dialog213.setScene(dialogScene213);
 					dialog213.show();
 
-					Speler finalAanZet212 = aanZet;
 					button213.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet212);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog214 = new Stage();
 							dialog214.initModality(Modality.APPLICATION_MODAL);
@@ -2933,8 +2811,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -2958,11 +2835,10 @@ public class Tegel {
 					dialog215.show();
 
 					//Koop Hotel
-					Speler finalAanZet213 = aanZet;
 					button214.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet213);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog216 = new Stage();
 							dialog216.initModality(Modality.APPLICATION_MODAL);
@@ -2989,12 +2865,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet214 = aanZet;
 					button215.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet214);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog217 = new Stage();
 							dialog217.initModality(Modality.APPLICATION_MODAL);
@@ -3047,7 +2922,6 @@ public class Tegel {
 				dialog221.setScene(dialogScene221);
 				dialog221.show();
 
-				Speler finalAanZet22 = aanZet;
 				button221.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
@@ -3058,7 +2932,7 @@ public class Tegel {
 						VBox dialogVBox222 = new VBox();
 						dialog222.setTitle("Opdracht");
 						Button button222 = new Button("OK");
-						dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet22)), button222);
+						dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button222);
 						Scene dialogScene222 = new Scene(dialogVBox222, 300, 250);
 						dialogVBox222.setAlignment(Pos.CENTER);
 						dialogVBox222.setSpacing(10);
@@ -3069,7 +2943,7 @@ public class Tegel {
 						button222.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet22);
+								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
 								dialog221.close();
 								dialog222.close();
 							}
@@ -3103,11 +2977,10 @@ public class Tegel {
 					dialog231.setScene(dialogScene231);
 					dialog231.show();
 
-					Speler finalAanZet231 = aanZet;
 					button231.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet231);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog232 = new Stage();
 							dialog232.initModality(Modality.APPLICATION_MODAL);
@@ -3132,11 +3005,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog233 = new Stage();
 					dialog233.initModality(Modality.APPLICATION_MODAL);
@@ -3151,11 +3020,10 @@ public class Tegel {
 					dialog233.setScene(dialogScene233);
 					dialog233.show();
 
-					Speler finalAanZet232 = aanZet;
 					button233.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet232);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog234 = new Stage();
 							dialog234.initModality(Modality.APPLICATION_MODAL);
@@ -3180,8 +3048,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -3205,11 +3072,10 @@ public class Tegel {
 					dialog235.show();
 
 					//Koop Hotel
-					Speler finalAanZet233 = aanZet;
 					button234.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet233);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog236 = new Stage();
 							dialog236.initModality(Modality.APPLICATION_MODAL);
@@ -3236,12 +3102,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet234 = aanZet;
 					button235.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet234);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog237 = new Stage();
 							dialog237.initModality(Modality.APPLICATION_MODAL);
@@ -3296,11 +3161,10 @@ public class Tegel {
 					dialog241.setScene(dialogScene241);
 					dialog241.show();
 
-					Speler finalAanZet241 = aanZet;
 					button241.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet241);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog242 = new Stage();
 							dialog242.initModality(Modality.APPLICATION_MODAL);
@@ -3325,11 +3189,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog243 = new Stage();
 					dialog243.initModality(Modality.APPLICATION_MODAL);
@@ -3344,11 +3204,10 @@ public class Tegel {
 					dialog243.setScene(dialogScene243);
 					dialog243.show();
 
-					Speler finalAanZet242 = aanZet;
 					button243.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet242);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog244 = new Stage();
 							dialog244.initModality(Modality.APPLICATION_MODAL);
@@ -3373,8 +3232,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -3398,11 +3256,10 @@ public class Tegel {
 					dialog245.show();
 
 					//Koop Hotel
-					Speler finalAanZet243 = aanZet;
 					button244.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet243);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog246 = new Stage();
 							dialog246.initModality(Modality.APPLICATION_MODAL);
@@ -3429,12 +3286,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet244 = aanZet;
 					button245.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet244);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog247 = new Stage();
 							dialog247.initModality(Modality.APPLICATION_MODAL);
@@ -3487,11 +3343,10 @@ public class Tegel {
 					dialog251.setScene(dialogScene251);
 					dialog251.show();
 
-					Speler finalAanZet251 = aanZet;
 					button251.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet251);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog252 = new Stage();
 							dialog252.initModality(Modality.APPLICATION_MODAL);
@@ -3516,10 +3371,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog253 = new Stage();
 					dialog253.initModality(Modality.APPLICATION_MODAL);
@@ -3534,11 +3386,10 @@ public class Tegel {
 					dialog253.setScene(dialogScene253);
 					dialog253.show();
 
-					Speler finalAanZet252 = aanZet;
 					button253.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet252);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog254 = new Stage();
 							dialog254.initModality(Modality.APPLICATION_MODAL);
@@ -3592,11 +3443,10 @@ public class Tegel {
 					dialog261.setScene(dialogScene261);
 					dialog261.show();
 
-					Speler finalAanZet261 = aanZet;
 					button261.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet261);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog262 = new Stage();
 							dialog262.initModality(Modality.APPLICATION_MODAL);
@@ -3621,11 +3471,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog263 = new Stage();
 					dialog263.initModality(Modality.APPLICATION_MODAL);
@@ -3640,11 +3486,10 @@ public class Tegel {
 					dialog263.setScene(dialogScene263);
 					dialog263.show();
 
-					Speler finalAanZet262 = aanZet;
 					button263.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet262);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog264 = new Stage();
 							dialog264.initModality(Modality.APPLICATION_MODAL);
@@ -3669,8 +3514,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -3694,11 +3538,10 @@ public class Tegel {
 					dialog265.show();
 
 					//Koop Hotel
-					Speler finalAanZet263 = aanZet;
 					button264.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet263);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog266 = new Stage();
 							dialog266.initModality(Modality.APPLICATION_MODAL);
@@ -3725,12 +3568,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet264 = aanZet;
 					button265.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet264);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog267 = new Stage();
 							dialog267.initModality(Modality.APPLICATION_MODAL);
@@ -3784,11 +3626,10 @@ public class Tegel {
 					dialog271.setScene(dialogScene271);
 					dialog271.show();
 
-					Speler finalAanZet271 = aanZet;
 					button271.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet271);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog272 = new Stage();
 							dialog272.initModality(Modality.APPLICATION_MODAL);
@@ -3813,11 +3654,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog273 = new Stage();
 					dialog273.initModality(Modality.APPLICATION_MODAL);
@@ -3832,11 +3669,10 @@ public class Tegel {
 					dialog273.setScene(dialogScene273);
 					dialog273.show();
 
-					Speler finalAanZet272 = aanZet;
 					button273.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet272);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog274 = new Stage();
 							dialog274.initModality(Modality.APPLICATION_MODAL);
@@ -3861,8 +3697,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -3886,11 +3721,10 @@ public class Tegel {
 					dialog275.show();
 
 					//Koop Hotel
-					Speler finalAanZet273 = aanZet;
 					button274.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet273);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog276 = new Stage();
 							dialog276.initModality(Modality.APPLICATION_MODAL);
@@ -3917,12 +3751,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet274 = aanZet;
 					button275.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet274);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog277 = new Stage();
 							dialog277.initModality(Modality.APPLICATION_MODAL);
@@ -3976,11 +3809,10 @@ public class Tegel {
 					dialog281.setScene(dialogScene281);
 					dialog281.show();
 
-					Speler finalAanZet281 = aanZet;
 					button281.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet281);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog282 = new Stage();
 							dialog282.initModality(Modality.APPLICATION_MODAL);
@@ -4005,10 +3837,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog283 = new Stage();
 					dialog283.initModality(Modality.APPLICATION_MODAL);
@@ -4023,11 +3852,10 @@ public class Tegel {
 					dialog283.setScene(dialogScene283);
 					dialog283.show();
 
-					Speler finalAanZet282 = aanZet;
 					button283.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet282);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog284 = new Stage();
 							dialog284.initModality(Modality.APPLICATION_MODAL);
@@ -4080,11 +3908,10 @@ public class Tegel {
 					dialog291.setScene(dialogScene291);
 					dialog291.show();
 
-					Speler finalAanZet291 = aanZet;
 					button291.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet291);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog292 = new Stage();
 							dialog292.initModality(Modality.APPLICATION_MODAL);
@@ -4109,11 +3936,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog293 = new Stage();
 					dialog293.initModality(Modality.APPLICATION_MODAL);
@@ -4128,11 +3951,10 @@ public class Tegel {
 					dialog293.setScene(dialogScene293);
 					dialog293.show();
 
-					Speler finalAanZet292 = aanZet;
 					button293.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet292);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog294 = new Stage();
 							dialog294.initModality(Modality.APPLICATION_MODAL);
@@ -4157,8 +3979,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -4182,11 +4003,10 @@ public class Tegel {
 					dialog295.show();
 
 					//Koop Hotel
-					Speler finalAanZet293 = aanZet;
 					button294.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet293);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog296 = new Stage();
 							dialog296.initModality(Modality.APPLICATION_MODAL);
@@ -4213,12 +4033,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet294 = aanZet;
 					button295.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet294);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog297 = new Stage();
 							dialog297.initModality(Modality.APPLICATION_MODAL);
@@ -4271,16 +4090,14 @@ public class Tegel {
 				dialog301.setScene(dialogScene311);
 				dialog301.show();
 
-				Speler finalAanZet3 = aanZet;
-				Rectangle finalPion = pion;
 				button301.setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent actionEvent) {
-						GaNaarGevangenis.gaNaarGevangenis(finalAanZet3);
+						GaNaarGevangenis.gaNaarGevangenis(aanZet);
 
 						TranslateTransition transition31 = new TranslateTransition();
-						transition31.setNode(finalPion);
+						transition31.setNode(pion);
 						transition31.setDuration(Duration.seconds(1));
 						transition31.setToX(10 * 150);
 						transition31.setToY(0);
@@ -4319,11 +4136,10 @@ public class Tegel {
 					dialog311.setScene(dialogScene312);
 					dialog311.show();
 
-					Speler finalAanZet311 = aanZet;
 					button311.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet311);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog312 = new Stage();
 							dialog312.initModality(Modality.APPLICATION_MODAL);
@@ -4348,11 +4164,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog313 = new Stage();
 					dialog313.initModality(Modality.APPLICATION_MODAL);
@@ -4367,11 +4179,10 @@ public class Tegel {
 					dialog313.setScene(dialogScene313);
 					dialog313.show();
 
-					Speler finalAanZet312 = aanZet;
 					button313.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet312);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog314 = new Stage();
 							dialog314.initModality(Modality.APPLICATION_MODAL);
@@ -4396,8 +4207,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -4421,11 +4231,10 @@ public class Tegel {
 					dialog315.show();
 
 					//Koop Hotel
-					Speler finalAanZet313 = aanZet;
 					button314.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet313);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog316 = new Stage();
 							dialog316.initModality(Modality.APPLICATION_MODAL);
@@ -4452,12 +4261,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet314 = aanZet;
 					button315.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet314);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog317 = new Stage();
 							dialog317.initModality(Modality.APPLICATION_MODAL);
@@ -4510,11 +4318,10 @@ public class Tegel {
 					dialog321.setScene(dialogScene321);
 					dialog321.show();
 
-					Speler finalAanZet321 = aanZet;
 					button321.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet321);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog322 = new Stage();
 							dialog322.initModality(Modality.APPLICATION_MODAL);
@@ -4539,11 +4346,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog323 = new Stage();
 					dialog323.initModality(Modality.APPLICATION_MODAL);
@@ -4558,11 +4361,10 @@ public class Tegel {
 					dialog323.setScene(dialogScene323);
 					dialog323.show();
 
-					Speler finalAanZet322 = aanZet;
 					button323.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet322);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog324 = new Stage();
 							dialog324.initModality(Modality.APPLICATION_MODAL);
@@ -4587,8 +4389,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -4612,11 +4413,10 @@ public class Tegel {
 					dialog325.show();
 
 					//Koop Hotel
-					Speler finalAanZet323 = aanZet;
 					button324.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet323);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog326 = new Stage();
 							dialog326.initModality(Modality.APPLICATION_MODAL);
@@ -4643,12 +4443,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet324 = aanZet;
 					button325.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet324);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog327 = new Stage();
 							dialog327.initModality(Modality.APPLICATION_MODAL);
@@ -4701,7 +4500,6 @@ public class Tegel {
 				dialog331.setScene(dialogScene331);
 				dialog331.show();
 
-				Speler finalAanZet33 = aanZet;
 				button331.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
@@ -4712,7 +4510,7 @@ public class Tegel {
 						VBox dialogVBox332 = new VBox();
 						dialog332.setTitle("Opdracht");
 						Button button332 = new Button("OK");
-						dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet33)), button332);
+						dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button332);
 						Scene dialogScene332 = new Scene(dialogVBox332, 300, 250);
 						dialogVBox332.setAlignment(Pos.CENTER);
 						dialogVBox332.setSpacing(10);
@@ -4723,7 +4521,7 @@ public class Tegel {
 						button332.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet33);
+								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
 								dialog331.close();
 								dialog332.close();
 							}
@@ -4758,11 +4556,10 @@ public class Tegel {
 					dialog341.setScene(dialogScene341);
 					dialog341.show();
 
-					Speler finalAanZet341 = aanZet;
 					button341.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet341);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog342 = new Stage();
 							dialog342.initModality(Modality.APPLICATION_MODAL);
@@ -4787,11 +4584,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog343 = new Stage();
 					dialog343.initModality(Modality.APPLICATION_MODAL);
@@ -4806,11 +4599,10 @@ public class Tegel {
 					dialog343.setScene(dialogScene343);
 					dialog343.show();
 
-					Speler finalAanZet342 = aanZet;
 					button343.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet342);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog344 = new Stage();
 							dialog344.initModality(Modality.APPLICATION_MODAL);
@@ -4835,8 +4627,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -4860,11 +4651,10 @@ public class Tegel {
 					dialog345.show();
 
 					//Koop Hotel
-					Speler finalAanZet343 = aanZet;
 					button344.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet343);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog346 = new Stage();
 							dialog346.initModality(Modality.APPLICATION_MODAL);
@@ -4891,12 +4681,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet344 = aanZet;
 					button345.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet344);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog347 = new Stage();
 							dialog347.initModality(Modality.APPLICATION_MODAL);
@@ -4950,11 +4739,10 @@ public class Tegel {
 					dialog351.setScene(dialogScene351);
 					dialog351.show();
 
-					Speler finalAanZet351 = aanZet;
 					button351.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet351);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog352 = new Stage();
 							dialog352.initModality(Modality.APPLICATION_MODAL);
@@ -4979,10 +4767,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog353 = new Stage();
 					dialog353.initModality(Modality.APPLICATION_MODAL);
@@ -4997,11 +4782,10 @@ public class Tegel {
 					dialog353.setScene(dialogScene353);
 					dialog353.show();
 
-					Speler finalAanZet52 = aanZet;
 					button353.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet52);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog354 = new Stage();
 							dialog354.initModality(Modality.APPLICATION_MODAL);
@@ -5052,7 +4836,6 @@ public class Tegel {
 				dialog361.setScene(dialogScene361);
 				dialog361.show();
 
-				Speler finalAanZet36 = aanZet;
 				button361.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
@@ -5063,7 +4846,7 @@ public class Tegel {
 						VBox dialogVBox362 = new VBox();
 						dialog362.setTitle("Opdracht");
 						Button button362 = new Button("OK");
-						dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet36)), button362);
+						dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button362);
 						Scene dialogScene362 = new Scene(dialogVBox362, 300, 250);
 						dialogVBox362.setAlignment(Pos.CENTER);
 						dialogVBox362.setSpacing(10);
@@ -5074,7 +4857,7 @@ public class Tegel {
 						button362.setOnAction(new EventHandler<ActionEvent>() {
 							@Override
 							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet36);
+								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
 								dialog361.close();
 								dialog362.close();
 							}
@@ -5107,11 +4890,10 @@ public class Tegel {
 					dialog371.setScene(dialogScene371);
 					dialog371.show();
 
-					Speler finalAanZet371 = aanZet;
 					button371.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet371);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog372 = new Stage();
 							dialog372.initModality(Modality.APPLICATION_MODAL);
@@ -5136,11 +4918,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog373 = new Stage();
 					dialog373.initModality(Modality.APPLICATION_MODAL);
@@ -5155,11 +4933,10 @@ public class Tegel {
 					dialog373.setScene(dialogScene373);
 					dialog373.show();
 
-					Speler finalAanZet372 = aanZet;
 					button373.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet372);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog374 = new Stage();
 							dialog374.initModality(Modality.APPLICATION_MODAL);
@@ -5184,8 +4961,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -5209,11 +4985,10 @@ public class Tegel {
 					dialog375.show();
 
 					//Koop Hotel
-					Speler finalAanZet373 = aanZet;
 					button374.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet373);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog376 = new Stage();
 							dialog376.initModality(Modality.APPLICATION_MODAL);
@@ -5240,12 +5015,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet374 = aanZet;
 					button375.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet374);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog377 = new Stage();
 							dialog377.initModality(Modality.APPLICATION_MODAL);
@@ -5298,11 +5072,10 @@ public class Tegel {
 				dialog38.setScene(dialogScene38);
 				dialog38.show();
 
-				Speler finalAanZet1 = aanZet;
 				button38.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent actionEvent) {
-						Eigendomsbelasting.betaalBelasting(finalAanZet1);
+						Eigendomsbelasting.betaalBelasting(aanZet);
 						dialog38.close();
 					}
 				});
@@ -5334,11 +5107,10 @@ public class Tegel {
 					dialog391.setScene(dialogScene391);
 					dialog391.show();
 
-					Speler finalAanZet391 = aanZet;
 					button391.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), finalAanZet391);
+							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog392 = new Stage();
 							dialog392.initModality(Modality.APPLICATION_MODAL);
@@ -5363,11 +5135,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-
-				//Tegel is van een andere eigenaar
-				if (!Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())
-						&& Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 
 					final Stage dialog393 = new Stage();
 					dialog393.initModality(Modality.APPLICATION_MODAL);
@@ -5382,11 +5150,10 @@ public class Tegel {
 					dialog393.setScene(dialogScene393);
 					dialog393.show();
 
-					Speler finalAanZet392 = aanZet;
 					button393.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), finalAanZet392);
+							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
 
 							final Stage dialog394 = new Stage();
 							dialog394.initModality(Modality.APPLICATION_MODAL);
@@ -5411,8 +5178,7 @@ public class Tegel {
 							});
 						}
 					});
-				}
-				if (Spelbord.getTegels().get(locatie).getNaam().equals(aanZet.getNaam())) {
+				} else {
 
 					// tegel is van de speler zelf
 
@@ -5436,11 +5202,10 @@ public class Tegel {
 					dialog395.show();
 
 					//Koop Hotel
-					Speler finalAanZet393 = aanZet;
 					button394.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
-							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), finalAanZet393);
+							Gebouwen.koopHotel((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Hotel(), aanZet);
 
 							final Stage dialog396 = new Stage();
 							dialog396.initModality(Modality.APPLICATION_MODAL);
@@ -5467,12 +5232,11 @@ public class Tegel {
 					});
 
 					//Koop huis
-					Speler finalAanZet394 = aanZet;
 					button395.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							Gebouwen.koopHuis((Straat) Spelbord.getTegels().get(locatie), new Gebouwen.Huis(),
-									comboBox.getValue(), finalAanZet394);
+									comboBox.getValue(), aanZet);
 
 							final Stage dialog397 = new Stage();
 							dialog397.initModality(Modality.APPLICATION_MODAL);

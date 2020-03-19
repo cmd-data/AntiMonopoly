@@ -636,7 +636,7 @@ public class MainMetPionPresenter {
                         int locatie = Spel.move(aanZet, worp).getPositie();
                         dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
 
-                        Tegel.tegelMethode(pion,aanZet,locatie);
+                        Tegel.tegelMethode(pion, aanZet, locatie);
 
                         }
                 });
