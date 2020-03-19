@@ -51,6 +51,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			steekTerugMon();
 		}
 		Spel.updateGeld();
+
 	}
 
 	public static void steekTerugMon() {

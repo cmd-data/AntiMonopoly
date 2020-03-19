@@ -170,9 +170,9 @@ public class Spel {
 	}
 
 	public static Tegel move(Speler speler, Tegel tegel){
+		checkPasseerStart(speler,tegel);
 		posities.values().remove(speler);
 		posities.put(tegel,speler);
-		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
 		return tegel;
 	}
 
@@ -189,11 +189,11 @@ public class Spel {
 				if (entry.getValue().equals(speler)) {
 					if (tegel.getPositie() < entry.getKey().getPositie() && 30 != tegel.getPositie()) {
 						speler.setGeld(200000);
+						updateGeld();
 					}
 				}
 			}
 		} catch (NullPointerException ignored) {}
-		updateGeld();
 	}
 
 	public static Boolean checkGevangenis(Speler speler){
