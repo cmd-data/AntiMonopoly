@@ -52,6 +52,9 @@ public class DrieSpelersView extends GridPane{
         this.drieSpelers = new VBox();
         drieSpelers.getChildren().addAll(ds1,ds2,ds5,ds8,ds3,ds6,ds9,ds4,ds7,ds10,ds11);
         this.add(drieSpelers,0,0);
+        ds5.setMaxWidth(200);
+        ds6.setMaxWidth(200);
+        ds7.setMaxWidth(200);
         drieSpelers.setId("ds");
     }
 

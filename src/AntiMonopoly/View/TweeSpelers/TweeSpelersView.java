@@ -46,6 +46,8 @@ public class TweeSpelersView extends GridPane {
         this.tweeSpelers = new VBox();
         tweeSpelers.getChildren().addAll(ts1,ts2,ts4,ts6,ts3,ts5,ts7,ts8);
         this.add(tweeSpelers,0,0);
+        ts4.setMaxWidth(200);
+        ts5.setMaxWidth(200);
         tweeSpelers.setId("ts");
     }
 

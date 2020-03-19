@@ -571,7 +571,7 @@ public class MainView extends GridPane {
         this.diestsesttraat = new VBox();
         diestsesttraat.getChildren().addAll(ds1, ds2, ds3, ds4);
         this.add(diestsesttraat, 3, 1);
-        diestsesttraat.setId("ds");
+        diestsesttraat.setId("ds1");
 
 
         // Steenstraat, Brugge

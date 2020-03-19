@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -558,13 +559,14 @@ public class MainMetPionPresenter {
                     public void handle(ActionEvent event) {
                         final Stage dialog = new Stage();
                         dialog.initModality(Modality.APPLICATION_MODAL);
-                        VBox dialogVBox = new VBox();
                         dialog.setTitle("Spelregels");
                         Spelregels spelregels = new Spelregels();
-                        dialogVBox.getChildren().addAll(new Text(spelregels.getSpelregels()));
-                        Scene dialogScene = new Scene(dialogVBox, 2000, 1000);
-                        dialogVBox.setSpacing(10);
-                        dialogVBox.setStyle("-fx-font: 10px Tahoma");
+                        VBox vBoxSR = new VBox();
+                        vBoxSR.getChildren().addAll(new Text(spelregels.getSpelregels()));
+                        ScrollPane scrollPane = new ScrollPane();
+                        scrollPane.setContent(vBoxSR);
+                        Scene dialogScene = new Scene(scrollPane, 1500, 800);
+                        scrollPane.setStyle("-fx-font: 20px Tahoma");
                         dialog.setScene(dialogScene);
                         dialog.show();
                     }

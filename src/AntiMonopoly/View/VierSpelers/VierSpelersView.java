@@ -62,6 +62,10 @@ public class VierSpelersView extends GridPane {
         this.vierSpelers = new VBox();
         vierSpelers.getChildren().addAll(vs1,vs2,vs6,vs10,vs3,vs7,vs11,vs4,vs8,vs12,vs5,vs9,vs13,vs14);
         this.add(vierSpelers,0,0);
+        vs6.setMaxWidth(200);
+        vs7.setMaxWidth(200);
+        vs8.setMaxWidth(200);
+        vs9.setMaxWidth(200);
         vierSpelers.setId("vs");
     }
 

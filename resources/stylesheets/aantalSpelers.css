@@ -1,11 +1,12 @@
-#as {
+#ts,#ds,#vs{
     -fx-pref-height: 1000px;
     -fx-pref-width: 1800px;
     -fx-alignment: center;
     -fx-spacing: 30px;
-    -fx-font: 30px Tahoma;
-    -fx-background-image: url('/images/monopolyman.png');
+    -fx-font: 20px Tahoma;
+    -fx-background-image: url('/images/geld.png');
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-font-weight: bold;
 }
+
