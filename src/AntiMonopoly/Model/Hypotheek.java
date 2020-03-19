@@ -21,13 +21,13 @@ public class Hypotheek {
 	public void neemHypotheek(Straat straat, Speler speler) {
 		hypotheekLijst.add(straat);
 		speler.setGeld(straat.getHypotheek());
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 	public void uitHypotheek(Straat straat, Speler speler){
 		hypotheekLijst.remove(straat);
 		speler.setGeld(-straat.getHypotheek());
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 }

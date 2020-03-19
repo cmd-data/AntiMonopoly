@@ -1,5 +1,15 @@
 package AntiMonopoly.Model;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +72,98 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		}
 		return 0;
 
+	}
+
+	public static void gasElekMethodeKopen (GasEnElektriciteitsbedrijf bedrijf, Speler aanZet) {
+
+		final Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVBox = new VBox();
+		dialog.setTitle("Gasmaatschappij");
+		Button button = new Button("Koop");
+		dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €" + waarde), button);
+		Scene dialogScene = new Scene(dialogVBox, 500,300);
+		dialogVBox.setAlignment(Pos.CENTER);
+		dialogVBox.setSpacing(10);
+		dialogVBox.setStyle("-fx-font: 20px Tahoma");
+		dialog.setScene(dialogScene);
+		dialog.show();
+
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				dialog.close();
+				Tegel.koopEigendom(bedrijf, aanZet);
+
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				VBox dialogVBox = new VBox();
+				dialog.setTitle("Proficiat met uw aankoop!");
+				Button button = new Button("OK");
+				dialogVBox.getChildren().addAll(new Text("U hebt " + bedrijf.getNaam() + " aangekocht"), new Text("voor €" + waarde),
+						button);
+				Scene dialogScene = new Scene(dialogVBox, 500,300);
+				dialogVBox.setAlignment(Pos.CENTER);
+				dialogVBox.setSpacing(10);
+				dialogVBox.setStyle("-fx-font: 20px Tahoma");
+				dialog.setScene(dialogScene);
+				dialog.show();
+
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						dialog.close();
+					}
+				});
+			}
+		});
+	}
+
+	public static void gasElekMethodeHuur (GasEnElektriciteitsbedrijf bedrijf, Speler aanZet) {
+
+		final Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVBox = new VBox();
+		dialog.setTitle("Betaal Huur");
+		Button button = new Button("Betaal € " + getHuur(bedrijf));
+		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + bedrijf.getEigenaar().getNaam()), button);
+		Scene dialogScene = new Scene(dialogVBox, 500,300);
+		dialogVBox.setAlignment(Pos.CENTER);
+		dialogVBox.setSpacing(10);
+		dialogVBox.setStyle("-fx-font: 20px Tahoma");
+		dialog.setScene(dialogScene);
+		dialog.show();
+
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				dialog.close();
+				int geldVoorAankoop = aanZet.getGeld();
+				Tegel.betaalHuur(bedrijf, aanZet);
+				int prijsHuur = geldVoorAankoop - aanZet.getGeld();
+
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				VBox dialogVBox = new VBox();
+				dialog.setTitle("Huur");
+				Button button = new Button("OK");
+				dialogVBox.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("De huurprijs bedraagde: €" + prijsHuur ),
+						button);
+				Scene dialogScene = new Scene(dialogVBox, 500,300);
+				dialogVBox.setAlignment(Pos.CENTER);
+				dialogVBox.setSpacing(10);
+				dialogVBox.setStyle("-fx-font: 20px Tahoma");
+				dialog.setScene(dialogScene);
+				dialog.show();
+
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						dialog.close();
+					}
+				});
+			}
+		});
 	}
 
 	public Speler getEigenaar() {

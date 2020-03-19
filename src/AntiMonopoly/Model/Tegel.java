@@ -2,11 +2,14 @@ package AntiMonopoly.Model;
 
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -43,7 +46,7 @@ public class Tegel {
 		if (tegel instanceof GasEnElektriciteitsbedrijf){
 			((GasEnElektriciteitsbedrijf) tegel).koopGasofElektriciteitsbedrijf(speler,(GasEnElektriciteitsbedrijf) tegel);
 		}
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 	public boolean kopen(Tegel tegel){
@@ -93,20 +96,17 @@ public class Tegel {
 		if (tegel instanceof Straat){
 			speler.setGeld(-Straat.getHuur((Straat) tegel));
 			((Straat) tegel).getEigenaar().setGeld(Straat.getHuur((Straat) tegel));
-			Spel.updateGeld(((Straat) tegel).getEigenaar());
 		}
 		if (tegel instanceof Transport){
 			speler.setGeld(-Transport.getHuur((Transport) tegel));
 			((Transport) tegel).getEigenaar().setGeld(Transport.getHuur((Transport) tegel));
-			Spel.updateGeld(((Transport) tegel).getEigenaar());
 		}
 		if (tegel instanceof GasEnElektriciteitsbedrijf){
 			speler.setGeld(-GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
 			((GasEnElektriciteitsbedrijf) tegel).getEigenaar().setGeld(GasEnElektriciteitsbedrijf.getHuur((GasEnElektriciteitsbedrijf) tegel));
-			Spel.updateGeld(((GasEnElektriciteitsbedrijf) tegel).getEigenaar());
 		}
 
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 	public static void tegelMethode(Rectangle pion, Speler aanZet, int locatie) {
@@ -114,6 +114,7 @@ public class Tegel {
 		switch (locatie) {
 
 			case 0:
+
 				TranslateTransition transition0 = new TranslateTransition();
 				transition0.setNode(pion);
 				transition0.setDuration(Duration.seconds(1));
@@ -155,16 +156,7 @@ public class Tegel {
 				transition1.setInterpolator(Interpolator.EASE_BOTH);
 				transition1.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 2:
@@ -177,47 +169,7 @@ public class Tegel {
 				transition2.setInterpolator(Interpolator.EASE_BOTH);
 				transition2.play();
 
-				final Stage dialog21 = new Stage();
-				dialog21.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox21 = new VBox();
-				dialog21.setTitle("Neem Kaart");
-				Button button21 = new Button("Neem een kaart");
-				dialogVBox21.getChildren().addAll(new Text("Neem een kaart"), button21);
-				Scene dialogScene21 = new Scene(dialogVBox21, 500,300);
-				dialogVBox21.setAlignment(Pos.CENTER);
-				dialogVBox21.setSpacing(10);
-				dialogVBox21.setStyle("-fx-font: 20px Tahoma");
-				dialog21.setScene(dialogScene21);
-				dialog21.show();
-
-				button21.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog21.close();
-
-						final Stage dialog22 = new Stage();
-						dialog22.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox22 = new VBox();
-						dialog22.setTitle("Opdracht");
-						Button button22 = new Button("OK");
-						dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button22);
-						Scene dialogScene22 = new Scene(dialogVBox22, 1200, 250);
-						dialogVBox22.setAlignment(Pos.CENTER);
-						dialogVBox22.setSpacing(10);
-						dialogVBox22.setStyle("-fx-font: 20px Tahoma");
-						dialog22.setScene(dialogScene22);
-						dialog22.show();
-
-						button22.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
-								dialog21.close();
-								dialog22.close();
-							}
-						});
-					}
-				});
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 
 			case 3:
@@ -230,16 +182,7 @@ public class Tegel {
 				transition3.setInterpolator(Interpolator.EASE_BOTH);
 				transition3.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 4:
@@ -256,8 +199,8 @@ public class Tegel {
 				dialog4.initModality(Modality.APPLICATION_MODAL);
 				VBox dialogVBox4 = new VBox();
 				dialog4.setTitle("Inkomstenbelasting");
-				Button button4 = new Button("Betaal belasting\n€200.000");
-				dialogVBox4.getChildren().addAll(button4);
+				Button button4 = new Button("Betaal €200.000");
+				dialogVBox4.getChildren().addAll(new Text("Betaal jouw inkomstenbelasting"), button4);
 				Scene dialogScene4 = new Scene(dialogVBox4, 500,300);
 				dialogVBox4.setAlignment(Pos.CENTER);
 				dialogVBox4.setSpacing(10);
@@ -284,93 +227,8 @@ public class Tegel {
 				transition5.setInterpolator(Interpolator.EASE_BOTH);
 				transition5.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog51 = new Stage();
-					dialog51.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox51 = new VBox();
-					dialog51.setTitle("Noord Station");
-					Button button51 = new Button("Koop");
-					dialogVBox51.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button51);
-					Scene dialogScene51 = new Scene(dialogVBox51, 500,300);
-					dialogVBox51.setAlignment(Pos.CENTER);
-					dialogVBox51.setSpacing(10);
-					dialogVBox51.setStyle("-fx-font: 20px Tahoma");
-					dialog51.setScene(dialogScene51);
-					dialog51.show();
+				caseEigenaarTransport(aanZet, locatie);
 
-					button51.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog52 = new Stage();
-							dialog52.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox52 = new VBox();
-							dialog52.setTitle("Proficiat met uw aankoop!");
-							Button button52 = new Button("OK");
-							dialogVBox52.getChildren().addAll(new Text("U hebt Station Noord aangekocht"), new Text("voor €200.000"),
-									button52);
-							Scene dialogScene52 = new Scene(dialogVBox52, 500,300);
-							dialogVBox52.setAlignment(Pos.CENTER);
-							dialogVBox52.setSpacing(10);
-							dialogVBox52.setStyle("-fx-font: 20px Tahoma");
-							dialog52.setScene(dialogScene52);
-							dialog52.show();
-
-							button52.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog52.close();
-									dialog51.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog53 = new Stage();
-					dialog53.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox53 = new VBox();
-					dialog53.setTitle("Betaal Huur");
-					Button button53 = new Button("Betaal huur");
-					dialogVBox53.getChildren().addAll(new Text("U dient huur te betalen. "), button53);
-					Scene dialogScene53 = new Scene(dialogVBox53, 500,300);
-					dialogVBox53.setAlignment(Pos.CENTER);
-					dialogVBox53.setSpacing(10);
-					dialogVBox53.setStyle("-fx-font: 20px Tahoma");
-					dialog53.setScene(dialogScene53);
-					dialog53.show();
-
-					button53.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog54 = new Stage();
-							dialog54.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox54 = new VBox();
-							dialog54.setTitle("Huur");
-							Button button5 = new Button("OK");
-							dialogVBox54.getChildren().addAll(new Text("U betaalde huur"),
-									button5);
-							Scene dialogScene54 = new Scene(dialogVBox54, 500,300);
-							dialogVBox54.setAlignment(Pos.CENTER);
-							dialogVBox54.setSpacing(10);
-							dialogVBox54.setStyle("-fx-font: 20px Tahoma");
-							dialog54.setScene(dialogScene54);
-							dialog54.show();
-
-							button5.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog53.close();
-									dialog54.close();
-								}
-							});
-						}
-					});
-				}
 				break;
 
 			case 6:
@@ -383,16 +241,7 @@ public class Tegel {
 				transition6.setInterpolator(Interpolator.EASE_BOTH);
 				transition6.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 7:
@@ -405,48 +254,7 @@ public class Tegel {
 				transition7.setInterpolator(Interpolator.EASE_BOTH);
 				transition7.play();
 
-				final Stage dialog71 = new Stage();
-				dialog71.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox71 = new VBox();
-				dialog71.setTitle("Neem Kaart");
-				Button button71 = new Button("Neem een kaart");
-				dialogVBox71.getChildren().addAll(new Text("Neem een kaart"), button71);
-				Scene dialogScene71 = new Scene(dialogVBox71, 500,300);
-				dialogVBox71.setAlignment(Pos.CENTER);
-				dialogVBox71.setSpacing(10);
-				dialogVBox71.setStyle("-fx-font: 20px Tahoma");
-				dialog71.setScene(dialogScene71);
-				dialog71.show();
-
-				button71.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog71.close();
-
-						final Stage dialog72 = new Stage();
-						dialog72.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox72 = new VBox();
-						dialog72.setTitle("Opdracht");
-						Button button72 = new Button("OK");
-						dialogVBox72.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button72);
-						Scene dialogScene72 = new Scene(dialogVBox72, 1200, 250);
-						dialogVBox72.setAlignment(Pos.CENTER);
-						dialogVBox72.setSpacing(10);
-						dialogVBox72.setStyle("-fx-font: 20px Tahoma");
-						dialog72.setScene(dialogScene72);
-						dialog72.show();
-
-						button72.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
-								dialog71.close();
-								dialog72.close();
-							}
-						});
-					}
-				});
-
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 
 			case 8:
@@ -459,16 +267,7 @@ public class Tegel {
 				transition8.setInterpolator(Interpolator.EASE_BOTH);
 				transition8.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 9:
@@ -481,16 +280,7 @@ public class Tegel {
 				transition9.setInterpolator(Interpolator.EASE_BOTH);
 				transition9.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 10:
@@ -515,16 +305,7 @@ public class Tegel {
 				transition11.setInterpolator(Interpolator.EASE_BOTH);
 				transition11.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 12:
@@ -537,93 +318,7 @@ public class Tegel {
 				transition12.setInterpolator(Interpolator.EASE_BOTH);
 				transition12.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog121 = new Stage();
-					dialog121.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox121 = new VBox();
-					dialog121.setTitle("Elektriciteitsmaatschappij");
-					Button button121 = new Button("Koop");
-					dialogVBox121.getChildren().addAll(new Text("Aankoopprijs: €150.000"), button121);
-					Scene dialogScene281 = new Scene(dialogVBox121, 500,300);
-					dialogVBox121.setAlignment(Pos.CENTER);
-					dialogVBox121.setSpacing(10);
-					dialogVBox121.setStyle("-fx-font: 20px Tahoma");
-					dialog121.setScene(dialogScene281);
-					dialog121.show();
-
-					button121.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog122 = new Stage();
-							dialog122.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox122 = new VBox();
-							dialog122.setTitle("Proficiat met uw aankoop!");
-							Button button122 = new Button("OK");
-							dialogVBox122.getChildren().addAll(new Text("U hebt de elektriciteitsmaatschappij aangekocht aangekocht"), new Text("voor €150.000"),
-									button122);
-							Scene dialogScene282 = new Scene(dialogVBox122, 500,300);
-							dialogVBox122.setAlignment(Pos.CENTER);
-							dialogVBox122.setSpacing(10);
-							dialogVBox122.setStyle("-fx-font: 20px Tahoma");
-							dialog122.setScene(dialogScene282);
-							dialog122.show();
-
-							button122.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog122.close();
-									dialog121.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog123 = new Stage();
-					dialog123.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox123 = new VBox();
-					dialog123.setTitle("Betaal Huur");
-					Button button123 = new Button("Betaal huur");
-					dialogVBox123.getChildren().addAll(new Text("U dient huur te betalen. "), button123);
-					Scene dialogScene123 = new Scene(dialogVBox123, 500,300);
-					dialogVBox123.setAlignment(Pos.CENTER);
-					dialogVBox123.setSpacing(10);
-					dialogVBox123.setStyle("-fx-font: 20px Tahoma");
-					dialog123.setScene(dialogScene123);
-					dialog123.show();
-
-					button123.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog124 = new Stage();
-							dialog124.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox124 = new VBox();
-							dialog124.setTitle("Huur");
-							Button button12 = new Button("OK");
-							dialogVBox124.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("U betaalde huur"),
-									button12);
-							Scene dialogScene284 = new Scene(dialogVBox124, 500,300);
-							dialogVBox124.setAlignment(Pos.CENTER);
-							dialogVBox124.setSpacing(10);
-							dialogVBox124.setStyle("-fx-font: 20px Tahoma");
-							dialog124.setScene(dialogScene284);
-							dialog124.show();
-
-							button12.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog123.close();
-									dialog124.close();
-								}
-							});
-						}
-					});
-				}
+				caseEigenaarGasElek(aanZet, locatie);
 				break;
 
 
@@ -637,16 +332,7 @@ public class Tegel {
 				transition13.setInterpolator(Interpolator.EASE_BOTH);
 				transition13.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 14:
@@ -659,16 +345,7 @@ public class Tegel {
 				transition14.setInterpolator(Interpolator.EASE_BOTH);
 				transition14.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 15:
@@ -681,93 +358,7 @@ public class Tegel {
 				transition15.setInterpolator(Interpolator.EASE_BOTH);
 				transition15.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog151 = new Stage();
-					dialog151.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox151 = new VBox();
-					dialog151.setTitle("Centraal Station");
-					Button button151 = new Button("Koop");
-					dialogVBox151.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button151);
-					Scene dialogScene151 = new Scene(dialogVBox151, 500,300);
-					dialogVBox151.setAlignment(Pos.CENTER);
-					dialogVBox151.setSpacing(10);
-					dialogVBox151.setStyle("-fx-font: 20px Tahoma");
-					dialog151.setScene(dialogScene151);
-					dialog151.show();
-
-					button151.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog152 = new Stage();
-							dialog152.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox152 = new VBox();
-							dialog152.setTitle("Proficiat met uw aankoop!");
-							Button button152 = new Button("OK");
-							dialogVBox152.getChildren().addAll(new Text("U hebt Centraal Station aangekocht"), new Text("voor €200.000"),
-									button152);
-							Scene dialogScene152 = new Scene(dialogVBox152, 500,300);
-							dialogVBox152.setAlignment(Pos.CENTER);
-							dialogVBox152.setSpacing(10);
-							dialogVBox152.setStyle("-fx-font: 20px Tahoma");
-							dialog152.setScene(dialogScene152);
-							dialog152.show();
-
-							button152.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog152.close();
-									dialog151.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog153 = new Stage();
-					dialog153.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox153 = new VBox();
-					dialog153.setTitle("Betaal Huur");
-					Button button153 = new Button("Betaal huur");
-					dialogVBox153.getChildren().addAll(new Text("U dient huur te betalen. "), button153);
-					Scene dialogScene153 = new Scene(dialogVBox153, 500,300);
-					dialogVBox153.setAlignment(Pos.CENTER);
-					dialogVBox153.setSpacing(10);
-					dialogVBox153.setStyle("-fx-font: 20px Tahoma");
-					dialog153.setScene(dialogScene153);
-					dialog153.show();
-
-					button153.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog154 = new Stage();
-							dialog154.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox154 = new VBox();
-							dialog154.setTitle("Huur");
-							Button button15 = new Button("OK");
-							dialogVBox154.getChildren().addAll(new Text("U betaalde huur"),
-									button15);
-							Scene dialogScene64 = new Scene(dialogVBox154, 500,300);
-							dialogVBox154.setAlignment(Pos.CENTER);
-							dialogVBox154.setSpacing(10);
-							dialogVBox154.setStyle("-fx-font: 20px Tahoma");
-							dialog154.setScene(dialogScene64);
-							dialog154.show();
-
-							button15.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog153.close();
-									dialog154.close();
-								}
-							});
-						}
-					});
-				}
+				caseEigenaarTransport(aanZet, locatie);
 
 				break;
 
@@ -781,16 +372,7 @@ public class Tegel {
 				transition16.setInterpolator(Interpolator.EASE_BOTH);
 				transition16.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 17:
@@ -803,48 +385,7 @@ public class Tegel {
 				transition17.setInterpolator(Interpolator.EASE_BOTH);
 				transition17.play();
 
-				final Stage dialog171 = new Stage();
-				dialog171.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox171 = new VBox();
-				dialog171.setTitle("Neem Kaart");
-				Button button171 = new Button("Neem een kaart");
-				dialogVBox171.getChildren().addAll(new Text("Neem een kaart"), button171);
-				Scene dialogScene171 = new Scene(dialogVBox171, 500,300);
-				dialogVBox171.setAlignment(Pos.CENTER);
-				dialogVBox171.setSpacing(10);
-				dialogVBox171.setStyle("-fx-font: 20px Tahoma");
-				dialog171.setScene(dialogScene171);
-				dialog171.show();
-
-				Speler finalAanZet17 = aanZet;
-				button171.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog171.close();
-
-						final Stage dialog172 = new Stage();
-						dialog172.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox172 = new VBox();
-						dialog172.setTitle("Opdracht");
-						Button button172 = new Button("OK");
-						dialogVBox172.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button172);
-						Scene dialogScene172 = new Scene(dialogVBox172, 1200, 250);
-						dialogVBox172.setAlignment(Pos.CENTER);
-						dialogVBox172.setSpacing(10);
-						dialogVBox172.setStyle("-fx-font: 20px Tahoma");
-						dialog172.setScene(dialogScene172);
-						dialog172.show();
-
-						button172.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(finalAanZet17);
-								dialog171.close();
-								dialog172.close();
-							}
-						});
-					}
-				});
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 
 			case 18:
@@ -857,16 +398,7 @@ public class Tegel {
 				transition18.setInterpolator(Interpolator.EASE_BOTH);
 				transition18.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 19:
@@ -879,16 +411,7 @@ public class Tegel {
 				transition19.setInterpolator(Interpolator.EASE_BOTH);
 				transition19.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 20:
@@ -946,16 +469,7 @@ public class Tegel {
 				transition21.setInterpolator(Interpolator.EASE_BOTH);
 				transition21.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 22:
@@ -968,47 +482,7 @@ public class Tegel {
 				transition22.setInterpolator(Interpolator.EASE_BOTH);
 				transition22.play();
 
-				final Stage dialog221 = new Stage();
-				dialog221.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox221 = new VBox();
-				dialog221.setTitle("Neem Kaart");
-				Button button221 = new Button("Neem een kaart");
-				dialogVBox221.getChildren().addAll(new Text("Neem een kaart"), button221);
-				Scene dialogScene221 = new Scene(dialogVBox221, 500,300);
-				dialogVBox221.setAlignment(Pos.CENTER);
-				dialogVBox221.setSpacing(10);
-				dialogVBox221.setStyle("-fx-font: 20px Tahoma");
-				dialog221.setScene(dialogScene221);
-				dialog221.show();
-
-				button221.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog221.close();
-
-						final Stage dialog222 = new Stage();
-						dialog222.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox222 = new VBox();
-						dialog222.setTitle("Opdracht");
-						Button button222 = new Button("OK");
-						dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button222);
-						Scene dialogScene222 = new Scene(dialogVBox222, 1200, 250);
-						dialogVBox222.setAlignment(Pos.CENTER);
-						dialogVBox222.setSpacing(10);
-						dialogVBox222.setStyle("-fx-font: 20px Tahoma");
-						dialog222.setScene(dialogScene222);
-						dialog222.show();
-
-						button222.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
-								dialog221.close();
-								dialog222.close();
-							}
-						});
-					}
-				});
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 
 			case 23:
@@ -1021,16 +495,7 @@ public class Tegel {
 				transition23.setInterpolator(Interpolator.EASE_BOTH);
 				transition23.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 24:
@@ -1038,22 +503,12 @@ public class Tegel {
 				transition24.setNode(pion);
 				transition24.setDuration(Duration.seconds(1));
 				transition24.setToX(6 * 150);
-				;
 				transition24.setToY(10 * 90);
 				//transition24.setCycleCount(Timeline.INDEFINITE);
 				transition24.setInterpolator(Interpolator.EASE_BOTH);
 				transition24.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 25:
@@ -1066,95 +521,9 @@ public class Tegel {
 				transition25.setInterpolator(Interpolator.EASE_BOTH);
 				transition25.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog251 = new Stage();
-					dialog251.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox251 = new VBox();
-					dialog251.setTitle("Buurtspoorwegen");
-					Button button251 = new Button("Koop");
-					dialogVBox251.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button251);
-					Scene dialogScene251 = new Scene(dialogVBox251, 500,300);
-					dialogVBox251.setAlignment(Pos.CENTER);
-					dialogVBox251.setSpacing(10);
-					dialogVBox251.setStyle("-fx-font: 20px Tahoma");
-					dialog251.setScene(dialogScene251);
-					dialog251.show();
+				caseEigenaarTransport(aanZet, locatie);
 
-					button251.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog252 = new Stage();
-							dialog252.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox252 = new VBox();
-							dialog252.setTitle("Proficiat met uw aankoop!");
-							Button button252 = new Button("OK");
-							dialogVBox252.getChildren().addAll(new Text("U hebt Buurtspoorwegen aangekocht"), new Text("voor €200.000"),
-									button252);
-							Scene dialogScene252 = new Scene(dialogVBox252, 500,300);
-							dialogVBox252.setAlignment(Pos.CENTER);
-							dialogVBox252.setSpacing(10);
-							dialogVBox252.setStyle("-fx-font: 20px Tahoma");
-							dialog252.setScene(dialogScene252);
-							dialog252.show();
-
-							button252.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog252.close();
-									dialog251.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog253 = new Stage();
-					dialog253.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox253 = new VBox();
-					dialog253.setTitle("Betaal Huur");
-					Button button253 = new Button("Betaal huur");
-					dialogVBox253.getChildren().addAll(new Text("U dient huur te betalen. "), button253);
-					Scene dialogScene253 = new Scene(dialogVBox253, 500,300);
-					dialogVBox253.setAlignment(Pos.CENTER);
-					dialogVBox253.setSpacing(10);
-					dialogVBox253.setStyle("-fx-font: 20px Tahoma");
-					dialog253.setScene(dialogScene253);
-					dialog253.show();
-
-					button253.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog254 = new Stage();
-							dialog254.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox254 = new VBox();
-							dialog254.setTitle("Huur");
-							Button button25 = new Button("OK");
-							dialogVBox254.getChildren().addAll(new Text("U betaalde huur"),
-									button25);
-							Scene dialogScene64 = new Scene(dialogVBox254, 500,300);
-							dialogVBox254.setAlignment(Pos.CENTER);
-							dialogVBox254.setSpacing(10);
-							dialogVBox254.setStyle("-fx-font: 20px Tahoma");
-							dialog254.setScene(dialogScene64);
-							dialog254.show();
-
-							button25.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog253.close();
-									dialog254.close();
-								}
-							});
-						}
-					});
-				}
 				break;
-
 
 			case 26:
 				TranslateTransition transition26 = new TranslateTransition();
@@ -1166,16 +535,7 @@ public class Tegel {
 				transition26.setInterpolator(Interpolator.EASE_BOTH);
 				transition26.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 27:
@@ -1188,16 +548,7 @@ public class Tegel {
 				transition27.setInterpolator(Interpolator.EASE_BOTH);
 				transition27.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 28:
@@ -1210,93 +561,7 @@ public class Tegel {
 				transition28.setInterpolator(Interpolator.EASE_BOTH);
 				transition28.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog281 = new Stage();
-					dialog281.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox281 = new VBox();
-					dialog281.setTitle("Gasmaatschappij");
-					Button button281 = new Button("Koop");
-					dialogVBox281.getChildren().addAll(new Text("Aankoopprijs: €150.000"), button281);
-					Scene dialogScene281 = new Scene(dialogVBox281, 500,300);
-					dialogVBox281.setAlignment(Pos.CENTER);
-					dialogVBox281.setSpacing(10);
-					dialogVBox281.setStyle("-fx-font: 20px Tahoma");
-					dialog281.setScene(dialogScene281);
-					dialog281.show();
-
-					button281.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog282 = new Stage();
-							dialog282.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox282 = new VBox();
-							dialog282.setTitle("Proficiat met uw aankoop!");
-							Button button282 = new Button("OK");
-							dialogVBox282.getChildren().addAll(new Text("U hebt de Gasmaatschappij aangekocht aangekocht"), new Text("voor €150.000"),
-									button282);
-							Scene dialogScene282 = new Scene(dialogVBox282, 500,300);
-							dialogVBox282.setAlignment(Pos.CENTER);
-							dialogVBox282.setSpacing(10);
-							dialogVBox282.setStyle("-fx-font: 20px Tahoma");
-							dialog282.setScene(dialogScene282);
-							dialog282.show();
-
-							button282.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog282.close();
-									dialog281.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog283 = new Stage();
-					dialog283.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox283 = new VBox();
-					dialog283.setTitle("Betaal Huur");
-					Button button283 = new Button("Betaal huur");
-					dialogVBox283.getChildren().addAll(new Text("U dient huur te betalen. "), button283);
-					Scene dialogScene283 = new Scene(dialogVBox283, 500,300);
-					dialogVBox283.setAlignment(Pos.CENTER);
-					dialogVBox283.setSpacing(10);
-					dialogVBox283.setStyle("-fx-font: 20px Tahoma");
-					dialog283.setScene(dialogScene283);
-					dialog283.show();
-
-					button283.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog284 = new Stage();
-							dialog284.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox284 = new VBox();
-							dialog284.setTitle("Huur");
-							Button button28 = new Button("OK");
-							dialogVBox284.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("U betaalde huur"),
-									button28);
-							Scene dialogScene284 = new Scene(dialogVBox284, 500,300);
-							dialogVBox284.setAlignment(Pos.CENTER);
-							dialogVBox284.setSpacing(10);
-							dialogVBox284.setStyle("-fx-font: 20px Tahoma");
-							dialog284.setScene(dialogScene284);
-							dialog284.show();
-
-							button28.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog283.close();
-									dialog284.close();
-								}
-							});
-						}
-					});
-				}
+				caseEigenaarGasElek(aanZet, locatie);
 				break;
 
 			case 29:
@@ -1309,16 +574,7 @@ public class Tegel {
 				transition29.setInterpolator(Interpolator.EASE_BOTH);
 				transition29.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 30:
@@ -1375,16 +631,7 @@ public class Tegel {
 				transition31.setInterpolator(Interpolator.EASE_BOTH);
 				transition31.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 32:
@@ -1397,16 +644,7 @@ public class Tegel {
 				transition32.setInterpolator(Interpolator.EASE_BOTH);
 				transition32.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 33:
@@ -1419,47 +657,7 @@ public class Tegel {
 				transition33.setInterpolator(Interpolator.EASE_BOTH);
 				transition33.play();
 
-				final Stage dialog331 = new Stage();
-				dialog331.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox331 = new VBox();
-				dialog331.setTitle("Neem Kaart");
-				Button button331 = new Button("Neem een kaart");
-				dialogVBox331.getChildren().addAll(new Text("Neem een kaart"), button331);
-				Scene dialogScene331 = new Scene(dialogVBox331, 1200, 250);
-				dialogVBox331.setAlignment(Pos.CENTER);
-				dialogVBox331.setSpacing(10);
-				dialogVBox331.setStyle("-fx-font: 20px Tahoma");
-				dialog331.setScene(dialogScene331);
-				dialog331.show();
-
-				button331.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog331.close();
-
-						final Stage dialog332 = new Stage();
-						dialog332.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox332 = new VBox();
-						dialog332.setTitle("Opdracht");
-						Button button332 = new Button("OK");
-						dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button332);
-						Scene dialogScene332 = new Scene(dialogVBox332, 500,300);
-						dialogVBox332.setAlignment(Pos.CENTER);
-						dialogVBox332.setSpacing(10);
-						dialogVBox332.setStyle("-fx-font: 20px Tahoma");
-						dialog332.setScene(dialogScene332);
-						dialog332.show();
-
-						button332.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
-								dialog331.close();
-								dialog332.close();
-							}
-						});
-					}
-				});
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 
 
@@ -1473,16 +671,7 @@ public class Tegel {
 				transition34.setInterpolator(Interpolator.EASE_BOTH);
 				transition34.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 35:
@@ -1495,93 +684,7 @@ public class Tegel {
 				transition35.setInterpolator(Interpolator.EASE_BOTH);
 				transition35.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					final Stage dialog351 = new Stage();
-					dialog351.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox351 = new VBox();
-					dialog351.setTitle("Zuid Station");
-					Button button351 = new Button("Koop");
-					dialogVBox351.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button351);
-					Scene dialogScene351 = new Scene(dialogVBox351, 500,300);
-					dialogVBox351.setAlignment(Pos.CENTER);
-					dialogVBox351.setSpacing(10);
-					dialogVBox351.setStyle("-fx-font: 20px Tahoma");
-					dialog351.setScene(dialogScene351);
-					dialog351.show();
-
-					button351.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.koopEigendom(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog352 = new Stage();
-							dialog352.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox352 = new VBox();
-							dialog352.setTitle("Proficiat met uw aankoop!");
-							Button button352 = new Button("OK");
-							dialogVBox352.getChildren().addAll(new Text("U hebt Zuid Station aangekocht"), new Text("voor €200.000"),
-									button352);
-							Scene dialogScene352 = new Scene(dialogVBox352, 500,300);
-							dialogVBox352.setAlignment(Pos.CENTER);
-							dialogVBox352.setSpacing(10);
-							dialogVBox352.setStyle("-fx-font: 20px Tahoma");
-							dialog352.setScene(dialogScene352);
-							dialog352.show();
-
-							button352.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog352.close();
-									dialog351.close();
-								}
-							});
-						}
-					});
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-
-					final Stage dialog353 = new Stage();
-					dialog353.initModality(Modality.APPLICATION_MODAL);
-					VBox dialogVBox353 = new VBox();
-					dialog353.setTitle("Betaal Huur");
-					Button button353 = new Button("Betaal huur");
-					dialogVBox353.getChildren().addAll(new Text("U dient huur te betalen. "), button353);
-					Scene dialogScene353 = new Scene(dialogVBox353, 500,300);
-					dialogVBox353.setAlignment(Pos.CENTER);
-					dialogVBox353.setSpacing(10);
-					dialogVBox353.setStyle("-fx-font: 20px Tahoma");
-					dialog353.setScene(dialogScene353);
-					dialog353.show();
-
-					button353.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							Tegel.betaalHuur(Spelbord.getTegels().get(locatie), aanZet);
-
-							final Stage dialog354 = new Stage();
-							dialog354.initModality(Modality.APPLICATION_MODAL);
-							VBox dialogVBox354 = new VBox();
-							dialog354.setTitle("Huur");
-							Button button35 = new Button("OK");
-							dialogVBox354.getChildren().addAll(new Text("U betaalde huur"),
-									button35);
-							Scene dialogScene354 = new Scene(dialogVBox354, 500,300);
-							dialogVBox354.setAlignment(Pos.CENTER);
-							dialogVBox354.setSpacing(10);
-							dialogVBox354.setStyle("-fx-font: 20px Tahoma");
-							dialog354.setScene(dialogScene354);
-							dialog354.show();
-
-							button35.setOnAction(new EventHandler<ActionEvent>() {
-								@Override
-								public void handle(ActionEvent event) {
-									dialog353.close();
-									dialog354.close();
-								}
-							});
-						}
-					});
-				}
+				caseEigenaarTransport(aanZet, locatie);
 				break;
 
 			case 36:
@@ -1594,47 +697,7 @@ public class Tegel {
 				transition36.setInterpolator(Interpolator.EASE_BOTH);
 				transition36.play();
 
-				final Stage dialog361 = new Stage();
-				dialog361.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox361 = new VBox();
-				dialog361.setTitle("Neem Kaart");
-				Button button361 = new Button("Neem een kaart");
-				dialogVBox361.getChildren().addAll(new Text("Neem een kaart"), button361);
-				Scene dialogScene361 = new Scene(dialogVBox361, 500,300);
-				dialogVBox361.setAlignment(Pos.CENTER);
-				dialogVBox361.setSpacing(10);
-				dialogVBox361.setStyle("-fx-font: 20px Tahoma");
-				dialog361.setScene(dialogScene361);
-				dialog361.show();
-
-				button361.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent actionEvent) {
-						dialog361.close();
-
-						final Stage dialog362 = new Stage();
-						dialog362.initModality(Modality.APPLICATION_MODAL);
-						VBox dialogVBox362 = new VBox();
-						dialog362.setTitle("Opdracht");
-						Button button362 = new Button("OK");
-						dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button362);
-						Scene dialogScene362 = new Scene(dialogVBox362, 1200, 250);
-						dialogVBox362.setAlignment(Pos.CENTER);
-						dialogVBox362.setSpacing(10);
-						dialogVBox362.setStyle("-fx-font: 20px Tahoma");
-						dialog362.setScene(dialogScene362);
-						dialog362.show();
-
-						button362.setOnAction(new EventHandler<ActionEvent>() {
-							@Override
-							public void handle(ActionEvent actionEvent) {
-								ConcurrentenOfMonopolistenvak.voerUit(aanZet);
-								dialog361.close();
-								dialog362.close();
-							}
-						});
-					}
-				});
+				ConcurrentenOfMonopolistenvak.vakMethode(aanZet);
 				break;
 			case 37:
 				TranslateTransition transition37 = new TranslateTransition();
@@ -1646,16 +709,7 @@ public class Tegel {
 				transition37.setInterpolator(Interpolator.EASE_BOTH);
 				transition37.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
 
 			case 38:
@@ -1672,8 +726,8 @@ public class Tegel {
 				dialog38.initModality(Modality.APPLICATION_MODAL);
 				VBox dialogVBox38 = new VBox();
 				dialog38.setTitle("Eigendomsbelasting");
-				Button button38 = new Button("Betaal Eigendomsbelasting\n€75.000");
-				dialogVBox38.getChildren().addAll(button38);
+				Button button38 = new Button("Betaal €75.000");
+				dialogVBox38.getChildren().addAll(new Text("Betaal jouw eigendomsbelasting"), button38);
 				Scene dialogScene38 = new Scene(dialogVBox38, 500,300);
 				dialogVBox38.setAlignment(Pos.CENTER);
 				dialogVBox38.setSpacing(10);
@@ -1701,17 +755,37 @@ public class Tegel {
 				transition39.setInterpolator(Interpolator.EASE_BOTH);
 				transition39.play();
 
-				//Tegel heeft geen eigenaar
-				if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
-					Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-					//Tegel is van een andere eigenaar
-					Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
-				} else {
-					// tegel is van de speler zelf
-					Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
-				}
+				caseEigenaarStraat(aanZet, locatie);
 				break;
+		}
+	}
+
+	private static void caseEigenaarGasElek(Speler aanZet, int locatie) {
+		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+			GasEnElektriciteitsbedrijf.gasElekMethodeKopen((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(locatie), aanZet);
+		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
+			GasEnElektriciteitsbedrijf.gasElekMethodeHuur((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(locatie), aanZet);
+		}
+	}
+
+	private static void caseEigenaarTransport(Speler aanZet, int locatie) {
+		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+			Transport.transportMethodeKopen((Transport) Spelbord.getTegels().get(locatie), aanZet);
+		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
+			Transport.transportMethodeHuur((Transport) Spelbord.getTegels().get(locatie), aanZet);
+		}
+	}
+
+	private static void caseEigenaarStraat(Speler aanZet, int locatie) {
+		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
+			//Tegel heeft geen eigenaar
+			Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
+		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
+			//Tegel is van een andere eigenaar
+			Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
+		} else if (aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))){
+			// tegel is van de speler zelf
+			Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
 		}
 	}
 

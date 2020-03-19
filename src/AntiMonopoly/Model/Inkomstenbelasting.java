@@ -10,7 +10,7 @@ public class Inkomstenbelasting extends Tegel {
 
 	public static void betaalBelasting(Speler speler){
 		speler.setGeld(-belasting);
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 	/*public static void betaalBelasting(Speler speler) {

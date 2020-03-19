@@ -1,5 +1,14 @@
 package AntiMonopoly.Model;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
@@ -41,7 +50,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			doeOpdrachtMonopolist(Opdrachten.shuffledMon.firstKey(),speler);
 			steekTerugMon();
 		}
-		Spel.updateGeld(speler);
+		Spel.updateGeld();
 	}
 
 	public static void steekTerugMon() {
@@ -244,5 +253,49 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 					Tegel.tegelMethode(speler.getRectangle(),speler,6);
 					Spel.move(speler, Spelbord.getTegels().get(6));
 			}
+		}
+
+		public static void vakMethode(Speler aanZet){
+
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle("Concurrenten en Monopolistenvak");
+			Button button = new Button("Trek kaart");
+			dialogVBox.getChildren().addAll(new Text("Neem een kaart"), button);
+			Scene dialogScene = new Scene(dialogVBox, 500,300);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent actionEvent) {
+					dialog.close();
+
+					final Stage dialog = new Stage();
+					dialog.initModality(Modality.APPLICATION_MODAL);
+					VBox dialogVBox = new VBox();
+					dialog.setTitle("Opdracht");
+					Button button = new Button("OK");
+					dialogVBox.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button);
+					Scene dialogScene = new Scene(dialogVBox, 1200, 250);
+					dialogVBox.setAlignment(Pos.CENTER);
+					dialogVBox.setSpacing(10);
+					dialogVBox.setStyle("-fx-font: 20px Tahoma");
+					dialog.setScene(dialogScene);
+					dialog.show();
+
+					button.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent actionEvent) {
+							ConcurrentenOfMonopolistenvak.voerUit(aanZet);
+							dialog.close();
+						}
+					});
+				}
+			});
 		}
 	}

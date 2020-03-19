@@ -185,7 +185,7 @@ public class Straat extends Tegel {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		VBox dialogVBox = new VBox();
 		dialog.setTitle("Betaal Huur");
-		Button button = new Button("Betaal €" + Straat.getHuur(straat));
+		Button button = new Button("Betaal €" + getHuur(straat));
 		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + straat.getEigenaar().getNaam()), button);
 		Scene dialogScene = new Scene(dialogVBox, 300, 250);
 		dialogVBox.setAlignment(Pos.CENTER);

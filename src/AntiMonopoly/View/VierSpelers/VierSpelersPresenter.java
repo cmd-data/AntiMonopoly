@@ -54,10 +54,7 @@ public class VierSpelersPresenter {
                 mainView.getMainView().getS31().setText(Spel.getSpelers().get(2).getNaam());
                 mainView.getMainView().getS41().setText(Spel.getSpelers().get(3).getNaam());
 
-                MainView.getS12().setText("€1500000");
-                MainView.getS22().setText("€1500000");
-                MainView.getS32().setText("€1500000");
-                MainView.getS42().setText("€1500000");
+                Spel.updateGeld();
 
                 mainView.getMainView().getS13().setImage(new Image("images/" + Spel.getSpelers().get(0).getPion() + ".png"));
                 mainView.getMainView().getS23().setImage(new Image("images/" + Spel.getSpelers().get(1).getPion() + ".png"));

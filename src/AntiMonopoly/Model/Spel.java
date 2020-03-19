@@ -26,13 +26,8 @@ public class Spel {
 
 	public Spel(LocalDateTime startTijd) {
 		this.startTijd = startTijd;
-		posities.putAll(Spelbord.getTegels().get(0),spelers);
-		// elke speler op start positie plaatsen (mag geen passeer start genereren)
+		posities.putAll(Spelbord.getTegels().get(0),spelers);                    // elke speler op start positie plaatsen (mag geen passeer start genereren)
 	}
-
-	/**
-	 * geeft geld veranderingen weer op het spelbord
-	 */
 
 	/*public static void updateAanZet(){
 
@@ -64,16 +59,14 @@ public class Spel {
 		}
 	}*/
 
-	public static void updateGeld(Speler speler){
-
-		if (Spel.getSpelers().get(0).equals(speler)) {
-			MainView.getS12().setText("€ " + speler.getGeld());
-		} else if (Spel.getSpelers().get(1).equals(speler)) {
-			MainView.getS22().setText("€ " + speler.getGeld());
-		} else if (Spel.getSpelers().get(2).equals(speler)) {
-			MainView.getS32().setText("€ " + speler.getGeld());
-		} else if (Spel.getSpelers().get(3).equals(speler)) {
-			MainView.getS42().setText("€ " + speler.getGeld());
+	public static void updateGeld(){
+		MainView.getS12().setText("€ " + spelers.get(0).getGeld());
+		MainView.getS22().setText("€ " + spelers.get(1).getGeld());
+		if (spelers.size()==3) {
+			MainView.getS32().setText("€ " + spelers.get(2).getGeld());
+		}
+		if (spelers.size()==4) {
+			MainView.getS42().setText("€ " + spelers.get(3).getGeld());
 		}
 	}
 
@@ -200,7 +193,7 @@ public class Spel {
 				}
 			}
 		} catch (NullPointerException ignored) {}
-		updateGeld(speler);
+		updateGeld();
 	}
 
 	public static Boolean checkGevangenis(Speler speler){
