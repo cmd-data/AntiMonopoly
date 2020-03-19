@@ -583,9 +583,9 @@ public class MainMetPionPresenter {
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //Spel.updateAanZet();
 
                 int worp = Dice.rollDice();
+                Spel.updateAanZet();
 
                 final Stage dialog = new Stage();
                 dialog.initModality(Modality.APPLICATION_MODAL);
@@ -644,6 +644,8 @@ public class MainMetPionPresenter {
                             EndGameView view = new EndGameView();
                             new EndGamePresenter(model,view);
                         }
+
+
 
                     }
                 });

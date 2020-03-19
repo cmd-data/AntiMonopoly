@@ -53,6 +53,7 @@ public class Transport extends Tegel {
 		}
 
 		if(eigenaar.getIsConcurrent()){
+			transport.clear();
 			return (int) (waarde * 0.1);
 		} else {
 			for (int i = 0; i < transport.size(); i++) {
@@ -60,8 +61,10 @@ public class Transport extends Tegel {
 					aantal++;												  // checken hoeveel transportbedrijven een monopolist heeft
 				}
 			}
-			return (int) (waarde * 0.2) * aantal;
+			transport.clear();
+			return (int) (waarde * 0.1) * aantal;
 		}
+
 	}
 
 	public static void transportMethodeKopen (Transport transport, Speler aanZet) {

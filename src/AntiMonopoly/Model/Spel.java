@@ -29,35 +29,34 @@ public class Spel {
 		posities.putAll(Spelbord.getTegels().get(0),spelers);                    // elke speler op start positie plaatsen (mag geen passeer start genereren)
 	}
 
-	/*public static void updateAanZet(){
+	public static void updateAanZet(){
 
 		switch (Dice.getCount()){
 			case 1:
-				MainView.getS14().setText("AAN ZET");
-				MainView.getS24().setText("");
-				MainView.getS34().setText("");
-				MainView.getS44().setText("");
+				MainView.getSpeler1().setStyle(MainView.getAanZetlayout());
+				MainView.getSpeler2().setStyle("-fx-border-color: black");
+				MainView.getSpeler3().setStyle("-fx-border-color: black");
+				MainView.getSpeler4().setStyle("-fx-border-color: black");
 				break;
 			case 2:
-				MainView.getS14().setText("");
-				MainView.getS24().setText("AAN ZET");
-				MainView.getS34().setText("");
-				MainView.getS44().setText("");
+				MainView.getSpeler1().setStyle("-fx-border-color: black");
+				MainView.getSpeler2().setStyle(MainView.getAanZetlayout());
+				MainView.getSpeler3().setStyle("-fx-border-color: black");
+				MainView.getSpeler4().setStyle("-fx-border-color: black");
 				break;
 			case 3:
-				MainView.getS14().setText("");
-				MainView.getS24().setText("");
-				MainView.getS34().setText("AAN ZET");
-				MainView.getS44().setText("");
+				MainView.getSpeler1().setStyle("-fx-border-color: black");
+				MainView.getSpeler2().setStyle("-fx-border-color: black");
+				MainView.getSpeler3().setStyle(MainView.getAanZetlayout());
+				MainView.getSpeler4().setStyle("-fx-border-color: black");
 				break;
 			case 4:
-				MainView.getS14().setText("");
-				MainView.getS24().setText("");
-				MainView.getS34().setText("");
-				MainView.getS44().setText("AAN ZET");
-				break;
+				MainView.getSpeler1().setStyle("-fx-border-color: black");
+				MainView.getSpeler2().setStyle("-fx-border-color: black");
+				MainView.getSpeler3().setStyle("-fx-border-color: black");
+				MainView.getSpeler4().setStyle(MainView.getAanZetlayout());
 		}
-	}*/
+	}
 
 	public static void updateGeld(){
 		MainView.getS12().setText("€ " + spelers.get(0).getGeld());

@@ -239,28 +239,31 @@ public class MainView extends GridPane {
     private VBox concurrentenTrekstapel;
 
     //Spelersnamen invullen
+
+    private static String aanZetlayout;
+
     //Speler 1
     private Label s11;
     private static Label s12, s14;
-    private VBox speler1;
+    private static VBox speler1;
     private ImageView s13;
 
     //Speler 2
     private Label s21;
     private static Label s22, s24;
-    private VBox speler2;
+    private static VBox speler2;
     private ImageView s23;
 
     //Speler 3
     private Label s31;
     private static Label s32, s34;
-    private VBox speler3;
+    private static VBox speler3;
     private ImageView s33;
 
     //Speler 4
     private Label s41;
     private static Label s42, s44;
-    private VBox speler4;
+    private static VBox speler4;
     private ImageView s43;
 
     public MainView() {
@@ -827,25 +830,30 @@ public class MainView extends GridPane {
         monopolistenTrekstapel.setRotate(-50);
 
         //Spelersnamen
+
+        aanZetlayout = "-fx-border-color: blue;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 4;\n";
+
         //Speler1
-        this.speler1 = new VBox();
+        speler1 = new VBox();
         speler1.getChildren().addAll(s11,s12,s13,s14);
         this.add(speler1,11,1,2,2);
         speler1.setId("s1");
 
         //Speler2
-        this.speler2 = new VBox();
+        speler2 = new VBox();
         speler2.getChildren().addAll(s21,s22,s23,s24);
         this.add(speler2,11,3,2,2);
         speler2.setId("s2");
 
-        this.speler3 = new VBox();
+        speler3 = new VBox();
         speler3.getChildren().addAll(s31,s32,s33,s34);
         this.add(speler3, 11, 5, 2, 2);
         speler3.setId("s3");
 
 
-        this.speler4 = new VBox();
+        speler4 = new VBox();
         speler4.getChildren().addAll(s41,s42,s43,s44);
         this.add(speler4, 11, 7, 2, 2);
         speler4.setId("s4");
@@ -1040,4 +1048,14 @@ public class MainView extends GridPane {
     public static Label getS44() { return s44; }
 
     public static void setS44(Label s44) { MainView.s44 = s44; }
+
+    public static String getAanZetlayout() { return aanZetlayout; }
+
+    public static VBox getSpeler1() { return speler1; }
+
+    public static VBox getSpeler2() { return speler2; }
+
+    public static VBox getSpeler3() { return speler3; }
+
+    public static VBox getSpeler4() { return speler4; }
 }

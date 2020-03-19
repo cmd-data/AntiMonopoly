@@ -79,6 +79,7 @@ public class VierSpelersPresenter {
                 button0.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
+                        Spel.updateAanZet();
                         dialog0.close();
                     }
                 });
