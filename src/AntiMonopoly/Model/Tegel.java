@@ -2,14 +2,11 @@ package AntiMonopoly.Model;
 
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -132,7 +129,7 @@ public class Tegel {
 				dialog0.setTitle("Start");
 				Button button0 = new Button("OK");
 				dialogVBox0.getChildren().addAll(new Text("U staat op start en ontvangt: \n€200.000"));
-				Scene dialogScene0 = new Scene(dialogVBox0, 300, 250);
+				Scene dialogScene0 = new Scene(dialogVBox0, 500,300);
 				dialogVBox0.setAlignment(Pos.CENTER);
 				dialogVBox0.setSpacing(10);
 				dialogVBox0.setStyle("-fx-font: 20px Tahoma");
@@ -186,7 +183,7 @@ public class Tegel {
 				dialog21.setTitle("Neem Kaart");
 				Button button21 = new Button("Neem een kaart");
 				dialogVBox21.getChildren().addAll(new Text("Neem een kaart"), button21);
-				Scene dialogScene21 = new Scene(dialogVBox21, 300, 250);
+				Scene dialogScene21 = new Scene(dialogVBox21, 500,300);
 				dialogVBox21.setAlignment(Pos.CENTER);
 				dialogVBox21.setSpacing(10);
 				dialogVBox21.setStyle("-fx-font: 20px Tahoma");
@@ -204,7 +201,7 @@ public class Tegel {
 						dialog22.setTitle("Opdracht");
 						Button button22 = new Button("OK");
 						dialogVBox22.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button22);
-						Scene dialogScene22 = new Scene(dialogVBox22, 300, 250);
+						Scene dialogScene22 = new Scene(dialogVBox22, 1200, 250);
 						dialogVBox22.setAlignment(Pos.CENTER);
 						dialogVBox22.setSpacing(10);
 						dialogVBox22.setStyle("-fx-font: 20px Tahoma");
@@ -261,7 +258,7 @@ public class Tegel {
 				dialog4.setTitle("Inkomstenbelasting");
 				Button button4 = new Button("Betaal belasting\n€200.000");
 				dialogVBox4.getChildren().addAll(button4);
-				Scene dialogScene4 = new Scene(dialogVBox4, 300, 250);
+				Scene dialogScene4 = new Scene(dialogVBox4, 500,300);
 				dialogVBox4.setAlignment(Pos.CENTER);
 				dialogVBox4.setSpacing(10);
 				dialogVBox4.setStyle("-fx-font: 20px Tahoma");
@@ -295,7 +292,7 @@ public class Tegel {
 					dialog51.setTitle("Noord Station");
 					Button button51 = new Button("Koop");
 					dialogVBox51.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button51);
-					Scene dialogScene51 = new Scene(dialogVBox51, 300, 250);
+					Scene dialogScene51 = new Scene(dialogVBox51, 500,300);
 					dialogVBox51.setAlignment(Pos.CENTER);
 					dialogVBox51.setSpacing(10);
 					dialogVBox51.setStyle("-fx-font: 20px Tahoma");
@@ -314,7 +311,7 @@ public class Tegel {
 							Button button52 = new Button("OK");
 							dialogVBox52.getChildren().addAll(new Text("U hebt Station Noord aangekocht"), new Text("voor €200.000"),
 									button52);
-							Scene dialogScene52 = new Scene(dialogVBox52, 300, 250);
+							Scene dialogScene52 = new Scene(dialogVBox52, 500,300);
 							dialogVBox52.setAlignment(Pos.CENTER);
 							dialogVBox52.setSpacing(10);
 							dialogVBox52.setStyle("-fx-font: 20px Tahoma");
@@ -338,7 +335,7 @@ public class Tegel {
 					dialog53.setTitle("Betaal Huur");
 					Button button53 = new Button("Betaal huur");
 					dialogVBox53.getChildren().addAll(new Text("U dient huur te betalen. "), button53);
-					Scene dialogScene53 = new Scene(dialogVBox53, 300, 250);
+					Scene dialogScene53 = new Scene(dialogVBox53, 500,300);
 					dialogVBox53.setAlignment(Pos.CENTER);
 					dialogVBox53.setSpacing(10);
 					dialogVBox53.setStyle("-fx-font: 20px Tahoma");
@@ -357,7 +354,7 @@ public class Tegel {
 							Button button5 = new Button("OK");
 							dialogVBox54.getChildren().addAll(new Text("U betaalde huur"),
 									button5);
-							Scene dialogScene54 = new Scene(dialogVBox54, 300, 250);
+							Scene dialogScene54 = new Scene(dialogVBox54, 500,300);
 							dialogVBox54.setAlignment(Pos.CENTER);
 							dialogVBox54.setSpacing(10);
 							dialogVBox54.setStyle("-fx-font: 20px Tahoma");
@@ -414,7 +411,7 @@ public class Tegel {
 				dialog71.setTitle("Neem Kaart");
 				Button button71 = new Button("Neem een kaart");
 				dialogVBox71.getChildren().addAll(new Text("Neem een kaart"), button71);
-				Scene dialogScene71 = new Scene(dialogVBox71, 300, 250);
+				Scene dialogScene71 = new Scene(dialogVBox71, 500,300);
 				dialogVBox71.setAlignment(Pos.CENTER);
 				dialogVBox71.setSpacing(10);
 				dialogVBox71.setStyle("-fx-font: 20px Tahoma");
@@ -432,7 +429,7 @@ public class Tegel {
 						dialog72.setTitle("Opdracht");
 						Button button72 = new Button("OK");
 						dialogVBox72.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button72);
-						Scene dialogScene72 = new Scene(dialogVBox72, 300, 250);
+						Scene dialogScene72 = new Scene(dialogVBox72, 1200, 250);
 						dialogVBox72.setAlignment(Pos.CENTER);
 						dialogVBox72.setSpacing(10);
 						dialogVBox72.setStyle("-fx-font: 20px Tahoma");
@@ -548,7 +545,7 @@ public class Tegel {
 					dialog121.setTitle("Elektriciteitsmaatschappij");
 					Button button121 = new Button("Koop");
 					dialogVBox121.getChildren().addAll(new Text("Aankoopprijs: €150.000"), button121);
-					Scene dialogScene281 = new Scene(dialogVBox121, 300, 250);
+					Scene dialogScene281 = new Scene(dialogVBox121, 500,300);
 					dialogVBox121.setAlignment(Pos.CENTER);
 					dialogVBox121.setSpacing(10);
 					dialogVBox121.setStyle("-fx-font: 20px Tahoma");
@@ -567,7 +564,7 @@ public class Tegel {
 							Button button122 = new Button("OK");
 							dialogVBox122.getChildren().addAll(new Text("U hebt de elektriciteitsmaatschappij aangekocht aangekocht"), new Text("voor €150.000"),
 									button122);
-							Scene dialogScene282 = new Scene(dialogVBox122, 300, 250);
+							Scene dialogScene282 = new Scene(dialogVBox122, 500,300);
 							dialogVBox122.setAlignment(Pos.CENTER);
 							dialogVBox122.setSpacing(10);
 							dialogVBox122.setStyle("-fx-font: 20px Tahoma");
@@ -591,7 +588,7 @@ public class Tegel {
 					dialog123.setTitle("Betaal Huur");
 					Button button123 = new Button("Betaal huur");
 					dialogVBox123.getChildren().addAll(new Text("U dient huur te betalen. "), button123);
-					Scene dialogScene123 = new Scene(dialogVBox123, 300, 250);
+					Scene dialogScene123 = new Scene(dialogVBox123, 500,300);
 					dialogVBox123.setAlignment(Pos.CENTER);
 					dialogVBox123.setSpacing(10);
 					dialogVBox123.setStyle("-fx-font: 20px Tahoma");
@@ -610,7 +607,7 @@ public class Tegel {
 							Button button12 = new Button("OK");
 							dialogVBox124.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("U betaalde huur"),
 									button12);
-							Scene dialogScene284 = new Scene(dialogVBox124, 300, 250);
+							Scene dialogScene284 = new Scene(dialogVBox124, 500,300);
 							dialogVBox124.setAlignment(Pos.CENTER);
 							dialogVBox124.setSpacing(10);
 							dialogVBox124.setStyle("-fx-font: 20px Tahoma");
@@ -692,7 +689,7 @@ public class Tegel {
 					dialog151.setTitle("Centraal Station");
 					Button button151 = new Button("Koop");
 					dialogVBox151.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button151);
-					Scene dialogScene151 = new Scene(dialogVBox151, 300, 250);
+					Scene dialogScene151 = new Scene(dialogVBox151, 500,300);
 					dialogVBox151.setAlignment(Pos.CENTER);
 					dialogVBox151.setSpacing(10);
 					dialogVBox151.setStyle("-fx-font: 20px Tahoma");
@@ -711,7 +708,7 @@ public class Tegel {
 							Button button152 = new Button("OK");
 							dialogVBox152.getChildren().addAll(new Text("U hebt Centraal Station aangekocht"), new Text("voor €200.000"),
 									button152);
-							Scene dialogScene152 = new Scene(dialogVBox152, 300, 250);
+							Scene dialogScene152 = new Scene(dialogVBox152, 500,300);
 							dialogVBox152.setAlignment(Pos.CENTER);
 							dialogVBox152.setSpacing(10);
 							dialogVBox152.setStyle("-fx-font: 20px Tahoma");
@@ -735,7 +732,7 @@ public class Tegel {
 					dialog153.setTitle("Betaal Huur");
 					Button button153 = new Button("Betaal huur");
 					dialogVBox153.getChildren().addAll(new Text("U dient huur te betalen. "), button153);
-					Scene dialogScene153 = new Scene(dialogVBox153, 300, 250);
+					Scene dialogScene153 = new Scene(dialogVBox153, 500,300);
 					dialogVBox153.setAlignment(Pos.CENTER);
 					dialogVBox153.setSpacing(10);
 					dialogVBox153.setStyle("-fx-font: 20px Tahoma");
@@ -754,7 +751,7 @@ public class Tegel {
 							Button button15 = new Button("OK");
 							dialogVBox154.getChildren().addAll(new Text("U betaalde huur"),
 									button15);
-							Scene dialogScene64 = new Scene(dialogVBox154, 300, 250);
+							Scene dialogScene64 = new Scene(dialogVBox154, 500,300);
 							dialogVBox154.setAlignment(Pos.CENTER);
 							dialogVBox154.setSpacing(10);
 							dialogVBox154.setStyle("-fx-font: 20px Tahoma");
@@ -812,7 +809,7 @@ public class Tegel {
 				dialog171.setTitle("Neem Kaart");
 				Button button171 = new Button("Neem een kaart");
 				dialogVBox171.getChildren().addAll(new Text("Neem een kaart"), button171);
-				Scene dialogScene171 = new Scene(dialogVBox171, 300, 250);
+				Scene dialogScene171 = new Scene(dialogVBox171, 500,300);
 				dialogVBox171.setAlignment(Pos.CENTER);
 				dialogVBox171.setSpacing(10);
 				dialogVBox171.setStyle("-fx-font: 20px Tahoma");
@@ -831,7 +828,7 @@ public class Tegel {
 						dialog172.setTitle("Opdracht");
 						Button button172 = new Button("OK");
 						dialogVBox172.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(finalAanZet17)), button172);
-						Scene dialogScene172 = new Scene(dialogVBox172, 300, 250);
+						Scene dialogScene172 = new Scene(dialogVBox172, 1200, 250);
 						dialogVBox172.setAlignment(Pos.CENTER);
 						dialogVBox172.setSpacing(10);
 						dialogVBox172.setStyle("-fx-font: 20px Tahoma");
@@ -923,7 +920,7 @@ public class Tegel {
 				Button button20 = new Button("OK");
 
 				dialogVBox20.getChildren().addAll(new Text("Antimonopoly-stichting"), new Text("U bent een " + soortSpeler + tekst),button20);
-				Scene dialogScene20 = new Scene(dialogVBox20, 300, 250);
+				Scene dialogScene20 = new Scene(dialogVBox20, 500,300);
 				dialogVBox20.setAlignment(Pos.CENTER);
 				dialogVBox20.setSpacing(10);
 				dialogVBox20.setStyle("-fx-font: 20px Tahoma");
@@ -977,7 +974,7 @@ public class Tegel {
 				dialog221.setTitle("Neem Kaart");
 				Button button221 = new Button("Neem een kaart");
 				dialogVBox221.getChildren().addAll(new Text("Neem een kaart"), button221);
-				Scene dialogScene221 = new Scene(dialogVBox221, 300, 250);
+				Scene dialogScene221 = new Scene(dialogVBox221, 500,300);
 				dialogVBox221.setAlignment(Pos.CENTER);
 				dialogVBox221.setSpacing(10);
 				dialogVBox221.setStyle("-fx-font: 20px Tahoma");
@@ -995,7 +992,7 @@ public class Tegel {
 						dialog222.setTitle("Opdracht");
 						Button button222 = new Button("OK");
 						dialogVBox222.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button222);
-						Scene dialogScene222 = new Scene(dialogVBox222, 300, 250);
+						Scene dialogScene222 = new Scene(dialogVBox222, 1200, 250);
 						dialogVBox222.setAlignment(Pos.CENTER);
 						dialogVBox222.setSpacing(10);
 						dialogVBox222.setStyle("-fx-font: 20px Tahoma");
@@ -1077,7 +1074,7 @@ public class Tegel {
 					dialog251.setTitle("Buurtspoorwegen");
 					Button button251 = new Button("Koop");
 					dialogVBox251.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button251);
-					Scene dialogScene251 = new Scene(dialogVBox251, 300, 250);
+					Scene dialogScene251 = new Scene(dialogVBox251, 500,300);
 					dialogVBox251.setAlignment(Pos.CENTER);
 					dialogVBox251.setSpacing(10);
 					dialogVBox251.setStyle("-fx-font: 20px Tahoma");
@@ -1096,7 +1093,7 @@ public class Tegel {
 							Button button252 = new Button("OK");
 							dialogVBox252.getChildren().addAll(new Text("U hebt Buurtspoorwegen aangekocht"), new Text("voor €200.000"),
 									button252);
-							Scene dialogScene252 = new Scene(dialogVBox252, 300, 250);
+							Scene dialogScene252 = new Scene(dialogVBox252, 500,300);
 							dialogVBox252.setAlignment(Pos.CENTER);
 							dialogVBox252.setSpacing(10);
 							dialogVBox252.setStyle("-fx-font: 20px Tahoma");
@@ -1120,7 +1117,7 @@ public class Tegel {
 					dialog253.setTitle("Betaal Huur");
 					Button button253 = new Button("Betaal huur");
 					dialogVBox253.getChildren().addAll(new Text("U dient huur te betalen. "), button253);
-					Scene dialogScene253 = new Scene(dialogVBox253, 300, 250);
+					Scene dialogScene253 = new Scene(dialogVBox253, 500,300);
 					dialogVBox253.setAlignment(Pos.CENTER);
 					dialogVBox253.setSpacing(10);
 					dialogVBox253.setStyle("-fx-font: 20px Tahoma");
@@ -1139,7 +1136,7 @@ public class Tegel {
 							Button button25 = new Button("OK");
 							dialogVBox254.getChildren().addAll(new Text("U betaalde huur"),
 									button25);
-							Scene dialogScene64 = new Scene(dialogVBox254, 300, 250);
+							Scene dialogScene64 = new Scene(dialogVBox254, 500,300);
 							dialogVBox254.setAlignment(Pos.CENTER);
 							dialogVBox254.setSpacing(10);
 							dialogVBox254.setStyle("-fx-font: 20px Tahoma");
@@ -1221,7 +1218,7 @@ public class Tegel {
 					dialog281.setTitle("Gasmaatschappij");
 					Button button281 = new Button("Koop");
 					dialogVBox281.getChildren().addAll(new Text("Aankoopprijs: €150.000"), button281);
-					Scene dialogScene281 = new Scene(dialogVBox281, 300, 250);
+					Scene dialogScene281 = new Scene(dialogVBox281, 500,300);
 					dialogVBox281.setAlignment(Pos.CENTER);
 					dialogVBox281.setSpacing(10);
 					dialogVBox281.setStyle("-fx-font: 20px Tahoma");
@@ -1240,7 +1237,7 @@ public class Tegel {
 							Button button282 = new Button("OK");
 							dialogVBox282.getChildren().addAll(new Text("U hebt de Gasmaatschappij aangekocht aangekocht"), new Text("voor €150.000"),
 									button282);
-							Scene dialogScene282 = new Scene(dialogVBox282, 300, 250);
+							Scene dialogScene282 = new Scene(dialogVBox282, 500,300);
 							dialogVBox282.setAlignment(Pos.CENTER);
 							dialogVBox282.setSpacing(10);
 							dialogVBox282.setStyle("-fx-font: 20px Tahoma");
@@ -1264,7 +1261,7 @@ public class Tegel {
 					dialog283.setTitle("Betaal Huur");
 					Button button283 = new Button("Betaal huur");
 					dialogVBox283.getChildren().addAll(new Text("U dient huur te betalen. "), button283);
-					Scene dialogScene283 = new Scene(dialogVBox283, 300, 250);
+					Scene dialogScene283 = new Scene(dialogVBox283, 500,300);
 					dialogVBox283.setAlignment(Pos.CENTER);
 					dialogVBox283.setSpacing(10);
 					dialogVBox283.setStyle("-fx-font: 20px Tahoma");
@@ -1283,7 +1280,7 @@ public class Tegel {
 							Button button28 = new Button("OK");
 							dialogVBox284.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("U betaalde huur"),
 									button28);
-							Scene dialogScene284 = new Scene(dialogVBox284, 300, 250);
+							Scene dialogScene284 = new Scene(dialogVBox284, 500,300);
 							dialogVBox284.setAlignment(Pos.CENTER);
 							dialogVBox284.setSpacing(10);
 							dialogVBox284.setStyle("-fx-font: 20px Tahoma");
@@ -1340,7 +1337,7 @@ public class Tegel {
 				dialog301.setTitle("Ga naar de Gevangenis!");
 				Button button301 = new Button("OK");
 				dialogVBox301.getChildren().addAll(button301);
-				Scene dialogScene311 = new Scene(dialogVBox301, 300, 250);
+				Scene dialogScene311 = new Scene(dialogVBox301, 500,300);
 				dialogVBox301.setAlignment(Pos.CENTER);
 				dialogVBox301.setSpacing(10);
 				dialogVBox301.setStyle("-fx-font: 20px Tahoma");
@@ -1428,7 +1425,7 @@ public class Tegel {
 				dialog331.setTitle("Neem Kaart");
 				Button button331 = new Button("Neem een kaart");
 				dialogVBox331.getChildren().addAll(new Text("Neem een kaart"), button331);
-				Scene dialogScene331 = new Scene(dialogVBox331, 300, 250);
+				Scene dialogScene331 = new Scene(dialogVBox331, 1200, 250);
 				dialogVBox331.setAlignment(Pos.CENTER);
 				dialogVBox331.setSpacing(10);
 				dialogVBox331.setStyle("-fx-font: 20px Tahoma");
@@ -1446,7 +1443,7 @@ public class Tegel {
 						dialog332.setTitle("Opdracht");
 						Button button332 = new Button("OK");
 						dialogVBox332.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button332);
-						Scene dialogScene332 = new Scene(dialogVBox332, 300, 250);
+						Scene dialogScene332 = new Scene(dialogVBox332, 500,300);
 						dialogVBox332.setAlignment(Pos.CENTER);
 						dialogVBox332.setSpacing(10);
 						dialogVBox332.setStyle("-fx-font: 20px Tahoma");
@@ -1506,7 +1503,7 @@ public class Tegel {
 					dialog351.setTitle("Zuid Station");
 					Button button351 = new Button("Koop");
 					dialogVBox351.getChildren().addAll(new Text("Aankoopprijs: €200.000"), button351);
-					Scene dialogScene351 = new Scene(dialogVBox351, 300, 250);
+					Scene dialogScene351 = new Scene(dialogVBox351, 500,300);
 					dialogVBox351.setAlignment(Pos.CENTER);
 					dialogVBox351.setSpacing(10);
 					dialogVBox351.setStyle("-fx-font: 20px Tahoma");
@@ -1525,7 +1522,7 @@ public class Tegel {
 							Button button352 = new Button("OK");
 							dialogVBox352.getChildren().addAll(new Text("U hebt Zuid Station aangekocht"), new Text("voor €200.000"),
 									button352);
-							Scene dialogScene352 = new Scene(dialogVBox352, 300, 250);
+							Scene dialogScene352 = new Scene(dialogVBox352, 500,300);
 							dialogVBox352.setAlignment(Pos.CENTER);
 							dialogVBox352.setSpacing(10);
 							dialogVBox352.setStyle("-fx-font: 20px Tahoma");
@@ -1549,7 +1546,7 @@ public class Tegel {
 					dialog353.setTitle("Betaal Huur");
 					Button button353 = new Button("Betaal huur");
 					dialogVBox353.getChildren().addAll(new Text("U dient huur te betalen. "), button353);
-					Scene dialogScene353 = new Scene(dialogVBox353, 300, 250);
+					Scene dialogScene353 = new Scene(dialogVBox353, 500,300);
 					dialogVBox353.setAlignment(Pos.CENTER);
 					dialogVBox353.setSpacing(10);
 					dialogVBox353.setStyle("-fx-font: 20px Tahoma");
@@ -1568,7 +1565,7 @@ public class Tegel {
 							Button button35 = new Button("OK");
 							dialogVBox354.getChildren().addAll(new Text("U betaalde huur"),
 									button35);
-							Scene dialogScene354 = new Scene(dialogVBox354, 300, 250);
+							Scene dialogScene354 = new Scene(dialogVBox354, 500,300);
 							dialogVBox354.setAlignment(Pos.CENTER);
 							dialogVBox354.setSpacing(10);
 							dialogVBox354.setStyle("-fx-font: 20px Tahoma");
@@ -1603,7 +1600,7 @@ public class Tegel {
 				dialog361.setTitle("Neem Kaart");
 				Button button361 = new Button("Neem een kaart");
 				dialogVBox361.getChildren().addAll(new Text("Neem een kaart"), button361);
-				Scene dialogScene361 = new Scene(dialogVBox361, 300, 250);
+				Scene dialogScene361 = new Scene(dialogVBox361, 500,300);
 				dialogVBox361.setAlignment(Pos.CENTER);
 				dialogVBox361.setSpacing(10);
 				dialogVBox361.setStyle("-fx-font: 20px Tahoma");
@@ -1621,7 +1618,7 @@ public class Tegel {
 						dialog362.setTitle("Opdracht");
 						Button button362 = new Button("OK");
 						dialogVBox362.getChildren().addAll(new Text(ConcurrentenOfMonopolistenvak.zieKaart(aanZet)), button362);
-						Scene dialogScene362 = new Scene(dialogVBox362, 300, 250);
+						Scene dialogScene362 = new Scene(dialogVBox362, 1200, 250);
 						dialogVBox362.setAlignment(Pos.CENTER);
 						dialogVBox362.setSpacing(10);
 						dialogVBox362.setStyle("-fx-font: 20px Tahoma");
@@ -1677,7 +1674,7 @@ public class Tegel {
 				dialog38.setTitle("Eigendomsbelasting");
 				Button button38 = new Button("Betaal Eigendomsbelasting\n€75.000");
 				dialogVBox38.getChildren().addAll(button38);
-				Scene dialogScene38 = new Scene(dialogVBox38, 300, 250);
+				Scene dialogScene38 = new Scene(dialogVBox38, 500,300);
 				dialogVBox38.setAlignment(Pos.CENTER);
 				dialogVBox38.setSpacing(10);
 				dialogVBox38.setStyle("-fx-font: 20px Tahoma");
