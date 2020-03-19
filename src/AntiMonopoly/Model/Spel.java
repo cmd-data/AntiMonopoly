@@ -170,9 +170,9 @@ public class Spel {
 	}
 
 	public static Tegel move(Speler speler, Tegel tegel){
-		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
 		posities.values().remove(speler);
 		posities.put(tegel,speler);
+		checkPasseerStart(speler,Spelbord.getTegels().get(positie));
 		return tegel;
 	}
 
@@ -200,7 +200,7 @@ public class Spel {
 		return Gevangenis.getGevangenen().contains(speler);
 	}
 
-	public boolean eindeSpel(){
+	public static boolean eindeSpel(){
 		FaillietWinnaar winnaar = new FaillietWinnaar();
 		List<Boolean> winnaars = new ArrayList<>();
 		for (Speler speler : spelers) {

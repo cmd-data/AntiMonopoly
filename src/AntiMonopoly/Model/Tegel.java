@@ -592,7 +592,7 @@ public class Tegel {
 				VBox dialogVBox301 = new VBox();
 				dialog301.setTitle("Ga naar de Gevangenis!");
 				Button button301 = new Button("OK");
-				dialogVBox301.getChildren().addAll(button301);
+				dialogVBox301.getChildren().addAll(new Text("Ga naar de gevangenis!"), button301);
 				Scene dialogScene311 = new Scene(dialogVBox301, 500,300);
 				dialogVBox301.setAlignment(Pos.CENTER);
 				dialogVBox301.setSpacing(10);

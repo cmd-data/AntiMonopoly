@@ -93,7 +93,7 @@ public class Transport extends Tegel {
 					Button button = new Button("OK");
 					dialogVBox.getChildren().addAll(new Text("U hebt " + transport.getNaam() + " aangekocht"), new Text("voor €" + waarde),
 							button);
-					Scene dialogScene = new Scene(dialogVBox, 300, 250);
+					Scene dialogScene = new Scene(dialogVBox, 600, 250);
 					dialogVBox.setAlignment(Pos.CENTER);
 					dialogVBox.setSpacing(10);
 					dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -118,7 +118,7 @@ public class Transport extends Tegel {
 		dialog.setTitle("Betaal Huur");
 		Button button = new Button("Betaal €" + getHuur(transport));
 		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + transport.getEigenaar().getNaam()), button);
-		Scene dialogScene = new Scene(dialogVBox, 300, 250);
+		Scene dialogScene = new Scene(dialogVBox, 500, 250);
 		dialogVBox.setAlignment(Pos.CENTER);
 		dialogVBox.setSpacing(10);
 		dialogVBox.setStyle("-fx-font: 20px Tahoma");

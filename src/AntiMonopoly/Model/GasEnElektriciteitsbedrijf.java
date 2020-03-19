@@ -79,7 +79,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		final Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		VBox dialogVBox = new VBox();
-		dialog.setTitle("Gasmaatschappij");
+		dialog.setTitle(bedrijf.getNaam());
 		Button button = new Button("Koop");
 		dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €" + waarde), button);
 		Scene dialogScene = new Scene(dialogVBox, 500,300);
@@ -102,7 +102,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 				Button button = new Button("OK");
 				dialogVBox.getChildren().addAll(new Text("U hebt " + bedrijf.getNaam() + " aangekocht"), new Text("voor €" + waarde),
 						button);
-				Scene dialogScene = new Scene(dialogVBox, 500,300);
+				Scene dialogScene = new Scene(dialogVBox, 600,300);
 				dialogVBox.setAlignment(Pos.CENTER);
 				dialogVBox.setSpacing(10);
 				dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -149,7 +149,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 				Button button = new Button("OK");
 				dialogVBox.getChildren().addAll(new Text("U gooide: " + Dice.getWorp1()), new Text("De huurprijs bedraagde: €" + prijsHuur ),
 						button);
-				Scene dialogScene = new Scene(dialogVBox, 500,300);
+				Scene dialogScene = new Scene(dialogVBox, 600,300);
 				dialogVBox.setAlignment(Pos.CENTER);
 				dialogVBox.setSpacing(10);
 				dialogVBox.setStyle("-fx-font: 20px Tahoma");

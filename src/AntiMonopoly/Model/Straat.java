@@ -163,7 +163,7 @@ public class Straat extends Tegel {
 				Button button = new Button("OK");
 				dialogVBox.getChildren().addAll(new Text("U hebt "+ straat.getNaam() +" aangekocht"), new Text("voor €" + straat.getPrijs()),
 						button);
-				Scene dialogScene = new Scene(dialogVBox, 300, 250);
+				Scene dialogScene = new Scene(dialogVBox, 500, 250);
 				dialogVBox.setAlignment(Pos.CENTER);
 				dialogVBox.setSpacing(10);
 				dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -187,7 +187,7 @@ public class Straat extends Tegel {
 		dialog.setTitle("Betaal Huur");
 		Button button = new Button("Betaal €" + getHuur(straat));
 		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + straat.getEigenaar().getNaam()), button);
-		Scene dialogScene = new Scene(dialogVBox, 300, 250);
+		Scene dialogScene = new Scene(dialogVBox, 400, 250);
 		dialogVBox.setAlignment(Pos.CENTER);
 		dialogVBox.setSpacing(10);
 		dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -240,7 +240,7 @@ public class Straat extends Tegel {
 				Button button = new Button("OK");
 				dialogVBox.getChildren().addAll(new Text("U kocht een hotel voor €" + prijsHotel),
 						button);
-				Scene dialogScene = new Scene(dialogVBox, 300, 250);
+				Scene dialogScene = new Scene(dialogVBox, 400, 250);
 				dialogVBox.setAlignment(Pos.CENTER);
 				dialogVBox.setSpacing(10);
 				dialogVBox.setStyle("-fx-font: 20px Tahoma");
@@ -274,7 +274,7 @@ public class Straat extends Tegel {
 				Button button = new Button("OK");
 				dialogVBox17.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + " huizen voor €" + prijsHuis),
 						button);
-				Scene dialogScene17 = new Scene(dialogVBox17, 300, 250);
+				Scene dialogScene17 = new Scene(dialogVBox17, 400, 250);
 				dialogVBox17.setAlignment(Pos.CENTER);
 				dialogVBox17.setSpacing(10);
 				dialogVBox17.setStyle("-fx-font: 20px Tahoma");

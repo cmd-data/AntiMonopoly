@@ -2,6 +2,8 @@ package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
+import AntiMonopoly.View.EndGame.EndGamePresenter;
+import AntiMonopoly.View.EndGame.EndGameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -638,7 +640,12 @@ public class MainMetPionPresenter {
 
                         Tegel.tegelMethode(pion, aanZet, locatie);
 
+                        if(Spel.eindeSpel()){
+                            EndGameView view = new EndGameView();
+                            new EndGamePresenter(model,view);
                         }
+
+                    }
                 });
             }
         });
