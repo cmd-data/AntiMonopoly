@@ -814,6 +814,8 @@ public class Tegel {
 	}
 
 
+
+
 	public int getPositie() {
 		return positie;
 	}//einde Methode

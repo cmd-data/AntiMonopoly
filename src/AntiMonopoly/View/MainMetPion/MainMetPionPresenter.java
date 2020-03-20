@@ -4,8 +4,6 @@ import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
 import AntiMonopoly.View.EndGame.EndGamePresenter;
 import AntiMonopoly.View.EndGame.EndGameView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -30,6 +28,7 @@ public class MainMetPionPresenter {
     private AntiMonopolyMain model;
     private MainMetPionView view;
     private DiceView diceView;
+    Speler aanZet = null;
 
     public MainMetPionPresenter(AntiMonopolyMain model, MainMetPionView view) {
         this.model = model;
@@ -62,6 +61,38 @@ public class MainMetPionPresenter {
                 Spelopties.verkoopGebouwen(view);
             }
         });
+
+        if(Gevangenis.getGevangenen().contains(aanZet)){
+
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            VBox dialogVBox = new VBox();
+            dialog.setTitle("Gevangenis");
+            Button betaalBoete = new Button("Betaal Boete");
+            Button dobbel = new Button("Dobbel");
+            dialogVBox.getChildren().addAll(new Text("Betaal boete van €50.000\n of probeer dubbel te goeien,"),dobbel,betaalBoete);
+            Scene dialogScene = new Scene(dialogVBox, 400, 250);
+            dialogVBox.setAlignment(Pos.CENTER);
+            dialogVBox.setSpacing(10);
+            dialogVBox.setStyle("-fx-font: 20px Tahoma");
+            dialog.setScene(dialogScene);
+            dialog.show();
+
+            betaalBoete.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    Gevangenis.verlaatGevangenisDoorBetalen(aanZet);
+                }
+            });
+
+            dobbel.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    Gevangenis.verlaatGevangenisDoorGooien(aanZet);
+                }
+            });
+
+        }
 
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -98,7 +129,7 @@ public class MainMetPionPresenter {
                         }
 
                         Rectangle pion = null;
-                        Speler aanZet = null;
+
 
                         switch (Dice.getCount()) {
                             case 1:
@@ -673,7 +704,12 @@ public class MainMetPionPresenter {
                     }
                 }
         );
+
+
     }
+
+
+
 
     public void addWindowEventHandlers() {
     }

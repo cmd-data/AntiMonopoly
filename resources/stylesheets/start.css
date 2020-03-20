@@ -9,3 +9,27 @@
     -fx-background-repeat: no-repeat;
     -fx-font-weight: bold;
 }
+
+.button {
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}

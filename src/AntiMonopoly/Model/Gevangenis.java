@@ -1,44 +1,86 @@
 package AntiMonopoly.Model;
 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Gevangenis extends Tegel {
 
 	private static final int boete = 50000;
 	private static List<Speler> gevangenen = new ArrayList<>();
 
+
 	public Gevangenis(String naam, int positie) {
 		super(naam, positie);
 	}
 
-	public static void verlaatGevangenis(Speler speler) {
+	public static void opBezoek (Speler speler) {
+		System.out.println("Sightseeing Tour");
+	}
 
-		/*System.out.println("Boete betalen of dubbel gooien? ('true' of 'false'): ");				// pop-up met 'true' en 'false' keuze
-		Scanner kb = new Scanner(System.in);														// optie dubbel gooien mag blijven want counter moet ook hier omhoog gaan
-		String reply = kb.next();
-
-		while(!"true".equals(reply)&&!"false".equals(reply)){
-			System.out.println("Verkeerde input ('true' of 'false'): ");
-			reply = kb.next();
-		}*/
-
-		/*if(Boolean.parseBoolean(reply)){
-			speler.setGeld(-boete);
-			gevangenen.remove(speler);
-			Dice.setCount(1);																		// counter omhoog als je boete betaald hebt
-		}*/
+	public static void verlaatGevangenisDoorGooien(Speler speler) {
 
 		int worp = Dice.rollDice();
-
 		if (Dice.isIsDubbel()) {
 			Spel.move(speler, worp);
 			gevangenen.remove(speler);
+
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle("Gevangenis");
+			dialogVBox.getChildren().addAll(new Text("U gooide dubbel!\n U bent vrij!"));
+			Scene dialogScene = new Scene(dialogVBox, 300, 250);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
+		} else {
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle("Gevangenis");
+			dialogVBox.getChildren().addAll(new Text("U gooide niet dubbel!\n U blijft gevangen!"));
+			Scene dialogScene = new Scene(dialogVBox, 300, 250);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
 		}
 
 		Spel.updateGeld();
 	}
 
-	public static List<Speler> getGevangenen() { return gevangenen; }
+	public static void verlaatGevangenisDoorBetalen(Speler speler){
+
+		final Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVBox = new VBox();
+		dialog.setTitle("Gevangenis");
+		dialogVBox.getChildren().addAll(new Text("U betaalde een boete \nen bent vrij,"));
+		Scene dialogScene = new Scene(dialogVBox, 300, 250);
+		dialogVBox.setAlignment(Pos.CENTER);
+		dialogVBox.setSpacing(10);
+		dialogVBox.setStyle("-fx-font: 20px Tahoma");
+		dialog.setScene(dialogScene);
+		dialog.show();
+
+		speler.setGeld(-boete);
+		Spel.updateGeld();
+		Dice.setCount(1);
+	}
+
+
+	public static List<Speler> getGevangenen() {
+		return gevangenen; }
 }
