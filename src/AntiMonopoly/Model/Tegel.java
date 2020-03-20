@@ -765,7 +765,9 @@ public class Tegel {
 		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 			GasEnElektriciteitsbedrijf.gasElekMethodeKopen((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(locatie), aanZet);
 		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-			GasEnElektriciteitsbedrijf.gasElekMethodeHuur((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(locatie), aanZet);
+			if (!Hypotheek.stopHuur(Spelbord.getTegels().get(locatie))) {
+				GasEnElektriciteitsbedrijf.gasElekMethodeHuur((GasEnElektriciteitsbedrijf) Spelbord.getTegels().get(locatie), aanZet);
+			}
 		}
 	}
 
@@ -773,7 +775,9 @@ public class Tegel {
 		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {
 			Transport.transportMethodeKopen((Transport) Spelbord.getTegels().get(locatie), aanZet);
 		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
-			Transport.transportMethodeHuur((Transport) Spelbord.getTegels().get(locatie), aanZet);
+			if (!Hypotheek.stopHuur(Spelbord.getTegels().get(locatie))) {
+				Transport.transportMethodeHuur((Transport) Spelbord.getTegels().get(locatie), aanZet);
+			}
 		}
 	}
 
@@ -783,10 +787,14 @@ public class Tegel {
 			Straat.straatMethodeKopen((Straat) Spelbord.getTegels().get(locatie),aanZet);
 		} else if (!aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))) {
 			//Tegel is van een andere eigenaar
-			Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie),aanZet);
+			if (!Hypotheek.stopHuur(Spelbord.getTegels().get(locatie))) {
+				Straat.straatMethodeHuur((Straat) Spelbord.getTegels().get(locatie), aanZet);
+			}
 		} else if (aanZet.getNaam().equals(eigenaar(Spelbord.getTegels().get(locatie)))){
 			// tegel is van de speler zelf
-			Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
+			if (!Hypotheek.stopHuur(Spelbord.getTegels().get(locatie))) {
+				Straat.straatMethodeBouwen((Straat) Spelbord.getTegels().get(locatie), aanZet);
+			}
 		}
 	}
 

@@ -124,8 +124,11 @@ public class Straat extends Tegel {
 
 		for (Tegel tegel : Spelbord.getTegels()) {
 			if (tegel instanceof Straat && stad.equals(((Straat) tegel).stad)) {
-				straten.add((Straat) tegel);
+				if (!Hypotheek.getHypotheekLijst().contains(tegel)) {
+					straten.add((Straat) tegel);
+				}
 			}
+
 		}
 
 		for (Straat straat : straten) {
