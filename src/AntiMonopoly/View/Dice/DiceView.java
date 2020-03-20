@@ -3,10 +3,9 @@ package AntiMonopoly.View.Dice;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+
 
 public class DiceView extends GridPane {
     private static ImageView die1, die2;

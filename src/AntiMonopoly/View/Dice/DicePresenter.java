@@ -8,17 +8,17 @@ import javafx.scene.image.Image;
 public class DicePresenter {
 
     private static final String IMAGE_PACKAGE = "/images";
-    private Dice model;
     private DiceView view;
 
     public DicePresenter(Dice model, DiceView view,int aantal) {
+        Dice model1;
         if(aantal == 2) {
-            this.model = model;
+            model1 = model;
             this.view = view;
             updateView2();
             addEventHandlers2();
         } else {
-            this.model = model;
+            model1 = model;
             this.view = view;
             updateView();
             addEventHandlers();
@@ -26,12 +26,12 @@ public class DicePresenter {
     }
 
     private void updateView() {
-        view.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp1() + ".png"));
+        DiceView.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp1() + ".png"));
     }
 
     private void updateView2() {
-        view.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[0] + ".png"));
-        view.getDie2().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[1] + ".png"));
+        DiceView.getDie1().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[0] + ".png"));
+        DiceView.getDie2().setImage(new Image(IMAGE_PACKAGE + "/die" + Dice.getWorp2()[1] + ".png"));
     }
 
     private void addEventHandlers(){

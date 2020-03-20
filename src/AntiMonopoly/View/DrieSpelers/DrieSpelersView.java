@@ -15,7 +15,6 @@ public class DrieSpelersView extends GridPane{
     private static TextField ds5,ds6,ds7;
     private static ComboBox<String> ds8,ds9,ds10;
     private Button ds11;
-    private VBox drieSpelers;
 
     public DrieSpelersView() {
         this.initialiseNodes();
@@ -49,7 +48,7 @@ public class DrieSpelersView extends GridPane{
     }
 
     private void layoutNodes() {
-        this.drieSpelers = new VBox();
+        VBox drieSpelers = new VBox();
         drieSpelers.getChildren().addAll(ds1,ds2,ds5,ds8,ds3,ds6,ds9,ds4,ds7,ds10,ds11);
         this.add(drieSpelers,0,0);
         ds5.setMaxWidth(200);

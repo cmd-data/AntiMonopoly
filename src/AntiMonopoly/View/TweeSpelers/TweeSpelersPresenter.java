@@ -85,8 +85,4 @@ public class TweeSpelersPresenter {
 
     }
 
-    public static void addWindowEventHandlers(){
-        // Window event handlers (anon. inner klassen)
-        // Koppeling via view.getScene().getWindow()
-    }
 }

@@ -21,7 +21,6 @@ public class VierSpelersView extends GridPane {
     private static TextField vs6,vs7,vs8,vs9;
     private static ComboBox<String> vs10,vs11,vs12,vs13;
     private Button vs14;
-    private VBox vierSpelers;
 
     public VierSpelersView() {
         this.initialiseNodes();
@@ -59,7 +58,7 @@ public class VierSpelersView extends GridPane {
         this.vs14 = new Button("OK");
     }
     private void layoutNodes() {
-        this.vierSpelers = new VBox();
+        VBox vierSpelers = new VBox();
         vierSpelers.getChildren().addAll(vs1,vs2,vs6,vs10,vs3,vs7,vs11,vs4,vs8,vs12,vs5,vs9,vs13,vs14);
         this.add(vierSpelers,0,0);
         vs6.setMaxWidth(200);

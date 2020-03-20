@@ -1,16 +1,9 @@
 package AntiMonopoly.View.EndGame;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
-import AntiMonopoly.Model.Spel;
-import AntiMonopoly.Model.Speler;
-import AntiMonopoly.View.StartScreen.StartView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class EndGamePresenter {
 

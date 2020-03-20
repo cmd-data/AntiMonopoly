@@ -2,8 +2,6 @@ package AntiMonopoly.View.MainMetPion;
 
 import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
-import AntiMonopoly.View.EndGame.EndGamePresenter;
-import AntiMonopoly.View.EndGame.EndGameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -25,13 +23,11 @@ import java.util.List;
 
 public class MainMetPionPresenter {
 
-    private AntiMonopolyMain model;
     private MainMetPionView view;
     private DiceView diceView;
     Speler aanZet = null;
 
     public MainMetPionPresenter(AntiMonopolyMain model, MainMetPionView view) {
-        this.model = model;
         this.view = view;
         this.addEventHandlers();
         this.updateView();

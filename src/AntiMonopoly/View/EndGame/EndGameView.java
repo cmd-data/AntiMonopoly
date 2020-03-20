@@ -1,17 +1,13 @@
 package AntiMonopoly.View.EndGame;
 
 import AntiMonopoly.Model.FaillietWinnaar;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class EndGameView extends GridPane {
 
-    private VBox winnaar;
     private Label label1, label2, label3;
     private Button button;
 
@@ -29,7 +25,7 @@ public class EndGameView extends GridPane {
     }
 
     private void layoutNodes() {
-        winnaar = new VBox();
+        VBox winnaar = new VBox();
         winnaar.getChildren().addAll(label1,label2,label3,button);
         this.add(winnaar,0,0);
         winnaar.setId("winnaar");

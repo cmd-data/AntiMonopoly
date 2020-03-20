@@ -14,7 +14,6 @@ public class StartView extends GridPane {
     private Label as1,as4;
     private static ComboBox<String> as2;
     private Button as3;
-    private VBox aantalSpelers;
 
 
     public StartView () {
@@ -34,7 +33,7 @@ public class StartView extends GridPane {
     }
 
     private void layoutNodes() {
-        this.aantalSpelers = new VBox();
+        VBox aantalSpelers = new VBox();
         aantalSpelers.getChildren().addAll(as4,as1,as2,as3);
         this.add(aantalSpelers,0,0);
         aantalSpelers.setId("as");

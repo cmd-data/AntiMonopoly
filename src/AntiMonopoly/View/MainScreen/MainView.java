@@ -8,11 +8,6 @@ import javafx.scene.layout.VBox;
 
 public class MainView extends GridPane {
 
-    //private Canvas canvas;
-    //private Rectangle rectangle1, rectangle2;
-
-
-
     //Achtergrond
     private VBox achtergrond;
 

@@ -30,21 +30,21 @@ public class StartPresenter {
         view.getAs3().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (view.getAs2().getValue().equals("2")) {
+                if (StartView.getAs2().getValue().equals("2")) {
                     TweeSpelersView tweeSpelersView = new TweeSpelersView();
                     TweeSpelersPresenter tweeSpelersPresenter = new TweeSpelersPresenter(model, tweeSpelersView);
                     view.getScene().getStylesheets().add("/stylesheets/aantalSpelers.css");
                     view.getScene().setRoot(tweeSpelersView);
                     tweeSpelersView.getScene().getWindow().sizeToScene();
                 } else {
-                    if (view.getAs2().getValue().equals("3")) {
+                    if (StartView.getAs2().getValue().equals("3")) {
                         DrieSpelersView drieSpelersView = new DrieSpelersView();
                         DrieSpelersPresenter drieSpelersPresenter = new DrieSpelersPresenter(model, drieSpelersView);
                         view.getScene().getStylesheets().add("/stylesheets/aantalSpelers.css");
                         view.getScene().setRoot(drieSpelersView);
                         drieSpelersView.getScene().getWindow().sizeToScene();
                     } else {
-                        if(view.getAs2().getValue().equals("4")) {
+                        if(StartView.getAs2().getValue().equals("4")) {
                             VierSpelersView vierSpelersView = new VierSpelersView();
                             VierSpelersPresenter vierSpelersPresenter = new VierSpelersPresenter(model, vierSpelersView);
                             view.getScene().getStylesheets().add("/stylesheets/aantalSpelers.css");
@@ -85,18 +85,4 @@ public class StartPresenter {
 
 
 }
-
-
-// view.getAs3().setOnAction(new EventHandler<ActionEvent>() {
-//        @Override
-//        public void handle(ActionEvent event) {
-//            MainView mainView = new MainView();
-//            MainPresenter mainPresenter = new MainPresenter(model, mainView);
-//            view.getScene().getStylesheets().add("/stylesheets/main.css");
-//            view.getScene().setRoot(mainView);
-//            mainView.getScene().getWindow().sizeToScene();
-//
-//        }
-//    });
-
 
