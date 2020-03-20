@@ -35,7 +35,7 @@ public class Transport extends Tegel {
 	public void koopTransportbedrijf(Speler speler, Transport bedrijf){
 
 		if (speler.getGeld() < waarde) {
-			System.out.println("Niet genoeg geld");
+			//niet nodig
 		} else {
 			bedrijf.setEigenaar(speler);
 			speler.setGeld(-waarde);
@@ -75,6 +75,30 @@ public class Transport extends Tegel {
 	public static void transportMethodeKopen (Transport transport, Speler aanZet) {
 		//Tegel heeft geen eigenaar
 
+		if (aanZet.getGeld() < waarde) {
+
+			final Stage dialog0 = new Stage();
+			dialog0.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox0 = new VBox();
+			dialog0.setTitle("Oeps!");
+			Button button0 = new Button("OK");
+			dialogVBox0.getChildren().addAll(new Text("U heeft te weinig geld om dit kopen!"), button0);
+			Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+			dialogVBox0.setAlignment(Pos.CENTER);
+			dialogVBox0.setSpacing(10);
+			dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+			dialog0.setScene(dialogScene0);
+			dialog0.show();
+
+			button0.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog0.close();
+				}
+			});
+
+		} else {
+
 			final Stage dialog = new Stage();
 			dialog.initModality(Modality.APPLICATION_MODAL);
 			VBox dialogVBox = new VBox();
@@ -93,7 +117,7 @@ public class Transport extends Tegel {
 				public void handle(ActionEvent event) {
 					dialog.close();
 					Tegel.koopEigendom(transport, aanZet);
-					Spelbord.showOwner(transport.getPositie(),aanZet);
+					Spelbord.showOwner(transport.getPositie(), aanZet);
 
 					final Stage dialog = new Stage();
 					dialog.initModality(Modality.APPLICATION_MODAL);
@@ -117,30 +141,56 @@ public class Transport extends Tegel {
 					});
 				}
 			});
+		}
 	}
 
 	public static void transportMethodeHuur(Transport transport, Speler aanZet) {
 
-		final Stage dialog = new Stage();
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		VBox dialogVBox = new VBox();
-		dialog.setTitle("Betaal Huur");
-		Button button = new Button("Betaal €" + getHuur(transport));
-		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + transport.getEigenaar().getNaam()), button);
-		Scene dialogScene = new Scene(dialogVBox, 500, 250);
-		dialogVBox.setAlignment(Pos.CENTER);
-		dialogVBox.setSpacing(10);
-		dialogVBox.setStyle("-fx-font: 20px Tahoma");
-		dialog.setScene(dialogScene);
-		dialog.show();
+		if (aanZet.getGeld() < getHuur(transport)) {
 
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				dialog.close();
-				Tegel.betaalHuur(transport, aanZet);
-			}
-		});
+			final Stage dialog0 = new Stage();
+			dialog0.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox0 = new VBox();
+			dialog0.setTitle("Oeps!");
+			Button button0 = new Button(":'-(");
+			dialogVBox0.getChildren().addAll(new Text("U heeft te weinig geld huur te betalen!"), button0);
+			Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+			dialogVBox0.setAlignment(Pos.CENTER);
+			dialogVBox0.setSpacing(10);
+			dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+			dialog0.setScene(dialogScene0);
+			dialog0.show();
+
+			button0.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+
+				}
+			});
+
+		} else {
+
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle("Betaal Huur");
+			Button button = new Button("Betaal €" + getHuur(transport));
+			dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + transport.getEigenaar().getNaam()), button);
+			Scene dialogScene = new Scene(dialogVBox, 500, 250);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					Tegel.betaalHuur(transport, aanZet);
+				}
+			});
+		}
 	}
 
 	public static List<Transport> getTransport() { return transport; }

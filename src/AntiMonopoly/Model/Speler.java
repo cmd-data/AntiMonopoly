@@ -139,4 +139,8 @@ public class Speler {
 	public String getPion() { return pion; }
 
 	public Rectangle getRectangle() { return rectangle; }
+
+	public void setFailliet(boolean failliet) {
+		this.failliet = failliet;
+	}
 }

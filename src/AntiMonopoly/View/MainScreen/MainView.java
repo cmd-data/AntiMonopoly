@@ -1,7 +1,5 @@
 package AntiMonopoly.View.MainScreen;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -890,13 +888,13 @@ public class MainView extends GridPane {
         //SpelerEigendommen
 
         speler1Eigendom = "-fx-border-color: VIOLET;\n" +
-                "-fx-border-width: 6;\n";
+                "-fx-border-width: 3;\n";
         speler2Eigendom = "-fx-border-color: GRAY;\n" +
-                "-fx-border-width: 6;\n";
+                "-fx-border-width: 3;\n";
         speler3Eigendom = "-fx-border-color: ALICEBLUE;\n" +
-                "-fx-border-width: 6;\n";
+                "-fx-border-width: 3;\n";
         speler4Eigendom = "-fx-border-color: DARKTURQUOISE;\n" +
-                "-fx-border-width: 6;\n";
+                "-fx-border-width: 3;\n";
 
 
         // implementatie van de nodige
