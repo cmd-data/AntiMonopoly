@@ -133,8 +133,8 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				break;
 			case 13:
 			case 19:
+				Spel.move(speler, Spelbord.getTegels().get(30));
 				Tegel.tegelMethode(speler.getRectangle(), speler, 30);
-				GaNaarGevangenis.gaNaarGevangenis(speler);
 				break;
 			case 17:
 				int count = 0;
@@ -181,8 +181,8 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 					break;
 				case 1:
 				case 13:
+					Spel.move(speler, Spelbord.getTegels().get(30));
 					Tegel.tegelMethode(speler.getRectangle(),speler,30);
-					GaNaarGevangenis.gaNaarGevangenis(speler);
 					break;
 				case 2:
 				case 14:

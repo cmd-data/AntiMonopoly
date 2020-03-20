@@ -24,9 +24,8 @@ public class Gevangenis extends Tegel {
 		System.out.println("Sightseeing Tour");
 	}
 
-	public static void verlaatGevangenisDoorGooien(Speler speler) {
+	public static void verlaatGevangenisDoorGooien(Speler speler, int worp) {
 
-		int worp = Dice.rollDice();
 		if (Dice.isIsDubbel()) {
 			Spel.move(speler, worp);
 			gevangenen.remove(speler);
@@ -75,9 +74,9 @@ public class Gevangenis extends Tegel {
 		dialog.setScene(dialogScene);
 		dialog.show();
 
+		gevangenen.remove(speler);
 		speler.setGeld(-boete);
 		Spel.updateGeld();
-		Dice.setCount(1);
 	}
 
 

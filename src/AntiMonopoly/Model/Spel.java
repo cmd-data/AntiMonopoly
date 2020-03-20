@@ -58,6 +58,10 @@ public class Spel {
 		}
 	}
 
+	/**
+	 * visuele update van het geld van de spelers op het spelbord
+	 */
+
 	public static void updateGeld(){
 		MainView.getS12().setText("€ " + spelers.get(0).getGeld());
 		MainView.getS22().setText("€ " + spelers.get(1).getGeld());
@@ -127,22 +131,6 @@ public class Spel {
 		Collections.shuffle(spelers);                    // spelers worden direct na creatie geshuffeld
 	}
 
-
-	/**
-	 * Volgorde spelers wordt veranderd en geeft lijst met namen nieuwe volgorde weer
-	 * In View/Presenter ervoor zorgen dat nummer 1 de hoogste fictive dobbelwaarde te zien krijgt, nummer 2: een waarde minder, etc.
-	 * @return
-	 */
-    public List<String> getSortedSpelers() {
-    	Collections.shuffle(spelers);
-
-		List<String> namen = new ArrayList<>();
-		for (Speler speler : spelers) {
-			namen.add(speler.getNaam());
-		}
-    	return namen;
-	}
-
 	/**
 	 * Geeft Tegel terug als waarde om dan in isKoopbaar(); heeftEigenaar() en heeftHypotheek() te gebruiken
 	 * @param speler
@@ -169,6 +157,13 @@ public class Spel {
     	return Spelbord.getTegels().get(positie);
 	}
 
+	/**
+	 * voor een speler te verplaatsen als hij door een kaart naar een andere locatie moet
+	 * @param speler
+	 * @param tegel
+	 * @return
+	 */
+
 	public static Tegel move(Speler speler, Tegel tegel){
 		checkPasseerStart(speler,tegel);
 		posities.values().remove(speler);
@@ -176,8 +171,8 @@ public class Spel {
 		return tegel;
 	}
 
-	/**
-	 * Static voor gebruik in statische methode move()
+	/***
+	 * indien de speler start passeert ontvangt hij €200.000
 	 * @param speler
 	 * @param tegel
 	 */
@@ -200,6 +195,11 @@ public class Spel {
 		return Gevangenis.getGevangenen().contains(speler);
 	}
 
+	/**
+	 * checken of het spel gedaan is (iedereen failliet op 1 speler na)
+	 * @return
+	 */
+
 	public static boolean eindeSpel(){
 		FaillietWinnaar winnaar = new FaillietWinnaar();
 		List<Boolean> winnaars = new ArrayList<>();
@@ -209,10 +209,6 @@ public class Spel {
 		return winnaars.contains(true);
 	}
 
-	/**
-	 * statische methode zodat ik deze in FaillietWinnaar en andere klassen kan oproepen
-	 * @return
-	 */
 	public static List<Speler> getSpelers(){
 		return spelers;
 	}
@@ -225,7 +221,4 @@ public class Spel {
 
 	public Spelbord getSpelbord() { return spelbord; }
 
-	public Spelregels getSpelregels() { return spelregels; }
-
-	//public static MultiValuedMap<Tegel, Speler> getPosities() { return posities; }
 }

@@ -2,6 +2,12 @@ package AntiMonopoly.Model;
 
 public class FaillietWinnaar {
 
+    /**
+     * is deze speler de winnaar?
+     * @param speler
+     * @return
+     */
+
         public static boolean isWinnaar(Speler speler){
             int count = 0;
             for (int i = 0; i < Spel.getSpelers().size(); i++) {
@@ -16,7 +22,12 @@ public class FaillietWinnaar {
             return count == Spel.getSpelers().size() - 1 && !speler.isFailliet(speler);
         }
 
-        public static Speler winnaar () {
+    /**
+     * ga door spelerlijst en kijk of er een winnaar tussen zit
+     * @return
+     */
+
+    public static Speler winnaar () {
             Speler winnaar = null;
             for (Speler speler : Spel.getSpelers()) {
                 if(isWinnaar(speler)){

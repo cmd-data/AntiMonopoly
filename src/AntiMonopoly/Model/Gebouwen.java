@@ -3,7 +3,7 @@ package AntiMonopoly.Model;
 public class Gebouwen {
 
 	public static class Hotel extends Gebouwen {
-		private int hotel = 0;
+
 		public Hotel() { super(); }
 
 		public static void verkoopHotel(Straat straat, Speler speler){
@@ -36,27 +36,28 @@ public class Gebouwen {
 	public static void koopHuis(Straat straat, Huis huis, int aantal, Speler speler) {
 
 		if (speler.getIsConcurrent()) {
-			//while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisCon()) {
-			//	System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisCon());		// ==> veranderen door combobox
-			//}
+
 			if (speler.getGeld() >= straat.getPrijsHuis()*aantal) {
 				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
 				straat.setGebouw(huis);
 				speler.setGeld(-straat.getPrijsHuis() * aantal);
-			} else {
-				System.out.println("Niet genoeg geld");
-			}
+			} /*else {
+				System.out.println("Niet genoeg geld");                                         // veranderen naar pop-up
+			}*/
 		} else {
-			//while (straat.getAantalGebouwen() + aantal > straat.getMaxHuisMon()) {
-			//	System.out.printf("Totaal aantal huizen mag niet meer zijn dan %d",straat.getMaxHuisMon());    // ==> veranderen door combobox
-			//}
+
 			if (speler.getGeld() >= straat.getPrijsHuis()*aantal) {
 				straat.setAantalGebouwen(straat.getAantalGebouwen() + aantal);
-				straat.setGebouw(huis);
+				if (aantal == 4){
+					straat.setGebouw(new Hotel());
+					straat.setAantalGebouwen(1);
+				} else {
+					straat.setGebouw(huis);
+				}
 				speler.setGeld(-straat.getPrijsHuis() * aantal);
-			} else {
-				System.out.println("Niet genoeg geld");
-			}
+			} /*else {
+				System.out.println("Niet genoeg geld");											// veranderen naar pop-up
+			}*/
 		}
 		Spel.updateGeld();
 	}
@@ -70,37 +71,37 @@ public class Gebouwen {
 					speler.setGeld(-straat.getPrijsHuis()*5);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 1: if (speler.getGeld() >= straat.getPrijsHuis()*4) {
 					speler.setGeld(-straat.getPrijsHuis()*4);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 2: if (speler.getGeld() >= straat.getPrijsHuis()*3) {
 					speler.setGeld(-straat.getPrijsHuis()*3);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 3: if (speler.getGeld() >= straat.getPrijsHuis()*2) {
 					speler.setGeld(-straat.getPrijsHuis()*2);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 4: if (speler.getGeld() >= straat.getPrijsHuis()) {
 					speler.setGeld(-straat.getPrijsHuis());
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				}
+				}*/
 			}
 		} else {
 			switch (aantalHuizen){
@@ -108,30 +109,30 @@ public class Gebouwen {
 					speler.setGeld(-straat.getPrijsHuis()*4);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 1: if (speler.getGeld() >= straat.getPrijsHuis()*3) {
 					speler.setGeld(-straat.getPrijsHuis()*3);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 2: if (speler.getGeld() >= straat.getPrijsHuis()*2) {
 					speler.setGeld(-straat.getPrijsHuis()*2);
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				} break;
+				}*/ break;
 				case 3: if (speler.getGeld() >= straat.getPrijsHuis()) {
 					speler.setGeld(-straat.getPrijsHuis());
 					straat.setGebouw(hotel);
 					straat.setAantalGebouwen(1);
-				} else {
+				} /*else {
 					System.out.println("Niet genoeg geld");
-				}
+				}*/
 			}
 		}
 		Spel.updateGeld();

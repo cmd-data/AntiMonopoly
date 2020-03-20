@@ -62,107 +62,113 @@ public class MainMetPionPresenter {
             }
         });
 
-        if(Gevangenis.getGevangenen().contains(aanZet)){
-
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            VBox dialogVBox = new VBox();
-            dialog.setTitle("Gevangenis");
-            Button betaalBoete = new Button("Betaal Boete");
-            Button dobbel = new Button("Dobbel");
-            dialogVBox.getChildren().addAll(new Text("Betaal boete van €50.000\n of probeer dubbel te goeien,"),dobbel,betaalBoete);
-            Scene dialogScene = new Scene(dialogVBox, 400, 250);
-            dialogVBox.setAlignment(Pos.CENTER);
-            dialogVBox.setSpacing(10);
-            dialogVBox.setStyle("-fx-font: 20px Tahoma");
-            dialog.setScene(dialogScene);
-            dialog.show();
-
-            betaalBoete.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Gevangenis.verlaatGevangenisDoorBetalen(aanZet);
-                }
-            });
-
-            dobbel.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Gevangenis.verlaatGevangenisDoorGooien(aanZet);
-                }
-            });
-
-        }
 
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
                 int worp = Dice.rollDice();
+
+                List<Rectangle> pionnen = new ArrayList<>();
+
+                for (int i = 0; i < Spel.getSpelers().size(); i++) {
+                    pionnen.add(Spel.getSpelers().get(i).getRectangle());
+                }
+
+                Rectangle pion = null;
+
+
+                switch (Dice.getCount()) {
+                    case 1:
+                        pion = pionnen.get(0);
+                        aanZet = Spel.getSpelers().get(0);
+                        break;
+                    case 2:
+                        pion = pionnen.get(1);
+                        aanZet = Spel.getSpelers().get(1);
+                        break;
+                    case 3:
+                        pion = pionnen.get(2);
+                        aanZet = Spel.getSpelers().get(2);
+                        break;
+                    case 4:
+                        pion = pionnen.get(3);
+                        aanZet = Spel.getSpelers().get(3);
+                }
+
                 Spel.updateAanZet();
 
-                final Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                VBox dialogVBox = new VBox();
-                dialog.setTitle("Worp");
-                Button button = new Button("Zet Pion");
-                DiceView.getDie1().setImage(new Image("/images/die" + Dice.getWorp2()[0] + ".png"));
-                DiceView.getDie2().setImage(new Image("/images/die" + Dice.getWorp2()[1] + ".png"));
-                Label label2 = new Label (String.valueOf(Dice.getWorp2()[1]));
-                dialogVBox.getChildren().addAll(button, DiceView.getDie1(), DiceView.getDie2());
-                Scene dialogScene = new Scene(dialogVBox, 300, 250);
-                dialogVBox.setAlignment(Pos.CENTER);
-                dialogVBox.setSpacing(10);
-                dialogVBox.setStyle("-fx-font: 20px Tahoma");
-                dialog.setScene(dialogScene);
-                dialog.show();
+                if (Gevangenis.getGevangenen().contains(aanZet)) {
 
+                    final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    VBox dialogVBox = new VBox();
+                    dialog.setTitle("Gevangenis");
+                    Button betaalBoete = new Button("Betaal Boete");
+                    Button dobbel = new Button("Dobbel");
+                    dialogVBox.getChildren().addAll(new Text("Betaal boete van €50.000\n of probeer dubbel te goeien,"), dobbel, betaalBoete);
+                    Scene dialogScene = new Scene(dialogVBox, 400, 250);
+                    dialogVBox.setAlignment(Pos.CENTER);
+                    dialogVBox.setSpacing(10);
+                    dialogVBox.setStyle("-fx-font: 20px Tahoma");
+                    dialog.setScene(dialogScene);
+                    dialog.show();
 
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-
-                        List<Rectangle> pionnen = new ArrayList<>();
-
-                        for (int i = 0; i < Spel.getSpelers().size(); i++) {
-                            pionnen.add(Spel.getSpelers().get(i).getRectangle());
+                    betaalBoete.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            Gevangenis.verlaatGevangenisDoorBetalen(aanZet);
+                            dialog.close();
                         }
+                    });
 
-                        Rectangle pion = null;
-
-
-                        switch (Dice.getCount()) {
-                            case 1:
-                                pion = pionnen.get(0);
-                                aanZet = Spel.getSpelers().get(0);
-                                break;
-                            case 2:
-                                pion = pionnen.get(1);
-                                aanZet = Spel.getSpelers().get(1);
-                                break;
-                            case 3:
-                                pion = pionnen.get(2);
-                                aanZet = Spel.getSpelers().get(2);
-                                break;
-                            case 4:
-                                pion = pionnen.get(3);
-                                aanZet = Spel.getSpelers().get(3);
+                    dobbel.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            Gevangenis.verlaatGevangenisDoorGooien(aanZet,worp);
+                            dialog.close();
                         }
+                    });
 
-                        int locatie = Spel.move(aanZet, worp).getPositie();
-                        dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
+                } else {
 
-                        Tegel.tegelMethode(pion, aanZet, locatie);
 
-                        if(Spel.eindeSpel()){
-                            EndGameView view = new EndGameView();
-                            new EndGamePresenter(model,view);
+                    final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    VBox dialogVBox = new VBox();
+                    dialog.setTitle("Worp");
+                    Button button = new Button("Zet Pion");
+                    DiceView.getDie1().setImage(new Image("/images/die" + Dice.getWorp2()[0] + ".png"));
+                    DiceView.getDie2().setImage(new Image("/images/die" + Dice.getWorp2()[1] + ".png"));
+                    Label label2 = new Label(String.valueOf(Dice.getWorp2()[1]));
+                    dialogVBox.getChildren().addAll(button, DiceView.getDie1(), DiceView.getDie2());
+                    Scene dialogScene = new Scene(dialogVBox, 300, 250);
+                    dialogVBox.setAlignment(Pos.CENTER);
+                    dialogVBox.setSpacing(10);
+                    dialogVBox.setStyle("-fx-font: 20px Tahoma");
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+
+
+                    Rectangle finalPion = pion;
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+
+                            int locatie = Spel.move(aanZet, worp).getPositie();
+                            dialog.close();                                                          // sluit het venster als je op 'Zet pion' klikt
+
+                            Tegel.tegelMethode(finalPion, aanZet, locatie);
+
+                            if (Spel.eindeSpel()) {
+                                EndGameView view = new EndGameView();
+                                new EndGamePresenter(model, view);
+                            }
+
+
                         }
-
-
-
-                    }
-                });
+                    });
+                }
             }
         });
 
@@ -704,12 +710,7 @@ public class MainMetPionPresenter {
                     }
                 }
         );
-
-
     }
-
-
-
 
     public void addWindowEventHandlers() {
     }

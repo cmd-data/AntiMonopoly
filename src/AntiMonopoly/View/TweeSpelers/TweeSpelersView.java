@@ -11,11 +11,10 @@ import javafx.scene.layout.VBox;
 
 public class TweeSpelersView extends GridPane {
 
-    private Label ts1,ts2,ts3,ts9;
+    private Label ts1,ts2,ts3;
     private static TextField ts4, ts5;
     private static ComboBox<String> ts6,ts7;
     private Button ts8;
-    private VBox tweeSpelers;
 
     public TweeSpelersView() {
         this.initialiseNodes();
@@ -43,7 +42,7 @@ public class TweeSpelersView extends GridPane {
     }
 
     private void layoutNodes() {
-        this.tweeSpelers = new VBox();
+        VBox tweeSpelers = new VBox();
         tweeSpelers.getChildren().addAll(ts1,ts2,ts4,ts6,ts3,ts5,ts7,ts8);
         this.add(tweeSpelers,0,0);
         ts4.setMaxWidth(200);
@@ -70,5 +69,7 @@ public class TweeSpelersView extends GridPane {
     public static TextField getTs5() {
         return ts5;
     }
+
+
 
 }
