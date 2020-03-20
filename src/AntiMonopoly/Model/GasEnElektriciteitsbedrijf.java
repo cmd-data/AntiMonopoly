@@ -190,7 +190,18 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 				@Override
 				public void handle(ActionEvent event) {
 					aanZet.setFailliet(true);
-
+					final Stage dialog0 = new Stage();
+					dialog0.initModality(Modality.APPLICATION_MODAL);
+					VBox dialogVBox0 = new VBox();
+					dialog0.setTitle("Winnaar en verliezer");
+					Button button0 = new Button(":'-(");
+					dialogVBox0.getChildren().addAll(new Text("De winnaar is: " + FaillietWinnaar.isWinnaar().getNaam()), new Text ("De verliezer is :" + aanZet.getNaam()), button0);
+					Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+					dialogVBox0.setAlignment(Pos.CENTER);
+					dialogVBox0.setSpacing(10);
+					dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+					dialog0.setScene(dialogScene0);
+					dialog0.show();
 				}
 			});
 

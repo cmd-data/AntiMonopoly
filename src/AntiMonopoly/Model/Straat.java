@@ -70,7 +70,9 @@ public class Straat extends Tegel {
 	public static void koopStraat(Speler speler, Straat straat) {
 
 		if (speler.getGeld() < straat.prijs) {
-			System.out.println("Niet genoeg geld");
+
+			//niet nodig
+
 		} else {
 			speler.setGeld(-straat.prijs);
 			straat.setEigenaar(speler);
@@ -144,75 +146,139 @@ public class Straat extends Tegel {
 	}
 
 	public static void straatMethodeKopen (Straat straat, Speler aanZet) {
-		final Stage dialog = new Stage();
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		VBox dialogVBox = new VBox();
-		dialog.setTitle(straat.getNaam());
-		Button button = new Button("Koop");
-		dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €" + straat.getPrijs()), new Text("Huur: €" + straat.getHuurPrijs()),
-				new Text("Hypotheek: €" + straat.getHypotheek()), new Text("Huisprijs: €" + straat.getPrijsHuis()), button);
-		Scene dialogScene = new Scene(dialogVBox, 300, 250);
-		dialogVBox.setAlignment(Pos.CENTER);
-		dialogVBox.setSpacing(10);
-		dialogVBox.setStyle("-fx-font: 20px Tahoma");
-		dialog.setScene(dialogScene);
-		dialog.show();
 
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				dialog.close();
-				Tegel.koopEigendom(straat, aanZet);
-				Spelbord.showOwner(straat.getPositie(),aanZet);
+		if (aanZet.getGeld() < straat.prijs) {
 
-				final Stage dialog = new Stage();
-				dialog.initModality(Modality.APPLICATION_MODAL);
-				VBox dialogVBox = new VBox();
-				dialog.setTitle("Proficiat met uw aankoop!");
-				Button button = new Button("OK");
-				dialogVBox.getChildren().addAll(new Text("U hebt "+ straat.getNaam() +" aangekocht"), new Text("voor €" + straat.getPrijs()),
-						button);
-				Scene dialogScene = new Scene(dialogVBox, 500, 250);
-				dialogVBox.setAlignment(Pos.CENTER);
-				dialogVBox.setSpacing(10);
-				dialogVBox.setStyle("-fx-font: 20px Tahoma");
-				dialog.setScene(dialogScene);
-				dialog.show();
+			final Stage dialog0 = new Stage();
+			dialog0.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox0 = new VBox();
+			dialog0.setTitle("Oeps!");
+			Button button0 = new Button("OK");
+			dialogVBox0.getChildren().addAll(new Text("U heeft te weinig geld om dit kopen!"), button0);
+			Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+			dialogVBox0.setAlignment(Pos.CENTER);
+			dialogVBox0.setSpacing(10);
+			dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+			dialog0.setScene(dialogScene0);
+			dialog0.show();
 
-				button.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent event) {
-						dialog.close();
-					}
-				});
-			}
-		});
+			button0.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog0.close();
+				}
+			});
+
+		} else {
+
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle(straat.getNaam());
+			Button button = new Button("Koop");
+			dialogVBox.getChildren().addAll(new Text("Aankoopprijs: €" + straat.getPrijs()), new Text("Huur: €" + straat.getHuurPrijs()),
+					new Text("Hypotheek: €" + straat.getHypotheek()), new Text("Huisprijs: €" + straat.getPrijsHuis()), button);
+			Scene dialogScene = new Scene(dialogVBox, 300, 250);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					Tegel.koopEigendom(straat, aanZet);
+					Spelbord.showOwner(straat.getPositie(), aanZet);
+
+					final Stage dialog = new Stage();
+					dialog.initModality(Modality.APPLICATION_MODAL);
+					VBox dialogVBox = new VBox();
+					dialog.setTitle("Proficiat met uw aankoop!");
+					Button button = new Button("OK");
+					dialogVBox.getChildren().addAll(new Text("U hebt " + straat.getNaam() + " aangekocht"), new Text("voor €" + straat.getPrijs()),
+							button);
+					Scene dialogScene = new Scene(dialogVBox, 500, 250);
+					dialogVBox.setAlignment(Pos.CENTER);
+					dialogVBox.setSpacing(10);
+					dialogVBox.setStyle("-fx-font: 20px Tahoma");
+					dialog.setScene(dialogScene);
+					dialog.show();
+
+					button.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							dialog.close();
+						}
+					});
+				}
+			});
+		}
 	}
 
 	public static void straatMethodeHuur (Straat straat, Speler aanZet) {
-		final Stage dialog = new Stage();
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		VBox dialogVBox = new VBox();
-		dialog.setTitle("Betaal Huur");
-		Button button = new Button("Betaal €" + getHuur(straat));
-		dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + straat.getEigenaar().getNaam()), button);
-		Scene dialogScene = new Scene(dialogVBox, 400, 250);
-		dialogVBox.setAlignment(Pos.CENTER);
-		dialogVBox.setSpacing(10);
-		dialogVBox.setStyle("-fx-font: 20px Tahoma");
-		dialog.setScene(dialogScene);
-		dialog.show();
 
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				dialog.close();
-				Tegel.betaalHuur(straat, aanZet);
-			}
-		});
+		if (aanZet.getGeld() < getHuur(straat)) {
+
+			final Stage dialog0 = new Stage();
+			dialog0.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox0 = new VBox();
+			dialog0.setTitle("Oeps!");
+			Button button0 = new Button(":'-(");
+			dialogVBox0.getChildren().addAll(new Text("U heeft te weinig geld huur te betalen!"), button0);
+			Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+			dialogVBox0.setAlignment(Pos.CENTER);
+			dialogVBox0.setSpacing(10);
+			dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+			dialog0.setScene(dialogScene0);
+			dialog0.show();
+
+			button0.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					final Stage dialog0 = new Stage();
+					dialog0.initModality(Modality.APPLICATION_MODAL);
+					VBox dialogVBox0 = new VBox();
+					dialog0.setTitle("Winnaar en verliezer");
+					Button button0 = new Button(":'-(");
+					dialogVBox0.getChildren().addAll(new Text("De winnaar is: " + FaillietWinnaar.isWinnaar().getNaam()), new Text ("De verliezer is :" + aanZet.getNaam()), button0);
+					Scene dialogScene0 = new Scene(dialogVBox0, 500, 300);
+					dialogVBox0.setAlignment(Pos.CENTER);
+					dialogVBox0.setSpacing(10);
+					dialogVBox0.setStyle("-fx-font: 20px Tahoma");
+					dialog0.setScene(dialogScene0);
+					dialog0.show();
+
+				}
+			});
+
+		} else {
+
+			final Stage dialog = new Stage();
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			VBox dialogVBox = new VBox();
+			dialog.setTitle("Betaal Huur");
+			Button button = new Button("Betaal €" + getHuur(straat));
+			dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + straat.getEigenaar().getNaam()), button);
+			Scene dialogScene = new Scene(dialogVBox, 400, 250);
+			dialogVBox.setAlignment(Pos.CENTER);
+			dialogVBox.setSpacing(10);
+			dialogVBox.setStyle("-fx-font: 20px Tahoma");
+			dialog.setScene(dialogScene);
+			dialog.show();
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					dialog.close();
+					Tegel.betaalHuur(straat, aanZet);
+				}
+			});
+		}
 	}
 
-	public static void straatMethodeBouwen (Straat straat, Speler aanZet) {
+	public static void straatMethodeBouwen (Straat straat, Speler aanZet){
 
 		if (isMonopolyStad(straat.stad) || aanZet.getIsConcurrent()) {
 			final Stage dialog = new Stage();
@@ -271,7 +337,7 @@ public class Straat extends Tegel {
 				@Override
 				public void handle(ActionEvent event) {
 					String tekst = " huizen voor €";
-					if (comboBox.getValue()==1){
+					if (comboBox.getValue() == 1) {
 						tekst = " huis voor €";
 					}
 
@@ -305,6 +371,7 @@ public class Straat extends Tegel {
 			});
 		}
 	}
+
 
 	public String getStraat() {
 		return straten;
