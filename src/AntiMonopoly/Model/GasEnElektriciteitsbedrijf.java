@@ -43,6 +43,11 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		}
 	}
 
+	public void verkoopGasofElektriciteitsbedrijf (Speler speler, GasEnElektriciteitsbedrijf gasenelek) {
+		speler.setGeld(waarde);
+		gasenelek.setEigenaar(null);
+	}
+
 	public static int getHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
 		int waardeWorp = Dice.rollDie();
 

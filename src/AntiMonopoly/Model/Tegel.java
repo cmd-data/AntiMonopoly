@@ -1,5 +1,6 @@
 package AntiMonopoly.Model;
 
+import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -33,8 +34,6 @@ public class Tegel {
 		this.positie = positie;
 	}
 
-	public void kopen(){}
-
 	public static void koopEigendom (Tegel tegel, Speler speler){
 
 		if (tegel instanceof Straat){
@@ -49,14 +48,17 @@ public class Tegel {
 		Spel.updateGeld();
 	}
 
-	public boolean kopen(Tegel tegel){
-		if(tegel instanceof Straat){
-			return true;
+	public static void verkoopEigendom (Tegel tegel, Speler speler) {
+		if (tegel instanceof Straat){
+			((Straat) tegel).verkoopStraat(speler,(Straat) tegel);
 		}
-		if(tegel instanceof Transport){
-			return true;
+		if (tegel instanceof Transport){
+			((Transport) tegel).verkoopTransportbedrijf(speler,(Transport) tegel);
 		}
-		return tegel instanceof GasEnElektriciteitsbedrijf;
+		if (tegel instanceof GasEnElektriciteitsbedrijf){
+			((GasEnElektriciteitsbedrijf) tegel).verkoopGasofElektriciteitsbedrijf(speler,(GasEnElektriciteitsbedrijf) tegel);
+		}
+		Spel.updateGeld();
 	}
 
 	public static boolean heeftEigenaar(Tegel tegel){
@@ -87,9 +89,6 @@ public class Tegel {
 		return null;
 	}
 
-	public boolean heeftHypotheek(Tegel tegel){
-		return Hypotheek.getHypotheekLijst().contains(tegel);
-	}
 
 	public static void betaalHuur(Tegel tegel, Speler speler){
 
@@ -797,6 +796,7 @@ public class Tegel {
 			}
 		}
 	}
+
 
 	public int getPositie() {
 		return positie;

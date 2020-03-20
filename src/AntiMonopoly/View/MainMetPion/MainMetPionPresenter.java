@@ -45,7 +45,14 @@ public class MainMetPionPresenter {
         view.getMainView().getHypotheekKnop().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Hypotheek.hypotheekKnop(view);
+                Spelopties.hypotheekKnop(view);
+            }
+        });
+
+        view.getMainView().getVerkoopEigendom().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Spelopties.verkoopEigendomKnop(view);
             }
         });
 

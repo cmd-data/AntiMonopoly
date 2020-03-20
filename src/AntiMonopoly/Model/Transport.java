@@ -42,6 +42,11 @@ public class Transport extends Tegel {
 		}
 	}
 
+	public void verkoopTransportbedrijf (Speler speler, Transport bedrijf) {
+		speler.setGeld(waarde);
+		bedrijf.setEigenaar(null);
+	}
+
 	public static int getHuur(Transport transportBedrijf){
 		int aantal = 0;
 		Speler eigenaar = transportBedrijf.getEigenaar();

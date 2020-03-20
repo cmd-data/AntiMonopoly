@@ -77,6 +77,11 @@ public class Straat extends Tegel {
 		}
 	}
 
+	public void verkoopStraat (Speler speler, Straat straat) {
+		speler.setGeld(straat.prijs);
+		straat.setEigenaar(null);
+	}
+
 	public static int getHuur(Straat straat) {
 		boolean concurrent = straat.eigenaar.getIsConcurrent();
 
