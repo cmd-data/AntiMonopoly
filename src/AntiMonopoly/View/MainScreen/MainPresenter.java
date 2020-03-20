@@ -1,11 +1,13 @@
 package AntiMonopoly.View.MainScreen;
 
-import AntiMonopoly.Model.AntiMonopolyMain;
-import AntiMonopoly.Model.Spelregels;
+import AntiMonopoly.Model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -28,8 +30,10 @@ public class MainPresenter {
 
 
     private void addEventHandlers() {
+
         //Straten
         //Rue Grande, Dinant
+
         view.getRg2().setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override

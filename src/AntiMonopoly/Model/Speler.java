@@ -5,6 +5,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Speler {
 
@@ -92,6 +93,17 @@ public class Speler {
 			waarde += GasEnElektriciteitsbedrijf.getWaarde();
 		}
 		return waarde;
+	}
+
+	public static List<String> eigendommen (Speler speler){
+		List<String> spelerEigendommen = new ArrayList<>();
+
+		for (Tegel tegel : Spelbord.getTegels()) {
+			if (Objects.equals(Tegel.eigenaar(tegel), speler.getNaam())){
+				spelerEigendommen.add(tegel.getNaam());
+			}
+		}
+		return spelerEigendommen;
 	}
 
 	public String getNaam() {

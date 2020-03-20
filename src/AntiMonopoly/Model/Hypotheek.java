@@ -18,9 +18,19 @@ public class Hypotheek {
 
 	public static List<Tegel> getHypotheekLijst() { return hypotheekLijst; }
 
-	public void neemHypotheek(Straat straat, Speler speler) {
-		hypotheekLijst.add(straat);
-		speler.setGeld(straat.getHypotheek());
+	public static void neemHypotheek(Tegel tegel, Speler speler) {
+		hypotheekLijst.add(tegel);
+
+		if (tegel instanceof Straat){
+			speler.setGeld(((Straat) tegel).getHypotheek());
+		}
+		if (tegel instanceof Transport){
+			speler.setGeld(((Transport) tegel).getHypotheek());
+		}
+		if (tegel instanceof GasEnElektriciteitsbedrijf){
+			speler.setGeld(((GasEnElektriciteitsbedrijf) tegel).getHypotheek());
+		}
+
 		Spel.updateGeld();
 	}
 

@@ -21,6 +21,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	private Speler eigenaar;
 	private String naam;
 	private int positie;
+	private final int hypotheek = 75000;
 
 	/**
 	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
@@ -181,6 +182,8 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 	public static List<GasEnElektriciteitsbedrijf> getBedrijven() { return bedrijven; }
 
 	public static int getWaarde() { return waarde; }
+
+	public int getHypotheek() { return hypotheek; }
 }
 
 

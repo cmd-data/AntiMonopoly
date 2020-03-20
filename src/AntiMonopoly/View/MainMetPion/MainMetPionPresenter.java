@@ -4,6 +4,8 @@ import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
 import AntiMonopoly.View.EndGame.EndGamePresenter;
 import AntiMonopoly.View.EndGame.EndGameView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,6 +39,43 @@ public class MainMetPionPresenter {
     }
 
     private void addEventHandlers() {
+
+        // Spelopties
+
+        view.getMainView().getHypotheekKnop().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                final Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                VBox dialogVBox = new VBox();
+
+                Button button = new Button("Op hypotheek");
+                ObservableList<String> eigendommen =
+                        FXCollections.observableArrayList(Speler.eigendommen(Spel.getSpelers().get(Dice.getCount()-1))); //eigendommen van de speler die aan de beurt is
+                view.getMainView().getEigendommen().setItems(eigendommen);
+
+                dialog.setTitle("Eigendom op hypotheek zetten");
+                dialogVBox.getChildren().addAll(new Text("Eigendommen: "),view.getMainView().getEigendommen(), button);
+                Scene dialogScene = new Scene(dialogVBox, 300, 250);
+                dialogVBox.setAlignment(Pos.CENTER);
+                dialogVBox.setSpacing(10);
+                dialogVBox.setStyle("-fx-font: 20px Tahoma");
+                dialog.setScene(dialogScene);
+                dialog.show();
+
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        for (Tegel tegel : Spelbord.getTegels()) {
+                            if (view.getMainView().getEigendommen().getValue().equals(tegel.getNaam())){
+                                Hypotheek.neemHypotheek(tegel,Spel.getSpelers().get(Dice.getCount()-1));
+                                dialog.close();
+                            }
+                        }
+                    }
+                });
+            }
+        });
 
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override

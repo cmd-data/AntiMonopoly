@@ -1,5 +1,7 @@
 package AntiMonopoly.View.MainScreen;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -242,6 +244,10 @@ public class MainView extends GridPane {
 
     private static String aanZetlayout;
 
+    //Eigendommen layout
+
+    private static String speler1Eigendom, speler2Eigendom, speler3Eigendom, speler4Eigendom;
+
     //Speler 1
     private Label s11;
     private static Label s12, s14;
@@ -265,6 +271,12 @@ public class MainView extends GridPane {
     private static Label s42, s44;
     private static VBox speler4;
     private ImageView s43;
+
+    //Spelopties
+    private static Label so1;
+    private static VBox spelopties;
+    private Button hypotheekKnop, verkoopGebouwen, verkoopEigendom, bouwen;
+    private ComboBox eigendommen;
 
     public MainView() {
         this.initialiseNodes();
@@ -543,7 +555,15 @@ public class MainView extends GridPane {
         this.s43 = new ImageView();
         s44 = new Label();
 
-        //this.dobbelen = new Button("Dobbelen");
+        //Spelopties
+        so1 = new Label();
+        spelopties = new VBox();
+        this.hypotheekKnop = new Button("Hypotheek");
+        this.verkoopGebouwen = new Button("VerkoopGebouwen");
+        this.verkoopEigendom = new Button("VerkoopEigendom");
+        this.bouwen = new Button("Bouwen");
+        this.eigendommen = new ComboBox<>();
+
     }
 
     private void layoutNodes() {
@@ -858,23 +878,27 @@ public class MainView extends GridPane {
         this.add(speler4, 11, 7, 2, 2);
         speler4.setId("s4");
 
+        //Spelopties
+        so1 = new Label("Spelopties");
+        spelopties.getChildren().addAll(so1,hypotheekKnop, verkoopGebouwen, verkoopEigendom, bouwen);
+        this.add(spelopties, 11,9,2,3);
+        spelopties.setId("spelopties");
+        eigendommen = new ComboBox<String>();
 
+        //SpelerEigendommen
 
-
-
-
-        //this.setGridLinesVisible(true);
-
-
-//        this.setTop(menuBar);
-//        this.setBottom(spelInfo);
-//        this.setCenter(borderPane1);
-//        borderPane1.setCenter(dobbelen);
-//        BorderPane.setMargin(dobbelen,new Insets(200));
-//        borderPane1.setTop(hBox1);
-//        borderPane1.setBottom(hBox2);
-//        borderPane1.setRight(vBox1);
-//        borderPane1.setLeft(vBox2);
+        speler1Eigendom = "-fx-border-color: VIOLET;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 4;\n";
+        speler2Eigendom = "-fx-border-color: GRAY;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 4;\n";
+        speler3Eigendom = "-fx-border-color: ALICEBLUE;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 4;\n";
+        speler4Eigendom = "-fx-border-color: DARKTURQUOISE;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 4;\n";
 
 
         // implementatie van de nodige
@@ -1058,4 +1082,28 @@ public class MainView extends GridPane {
     public static VBox getSpeler3() { return speler3; }
 
     public static VBox getSpeler4() { return speler4; }
+
+    public static String getSpeler1Eigendom() { return speler1Eigendom; }
+
+    public static String getSpeler2Eigendom() { return speler2Eigendom; }
+
+    public static String getSpeler3Eigendom() { return speler3Eigendom; }
+
+    public static String getSpeler4Eigendom() { return speler4Eigendom; }
+
+    public static Label getSo1() { return so1; }
+
+    public static VBox getSpelopties() { return spelopties; }
+
+    public Button getHypotheekKnop() { return hypotheekKnop; }
+
+    public Button getVerkoopGebouwen() { return verkoopGebouwen; }
+
+    public Button getVerkoopEigendom() { return verkoopEigendom; }
+
+    public Button getBouwen() { return bouwen; }
+
+    public ComboBox getEigendommen() {
+        return eigendommen;
+    }
 }

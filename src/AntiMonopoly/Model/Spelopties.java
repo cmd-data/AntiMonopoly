@@ -2,13 +2,9 @@ package AntiMonopoly.Model;
 
 public interface Spelopties {
 
-	void onderhandelen();
-
-	void hypotheek();
+	void hypotheekNemen();
 
 	void verkopen();
-
-	void kopen();
 
 	void bouwen();
 

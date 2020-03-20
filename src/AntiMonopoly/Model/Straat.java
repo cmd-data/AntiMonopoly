@@ -275,7 +275,7 @@ public class Straat extends Tegel {
 					final Stage dialog = new Stage();
 					dialog.initModality(Modality.APPLICATION_MODAL);
 					VBox dialogVBox17 = new VBox();
-					dialog.setTitle("Hotel");
+					dialog.setTitle("Huis");
 					Button button = new Button("OK");
 					dialogVBox17.getChildren().addAll(new Text("U kocht " + comboBox.getValue() + tekst + prijsHuis),
 							button);

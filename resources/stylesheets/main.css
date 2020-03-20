@@ -28,7 +28,7 @@
 }
 
 #rg,#ds1,#ss,#pdm,#ks,#rdd,#b,#pv,#ll,#rr,#gr,#rsl,#ls,#gpm,#gm,#pdl,#h,#v,#bv,#s1,#s2,#s3,#s4,
-#bda,#m,#n,#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev{
+#bda,#m,#n,#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#spelopties{
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-style: solid;
@@ -72,7 +72,7 @@
     -fx-background-color: darkblue;
 }
 
-#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1,#s2,#s3,#s4 {
+#ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1,#s2,#s3,#s4,#spelopties {
     -fx-background-color: black;
 }
 
