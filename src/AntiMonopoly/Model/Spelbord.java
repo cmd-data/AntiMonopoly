@@ -1,5 +1,7 @@
 package AntiMonopoly.Model;
 
+import AntiMonopoly.View.MainScreen.MainView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,10 +57,147 @@ public class Spelbord {
 		tegels.add(new Straat("Nieuwstraat, Brussel", 400000, 40000, 200000, 200000, null, null, 0, "dBlauw", 39));
 	}
 
-	/**
-	 * Statisch omdat ik vanuit ConcurrentenOfMonopolistenvak en GaNaarGevangenis een tegel.addSpeler moet kunnen gebruiken
-	 * @return
-	 */
+	public static void showOwner(int locatie, Speler speler) {
+
+		String layout1 = MainView.getSpeler1Eigendom();
+		String layout2 = MainView.getSpeler2Eigendom();
+		String layout3 = MainView.getSpeler3Eigendom();
+		String layout4 = MainView.getSpeler4Eigendom();
+
+		String layout = speler.getPion();
+
+		switch (layout){
+			case "pink square": layout = layout1; break;
+			case "grey square": layout = layout2; break;
+			case "white square": layout = layout3; break;
+			case "red square": layout = layout4; break;
+			default:
+				throw new IllegalStateException("Unexpected value: " + Dice.getCount());
+		}
+
+		switch (locatie) {
+			case 1: MainView.getRueGrande().setStyle(layout); break;
+			case 3: MainView.getDiestsesttraat().setStyle(layout); break;
+			case 5: MainView.getNoordStation().setStyle(layout); break;
+			case 6: MainView.getSteenstraat().setStyle(layout); break;
+			case 8: MainView.getPlaceDuMonument().setStyle(layout); break;
+			case 9: MainView.getKapellestraat().setStyle(layout); break;
+			case 11: MainView.getRueDeDiekrich().setStyle(layout); break;
+			case 12: MainView.getElektriciteitsbedrijf().setStyle(layout); break;
+			case 13: MainView.getBruul().setStyle(layout); break;
+			case 14: MainView.getPlaceVerte().setStyle(layout); break;
+			case 15: MainView.getOostStation().setStyle(layout); break;
+			case 16: MainView.getLippenslaan().setStyle(layout); break;
+			case 18: MainView.getRueRoyal().setStyle(layout); break;
+			case 19: MainView.getGroenplaats().setStyle(layout); break;
+			case 21: MainView.getRueSaintLeonard().setStyle(layout); break;
+			case 23: MainView.getLangeSteenstraat().setStyle(layout); break;
+			case 24: MainView.getGrandePlace().setStyle(layout); break;
+			case 25: MainView.getZuidStation().setStyle(layout); break;
+			case 26: MainView.getGroteMarkt().setStyle(layout); break;
+			case 27: MainView.getPlaceDeLAnge().setStyle(layout); break;
+			case 28: MainView.getGasmaatschappij().setStyle(layout); break;
+			case 29: MainView.getHoogstraat().setStyle(layout); break;
+			case 31: MainView.getVeldstraat().setStyle(layout); break;
+			case 32: MainView.getBoulevardTirou().setStyle(layout); break;
+			case 34: MainView.getBoulevardDAvroy().setStyle(layout); break;
+			case 35: MainView.getZuidStation().setStyle(layout); break;
+			case 37: MainView.getMeir().setStyle(layout); break;
+			case 39: MainView.getNieuwstraat().setStyle(layout);
+		}
+	}
+
+	public static void removeOwner (int locatie, Speler speler) {
+
+		String layout = "-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid;";
+
+		switch (locatie) {
+			case 1:
+				MainView.getRueGrande().setStyle(layout);
+				break;
+			case 3:
+				MainView.getDiestsesttraat().setStyle(layout);
+				break;
+			case 5:
+				MainView.getNoordStation().setStyle(layout);
+				break;
+			case 6:
+				MainView.getSteenstraat().setStyle(layout);
+				break;
+			case 8:
+				MainView.getPlaceDuMonument().setStyle(layout);
+				break;
+			case 9:
+				MainView.getKapellestraat().setStyle(layout);
+				break;
+			case 11:
+				MainView.getRueDeDiekrich().setStyle(layout);
+				break;
+			case 12:
+				MainView.getElektriciteitsbedrijf().setStyle(layout);
+				break;
+			case 13:
+				MainView.getBruul().setStyle(layout);
+				break;
+			case 14:
+				MainView.getPlaceVerte().setStyle(layout);
+				break;
+			case 15:
+				MainView.getOostStation().setStyle(layout);
+				break;
+			case 16:
+				MainView.getLippenslaan().setStyle(layout);
+				break;
+			case 18:
+				MainView.getRueRoyal().setStyle(layout);
+				break;
+			case 19:
+				MainView.getGroenplaats().setStyle(layout);
+				break;
+			case 21:
+				MainView.getRueSaintLeonard().setStyle(layout);
+				break;
+			case 23:
+				MainView.getLangeSteenstraat().setStyle(layout);
+				break;
+			case 24:
+				MainView.getGrandePlace().setStyle(layout);
+				break;
+			case 25:
+				MainView.getZuidStation().setStyle(layout);
+				break;
+			case 26:
+				MainView.getGroteMarkt().setStyle(layout);
+				break;
+			case 27:
+				MainView.getPlaceDeLAnge().setStyle(layout);
+				break;
+			case 28:
+				MainView.getGasmaatschappij().setStyle(layout);
+				break;
+			case 29:
+				MainView.getHoogstraat().setStyle(layout);
+				break;
+			case 31:
+				MainView.getVeldstraat().setStyle(layout);
+				break;
+			case 32:
+				MainView.getBoulevardTirou().setStyle(layout);
+				break;
+			case 34:
+				MainView.getBoulevardDAvroy().setStyle(layout);
+				break;
+			case 35:
+				MainView.getZuidStation().setStyle(layout);
+				break;
+			case 37:
+				MainView.getMeir().setStyle(layout);
+				break;
+			case 39:
+				MainView.getNieuwstraat().setStyle(layout);
+		}
+	}
+
 	public static List<Tegel> getTegels() {
 		return tegels;
 	}

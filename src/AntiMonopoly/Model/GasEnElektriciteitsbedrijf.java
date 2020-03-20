@@ -100,6 +100,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 			public void handle(ActionEvent event) {
 				dialog.close();
 				Tegel.koopEigendom(bedrijf, aanZet);
+				Spelbord.showOwner(bedrijf.getPositie(),aanZet);
 
 				final Stage dialog = new Stage();
 				dialog.initModality(Modality.APPLICATION_MODAL);

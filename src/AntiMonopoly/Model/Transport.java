@@ -93,6 +93,7 @@ public class Transport extends Tegel {
 				public void handle(ActionEvent event) {
 					dialog.close();
 					Tegel.koopEigendom(transport, aanZet);
+					Spelbord.showOwner(transport.getPositie(),aanZet);
 
 					final Stage dialog = new Stage();
 					dialog.initModality(Modality.APPLICATION_MODAL);

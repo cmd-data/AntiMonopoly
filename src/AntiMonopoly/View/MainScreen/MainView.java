@@ -27,137 +27,137 @@ public class MainView extends GridPane {
     //Rue Grande
     private Label rg1, rg3, rg4;
     private Button rg2;
-    private VBox rueGrande;
+    private static VBox rueGrande;
 
     //Diestsestraat, Leuven
     private Label ds1, ds3, ds4;
     private Button ds2;
-    private VBox diestsesttraat;
+    private static VBox diestsesttraat;
 
     //Steenstraat Brugge
     private Label ss1, ss3, ss4;
     private Button ss2;
-    private VBox steenstraat;
+    private static VBox steenstraat;
 
     //Place Du Monument Spa
     private Label pdm1, pdm3, pdm4;
     private Button pdm2;
-    private VBox placeDuMonument;
+    private static VBox placeDuMonument;
 
     //Kapellestraat, Oostende
     private Label ks1, ks3, ks4;
     private Button ks2;
-    private VBox kapellestraat;
+    private static VBox kapellestraat;
 
     //Rue De Diekirch, Arlon
     private Label rdd1, rdd3, rdd4;
     private Button rdd2;
-    private VBox rueDeDiekrich;
+    private static VBox rueDeDiekrich;
 
     //Bruul, Mechelen
     private Label b1, b3, b4;
     private Button b2;
-    private VBox bruul;
+    private static VBox bruul;
 
     //Place Verte, Verviers
     private Label pv1, pv3, pv4;
     private Button pv2;
-    private VBox placeVerte;
+    private static VBox placeVerte;
 
     //Lippenslaan, Knokke
     private Label ll1, ll3, ll4;
     private Button ll2;
-    private VBox lippenslaan;
+    private static VBox lippenslaan;
 
     //Rue Royale, Tournai
     private Label rr1, rr3, rr4;
     private Button rr2;
-    private VBox rueRoyal;
+    private static VBox rueRoyal;
 
     //Groenplaats, Antwerpen
     private Label gp1, gp3, gp4;
     private Button gp2;
-    private VBox groenplaats;
+    private static VBox groenplaats;
 
     //Rue Saint Leonard, Liege
     private Label rsl1, rsl3, rsl4;
     private Button rsl2;
-    private VBox rueSaintLeonard;
+    private static VBox rueSaintLeonard;
 
     //Lange Steenstraat, Kortrijk
     private Label ls1, ls3, ls4;
     private Button ls2;
-    private VBox langeSteenstraat;
+    private static VBox langeSteenstraat;
 
     //Grande Place, Mons
     private Label gpm1, gpm3, gpm4;
     private Button gpm2;
-    private VBox grandePlace;
+    private static VBox grandePlace;
 
     //Grote Markt, Hasselt
     private Label gm1, gm3, gm4;
     private Button gm2;
-    private VBox groteMarkt;
+    private static VBox groteMarkt;
 
     //Place De l'Ange, Namur
     private Label pdl1, pdl3, pdl4;
     private Button pdl2;
-    private VBox placeDeLAnge;
+    private static VBox placeDeLAnge;
 
     //Hoogstraat, Brussel
     private Label h1, h3, h4;
     private Button h2;
-    private VBox hoogstraat;
+    private static VBox hoogstraat;
 
     //Veldstraat Gent
     private Label v1, v3, v4;
     private Button v2;
-    private VBox veldstraat;
+    private static VBox veldstraat;
 
     //Boulevard Tirou, Charleroi
     private Label bv1, bv3, bv4;
     private Button bv2;
-    private VBox boulevardTirou;
+    private static VBox boulevardTirou;
 
     //Boulevard d'Avroy, liege
     private Label bda1, bda3, bda4;
     private Button bda2;
-    private VBox boulevardDAvroy;
+    private static VBox boulevardDAvroy;
 
     //Meir, Antwerpen
     private Label m1, m3, m4;
     private Button m2;
-    private VBox meir;
+    private static VBox meir;
 
     //Nieuwstraat, Brussel
     private Label n1, n3, n4;
     private Button n2;
-    private VBox nieuwstraat;
+    private static VBox nieuwstraat;
 
     //Transportberdijven
     //Noord Station
     private Label ns1;
     private Button ns2;
     private ImageView ns3;
-    private VBox noordStation;
+    private static VBox noordStation;
 
     //Zuid Station
     private Label zs1;
     private Button zs2;
     private ImageView zs3;
-    private VBox zuidStation;
+    private static VBox zuidStation;
 
     //Oost Station
     private Label os1;
     private Button os2;
     private ImageView os3;
-    private VBox oostStation;
+    private static VBox oostStation;
 
     //West Station
     private Label ws1;
     private Button ws2;
     private ImageView ws3;
-    private VBox westStation;
+    private static VBox westStation;
 
     //Kaart nemen
     //Neem monopoly- of concurentenkaart
@@ -202,13 +202,13 @@ public class MainView extends GridPane {
     //elektriciteitsmaatschappij
     private Label em1, em2;
     private ImageView em3;
-    private VBox elektriciteitsbedrijf;
+    private static VBox elektriciteitsbedrijf;
 
 
     //Gasmaatschappij
     private Label gas1, gas2;
     private ImageView gas3;
-    private VBox gasmaatschappij;
+    private static VBox gasmaatschappij;
 
     //Hoektegels
     //Ga naar de gevangenis
@@ -588,161 +588,161 @@ public class MainView extends GridPane {
         achtergrond.setId("ag");
 
         //Rue Grande, Dinant
-        this.rueGrande = new VBox();
+        rueGrande = new VBox();
         rueGrande.getChildren().addAll(rg1, rg2, rg3, rg4);
         this.add(rueGrande, 1, 1);
         rueGrande.setId("rg");
 
         //Diestsestraat, Leuven
-        this.diestsesttraat = new VBox();
+        diestsesttraat = new VBox();
         diestsesttraat.getChildren().addAll(ds1, ds2, ds3, ds4);
         this.add(diestsesttraat, 3, 1);
         diestsesttraat.setId("ds1");
 
 
         // Steenstraat, Brugge
-        this.steenstraat = new VBox();
+        steenstraat = new VBox();
         steenstraat.getChildren().addAll(ss1, ss2, ss3, ss4);
         this.add(steenstraat, 6, 1);
         steenstraat.setId("ss");
 
         //Place Du Monument Spa
-        this.placeDuMonument = new VBox();
+        placeDuMonument = new VBox();
         placeDuMonument.getChildren().addAll(pdm1, pdm2, pdm3, pdm4);
         this.add(placeDuMonument, 8, 1);
         placeDuMonument.setId("pdm");
 
         //Kapellestraat, Oostende
-        this.kapellestraat = new VBox();
+        kapellestraat = new VBox();
         kapellestraat.getChildren().addAll(ks1, ks2, ks3, ks4);
         this.add(kapellestraat, 9, 1);
         kapellestraat.setId("ks");
 
         //Rue De Diekirch, Arlon
-        this.rueDeDiekrich = new VBox();
+        rueDeDiekrich = new VBox();
         rueDeDiekrich.getChildren().addAll(rdd1, rdd2, rdd3, rdd4);
         this.add(rueDeDiekrich, 10, 2);
         rueDeDiekrich.setId("rdd");
 
         //Bruul, Mechelen
-        this.bruul = new VBox();
+        bruul = new VBox();
         bruul.getChildren().addAll(b1, b2, b3, b4);
         this.add(bruul, 10, 4);
         bruul.setId("b");
 
         //Place Verte, Verviers
-        this.placeVerte = new VBox();
+        placeVerte = new VBox();
         placeVerte.getChildren().addAll(pv1, pv2, pv3, pv4);
         this.add(placeVerte, 10, 5);
         placeVerte.setId("pv");
 
         //Lippenslaan, Knokke
-        this.lippenslaan = new VBox();
+        lippenslaan = new VBox();
         lippenslaan.getChildren().addAll(ll1, ll2, ll3, ll4);
         this.add(lippenslaan, 10, 7);
         lippenslaan.setId("ll");
 
         //Rue Royale, Tournai
-        this.rueRoyal = new VBox();
+        rueRoyal = new VBox();
         rueRoyal.getChildren().addAll(rr1, rr2, rr3, rr4);
         this.add(rueRoyal, 10, 9);
         rueRoyal.setId("rr");
 
         //Groenplaats, Antwerpen
-        this.groenplaats = new VBox();
+        groenplaats = new VBox();
         groenplaats.getChildren().addAll(gp1, gp2, gp3, gp4);
         this.add(groenplaats, 10, 10);
         groenplaats.setId("gr");
 
         //Rue Saint Leonard, Liege
-        this.rueSaintLeonard = new VBox();
+        rueSaintLeonard = new VBox();
         rueSaintLeonard.getChildren().addAll(rsl1, rsl2, rsl3, rsl4);
         this.add(rueSaintLeonard, 9, 11);
         rueSaintLeonard.setId("rsl");
 
         //Lange Steenstraat, Kortrijk
-        this.langeSteenstraat = new VBox();
+        langeSteenstraat = new VBox();
         langeSteenstraat.getChildren().addAll(ls1, ls2, ls3, ls4);
         this.add(langeSteenstraat, 7, 11);
         langeSteenstraat.setId("ls");
 
         //Grande Place, Mons
-        this.grandePlace = new VBox();
+        grandePlace = new VBox();
         grandePlace.getChildren().addAll(gpm1, gpm2, gpm3, gpm4);
         this.add(grandePlace, 6, 11);
         grandePlace.setId("gpm");
 
         //Grote Markt, Hasselt
-        this.groteMarkt = new VBox();
+        groteMarkt = new VBox();
         groteMarkt.getChildren().addAll(gm1, gm2, gm3, gm4);
         this.add(groteMarkt, 4, 11);
         groteMarkt.setId("gm");
 
         //Place De l'Ange, Namur
-        this.placeDeLAnge = new VBox();
+        placeDeLAnge = new VBox();
         placeDeLAnge.getChildren().addAll(pdl1, pdl2, pdl3, pdl4);
         this.add(placeDeLAnge, 3, 11);
         placeDeLAnge.setId("pdl");
 
         //Hoogstraat, Brussel
-        this.hoogstraat = new VBox();
+        hoogstraat = new VBox();
         hoogstraat.getChildren().addAll(h1, h2, h3, h4);
         this.add(hoogstraat, 1, 11);
         hoogstraat.setId("h");
 
         //Veldstraat Gent
-        this.veldstraat = new VBox();
+        veldstraat = new VBox();
         veldstraat.getChildren().addAll(v1, v2, v3, v4);
         this.add(veldstraat, 0, 10);
         veldstraat.setId("v");
 
         //Boulevard Tirou, Charleroi
-        this.boulevardTirou = new VBox();
+        boulevardTirou = new VBox();
         boulevardTirou.getChildren().addAll(bv1, bv2, bv3, bv4);
         this.add(boulevardTirou, 0, 9);
         boulevardTirou.setId("bv");
 
         //Boulevard d'Avroy, liege
-        this.boulevardDAvroy = new VBox();
+        boulevardDAvroy = new VBox();
         boulevardDAvroy.getChildren().addAll(bda1, bda2, bda3, bda4);
         this.add(boulevardDAvroy, 0, 7);
         boulevardDAvroy.setId("bda");
 
         //Meir, Antwerpen
-        this.meir = new VBox();
+        meir = new VBox();
         meir.getChildren().addAll(m1, m2, m3, m4);
         this.add(meir, 0, 4);
         meir.setId("m");
 
         //Nieuwstraat, Brussel
-        this.nieuwstraat = new VBox();
+        nieuwstraat = new VBox();
         nieuwstraat.getChildren().addAll(n1, n2, n3, n4);
         this.add(nieuwstraat, 0, 2);
         nieuwstraat.setId("n");
 
         //Stations
         //Noord Station
-        this.noordStation = new VBox();
+        noordStation = new VBox();
         noordStation.getChildren().addAll(ns1, ns2, ns3);
         this.add(noordStation, 5, 1);
         noordStation.setId("ns");
 
 
         //Zuid Station
-        this.zuidStation = new VBox();
+        zuidStation = new VBox();
         zuidStation.getChildren().addAll(zs1, zs2, zs3);
         this.add(zuidStation, 5, 11);
         zuidStation.setId("zs");
 
         //Oost Station
-        this.oostStation = new VBox();
+        oostStation = new VBox();
         oostStation.getChildren().addAll(os1, os2, os3);
         this.add(oostStation, 10, 6);
         oostStation.setId("os");
 
 
         //West Station
-        this.westStation = new VBox();
+        westStation = new VBox();
         westStation.getChildren().addAll(ws1, ws2, ws3);
         this.add(westStation, 0, 6);
         westStation.setId("ws");
@@ -800,13 +800,13 @@ public class MainView extends GridPane {
 
         //Enegiebedrijven
         //elektriciteitsmaatschappij
-        this.elektriciteitsbedrijf = new VBox();
+        elektriciteitsbedrijf = new VBox();
         elektriciteitsbedrijf.getChildren().addAll(em1, em2, em3);
         this.add(elektriciteitsbedrijf, 10, 3);
         elektriciteitsbedrijf.setId("em");
 
         //Gasmaatschappij
-        this.gasmaatschappij = new VBox();
+        gasmaatschappij = new VBox();
         gasmaatschappij.getChildren().addAll(gas1, gas2, gas3);
         this.add(gasmaatschappij, 2, 11);
         gasmaatschappij.setId("gas");
@@ -890,17 +890,13 @@ public class MainView extends GridPane {
         //SpelerEigendommen
 
         speler1Eigendom = "-fx-border-color: VIOLET;\n" +
-                "-fx-border-insets: 5;\n" +
-                "-fx-border-width: 4;\n";
+                "-fx-border-width: 6;\n";
         speler2Eigendom = "-fx-border-color: GRAY;\n" +
-                "-fx-border-insets: 5;\n" +
-                "-fx-border-width: 4;\n";
+                "-fx-border-width: 6;\n";
         speler3Eigendom = "-fx-border-color: ALICEBLUE;\n" +
-                "-fx-border-insets: 5;\n" +
-                "-fx-border-width: 4;\n";
+                "-fx-border-width: 6;\n";
         speler4Eigendom = "-fx-border-color: DARKTURQUOISE;\n" +
-                "-fx-border-insets: 5;\n" +
-                "-fx-border-width: 4;\n";
+                "-fx-border-width: 6;\n";
 
 
         // implementatie van de nodige
@@ -1114,4 +1110,116 @@ public class MainView extends GridPane {
     public ComboBox getBebouwdeEigendommen() { return bebouwdeEigendommen; }
 
     public ComboBox getAantalHuizen() { return aantalHuizen; }
+
+    public static VBox getRueGrande() {
+        return rueGrande;
+    }
+
+    public static VBox getDiestsesttraat() {
+        return diestsesttraat;
+    }
+
+    public static VBox getSteenstraat() {
+        return steenstraat;
+    }
+
+    public static VBox getPlaceDuMonument() {
+        return placeDuMonument;
+    }
+
+    public static VBox getKapellestraat() {
+        return kapellestraat;
+    }
+
+    public static VBox getRueDeDiekrich() {
+        return rueDeDiekrich;
+    }
+
+    public static VBox getBruul() {
+        return bruul;
+    }
+
+    public static VBox getPlaceVerte() {
+        return placeVerte;
+    }
+
+    public static VBox getLippenslaan() {
+        return lippenslaan;
+    }
+
+    public static VBox getRueRoyal() {
+        return rueRoyal;
+    }
+
+    public static VBox getGroenplaats() {
+        return groenplaats;
+    }
+
+    public static VBox getRueSaintLeonard() {
+        return rueSaintLeonard;
+    }
+
+    public static VBox getLangeSteenstraat() {
+        return langeSteenstraat;
+    }
+
+    public static VBox getGrandePlace() {
+        return grandePlace;
+    }
+
+    public static VBox getGroteMarkt() {
+        return groteMarkt;
+    }
+
+    public static VBox getPlaceDeLAnge() {
+        return placeDeLAnge;
+    }
+
+    public static VBox getHoogstraat() {
+        return hoogstraat;
+    }
+
+    public static VBox getVeldstraat() {
+        return veldstraat;
+    }
+
+    public static VBox getBoulevardTirou() {
+        return boulevardTirou;
+    }
+
+    public static VBox getBoulevardDAvroy() {
+        return boulevardDAvroy;
+    }
+
+    public static VBox getMeir() {
+        return meir;
+    }
+
+    public static VBox getNieuwstraat() {
+        return nieuwstraat;
+    }
+
+    public static VBox getNoordStation() {
+        return noordStation;
+    }
+
+    public static VBox getZuidStation() {
+        return zuidStation;
+    }
+
+    public static VBox getOostStation() {
+        return oostStation;
+    }
+
+    public static VBox getWestStation() {
+        return westStation;
+    }
+
+    public static VBox getElektriciteitsbedrijf() {
+        return elektriciteitsbedrijf;
+    }
+
+    public static VBox getGasmaatschappij() {
+        return gasmaatschappij;
+    }
 }
