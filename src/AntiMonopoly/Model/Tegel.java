@@ -1,16 +1,12 @@
 package AntiMonopoly.Model;
 
-import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -75,6 +71,12 @@ public class Tegel {
 		return true;
 	}
 
+	/**
+	 * heeft eigenaar van tegel terug
+	 * @param tegel
+	 * @return
+	 */
+
 	public static String eigenaar(Tegel tegel){
 		try {
 			if (tegel instanceof Straat) {
@@ -108,6 +110,13 @@ public class Tegel {
 
 		Spel.updateGeld();
 	}
+
+	/**
+	 * visuele weergave van bewegende pion over de tegels + tegel pop-up schermen
+	 * @param pion
+	 * @param aanZet
+	 * @param locatie
+	 */
 
 	public static void tegelMethode(Rectangle pion, Speler aanZet, int locatie) {
 
@@ -760,6 +769,12 @@ public class Tegel {
 				break;
 		}
 	}
+
+	/**
+	 * methoden om te checken of de tegel een eigenaar bezit en juist doorsturen naar de andere methoden
+	 * @param aanZet
+	 * @param locatie
+	 */
 
 	private static void caseEigenaarGasElek(Speler aanZet, int locatie) {
 		if (!Tegel.heeftEigenaar(Spelbord.getTegels().get(locatie))) {

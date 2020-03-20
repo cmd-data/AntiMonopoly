@@ -8,6 +8,11 @@ public class AntiMonopolyStichting extends Tegel {
 
 	static int rol;
 
+	/**
+	 * Geef geld indien concurrent en rol 1 of 2, betaal geld voor monopolist
+	 * @param speler
+	 */
+
 	public static void voerUit(Speler speler) {
 		if (speler.getIsConcurrent()) {
 			int rol = Dice.rollDie();

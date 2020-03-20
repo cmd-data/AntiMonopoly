@@ -7,10 +7,14 @@ public class GaNaarGevangenis extends Tegel {
         super(naam, positie);
     }
 
+    /**
+     * verplaatst de speler naar de gevangenis
+     * @param speler
+     */
+
     public static void gaNaarGevangenis(Speler speler){
         Spel.move(speler,Spelbord.getTegels().get(10));
         Gevangenis.getGevangenen().add(speler);
-        speler.setAanZet(false);
     }
 
 

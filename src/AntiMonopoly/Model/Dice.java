@@ -7,16 +7,14 @@ public class Dice {
 
 	private static int worp1 = 1;
 	private static int[] worp2 = {1,1};
-	private static boolean isDubbel; 	        // true of false bijhouden als speler dubbel gegooid heeft
+	private static boolean isDubbel;
 	private static int count = 0;
 
 	public Dice() {}
 
 	/**
-	 * Methode voor het rollen van de dobbelsteen
-	 * (Opm. Tasha ==> methode is static om ik deze anders niet kan oproepen in een andere klasse (zie methode: setPositie in klasse 'speler')
-	 * <p>
-	 * Methode moet verder aangepast worden, ik krijg geen int waarde terug als ik deze test...
+	 * rol met 1 dobbelsteen
+	 * @return
 	 */
 
 	public static int rollDie() {
@@ -28,6 +26,7 @@ public class Dice {
 	/**
 	 * methode voor met 2 dobbelstenen te rollen
 	 */
+
 	public static int rollDice() {
 		if(!isIsDubbel()){
 			count++;
@@ -41,6 +40,9 @@ public class Dice {
 		return Arrays.stream(worp2).sum();
 	}
 
+	/**
+	 * counter om bij te houden welke speler er aanzet is (mag uiteraard niet groter zijn dan het aantal spelers)
+	 */
 	public static void counterCheck(){
 		if(count > Spel.getSpelers().size()){
 			count = 1;
@@ -61,5 +63,4 @@ public class Dice {
 
 	public static boolean isIsDubbel() { return isDubbel; }
 
-	public static void setIsDubbel(boolean isDubbel) { Dice.isDubbel = isDubbel; }
 }

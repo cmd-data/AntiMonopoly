@@ -13,7 +13,6 @@ public class Speler {
 	private String naam;
 	private int geld = 1500000;
 	private boolean isConcurrent;
-	private boolean aanZet;
 	private boolean failliet;
 	private String pion;
 	private Rectangle rectangle;
@@ -25,14 +24,6 @@ public class Speler {
 		this.rectangle = rectangle;
 	}
 
-	public boolean isAanZet() {
-		return aanZet;
-	}//einde Methode
-
-	public void setAanZet(boolean aanZet) {
-		this.aanZet = aanZet;
-	}//einde Methode
-
 	public boolean isFailliet(Speler speler) {
 		if(speler.geld == 0 && checkBezittingen(speler) == 0) {
 			failliet = true;
@@ -42,6 +33,12 @@ public class Speler {
 			return false;
 		}
 	}
+
+	/**
+	 * hoeveel eigendommen heeft de speler?
+	 * @param speler
+	 * @return
+	 */
 
 	public int checkBezittingen (Speler speler) {
 		List<Speler> eigenaars = new ArrayList<>();
@@ -95,6 +92,12 @@ public class Speler {
 		return waarde;
 	}
 
+	/**
+	 * wat zijn de eigendommen van de speler?
+	 * @param speler
+	 * @return
+	 */
+
 	public static List<String> eigendommen (Speler speler){
 		List<String> spelerEigendommen = new ArrayList<>();
 
@@ -105,6 +108,12 @@ public class Speler {
 		}
 		return spelerEigendommen;
 	}
+
+	/**
+	 * welke eigendommen van de speler zijn er bebouwd?
+	 * @param speler
+	 * @return
+	 */
 
 	public static List<String> bebouwdeEigendommen (Speler speler) {
 		List<String> spelerEigendommen = new ArrayList<>();
@@ -120,21 +129,13 @@ public class Speler {
 
 	}
 
-	public String getNaam() {
-		return naam;
-	}//einde Methode
+	public String getNaam() { return naam; }
 
-	public int getGeld() {
-		return geld;
-	}//einde Methode
+	public int getGeld() { return geld; }
 
-	public void setGeld(int veranderGeld) {
-		geld += veranderGeld;
-	}
+	public void setGeld(int veranderGeld) { geld += veranderGeld; }
 
-	public boolean getIsConcurrent() {
-		return isConcurrent;
-	}//einde Methode
+	public boolean getIsConcurrent() { return isConcurrent; }
 
 	public String getPion() { return pion; }
 

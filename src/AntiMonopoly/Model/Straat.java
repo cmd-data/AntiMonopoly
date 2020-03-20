@@ -25,10 +25,6 @@ public class Straat extends Tegel {
 	private final int MAXHUISCON = 4;
 	private Gebouwen gebouw;
 
-	/**
-	 * Standaard constructor voor 'isKoopbaar' methode in Tegel
-	 */
-
 	public Straat(String straat, int prijs, int huur, int hypotheek, int prijsHuis, Speler eigenaar, Gebouwen gebouw, int aantalGebouwen, String stad, int positie) {
 		super(straat, positie);
 		this.straten = straat;
@@ -70,7 +66,7 @@ public class Straat extends Tegel {
 	public static void koopStraat(Speler speler, Straat straat) {
 
 		if (speler.getGeld() < straat.prijs) {
-			System.out.println("Niet genoeg geld");
+			System.out.println("Niet genoeg geld");								//pop-up worden
 		} else {
 			speler.setGeld(-straat.prijs);
 			straat.setEigenaar(speler);
@@ -143,6 +139,12 @@ public class Straat extends Tegel {
 		return straten.size() > eigenaars.size();
 	}
 
+	/**
+	 * visueel weergeven als een straat gekocht kan worden
+	 * @param straat
+	 * @param aanZet
+	 */
+
 	public static void straatMethodeKopen (Straat straat, Speler aanZet) {
 		final Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
@@ -189,6 +191,12 @@ public class Straat extends Tegel {
 		});
 	}
 
+	/**
+	 * visuele weergave als er huur moet betaald worden
+	 * @param straat
+	 * @param aanZet
+	 */
+
 	public static void straatMethodeHuur (Straat straat, Speler aanZet) {
 		final Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
@@ -211,6 +219,12 @@ public class Straat extends Tegel {
 			}
 		});
 	}
+
+	/**
+	 * visuele weergave als er gebouwd kan worden
+	 * @param straat
+	 * @param aanZet
+	 */
 
 	public static void straatMethodeBouwen (Straat straat, Speler aanZet) {
 
@@ -306,61 +320,23 @@ public class Straat extends Tegel {
 		}
 	}
 
-	public String getStraat() {
-		return straten;
-	}
+	public int getPrijs() { return this.prijs; }
 
-	public int getPrijs() {
-		return this.prijs;
-	}
+	public int getHypotheek() { return this.hypotheek; }
 
-	public int getHypotheek() {
-		return this.hypotheek;
-	}
+	public int getPrijsHuis() { return prijsHuis; }
 
-	public int getPrijsHuis() {
-		return prijsHuis;
-	}
+	public Speler getEigenaar() { return this.eigenaar; }
 
-	public Speler getEigenaar() {
-		return this.eigenaar;
-	}
+	public void setEigenaar(Speler eigenaar) { this.eigenaar = eigenaar; }
 
-	public void setEigenaar(Speler eigenaar) {
-		this.eigenaar = eigenaar;
-	}
+	public Gebouwen getGebouw() { return this.gebouw; }
 
-	public int getMaxHotel() {
-		return MAXHOTEL;
-	}
+	public void setGebouw(Gebouwen gebouw) { this.gebouw = gebouw; }
 
-	public int getMaxHuisMon() {
-		return MAXHUISMON;
-	}
+	public int getAantalGebouwen() { return aantalGebouwen; }
 
-	public int getMaxHuisCon() {
-		return MAXHUISCON;
-	}
-
-	public Gebouwen getGebouw() {
-		return this.gebouw;
-	}
-
-	public void setGebouw(Gebouwen gebouw) {
-		this.gebouw = gebouw;
-	}
-
-	public int getAantalGebouwen() {
-		return aantalGebouwen;
-	}
-
-	public void setAantalGebouwen(int aantalGebouwen) {
-		this.aantalGebouwen = aantalGebouwen;
-	}
-
-	public String getStad() {
-		return this.stad;
-	}
+	public void setAantalGebouwen(int aantalGebouwen) { this.aantalGebouwen = aantalGebouwen; }
 
 	public int getHuurPrijs() { return huur; }
 }

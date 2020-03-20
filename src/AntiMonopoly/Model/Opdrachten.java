@@ -4,7 +4,6 @@ import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Opdrachten {
 

@@ -48,6 +48,12 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		gasenelek.setEigenaar(null);
 	}
 
+	/**
+	 * hoeveel bedraagt de huur?
+	 * @param gasEnElektriciteitsbedrijf
+	 * @return
+	 */
+
 	public static int getHuur(GasEnElektriciteitsbedrijf gasEnElektriciteitsbedrijf) {
 		int waardeWorp = Dice.rollDie();
 
@@ -79,6 +85,12 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 		return 0;
 
 	}
+
+	/**
+	 * visuele pop-up voor als je een bedrijf kan kopen
+	 * @param bedrijf
+	 * @param aanZet
+	 */
 
 	public static void gasElekMethodeKopen (GasEnElektriciteitsbedrijf bedrijf, Speler aanZet) {
 
@@ -125,6 +137,12 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 			}
 		});
 	}
+
+	/**
+	 * visuele pop-up als je huur moet betalen
+	 * @param bedrijf
+	 * @param aanZet
+	 */
 
 	public static void gasElekMethodeHuur (GasEnElektriciteitsbedrijf bedrijf, Speler aanZet) {
 

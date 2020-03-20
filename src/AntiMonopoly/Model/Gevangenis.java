@@ -13,10 +13,6 @@ public class Gevangenis extends Tegel {
 		super(naam, positie);
 	}
 
-	public static void opBezoek (Speler speler) {
-		System.out.println("Sightseeing Tour");
-	}
-
 	public static void verlaatGevangenis(Speler speler) {
 
 		/*System.out.println("Boete betalen of dubbel gooien? ('true' of 'false'): ");				// pop-up met 'true' en 'false' keuze
