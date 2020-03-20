@@ -432,22 +432,22 @@ public class MainView extends GridPane {
         this.n4 = new Label("€400k");
 
         //Noord Station
-        this.ns1 = new Label("Station Noord");
+        this.ns1 = new Label("Noord station");
         this.ns2 = new Button("Stations Info");
         this.ns3 = new ImageView("/images/Main/station.png");
 
         //Zuid Station
-        this.zs1 = new Label("Station Zuid");
+        this.zs1 = new Label("Buurspoorwegen");
         this.zs2 = new Button("Stations Info");
         this.zs3 = new ImageView("/images/Main/station.png");
 
         //Oost Station
-        this.os1 = new Label("Station Oost");
+        this.os1 = new Label("Centraal station");
         this.os2 = new Button("Stations Info");
         this.os3 = new ImageView("/images/Main/station.png");
 
         //West Station
-        this.ws1 = new Label("Station West");
+        this.ws1 = new Label("Zuid station");
         this.ws2 = new Button("Stations Info");
         this.ws3 = new ImageView("/images/Main/station.png");
 
