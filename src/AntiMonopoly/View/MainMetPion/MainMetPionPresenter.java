@@ -125,7 +125,7 @@ public class MainMetPionPresenter {
                     dobbel.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
-                            Gevangenis.verlaatGevangenisDoorGooien(aanZet,worp);
+                            Gevangenis.verlaatGevangenisDoorGooien(aanZet);
                             dialog.close();
                         }
                     });

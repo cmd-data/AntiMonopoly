@@ -31,8 +31,6 @@ public class EndGamePresenter {
         view.getButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
-
                 Stage stage = (Stage) view.getButton().getScene().getWindow();
                 stage.close();
             }

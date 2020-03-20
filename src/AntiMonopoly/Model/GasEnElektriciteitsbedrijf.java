@@ -83,7 +83,6 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 			}
 		}
 		return 0;
-
 	}
 
 	/**
@@ -218,7 +217,7 @@ public class GasEnElektriciteitsbedrijf extends Tegel {
 			dialog.initModality(Modality.APPLICATION_MODAL);
 			VBox dialogVBox = new VBox();
 			dialog.setTitle("Betaal Huur");
-			Button button = new Button("Betaal € " + getHuur(bedrijf));
+			Button button = new Button("Betaal" );
 			dialogVBox.getChildren().addAll(new Text("U dient huur te betalen aan " + bedrijf.getEigenaar().getNaam()), button);
 			Scene dialogScene = new Scene(dialogVBox, 500, 300);
 			dialogVBox.setAlignment(Pos.CENTER);

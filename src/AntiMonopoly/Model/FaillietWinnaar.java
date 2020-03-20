@@ -1,5 +1,7 @@
 package AntiMonopoly.Model;
 
+import AntiMonopoly.View.EndGame.EndGamePresenter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

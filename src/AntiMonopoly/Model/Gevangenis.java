@@ -24,10 +24,9 @@ public class Gevangenis extends Tegel {
 		System.out.println("Sightseeing Tour");
 	}
 
-	public static void verlaatGevangenisDoorGooien(Speler speler, int worp) {
+	public static void verlaatGevangenisDoorGooien(Speler speler) {
 
 		if (Dice.isIsDubbel()) {
-			Spel.move(speler, worp);
 			gevangenen.remove(speler);
 
 			final Stage dialog = new Stage();
