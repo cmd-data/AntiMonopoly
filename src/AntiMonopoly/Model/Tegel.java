@@ -290,38 +290,6 @@ public class Tegel {
 				transition10.setInterpolator(Interpolator.EASE_BOTH);
 				transition10.play();
 
-                if(Gevangenis.getGevangenen().contains(aanZet)){
-
-                    final Stage dialog = new Stage();
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    VBox dialogVBox = new VBox();
-                    dialog.setTitle("Gevangenis");
-                    Button betaalBoete = new Button("Betaal Boete");
-                    Button dobbel = new Button("Dobbel");
-                    dialogVBox.getChildren().addAll(new Text("Betaal boete van €50.000\n of probeer dubbel te goeien,"),dobbel,betaalBoete);
-                    Scene dialogScene = new Scene(dialogVBox, 400, 250);
-                    dialogVBox.setAlignment(Pos.CENTER);
-                    dialogVBox.setSpacing(10);
-                    dialogVBox.setStyle("-fx-font: 20px Tahoma");
-                    dialog.setScene(dialogScene);
-                    dialog.show();
-
-                    betaalBoete.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            Gevangenis.verlaatGevangenisDoorBetalen(aanZet);
-                        }
-                    });
-
-                    dobbel.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            Gevangenis.verlaatGevangenisDoorGooien(aanZet);
-                        }
-                    });
-
-                }
-
 				break;
 
 			case 11:
