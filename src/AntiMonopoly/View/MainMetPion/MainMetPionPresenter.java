@@ -56,6 +56,13 @@ public class MainMetPionPresenter {
             }
         });
 
+        view.getMainView().getVerkoopGebouwen().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Spelopties.verkoopGebouwen(view);
+            }
+        });
+
         view.getDiceView().getRolButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

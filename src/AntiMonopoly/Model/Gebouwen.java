@@ -6,18 +6,28 @@ public class Gebouwen {
 		private int hotel = 0;
 		public Hotel() { super(); }
 
-		public static void verkoopHotel(Straat straat, int aantal, Speler speler){	 // eerst checken of dat de speler een concurrent is of niet, dan aantal huizen aanpassen
-			if(speler.getIsConcurrent()){
-				straat.setAantalGebouwen(4);
-			} else {straat.setAantalGebouwen(3);}
+		public static void verkoopHotel(Straat straat, Speler speler){
+			if (straat.getAantalGebouwen()!=0) {
+				straat.setAantalGebouwen(0);
+				if (speler.getIsConcurrent()) {
+					speler.setGeld(5 * straat.getPrijsHuis());
+				} else {
+					speler.setGeld(4 * straat.getPrijsHuis());
+				}
+				Spel.updateGeld();
+			}
 		}
 	}
 
 	public static class Huis extends Gebouwen {
 		public Huis() { super(); }
 
-		public static void verkoopHuis(Straat straat, int aantal){
-			straat.setAantalGebouwen(straat.getAantalGebouwen()-aantal);
+		public static void verkoopHuis(Straat straat, int aantal, Speler speler){
+			if (straat.getAantalGebouwen()!=0) {
+				straat.setAantalGebouwen(straat.getAantalGebouwen() - aantal);
+				speler.setGeld(aantal * straat.getPrijsHuis());
+				Spel.updateGeld();
+			}
 		}
 	}
 
@@ -126,19 +136,4 @@ public class Gebouwen {
 		}
 		Spel.updateGeld();
 	}
-
-	public void verkoopGebouw(Straat straat, Gebouwen gebouw, int aantal,Speler speler) {
-		if(gebouw.getClass().equals(Hotel.class)){
-			Gebouwen.Hotel.verkoopHotel(straat,aantal,speler);
-			straat.setGebouw(new Huis());
-		}
-		if(gebouw.getClass().equals(Huis.class)){
-			Gebouwen.Huis.verkoopHuis(straat,aantal);                                    // Huis en hotel statisch gemaakt zodat de methode eenvoudig zo kan opgeroepen worden
-		}
-
-		if(straat.getGebouw()==null){
-			return;																		 // + foutboodschap als er geen gebouwen meer opstaan: met return String of System.out.println ?
-		}
-	}
-
 }

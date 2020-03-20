@@ -276,7 +276,7 @@ public class MainView extends GridPane {
     private static Label so1;
     private static VBox spelopties;
     private Button hypotheekKnop, verkoopGebouwen, verkoopEigendom, bouwen;
-    private ComboBox eigendommen, hypotheken;
+    private ComboBox eigendommen, hypotheken, bebouwdeEigendommen, aantalHuizen;
 
     public MainView() {
         this.initialiseNodes();
@@ -563,7 +563,10 @@ public class MainView extends GridPane {
         this.verkoopEigendom = new Button("VerkoopEigendom");
         this.bouwen = new Button("Bouwen");
         this.eigendommen = new ComboBox<String>();
-        this.hypotheken = new ComboBox<>();
+        this.hypotheken = new ComboBox<String>();
+        this.bebouwdeEigendommen = new ComboBox<String>();
+        this.aantalHuizen = new ComboBox<Integer>();
+
     }
 
     private void layoutNodes() {
@@ -1107,4 +1110,8 @@ public class MainView extends GridPane {
     }
 
     public ComboBox getHypotheken() { return hypotheken; }
+
+    public ComboBox getBebouwdeEigendommen() { return bebouwdeEigendommen; }
+
+    public ComboBox getAantalHuizen() { return aantalHuizen; }
 }

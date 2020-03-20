@@ -102,6 +102,56 @@ public interface Spelopties {
 
 	}
 
-	void bouwen();
+	public static void verkoopGebouwen (MainMetPionView view) {
+
+		final Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVBox = new VBox();
+
+		Button button1 = new Button("Verkoop huizen");
+		Button button2 = new Button("Verkoop hotel");
+		ObservableList<String> eigendommen =
+				FXCollections.observableArrayList(Speler.bebouwdeEigendommen(Spel.getSpelers().get(Dice.getCount()-1))); //eigendommen van de speler die aan de beurt is
+		view.getMainView().getBebouwdeEigendommen().setItems(eigendommen);
+
+		ObservableList<Integer> aantalHuizen =
+				FXCollections.observableArrayList(1,2,3,4);
+		view.getMainView().getAantalHuizen().setItems(aantalHuizen);
+
+		dialog.setTitle("Huizen of hotels verkopen");
+		dialogVBox.getChildren().addAll(new Text("Eigendommen: "),view.getMainView().getBebouwdeEigendommen(),new Text("Aantal huizen: "),view.getMainView().getAantalHuizen(), button1,button2);
+		Scene dialogScene = new Scene(dialogVBox, 300, 300);
+		dialogVBox.setAlignment(Pos.CENTER);
+		dialogVBox.setSpacing(10);
+		dialogVBox.setStyle("-fx-font: 20px Tahoma");
+		dialog.setScene(dialogScene);
+		dialog.show();
+
+		button1.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				for (Tegel tegel : Spelbord.getTegels()) {
+					if (view.getMainView().getBebouwdeEigendommen().getValue().equals(tegel.getNaam())){
+						Gebouwen.Huis.verkoopHuis(((Straat) tegel),(Integer) view.getMainView().getAantalHuizen().getValue(),Spel.getSpelers().get(Dice.getCount()-1));
+						dialog.close();
+					}
+				}
+			}
+		});
+
+		button2.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				for (Tegel tegel : Spelbord.getTegels()) {
+					if (view.getMainView().getBebouwdeEigendommen().getValue().equals(tegel.getNaam())){
+						Gebouwen.Hotel.verkoopHotel(((Straat) tegel),Spel.getSpelers().get(Dice.getCount()-1));
+						dialog.close();
+					}
+				}
+			}
+		});
+	}
+
 
 }
+

@@ -106,6 +106,20 @@ public class Speler {
 		return spelerEigendommen;
 	}
 
+	public static List<String> bebouwdeEigendommen (Speler speler) {
+		List<String> spelerEigendommen = new ArrayList<>();
+
+		for (Tegel tegel : Spelbord.getTegels()) {
+			if (tegel instanceof Straat) {
+				if (Objects.equals(Tegel.eigenaar(tegel), speler.getNaam()) && Straat.isBebouwd((Straat) tegel)) {
+					spelerEigendommen.add(tegel.getNaam());
+				}
+			}
+		}
+		return spelerEigendommen;
+
+	}
+
 	public String getNaam() {
 		return naam;
 	}//einde Methode
