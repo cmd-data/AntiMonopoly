@@ -17,12 +17,19 @@ import java.util.stream.IntStream;
 
 public class ConcurrentenOfMonopolistenvak extends Tegel {
 
+	Dice dice = new Dice();
+
 	public ConcurrentenOfMonopolistenvak(String naam, int positie) {
 		super(naam, positie);
 	}
 
+	private static Opdrachten opdrachten = new Opdrachten();
+
 	/**
 	 * Leest de opdracht voor
+	 * Voert de opdracht uit
+	 * En steekt de kaart onderaan het deck terug
+	 * @param speler
 	 */
 
 	public static String zieKaart (Speler speler){											// activeren met 'trek kaart'
@@ -33,11 +40,6 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			return Opdrachten.monopolisten.getValue(Opdrachten.shuffledMon.firstKey());
 		}
 	}
-
-	/**
-	 * doet de opdracht en steekt de kaart onderaan het deck terug weg
-	 * @param speler
-	 */
 
 	public static void voerUit(Speler speler){												// activeren met knop 'OK' op de kaart
 
@@ -51,10 +53,6 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 		Spel.updateGeld();
 
 	}
-
-	/**
-	 * kaart terugsteken onderaan de stapel
-	 */
 
 	public static void steekTerugMon() {
 		ArrayList<Integer> keys = new ArrayList<>(Opdrachten.shuffledMon.keySet());
@@ -79,7 +77,10 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 	}
 
 	/**
-	 * Doe opdrachten
+	 * Alle move methoden nog linken met pion op spelbord (zowel voor monopolist als concurrent)
+	 * @param opdracht
+	 * @param speler
+	 * @return
 	 */
 
 	public static void doeOpdrachtMonopolist(int opdracht,Speler speler) {
@@ -94,7 +95,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				}
 				Dice.setCount(-1);
 				break;
-			case 2:
+			case 2:                                                                // -25000 ??
 			case 21:
 			case 24:
 				speler.setGeld(50000);
@@ -116,11 +117,11 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				break;
 			case 8:
 			case 14:
-				speler.setGeld(-75000);
+				speler.setGeld(-75000);                                            // doet niets ??
 				break;
 			case 9:
 			case 15:
-				speler.setGeld(-25000);
+				speler.setGeld(-25000);                                            // + 50000 ??
 				break;
 			case 10:
 				Tegel.tegelMethode(speler.getRectangle(), speler, 39);
@@ -153,7 +154,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 				}
 				break;
 			case 20:
-				speler.setGeld(75000);
+				speler.setGeld(75000);                                    // doet niets (geen geld erbij of weg)??
 				break;
 			case 22:
 				int counter = 0;
@@ -255,12 +256,7 @@ public class ConcurrentenOfMonopolistenvak extends Tegel {
 			}
 		}
 
-	/**
-	 * methode geeft visuele pop-up als een speler op een concurrenten/monopolisten vak terecht komt
-	 * @param aanZet
-	 */
-
-	public static void vakMethode(Speler aanZet){
+		public static void vakMethode(Speler aanZet){
 
 			final Stage dialog = new Stage();
 			dialog.initModality(Modality.APPLICATION_MODAL);

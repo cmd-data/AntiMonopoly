@@ -46,6 +46,9 @@ public class TweeSpelersPresenter {
                 mainView.getMainView().getS11().setText(Spel.getSpelers().get(0).getNaam());
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(1).getNaam());
 
+                MainView.getS15().setText(TweeSpelersView.getTs6().getValue());
+                MainView.getS25().setText(TweeSpelersView.getTs7().getValue());
+
                 Spel.updateGeld();
 
                 mainView.getMainView().getS13().setImage(new Image("images/" + Spel.getSpelers().get(0).getPion() + ".png"));

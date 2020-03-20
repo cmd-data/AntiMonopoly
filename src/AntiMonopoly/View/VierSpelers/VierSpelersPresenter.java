@@ -2,6 +2,7 @@ package AntiMonopoly.View.VierSpelers;
 
 import AntiMonopoly.Model.AntiMonopolyMain;
 import AntiMonopoly.Model.Spel;
+import AntiMonopoly.View.DrieSpelers.DrieSpelersView;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import AntiMonopoly.View.MainScreen.MainView;
@@ -53,6 +54,11 @@ public class VierSpelersPresenter {
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(1).getNaam());
                 mainView.getMainView().getS31().setText(Spel.getSpelers().get(2).getNaam());
                 mainView.getMainView().getS41().setText(Spel.getSpelers().get(3).getNaam());
+
+                MainView.getS15().setText(VierSpelersView.getVs10().getValue());
+                MainView.getS25().setText(VierSpelersView.getVs11().getValue());
+                MainView.getS35().setText(VierSpelersView.getVs12().getValue());
+                MainView.getS45().setText(VierSpelersView.getVs13().getValue());
 
                 Spel.updateGeld();
 

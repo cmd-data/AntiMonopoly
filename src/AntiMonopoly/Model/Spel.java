@@ -58,6 +58,10 @@ public class Spel {
 		}
 	}
 
+	/**
+	 * visuele update van het geld van de spelers op het spelbord
+	 */
+
 	public static void updateGeld(){
 		MainView.getS12().setText("€ " + spelers.get(0).getGeld());
 		MainView.getS22().setText("€ " + spelers.get(1).getGeld());

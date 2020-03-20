@@ -5,6 +5,7 @@ import AntiMonopoly.Model.Spel;
 import AntiMonopoly.View.MainMetPion.MainMetPionPresenter;
 import AntiMonopoly.View.MainMetPion.MainMetPionView;
 import AntiMonopoly.View.MainScreen.MainView;
+import AntiMonopoly.View.TweeSpelers.TweeSpelersView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -46,6 +47,11 @@ public class DrieSpelersPresenter {
                 mainView.getMainView().getS11().setText(Spel.getSpelers().get(0).getNaam());
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(1).getNaam());
                 mainView.getMainView().getS21().setText(Spel.getSpelers().get(2).getNaam());
+
+                MainView.getS15().setText(DrieSpelersView.getDs8().getValue());
+                MainView.getS25().setText(DrieSpelersView.getDs9().getValue());
+                MainView.getS35().setText(DrieSpelersView.getDs10().getValue());
+
 
                 Spel.updateGeld();
 
