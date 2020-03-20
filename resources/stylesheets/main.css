@@ -2,8 +2,14 @@
     -fx-text-fill: white;
 }
 
-.menu-item {
+.menu-item .label {
     -fx-text-fill: black;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-border-style: none;
 }
 
 #sm {
@@ -37,6 +43,7 @@
     -fx-pref-width: 150px;
     -fx-pref-height: 90px;
     -fx-spacing: 5px;
+    -fx-font-weight: bold;
 
 }
 
@@ -74,6 +81,12 @@
 
 #ns,#zs,#os,#ws,#nk1,#nk2,#nk3,#nk4,#nk5,#nk6,#eb,#ib,#em,#gas,#start,#gng,#ams,#gev,#s1,#s2,#s3,#s4,#spelopties {
     -fx-background-color: black;
+}
+
+#spelopties .button {
+    -fx-font-size: 13px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 
