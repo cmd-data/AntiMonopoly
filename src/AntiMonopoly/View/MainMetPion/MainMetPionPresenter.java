@@ -4,8 +4,6 @@ import AntiMonopoly.Model.*;
 import AntiMonopoly.View.Dice.DiceView;
 import AntiMonopoly.View.EndGame.EndGamePresenter;
 import AntiMonopoly.View.EndGame.EndGameView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -30,6 +28,7 @@ public class MainMetPionPresenter {
     private AntiMonopolyMain model;
     private MainMetPionView view;
     private DiceView diceView;
+    Speler aanZet = null;
 
     public MainMetPionPresenter(AntiMonopolyMain model, MainMetPionView view) {
         this.model = model;
@@ -98,7 +97,7 @@ public class MainMetPionPresenter {
                         }
 
                         Rectangle pion = null;
-                        Speler aanZet = null;
+
 
                         switch (Dice.getCount()) {
                             case 1:
@@ -673,7 +672,12 @@ public class MainMetPionPresenter {
                     }
                 }
         );
+
+
     }
+
+
+
 
     public void addWindowEventHandlers() {
     }
