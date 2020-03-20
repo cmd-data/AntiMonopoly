@@ -22,9 +22,9 @@ public class EndGameView extends GridPane {
     }
 
     private void initialiseNodes() {
-        label1 = new Label("Proficiat " + FaillietWinnaar.winnaar().getNaam() + "!");
+        label1 = new Label("Proficiat " + FaillietWinnaar.isWinnaar().getNaam() + "!");
         label2 = new Label("De andere spelers zijn failliet, u bent gewonnen!");
-        label3 = new Label("U beschikt over een kapitaal van €" + FaillietWinnaar.winnaar().getGeld());
+        label3 = new Label("U beschikt over een kapitaal van €" + FaillietWinnaar.isWinnaar().getGeld());
         button = new Button("OK");
     }
 

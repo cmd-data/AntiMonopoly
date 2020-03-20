@@ -200,14 +200,14 @@ public class Spel {
 	 * @return
 	 */
 
-	public static boolean eindeSpel(){
+	/*public static boolean eindeSpel(){
 		FaillietWinnaar winnaar = new FaillietWinnaar();
 		List<Boolean> winnaars = new ArrayList<>();
 		for (Speler speler : spelers) {
-			winnaars.add(winnaar.isWinnaar(speler));
+			winnaars.add(winnaar.isWinnaar());
 		}
 		return winnaars.contains(true);
-	}
+	}*/
 
 	public static List<Speler> getSpelers(){
 		return spelers;

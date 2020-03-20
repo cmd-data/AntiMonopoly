@@ -160,12 +160,6 @@ public class MainMetPionPresenter {
 
                             Tegel.tegelMethode(finalPion, aanZet, locatie);
 
-                            if (Spel.eindeSpel()) {
-                                EndGameView view = new EndGameView();
-                                new EndGamePresenter(model, view);
-                            }
-
-
                         }
                     });
                 }
