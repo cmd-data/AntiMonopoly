@@ -59,6 +59,7 @@ public class Tegel {
 			((GasEnElektriciteitsbedrijf) tegel).verkoopGasofElektriciteitsbedrijf(speler,(GasEnElektriciteitsbedrijf) tegel);
 		}
 		Spel.updateGeld();
+		Spelbord.removeOwner(tegel.getPositie(),speler);
 	}
 
 	public static boolean heeftEigenaar(Tegel tegel){

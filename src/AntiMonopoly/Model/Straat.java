@@ -163,6 +163,7 @@ public class Straat extends Tegel {
 			public void handle(ActionEvent event) {
 				dialog.close();
 				Tegel.koopEigendom(straat, aanZet);
+				Spelbord.showOwner(straat.getPositie(),aanZet);
 
 				final Stage dialog = new Stage();
 				dialog.initModality(Modality.APPLICATION_MODAL);
